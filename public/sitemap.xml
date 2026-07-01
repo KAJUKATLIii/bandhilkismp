@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- HOME -->
+  <url>
+    <loc>https://minecraft.bandhilki.family/</loc>
+    <lastmod>2026-06-24</lastmod>
+  </url>
+
+  <!-- WHITELIST (high-value CTA page) -->
+  <url>
+    <loc>https://minecraft.bandhilki.family/whitelist.html</loc>
+    <lastmod>2026-06-24</lastmod>
+  </url>
+
+  <!-- RULES -->
+  <url>
+    <loc>https://minecraft.bandhilki.family/rules.html</loc>
+    <lastmod>2026-06-24</lastmod>
+  </url>
+
+  <!-- TICKETS -->
+  <url>
+    <loc>https://minecraft.bandhilki.family/tickets.html</loc>
+    <lastmod>2026-06-24</lastmod>
+  </url>
+
+  <!-- SOCIALS -->
+  <url>
+    <loc>https://minecraft.bandhilki.family/social.html</loc>
+    <lastmod>2026-06-24</lastmod>
+  </url>
+
+  <!-- EVENTS -->
+  <url>
+    <loc>https://minecraft.bandhilki.family/events.html</loc>
+    <lastmod>2026-06-24</lastmod>
+  </url>
+
+  <!-- CONTRACTS -->
+  <url>
+    <loc>https://minecraft.bandhilki.family/contracts.html</loc>
+    <lastmod>2026-06-24</lastmod>
+  </url>
+
+  <!-- GALLERY -->
+  <url>
+    <loc>https://minecraft.bandhilki.family/gallery.html</loc>
+    <lastmod>2026-06-24</lastmod>
+  </url>
+
+  <!-- STAFF -->
+  <url>
+    <loc>https://minecraft.bandhilki.family/staff.html</loc>
+    <lastmod>2026-06-24</lastmod>
+  </url>
+
+  <!-- HALL OF FAME -->
+  <url>
+    <loc>https://minecraft.bandhilki.family/hall.html</loc>
+    <lastmod>2026-06-24</lastmod>
+  </url>
+
+  <!-- DEVELOPERS -->
+  <url>
+    <loc>https://minecraft.bandhilki.family/developers.html</loc>
+    <lastmod>2026-06-24</lastmod>
+  </url>
+
+  <!-- CONTACT -->
+  <url>
+    <loc>https://minecraft.bandhilki.family/contact.html</loc>
+    <lastmod>2026-06-24</lastmod>
+  </url>
+
+  <!-- MINI GAME -->
+  <url>
+    <loc>https://minecraft.bandhilki.family/game.html</loc>
+    <lastmod>2026-06-24</lastmod>
+  </url>
+
+</urlset>

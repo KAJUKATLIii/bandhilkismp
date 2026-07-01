@@ -1,0 +1,405 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Bandhilki SMP â€“ API Health Check</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=1" />
+    .title-block{min-width:280px;}
+    .kicker{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:800;margin-bottom:8px;}
+    .h1{font-family:'Oswald',sans-serif;font-size:1.5rem;margin:0;}
+    .sub{color:var(--muted);margin-top:6px;font-size:0.92rem;max-width:680px;}
+
+    .actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+    .btn{user-select:none;}
+
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;}
+    @media(max-width:860px){.grid{grid-template-columns:1fr;}}
+
+    .card{background:linear-gradient(180deg, rgba(255,76,108,0.04), transparent 22%), var(--panel);border:1px solid var(--line);border-radius:var(--radius-md);box-shadow:var(--shadow-md);overflow:hidden;}
+    .card-h{padding:14px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px;}
+    .card-h strong{font-family:'Oswald',sans-serif;letter-spacing:.04em;}
+    .badge{font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted);}
+    .badge.ok{border-color:rgba(74,222,128,0.35);color:#86efac;background:rgba(74,222,128,0.08)}
+    .badge.fail{border-color:rgba(248,71,98,0.35);color:#fda4af;background:rgba(248,71,98,0.08)}
+
+    table{width:100%;border-collapse:collapse;}
+    th,td{padding:10px 12px;border-bottom:1px solid var(--line);font-size:12px;vertical-align:top;}
+    th{color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.08em;}
+    td code{font-family:'Space Grotesk',monospace;color:var(--text);}
+    tr:last-child td{border-bottom:none;}
+
+    .row-ok{background:rgba(74,222,128,0.06)}
+    .row-fail{background:rgba(248,71,98,0.06)}
+    .small{color:var(--muted);font-size:12px;}
+
+    .logbox{padding:14px 16px;}
+    .logitem{font-family:'Space Grotesk',monospace;font-size:12px;color:var(--text-muted);border:1px solid var(--line);border-radius:var(--radius-sm);padding:10px 12px;margin-bottom:10px;white-space:pre-wrap;word-break:break-word;}
+
+    .hidden{display:none !important;}
+  </style>
+    <link rel="canonical" href="https://minecraft.bandhilki.family/api-health.html" />
+</head>
+<body>
+  <div class="portal-ticker" aria-hidden="true">
+    <div class="portal-ticker-track">
+      <span>API Health Check â€”</span>
+      <span>tests all backend endpoints used by the site â€”</span>
+      <span>Bandhilki SMP</span>
+    </div>
+  </div>
+
+  <div class="portal-nav-wrap">
+    <nav class="portal-nav" aria-label="Primary Navigation">
+    <a href="index.html" class="portal-brand">
+      <img src="/lg.png" alt="Bandhilki SMP Logo">
+      <span>Bandhilki SMP</span>
+    </a>
+    <a href="index.html" class="portal-link">Home</a>
+    <a href="events.html" class="portal-link">Events</a>
+    <a href="gallery.html" class="portal-link">Gallery</a>
+    <a href="rules.html" class="portal-link">Rules</a>
+    <a href="hall.html" class="portal-link">Hall</a>
+    <a href="whitelist.html" class="portal-link">Whitelist</a>
+    <a href="tickets.html" class="portal-link">Tickets</a>
+    <a href="contracts.html" class="portal-link">Contracts</a>
+    <a href="social.html" class="portal-link">Socials</a>
+    <a href="developers.html" class="portal-link">Team</a>
+    <a href="staff.html" class="portal-link hidden">Staff</a>
+    <a href="contact.html" class="portal-link">Contact</a>
+    <a href="game.html" class="portal-link">MiniGame</a>
+    <a href="user.html" id="navProfile" class="portal-link hidden">Profile</a>
+    <a href="login.html" id="navLogin" class="portal-link hidden">Login</a>
+    <a href="#" id="navLogout" class="portal-link hidden" onclick="doLogout()">Logout</a>
+  </nav>
+  </div>
+
+  <div class="api-health-shell">
+    <div class="top">
+      <div class="title-block">
+        <div class="kicker">Staff Utility</div>
+        <h1 class="h1">API Health Check</h1>
+        <div class="sub">Runs requests against every API endpoint used by the website and reports status + response error (if any).</div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" onclick="runAll()">â–¶ Run All Checks</button>
+        <button class="btn btn-outline" onclick="clearResults()">Clear</button>
+      </div>
+    </div>
+
+    <div id="accessDenied" class="card" style="margin-top:12px;">
+      <div class="card-h">
+        <strong>Access denied</strong>
+        <span class="badge fail">Staff only</span>
+      </div>
+      <div class="logbox">
+        <div class="small" style="margin-bottom:10px;">You must be logged in with a Discord staff role to run API health checks.</div>
+        <a href="/login.html?error=" class="btn btn-primary">Login with Discord</a>
+      </div>
+    </div>
+
+    <div id="healthApp" class="hidden">
+      <div class="grid">
+        <div class="card">
+          <div class="card-h">
+            <strong>Endpoints</strong>
+            <span id="summaryBadge" class="badge">â€”</span>
+          </div>
+          <div style="overflow:auto;">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width:180px;">Endpoint</th>
+                  <th style="width:120px;">Method</th>
+                  <th>Status</th>
+                  <th style="width:230px;">Details</th>
+                </tr>
+              </thead>
+              <tbody id="resultsBody">
+                <tr><td colspan="4" class="small" style="text-align:center;padding:26px 10px;">Run checks to see results.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-h">
+            <strong>Logs</strong>
+            <span class="badge">debug</span>
+          </div>
+          <div class="logbox">
+            <div id="logs"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:12px;">
+        <div class="card-h">
+          <strong>Notes</strong>
+          <span class="badge">tips</span>
+        </div>
+        <div class="logbox">
+      <a href="#" id="navLogout" class="portal-link hidden" onclick="doLogout()">Logout</a>
+    </nav>
+  </div>
+
+  <div class="api-health-shell">
+    <div class="top">
+      <div class="title-block">
+        <div class="kicker">Staff Utility</div>
+        <h1 class="h1">API Health Check</h1>
+        <div class="sub">Runs requests against every API endpoint used by the website and reports status + response error (if any).</div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" onclick="runAll()">â–¶ Run All Checks</button>
+        <button class="btn btn-outline" onclick="clearResults()">Clear</button>
+      </div>
+    </div>
+
+    <div id="accessDenied" class="card" style="margin-top:12px;">
+      <div class="card-h">
+        <strong>Access denied</strong>
+        <span class="badge fail">Staff only</span>
+      </div>
+      <div class="logbox">
+        <div class="small" style="margin-bottom:10px;">You must be logged in with a Discord staff role to run API health checks.</div>
+        <a href="/login.html?error=" class="btn btn-primary">Login with Discord</a>
+      </div>
+    </div>
+
+    <div id="healthApp" class="hidden">
+      <div class="grid">
+        <div class="card">
+          <div class="card-h">
+            <strong>Endpoints</strong>
+            <span id="summaryBadge" class="badge">â€”</span>
+          </div>
+          <div style="overflow:auto;">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width:180px;">Endpoint</th>
+                  <th style="width:120px;">Method</th>
+                  <th>Status</th>
+                  <th style="width:230px;">Details</th>
+                </tr>
+              </thead>
+              <tbody id="resultsBody">
+                <tr><td colspan="4" class="small" style="text-align:center;padding:26px 10px;">Run checks to see results.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-h">
+            <strong>Logs</strong>
+            <span class="badge">debug</span>
+          </div>
+          <div class="logbox">
+            <div id="logs"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:12px;">
+        <div class="card-h">
+          <strong>Notes</strong>
+          <span class="badge">tips</span>
+        </div>
+        <div class="logbox">
+          <div class="small">
+            â€¢ If an endpoint is protected, failures may be <code>401/403</code> while public endpoints may still pass.<br/>
+            â€¢ Responses that return HTML usually mean redirect/login.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+let currentUser = null;
+let endpointResults = [];
+
+function $(id){return document.getElementById(id)}
+
+function logLine(text){
+  const logs = $('logs');
+  const item = document.createElement('div');
+  item.className = 'logitem';
+  item.textContent = text;
+  logs.prepend(item);
+}
+
+function clearResults(){
+  endpointResults = [];
+  $('resultsBody').innerHTML = '<tr><td colspan="4" class="small" style="text-align:center;padding:26px 10px;">Run checks to see results.</td></tr>';
+  $('logs').innerHTML = '';
+  $('summaryBadge').className = 'badge';
+  $('summaryBadge').textContent = 'â€”';
+}
+
+async function doLogout(){
+  try{await fetch('/api/logout',{method:'POST'});}catch(e){}
+  window.location.href='/index.html';
+}
+
+async function checkStaffAccess(){
+  // must be staff, but we can use /api/staff/me for staff-only validation
+  try{
+    const res = await fetch('/api/staff/me');
+    const data = await res.json();
+    const isStaff = data && data.isStaff === true;
+    if(!isStaff){
+      $('accessDenied').classList.remove('hidden');
+      $('healthApp').classList.add('hidden');
+      return false;
+    }
+    currentUser = data.user || null;
+    $('accessDenied').classList.add('hidden');
+    $('healthApp').classList.remove('hidden');
+
+    // Nav handling
+    $('navLogin').classList.add('hidden');
+    $('navLogout').classList.remove('hidden');
+    const navProfile = $('navProfile');
+    if (navProfile) navProfile.classList.remove('hidden');
+    const navStaff = document.querySelector('nav a[href="staff.html"]');
+    if(navStaff) navStaff.classList.remove('hidden');
+    return true;
+  }catch(e){
+    $('accessDenied').classList.remove('hidden');
+    $('healthApp').classList.add('hidden');
+    return false;
+  }
+}
+
+function safeEndpointLabel(e){
+  return e.path.replace(/^\/+/, '');
+}
+
+async function runOne(e){
+  const started = Date.now();
+  let status = 'FAIL';
+  let detail = '';
+  let code = null;
+
+  const url = e.url || e.path; // allow absolute/relative
+  const options = {
+    method: e.method || 'GET',
+    headers: {},
+  };
+
+  if(e.body){
+    options.headers['Content-Type'] = 'application/json';
+    options.body = JSON.stringify(e.body);
+  }
+
+  try{
+    const res = await fetch(url, options);
+    code = res.status;
+
+    const contentType = res.headers.get('content-type') || '';
+    const text = await res.text();
+
+    if(contentType.includes('application/json')){
+      let json = null;
+      try{ json = JSON.parse(text); }catch(_){ }
+      if(res.ok){
+        status = 'OK';
+        detail = json && (json.success === true ? 'success' : 'ok') ? json.success===true?'success':'ok' : 'json';
+      }else{
+        status = 'FAIL';
+        detail = (json && (json.error || json.message)) ? (json.error || json.message) : 'error';
+      }
+    }else{
+      // HTML or plain
+      if(res.ok){
+        status = 'OK';
+        detail = 'non-json response';
+      }else{
+        status = 'FAIL';
+        const short = (text || '').replace(/\s+/g,' ').slice(0,140);
+        detail = short ? 'likely redirect/login: ' + short : 'non-json error';
+      }
+    }
+
+  }catch(err){
+    status = 'FAIL';
+    detail = (err && err.message) ? err.message : String(err);
+  }
+
+  const ms = Date.now() - started;
+  return { ...e, status, detail, code, ms };
+}
+
+async function runAll(){
+  clearResults();
+  $('summaryBadge').textContent = 'Runningâ€¦';
+
+  // Endpoints list: covers all APIs referenced by existing pages.
+  // Protected endpoints will likely return 401/403 if session invalid.
+  const endpoints = [
+    // auth/session
+    { method:'GET',  path:'/api/me' },
+    { method:'GET',  path:'/api/staff/me' },
+    { method:'GET',  path:'/api/servers' },
+
+    // whitelist/quiz
+    { method:'GET',  path:'/api/auth/discord/config' },
+    // quiz requires authMiddleware, so it will fail if not whitelisted/login. Still good to test.
+    { method:'GET',  path:'/api/quiz-questions?lang=en' },
+
+    // tickets
+    { method:'GET',  path:'/api/tickets/my' },
+    { method:'POST', path:'/api/tickets/create', body:{ category:'Support', description:'API health check ticket (auto)', screenshotUrl:null } },
+
+    // staff ticket endpoints
+    { method:'GET',  path:'/api/tickets/all' },
+    { method:'GET',  path:'/api/tickets/stats' },
+    { method:'GET',  path:'/api/staff/activity' },
+    { method:'GET',  path:'/api/staff/todos' },
+
+    // staff todo create test (safe)
+    { method:'POST', path:'/api/staff/todos', body:{ text:'API health check todo (auto)', priority:'normal' } },
+  ];
+
+  // run sequentially to avoid accidental ticket/todo duplication explosion if backend is slow
+  // (still fast enough for testing)
+  for(const e of endpoints){
+    const r = await runOne(e);
+    endpointResults.push(r);
+
+    const isOk = r.status === 'OK';
+    const tr = document.createElement('tr');
+    tr.className = isOk ? 'row-ok' : 'row-fail';
+    tr.innerHTML = `
+      <td><code>${safeEndpointLabel(r)}</code></td>
+      <td>${r.method}</td>
+      <td>${r.status}${r.code ? ' ('+r.code+')' : ''}</td>
+      <td class="small">${(r.detail || '').replaceAll('<','<').replaceAll('>','>')}</td>
+    `;
+    $('resultsBody').appendChild(tr);
+
+    logLine(`[${r.method}] ${r.path}\n=> ${r.status}${r.code ? ' ('+r.code+')' : ''} in ${r.ms}ms\n${r.detail || ''}`);
+  }
+
+  const okCount = endpointResults.filter(x=>x.status==='OK').length;
+  const total = endpointResults.length;
+  const badge = $('summaryBadge');
+  badge.className = 'badge ' + (okCount === total ? 'ok' : 'fail');
+  badge.textContent = `${okCount}/${total} OK`;
+}
+
+checkStaffAccess().then(ok=>{
+  if(ok){
+    // optional: auto-run
+    // runAll();
+  }
+});
+</script>
+<script src="/ticker.js"></script>
+</body>
+</html>
+

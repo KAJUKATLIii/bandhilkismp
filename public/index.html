@@ -1,0 +1,375 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bandhilki SMP â€“ Indian Minecraft Server by Bandhilki Family</title>
+<meta name="description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family. Join survival, creative, PvP & events.">
+<meta name="keywords" content="bandhilki smp, minecraft, bandhilki family, shreeman legend, bandhilkismp, indian minecraft server, survival multiplayer, pvp server, minecraft india, gaming community, minecraft survival, best indian smp, Bandhilki Family, minecraft community, smp server, best smp server in india, indian minecraft community">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Bandhilki SMP â€“ Indian Minecraft Server">
+<meta property="og:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family. Join survival, creative, PvP & events.">
+<meta property="og:image" content="/lg.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bandhilki SMP â€“ Indian Minecraft Server">
+<meta name="twitter:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family.">
+<meta name="twitter:image" content="/lg.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Bandhilki SMP",
+  "logo": "https://minecraft.bandhilki.family/lg.png",
+  "sameAs": [
+    "https://discord.gg/KSAm2yd9gC"
+  ]
+}
+</script>
+<link rel="icon" type="image/x-icon" href="/favicon.ico?v=1" />
+<link rel="stylesheet" href="/style.css">
+<style>
+  /* â”€â”€ Hero â”€â”€ */
+  .hero {
+    text-align: center;
+  }
+  .hero-logo {
+    width: 86px;
+    image-rendering: auto;
+  }
+  .hero-title {
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 0.25rem;
+  }
+  .hero-sub {
+    max-width: 640px;
+  }
+  .hero-cta { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+  /* â”€â”€ Copy IP card â”€â”€ */
+  .ip-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(0,0,0,0.45);
+    border: 1.5px solid var(--border-glass);
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-family: 'Space Grotesk', monospace;
+    font-size: 1rem;
+    color: var(--green-1);
+    cursor: pointer;
+    transition: border-color 0.25s, box-shadow 0.25s;
+    margin-top: 1.5rem;
+  }
+  .ip-card:hover { border-color: var(--border-glass-hover); box-shadow: 0 0 18px var(--glow-green); }
+  .ip-card .ip-label { font-size: 0.72rem; color: var(--text-muted); }
+  .copy-btn {
+    background: rgba(0,255,135,0.12);
+    border: 1px solid rgba(0,255,135,0.3);
+    border-radius: 6px;
+    color: var(--green-1);
+    font-size: 0.75rem;
+    padding: 3px 9px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .copy-btn:hover { background: rgba(0,255,135,0.22); }
+
+  /* â”€â”€ Quick stats strip â”€â”€ */
+  .stats-strip {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+  }
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .stat-value { font-size: 1.6rem; font-weight: 800; color: var(--green-1); line-height: 1; }
+  .stat-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* â”€â”€ Quick info grid â”€â”€ */
+  .info-card {
+    padding: 1.75rem;
+    text-align: center;
+  }
+  .info-icon { font-size: 2.5rem; margin-bottom: 0.75rem; display: block; }
+  .info-title { font-weight: 700; font-size: 1rem; color: var(--text-primary); margin-bottom: 0.4rem; }
+  .info-text { font-size: 0.88rem; color: var(--text-muted); }
+
+  /* â”€â”€ Features section â”€â”€ */
+  .feature-card { padding: 1.5rem; }
+  .feature-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+  .feature-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.4rem; }
+  .feature-desc { font-size: 0.85rem; color: var(--text-muted); }
+
+  /* Live dot animation */
+  .live-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    color: var(--green-1);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .hidden { display: none !important; }
+</style>
+    <link rel="canonical" href="https://minecraft.bandhilki.family/" />
+</head>
+<body>
+<div class="portal-ticker" aria-hidden="true">
+  <div class="portal-ticker-track">
+    <span>Bandhilki SMP live portal - community whitelist online -</span>
+    <span>Authenticate with Discord and enter the server queue -</span>
+    <span>Events, gallery, rules, and support active -</span>
+    <span>Bandhilki SMP live portal - community whitelist online -</span>
+  </div>
+</div>
+
+<div class="portal-nav-wrap">
+  <nav class="portal-nav" aria-label="Primary Navigation">
+    <a href="index.html" class="portal-brand">
+      <img src="/lg.png" alt="Bandhilki SMP Logo">
+      <span>Bandhilki SMP</span>
+    </a>
+    <a href="index.html" class="portal-link is-active">Home</a>
+    <a href="events.html" class="portal-link">Events</a>
+    <a href="gallery.html" class="portal-link">Gallery</a>
+    <a href="rules.html" class="portal-link">Rules</a>
+    <a href="hall.html" class="portal-link">Hall</a>
+    <a href="whitelist.html" class="portal-link">Whitelist</a>
+    <a href="tickets.html" class="portal-link">Tickets</a>
+    <a href="contracts.html" class="portal-link">Contracts</a>
+    <a href="social.html" class="portal-link">Socials</a>
+    <a href="developers.html" class="portal-link">Team</a>
+    <a href="staff.html" class="portal-link hidden">Staff</a>
+    <a href="contact.html" class="portal-link">Contact</a>
+    <a href="game.html" class="portal-link">MiniGame</a>
+    <a href="user.html" id="navProfile" class="portal-link hidden">Profile</a>
+    <a href="login.html" id="navLogin" class="portal-link hidden">Login</a>
+    <a href="#" id="navLogout" class="portal-link hidden" onclick="doLogout()">Logout</a>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-shell">
+    <img class="hero-mark hero-logo" src="/lg.png" alt="Bandhilki SMP Logo">
+    <div class="page-kicker">India's Community SMP</div>
+    <h1 class="hero-title">Enter <span class="text-gradient">Bandhilki SMP</span></h1>
+    <p class="hero-sub">
+      India's premier community Minecraft SMP â€” built for the Bandhilki Family.
+      Survival Â· Creative Â· PvP Â· Events. All in one place.
+    </p>
+
+    <!-- LIVE STATUS INDICATOR -->
+    <div style="display:flex; justify-content:center; margin-top: -0.5rem; margin-bottom: 1.5rem;">
+      <div id="hero-status" class="live-indicator" style="display: none; background: rgba(0,0,0,0.3); border: 1px solid var(--border-glass); padding: 6px 16px; border-radius: 50px; align-items: center; gap: 8px;">
+        <!-- Filled dynamically -->
+      </div>
+    </div>
+
+    <div class="hero-cta" style="margin-bottom: 2rem;">
+      <a href="whitelist.html" class="btn btn-primary btn-lg">â› Apply for Whitelist</a>
+      <a href="rules.html" class="btn btn-outline btn-lg">ðŸ“œ View Rules</a>
+      <a href="https://discord.gg/KSAm2yd9gC" target="_blank" class="btn btn-discord btn-lg">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+        Join Discord
+      </a>
+    </div>
+
+    <!-- IP Card (only visible to whitelisted users) -->
+    <div style="display:flex;justify-content:center;">
+      <div class="ip-card hidden" id="ipCard" onclick="copyIP()">
+        <div>
+          <div class="ip-label">SERVER IP</div>
+          <div>mc.iucnetwork.in:1999</div>
+        </div>
+        <button class="copy-btn" id="copyBtn">Copy</button>
+      </div>
+      <div class="glass info-card hidden" id="notWhitelistedCard" style="padding:1.5rem;">
+        <p style="margin:0;font-size:0.95rem;color:var(--text-muted);">Please <a href="login.html" style="color:var(--green-1);text-decoration:underline;">login</a> and get whitelisted to see the server IP.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- QUICK INFO GRID -->
+<section class="section-sm container">
+  <div class="grid-3">
+    <div class="glass info-card">
+      <span class="info-icon">ðŸŒ</span>
+      <div class="info-title">Server IP</div>
+      <div class="info-text" style="font-family:'Space Grotesk',monospace;font-size:0.95rem;color:var(--text-muted);">Login to see</div>
+    </div>
+    <div class="glass info-card">
+      <span class="info-icon">ðŸŽ®</span>
+      <div class="info-title">Edition</div>
+      <div class="info-text">Java Â· Bedrock</div>
+    </div>
+    <div class="glass info-card">
+      <span class="info-icon">ðŸ‘¥</span>
+      <div class="info-title">Community</div>
+      <div class="info-text">Join the Bandhilki Discord community of over 50,000 members.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider" style="margin:0;"></div>
+
+<!-- FEATURES -->
+<section class="section container">
+  <h2 style="text-align:center;font-size:1.8rem;font-weight:800;margin-bottom:0.5rem;">What is <span class="text-gradient">Bandhilki SMP?</span></h2>
+  <p style="text-align:center;color:var(--text-muted);font-size:0.95rem;margin-bottom:2.5rem;">A community-first Indian Minecraft server for the Bandhilki Family</p>
+
+  <div class="grid-4" style="gap:1rem;">
+    <div class="glass feature-card animate-fadeInUp">
+      <div class="feature-icon">ðŸŒ³</div>
+      <div class="feature-title">Survival World</div>
+      <div class="feature-desc">Classic SMP with balanced economy, friendly players, and long-term gameplay. Build, grind, trade, and survive.</div>
+    </div>
+    <div class="glass feature-card animate-fadeInUp" style="animation-delay:0.1s">
+      <div class="feature-icon">ðŸŽ¨</div>
+      <div class="feature-title">Creative World</div>
+      <div class="feature-desc">Unleash your inner builder â€” design massive structures, test ideas, create masterpieces without limits.</div>
+    </div>
+    <div class="glass feature-card animate-fadeInUp" style="animation-delay:0.2s">
+      <div class="feature-icon">âš”ï¸</div>
+      <div class="feature-title">PvP Arena</div>
+      <div class="feature-desc">Test your skills in the dedicated PvP Arena. Fair, lag-free combat without risking your Survival progress.</div>
+    </div>
+    <div class="glass feature-card animate-fadeInUp" style="animation-delay:0.3s">
+      <div class="feature-icon">ðŸŽ‰</div>
+      <div class="feature-title">Live Events</div>
+      <div class="feature-desc">Participate in community tournaments, PvP championships, build battles, and seasonal server events.</div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:2rem;padding:1.5rem;" class="glass" style="max-width:700px;margin:2rem auto 0;">
+    <p style="font-size:0.95rem;color:var(--text-muted);max-width:640px;margin:0 auto;">
+      <strong style="color:var(--text-primary);">Bandhilki SMP</strong> is a community-first Indian Minecraft server â€” no pay-to-win, no toxicity, just
+      pure Minecraft fun with friends from the <strong style="color:var(--green-1);">Bandhilki Family</strong>. ðŸ¤
+    </p>
+    <div style="margin-top:1.25rem;display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
+      <a href="whitelist.html" class="btn btn-primary">Apply Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  Â© 2026 BANDHILKI SMP &bull; Powered by Team Insane &bull;
+  <a href="https://discord.gg/KSAm2yd9gC" target="_blank" style="color:var(--green-1);text-decoration:none;">Discord</a>
+</footer>
+
+<script>
+async function checkAuth() {
+  try {
+    const res = await fetch('/api/me');
+    const data = await res.json();
+    
+    if (data.loggedIn) {
+      document.getElementById('navLogin').classList.add('hidden');
+      const navProfile = document.getElementById('navProfile');
+      if (navProfile) navProfile.classList.remove('hidden');
+      document.getElementById('navLogout').classList.remove('hidden');
+      
+      if (data.isStaff) {
+        const navStaff = document.querySelector('nav a[href="staff.html"]');
+        if (navStaff) navStaff.classList.remove('hidden');
+      }
+      
+      if (data.hasWhitelistRole) {
+        document.getElementById('ipCard').classList.remove('hidden');
+        document.getElementById('notWhitelistedCard').classList.add('hidden');
+        document.querySelectorAll('.info-card')[0].querySelector('.info-text').textContent = 'mc.iucnetwork.in:1999';
+        document.querySelectorAll('.info-card')[0].querySelector('.info-text').style.color = 'var(--green-1)';
+      } else {
+        document.getElementById('ipCard').classList.add('hidden');
+        document.getElementById('notWhitelistedCard').classList.remove('hidden');
+      }
+    } else {
+      document.getElementById('navLogin').classList.remove('hidden');
+      const navProfile = document.getElementById('navProfile');
+      if (navProfile) navProfile.classList.add('hidden');
+      document.getElementById('navLogout').classList.add('hidden');
+      document.getElementById('ipCard').classList.add('hidden');
+      document.getElementById('notWhitelistedCard').classList.remove('hidden');
+      const navStaff = document.querySelector('nav a[href="staff.html"]');
+      if (navStaff) navStaff.classList.add('hidden');
+    }
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+async function doLogout() {
+  try {
+    await fetch('/api/logout', { method: 'POST' });
+    window.location.href = '/index.html';
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+/* Copy IP */
+function copyIP() {
+  navigator.clipboard.writeText('mc.iucnetwork.in:1999').then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = 'Copied!';
+    btn.style.background = 'rgba(52,211,153,0.25)';
+    setTimeout(() => { btn.textContent = 'Copy'; btn.style.background = ''; }, 2000);
+  });
+}
+
+async function updateServerStatus() {
+  try {
+    const res = await fetch('/api/servers');
+    if (!res.ok) throw new Error('API failed');
+    const servers = await res.json();
+    const statusEl = document.getElementById('hero-status');
+    if (!statusEl) return;
+    
+    if (servers && servers.length > 0) {
+      const server = servers[0]; // currently only one server
+      statusEl.style.display = 'inline-flex';
+      if (server.online) {
+        statusEl.innerHTML = `
+          <span style="display:inline-block; width:8px; height:8px; background-color:#10b981; border-radius:50%; box-shadow:0 0 8px #10b981;"></span>
+          <span style="color:#10b981; font-size:0.75rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase;">ðŸŸ¢ SERVER ONLINE &bull; ${server.players}/${server.max} PLAYERS</span>
+        `;
+      } else {
+        statusEl.innerHTML = `
+          <span style="display:inline-block; width:8px; height:8px; background-color:#ef4444; border-radius:50%;"></span>
+          <span style="color:#ef4444; font-size:0.75rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase;">ðŸ”´ SERVER OFFLINE</span>
+        `;
+      }
+    } else {
+      statusEl.style.display = 'inline-flex';
+      statusEl.innerHTML = `
+        <span style="display:inline-block; width:8px; height:8px; background-color:#ef4444; border-radius:50%;"></span>
+        <span style="color:#ef4444; font-size:0.75rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase;">ðŸ”´ SERVER OFFLINE</span>
+      `;
+    }
+  } catch (e) {
+    console.error('Failed to fetch server status', e);
+  }
+}
+
+checkAuth();
+updateServerStatus();
+setInterval(updateServerStatus, 30000);
+</script>
+<script src="/ticker.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,555 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hall of Fame &amp; Shame â€“ Bandhilki SMP</title>
+<meta name="description" content="Explore the Bandhilki SMP community hall. Celebrating outstanding players and highlighting server rulebreakers.">
+<meta name="keywords" content="bandhilki smp, minecraft, bandhilki family, shreeman legend, bandhilkismp, indian minecraft server, survival multiplayer, pvp server, minecraft india, gaming community, minecraft survival, best indian smp, Bandhilki Family, minecraft community, smp server, best smp server in india, indian minecraft community">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Bandhilki SMP â€“ Indian Minecraft Server">
+<meta property="og:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family. Join survival, creative, PvP & events.">
+<meta property="og:image" content="/lg.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bandhilki SMP â€“ Indian Minecraft Server">
+<meta name="twitter:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family.">
+<meta name="twitter:image" content="/lg.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Bandhilki SMP",
+  "logo": "https://minecraft.bandhilki.family/lg.png",
+  "sameAs": [
+    "https://discord.gg/KSAm2yd9gC"
+  ]
+}
+</script>
+<link rel="icon" type="image/x-icon" href="/favicon.ico?v=1" />
+<link rel="stylesheet" href="/style.css">
+<style>
+  /* â”€â”€ Premium Government Community Hall Aesthetic â”€â”€ */
+  .gov-portal-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+  }
+
+  .gov-header {
+    text-align: center;
+    border-bottom: 3px double #d97706;
+    padding: 28px 20px 24px;
+    margin-bottom: 35px;
+    position: relative;
+    background: rgba(15, 23, 42, 0.4);
+    border-radius: 6px;
+    box-shadow: var(--shadow-md);
+  }
+
+  .gov-seal-box {
+    margin: 0 auto 15px;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    border: 2px dashed #d97706;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(217, 119, 6, 0.05);
+    box-shadow: 0 0 15px rgba(217, 119, 6, 0.2);
+  }
+
+  .gov-seal-img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(217, 119, 6, 0.5));
+  }
+
+  .gov-title {
+    font-family: 'Oswald', sans-serif;
+    color: #ffd700;
+    font-size: 2.2rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .gov-subtitle {
+    font-size: 0.88rem;
+    letter-spacing: 0.18em;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* Registry Search Bar */
+  .search-bar {
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    text-align: center;
+  }
+  .search-kicker {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 0.75rem;
+    color: #ffd700;
+    letter-spacing: 0.12em;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .search-bar input {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 4px;
+    border: 1px solid #1e293b;
+    background: rgba(8, 3, 4, 0.65);
+    color: #fff;
+    font-size: 0.95rem;
+    font-family: inherit;
+    outline: none;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
+  }
+  .search-bar input:focus {
+    border-color: #d97706;
+    box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.12);
+  }
+
+  /* Hall Split Grid */
+  .hall-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+  @media (max-width: 860px) {
+    .hall-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  /* Columns */
+  .hall-col {
+    display: flex;
+    flex-direction: column;
+    background: rgba(15, 23, 42, 0.25);
+    border: 1px solid #1e293b;
+    border-radius: 6px;
+    padding: 24px;
+    box-shadow: var(--shadow-md);
+  }
+  
+  .hall-col-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid;
+  }
+  .hall-col-header .col-icon { font-size: 1.5rem; }
+  .hall-col-header h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .hall-col-header .count-badge {
+    margin-left: auto;
+    font-family: 'Space Grotesk', monospace;
+    font-size: 0.8rem;
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-weight: 700;
+    border: 1px solid;
+  }
+
+  /* Appreciation column green theme */
+  .col-appreciation {
+    border-top: 4px solid #10b981;
+  }
+  .col-appreciation .hall-col-header {
+    border-color: rgba(16, 185, 129, 0.25);
+  }
+  .col-appreciation .hall-col-header h2 { color: #10b981; }
+  .col-appreciation .count-badge {
+    background: rgba(16, 185, 129, 0.06);
+    color: #10b981;
+    border-color: rgba(16, 185, 129, 0.2);
+  }
+
+  /* Shame column red theme */
+  .col-shame {
+    border-top: 4px solid #ef4444;
+  }
+  .col-shame .hall-col-header {
+    border-color: rgba(239, 68, 68, 0.25);
+  }
+  .col-shame .hall-col-header h2 { color: #ef4444; }
+  .col-shame .count-badge {
+    background: rgba(239, 68, 68, 0.06);
+    color: #ef4444;
+    border-color: rgba(239, 68, 68, 0.2);
+  }
+
+  /* Entries list */
+  .entries-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Entry card styled as official dossier */
+  .entry-card {
+    background: rgba(15, 23, 42, 0.45);
+    border: 1px solid #1e293b;
+    border-radius: 4px;
+    padding: 20px;
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
+  }
+  .entry-card:hover {
+    border-color: #334155;
+    background: rgba(15, 23, 42, 0.6);
+  }
+
+  /* Left accent bar */
+  .col-appreciation .entry-card {
+    border-left: 4px solid #10b981;
+  }
+  .col-shame .entry-card {
+    border-left: 4px solid #ef4444;
+  }
+
+  /* Red/Green ink stamps */
+  .entry-stamp {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    border: 3px double;
+    border-radius: 4px;
+    padding: 3px 10px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transform: rotate(6deg);
+    opacity: 0.75;
+    background: rgba(13, 19, 31, 0.95);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .stamp-appreciation {
+    color: #10b981;
+    border-color: #10b981;
+  }
+  .stamp-shame {
+    color: #ef4444;
+    border-color: #ef4444;
+  }
+
+  /* Avatar image rendering pixelated like Minecraft */
+  .entry-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+    object-fit: cover;
+    flex-shrink: 0;
+    image-rendering: pixelated;
+    border: 2px solid #1e293b;
+    background: rgba(0,0,0,0.3);
+  }
+
+  /* Card body */
+  .entry-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .entry-name {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #fff;
+  }
+  .entry-discord-tag {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 0.75rem;
+    color: #94a3b8;
+  }
+  .entry-reason {
+    font-size: 0.88rem;
+    color: #cbd5e1;
+    line-height: 1.5;
+    margin-top: 4px;
+    white-space: pre-wrap;
+  }
+  .entry-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.72rem;
+    color: #64748b;
+    margin-top: 10px;
+    border-top: 1px dashed rgba(30, 41, 59, 0.8);
+    padding-top: 6px;
+  }
+
+  /* Empty / Loading states */
+  .empty-msg {
+    padding: 3rem 1rem;
+    text-align: center;
+    color: #64748b;
+    font-size: 0.95rem;
+    border: 1px dashed #1e293b;
+    border-radius: 4px;
+  }
+  .empty-msg .empty-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+</style>
+    <link rel="canonical" href="https://minecraft.bandhilki.family/hall.html" />
+</head>
+<body>
+
+<div class="portal-ticker" aria-hidden="true">
+  <div class="portal-ticker-track">
+    <span>Fair play enforced â€“ griefing, hacks, and harassment blocked â€“</span>
+    <span>Community Hall is online â€“</span>
+    <span>Celebrating our champions and shaming rulebreakers â€“</span>
+  </div>
+</div>
+
+<div class="portal-nav-wrap">
+  <nav class="portal-nav" aria-label="Primary Navigation">
+    <a href="index.html" class="portal-brand">
+      <img src="/lg.png" alt="Bandhilki SMP Logo">
+      <span>Bandhilki SMP</span>
+    </a>
+    <a href="index.html" class="portal-link">Home</a>
+    <a href="events.html" class="portal-link">Events</a>
+    <a href="gallery.html" class="portal-link">Gallery</a>
+    <a href="rules.html" class="portal-link">Rules</a>
+    <a href="hall.html" class="portal-link is-active">Hall</a>
+    <a href="whitelist.html" class="portal-link">Whitelist</a>
+    <a href="tickets.html" class="portal-link">Tickets</a>
+    <a href="contracts.html" class="portal-link">Contracts</a>
+    <a href="social.html" class="portal-link">Socials</a>
+    <a href="developers.html" class="portal-link">Team</a>
+    <a href="staff.html" class="portal-link hidden">Staff</a>
+    <a href="contact.html" class="portal-link">Contact</a>
+    <a href="game.html" class="portal-link">MiniGame</a>
+    <a href="user.html" id="navProfile" class="portal-link hidden">Profile</a>
+    <a href="login.html" id="navLogin" class="portal-link hidden">Login</a>
+    <a href="#" id="navLogout" class="portal-link hidden" onclick="doLogout()">Logout</a>
+  </nav>
+</div>
+
+<div class="gov-portal-wrapper">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-kicker">Honors &amp; Infamy</div>
+    <h1 class="page-title">Hall of <span class="text-gradient">Fame &amp; Shame</span></h1>
+    <p class="page-subtitle">Celebrating our outstanding community members and highlighting server rulebreakers.</p>
+  </div>
+
+  <!-- Search -->
+  <div class="search-bar">
+    <div class="search-kicker">SEARCH PLAYER RECORDS</div>
+    <input type="text" id="searchInput" placeholder="Enter name, Discord ID, keyword..." oninput="filterEntries()" />
+  </div>
+
+  <div class="hall-grid">
+    <!-- Appreciation -->
+    <div class="hall-col col-appreciation">
+      <div class="hall-col-header">
+        <span class="col-icon">ðŸŽ–ï¸</span>
+        <h2>HALL OF FAME (COMMENDED)</h2>
+        <span class="count-badge" id="appCount">0</span>
+      </div>
+      <div class="entries-list" id="appreciationContainer">
+        <div class="empty-msg">
+          <div class="empty-icon">ðŸŒ¿</div>
+          Accessing commendation records...
+        </div>
+      </div>
+    </div>
+
+    <!-- Shame -->
+    <div class="hall-col col-shame">
+      <div class="hall-col-header">
+        <span class="col-icon">âš–ï¸</span>
+        <h2>HALL OF SHAME (RULEBREAKERS)</h2>
+        <span class="count-badge" id="shameCount">0</span>
+      </div>
+      <div class="entries-list" id="shameContainer">
+        <div class="empty-msg">
+          <div class="empty-icon">â˜ ï¸</div>
+          Accessing sanction records...
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  Â© 2026 BANDHILKI SMP &bull; Fair Play Enforced &bull;
+  <a href="https://discord.gg/KSAm2yd9gC" target="_blank" style="color:var(--green-1);text-decoration:none;">Discord</a>
+</footer>
+
+<script>
+let allEntries = [];
+
+async function loadHallEntries() {
+  const appContainer    = document.getElementById('appreciationContainer');
+  const shameContainer  = document.getElementById('shameContainer');
+
+  try {
+    const res  = await fetch('/api/hall-entries');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+
+    // Support both { entries: [...] } and plain array responses
+    if (Array.isArray(data)) {
+      allEntries = data;
+    } else if (data && Array.isArray(data.entries)) {
+      allEntries = data.entries;
+    } else {
+      allEntries = [];
+    }
+
+    renderEntries(allEntries);
+  } catch (err) {
+    console.error('Hall entries load error:', err);
+    const errHtml = `<div class="empty-msg" style="color:#ef4444;">Failed to load entries. Please try again.</div>`;
+    appContainer.innerHTML   = errHtml;
+    shameContainer.innerHTML = errHtml;
+  }
+}
+
+function renderEntries(list) {
+  const appContainer   = document.getElementById('appreciationContainer');
+  const shameContainer = document.getElementById('shameContainer');
+  const appCount       = document.getElementById('appCount');
+  const shameCount     = document.getElementById('shameCount');
+
+  const appEntries   = list.filter(e => e.type === 'appreciation');
+  const shameEntries = list.filter(e => e.type === 'shame');
+
+  appCount.textContent   = appEntries.length;
+  shameCount.textContent = shameEntries.length;
+
+  appContainer.innerHTML = appEntries.length
+    ? appEntries.map(createCard).join('')
+    : `<div class="empty-msg"><div class="empty-icon">ðŸŒ¿</div>No appreciation entries yet.</div>`;
+
+  shameContainer.innerHTML = shameEntries.length
+    ? shameEntries.map(createCard).join('')
+    : `<div class="empty-msg"><div class="empty-icon">â˜ ï¸</div>No shame entries yet.</div>`;
+}
+
+function createCard(e) {
+  const dateStr = e.addedAt
+    ? new Date(e.addedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })
+    : 'Unknown date';
+
+  const discordId = e.discordId || '0';
+  const defaultAvatar = `https://cdn.discordapp.com/embed/avatars/${parseInt(discordId) % 5}.png`;
+  const avatarSrc = e.discordAvatar || defaultAvatar;
+
+  const stampText = e.type === 'appreciation' ? 'COMMENDED' : 'SANCTIONED';
+  const stampClass = e.type === 'appreciation' ? 'stamp-appreciation' : 'stamp-shame';
+
+  return `
+    <div class="entry-card">
+      <div class="entry-stamp ${stampClass}">${stampText}</div>
+      <img
+        class="entry-avatar"
+        src="${escapeHtml(avatarSrc)}"
+        alt="${escapeHtml(e.playerName || 'Player')} avatar"
+        onerror="this.src='${escapeHtml(defaultAvatar)}'"
+      />
+      <div class="entry-body">
+        <div class="entry-name">${escapeHtml(e.playerName || 'Unknown User')}</div>
+        ${discordId && discordId !== '0' ? `<div class="entry-discord-tag">Discord ID: ${escapeHtml(discordId)}</div>` : ''}
+        <div class="entry-reason">${escapeHtml(e.reason || '')}</div>
+        <div class="entry-footer">
+          <span>Authorized by ${escapeHtml(e.addedBy || 'Community Panel')}</span>
+          <span>Date: ${dateStr}</span>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function filterEntries() {
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  if (!q) { renderEntries(allEntries); return; }
+  const filtered = allEntries.filter(e =>
+    (e.playerName  && e.playerName.toLowerCase().includes(q))  ||
+    (e.discordId   && e.discordId.toLowerCase().includes(q))   ||
+    (e.reason      && e.reason.toLowerCase().includes(q))      ||
+    (e.addedBy     && e.addedBy.toLowerCase().includes(q))
+  );
+  renderEntries(filtered);
+}
+
+async function checkAuth() {
+  try {
+    const res  = await fetch('/api/me');
+    const data = await res.json();
+
+    if (data.loggedIn) {
+      document.getElementById('navLogin').classList.add('hidden');
+      document.getElementById('navProfile')?.classList.remove('hidden');
+      document.getElementById('navLogout').classList.remove('hidden');
+      if (data.isStaff) {
+        document.querySelector('nav a[href="staff.html"]')?.classList.remove('hidden');
+      }
+    } else {
+      document.getElementById('navLogin').classList.remove('hidden');
+      document.getElementById('navProfile')?.classList.add('hidden');
+      document.getElementById('navLogout').classList.add('hidden');
+      document.querySelector('nav a[href="staff.html"]')?.classList.add('hidden');
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+async function doLogout() {
+  try {
+    await fetch('/api/logout', { method: 'POST' });
+    window.location.href = '/index.html';
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+function escapeHtml(str) {
+  if (str == null) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+loadHallEntries();
+checkAuth();
+</script>
+<script src="/ticker.js"></script>
+</body>
+</html>
+

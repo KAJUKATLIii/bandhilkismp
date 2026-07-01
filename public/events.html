@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bandhilki SMP Events â€“ Minecraft Community Events &amp; Tournaments</title>
+<meta name="description" content="Explore upcoming events, PvP tournaments, mini games and community activities on Bandhilki SMP Minecraft server.">
+<meta name="keywords" content="bandhilki smp, minecraft, bandhilki family, shreeman legend, bandhilkismp, indian minecraft server, survival multiplayer, pvp server, minecraft india, gaming community, minecraft survival, best indian smp, Bandhilki Family, minecraft community, smp server, best smp server in india, indian minecraft community">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Bandhilki SMP â€“ Indian Minecraft Server">
+<meta property="og:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family. Join survival, creative, PvP & events.">
+<meta property="og:image" content="/lg.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bandhilki SMP â€“ Indian Minecraft Server">
+<meta name="twitter:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family.">
+<meta name="twitter:image" content="/lg.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Bandhilki SMP",
+  "logo": "https://minecraft.bandhilki.family/lg.png",
+  "sameAs": [
+    "https://discord.gg/KSAm2yd9gC"
+  ]
+}
+</script>
+ <link rel="icon" type="image/x-icon" href="/favicon.ico?v=1" />
+<link rel="stylesheet" href="/style.css">
+<style>
+  .event-card { padding: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
+  .event-title { font-weight: 700; font-size: 1.05rem; }
+  .event-desc { font-size: 0.875rem; color: var(--text-muted); flex: 1; }
+  .event-date { font-size: 0.78rem; color: var(--text-muted); }
+  .event-icon { font-size: 2rem; }
+  .page-header { text-align: center; }
+  .no-events-notice {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(241,196,15,0.1);
+    border: 1px solid rgba(241,196,15,0.3);
+    border-radius: 50px;
+    padding: 6px 18px;
+    font-size: 0.82rem;
+    color: #f1c40f;
+    margin-top: 0.5rem;
+  }
+  .hidden { display: none !important; }
+  #eventsLoadingMsg { text-align:center; padding: 40px; color: var(--muted); }
+  .events-empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--muted);
+  }
+  .events-empty-state .icon { font-size: 3rem; margin-bottom: 12px; }
+  .events-empty-state p { max-width: 380px; margin: 0 auto; font-size: 0.9rem; }
+  .event-type-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    background: rgba(96,165,250,0.1);
+    border: 1px solid rgba(96,165,250,0.25);
+    color: #60a5fa;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+  .countdown-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: #4ade80;
+    font-weight: 700;
+    font-size: 0.82rem;
+  }
+</style>
+    <link rel="canonical" href="https://minecraft.bandhilki.family/events.html" />
+</head>
+<body>
+<div class="portal-ticker" aria-hidden="true">
+  <div class="portal-ticker-track">
+    <span>Community tournaments and build nights queued -</span>
+    <span>Discord announcements are the live source of truth -</span>
+    <span>Bandhilki SMP event channel online -</span>
+  </div>
+</div>
+
+<div class="portal-nav-wrap">
+  <nav class="portal-nav" aria-label="Primary Navigation">
+    <a href="index.html" class="portal-brand">
+      <img src="/lg.png" alt="Bandhilki SMP Logo">
+      <span>Bandhilki SMP</span>
+    </a>
+    <a href="index.html" class="portal-link">Home</a>
+    <a href="events.html" class="portal-link is-active">Events</a>
+    <a href="gallery.html" class="portal-link">Gallery</a>
+    <a href="rules.html" class="portal-link">Rules</a>
+    <a href="hall.html" class="portal-link">Hall</a>
+    <a href="whitelist.html" class="portal-link">Whitelist</a>
+    <a href="tickets.html" class="portal-link">Tickets</a>
+    <a href="contracts.html" class="portal-link">Contracts</a>
+    <a href="social.html" class="portal-link">Socials</a>
+    <a href="developers.html" class="portal-link">Team</a>
+    <a href="staff.html" class="portal-link hidden">Staff</a>
+    <a href="contact.html" class="portal-link">Contact</a>
+    <a href="game.html" class="portal-link">MiniGame</a>
+    <a href="user.html" id="navProfile" class="portal-link hidden">Profile</a>
+    <a href="login.html" id="navLogin" class="portal-link hidden">Login</a>
+    <a href="#" id="navLogout" class="portal-link hidden" onclick="doLogout()">Logout</a>
+  </nav>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-kicker">Live Calendar</div>
+  <h1 class="page-title">Server <span class="text-gradient">Events</span></h1>
+  <p class="page-subtitle" style="max-width:520px;margin:0 auto 0.75rem;">
+    Community events, tournaments and mini-games hosted regularly on Bandhilki SMP
+  </p>
+</div>
+
+<!-- EVENTS GRID -->
+<div class="container" style="padding-bottom:4rem;">
+  <div id="eventsLoadingMsg">Loading eventsâ€¦</div>
+  <div class="grid-3" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr));" id="eventsGrid"></div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  Â© 2026 BANDHILKI SMP &bull; Events organized by Team Insane &bull; <a href="https://discord.gg/KSAm2yd9gC" target="_blank" style="color:var(--green-1);text-decoration:none;">Discord</a>
+</footer>
+
+<script>
+function msToCountdown(ms) {
+  if (!ms || ms <= 0) return 'Live / started';
+  const sec = Math.floor(ms / 1000);
+  const d = Math.floor(sec / 86400);
+  const h = Math.floor((sec % 86400) / 3600);
+  const m = Math.floor((sec % 3600) / 60);
+  if (d) return `${d}d ${h}h ${m}m`;
+  if (h) return `${h}h ${m}m`;
+  return `${m}m`;
+}
+
+function eventBadge(ev) {
+  if (ev.completed) {
+    return `<span class="badge badge-completed" style="background:rgba(156,163,175,0.18);border:1px solid rgba(156,163,175,0.35);color:var(--muted);padding:2px 10px;border-radius:999px;font-size:0.78rem;">Completed</span>`;
+  }
+  if (ev.pinned) {
+    return `<span class="badge badge-pinned" style="background:rgba(248,71,98,0.16);border:1px solid rgba(248,71,98,0.35);color:var(--text);padding:2px 10px;border-radius:999px;font-size:0.78rem;">ðŸ“Œ Pinned</span>`;
+  }
+  return `<span class="badge badge-upcoming" style="background:rgba(96,165,250,0.12);border:1px solid rgba(96,165,250,0.28);color:#60a5fa;padding:2px 10px;border-radius:999px;font-size:0.78rem;">Upcoming</span>`;
+}
+
+let cachedEvents = [];
+
+function renderEvents(events) {
+  const grid = document.getElementById('eventsGrid');
+  const loadingMsg = document.getElementById('eventsLoadingMsg');
+  if (!grid) return;
+
+  if (loadingMsg) loadingMsg.style.display = 'none';
+
+  if (!events || !events.length) {
+    grid.innerHTML = `
+      <div class="events-empty-state" style="grid-column:1/-1;">
+        <div class="icon">ðŸ—“ï¸</div>
+        <div style="font-size:1.1rem;font-weight:700;margin-bottom:8px;">No events right now</div>
+        <p>Check back soon or join the Discord for live announcements.</p>
+        <a href="https://discord.gg/KSAm2yd9gC" target="_blank" class="btn btn-outline" style="margin-top:14px;display:inline-flex;">Join Discord</a>
+      </div>`;
+    return;
+  }
+
+  grid.innerHTML = events.map(ev => {
+    const startsAt = ev.startsAt ? new Date(ev.startsAt) : null;
+    const now = Date.now();
+    const timeLeft = startsAt ? msToCountdown(startsAt.getTime() - now) : 'â€”';
+    const isLive = startsAt && startsAt.getTime() <= now && !ev.completed;
+    const dateText = startsAt
+      ? `${startsAt.toLocaleDateString('en-IN')} â€¢ ${startsAt.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'})}`
+      : 'To be announced';
+
+    const typeTag = ev.type ? `<span class="event-type-badge">${ev.type}</span>` : '';
+
+    return `
+      <div class="glass event-card">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+          <div class="event-icon">${ev.pinned ? 'ðŸ“Œ' : ev.completed ? 'âœ…' : 'ðŸŽ‰'}</div>
+          ${typeTag}
+        </div>
+        <div class="event-title">${ev.title}</div>
+        ${eventBadge(ev)}
+        <div class="event-desc">${ev.description}</div>
+        <div class="event-date">ðŸ“… ${dateText}</div>
+        ${ev.completed ? '' : isLive
+          ? `<div class="countdown-live">ðŸ”´ LIVE NOW</div>`
+          : `<div style="color:var(--muted);font-size:0.82rem;">â³ Starts in <strong style="color:var(--text);">${timeLeft}</strong></div>`}
+      </div>
+    `;
+  }).join('');
+}
+
+async function loadEvents() {
+  try {
+    const res = await fetch('/api/events/public');
+    if (!res.ok) throw new Error('Failed');
+    const data = await res.json();
+    cachedEvents = data.events || [];
+    renderEvents(cachedEvents);
+  } catch (e) {
+    console.error('Failed to load events:', e);
+    const loadingMsg = document.getElementById('eventsLoadingMsg');
+    if (loadingMsg) {
+      loadingMsg.textContent = 'âš ï¸ Could not load events. Please try refreshing.';
+    }
+  }
+}
+
+async function checkAuth() {
+  try {
+    const res = await fetch('/api/me');
+    const data = await res.json();
+
+    if (data.loggedIn) {
+      document.getElementById('navLogin').classList.add('hidden');
+      const navProfile = document.getElementById('navProfile');
+      if (navProfile) navProfile.classList.remove('hidden');
+      document.getElementById('navLogout').classList.remove('hidden');
+
+      if (data.isStaff) {
+        const navStaff = document.getElementById('navStaff');
+        if (navStaff) navStaff.classList.remove('hidden');
+      }
+    } else {
+      document.getElementById('navLogin').classList.remove('hidden');
+      const navProfile = document.getElementById('navProfile');
+      if (navProfile) navProfile.classList.add('hidden');
+      document.getElementById('navLogout').classList.add('hidden');
+    }
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+async function doLogout() {
+  try {
+    await fetch('/api/logout', { method: 'POST' });
+    window.location.href = '/index.html';
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+// Load events immediately for all visitors, refresh every 30 seconds
+(async () => {
+  checkAuth(); // Non-blocking â€” just sets nav state
+  await loadEvents();
+  setInterval(loadEvents, 30000);
+})();
+</script>
+<script src="/ticker.js"></script>
+</body>
+</html>
+

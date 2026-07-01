@@ -1,0 +1,382 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us â€“ Bandhilki SMP</title>
+<meta name="description" content="Get in touch with the Bandhilki SMP team. Send us a message or join our Discord.">
+<meta name="keywords" content="bandhilki smp, minecraft, bandhilki family, shreeman legend, bandhilkismp, indian minecraft server, survival multiplayer, pvp server, minecraft india, gaming community, minecraft survival, best indian smp, Bandhilki Family, minecraft community, smp server, best smp server in india, indian minecraft community">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Bandhilki SMP â€“ Indian Minecraft Server">
+<meta property="og:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family. Join survival, creative, PvP & events.">
+<meta property="og:image" content="/lg.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bandhilki SMP â€“ Indian Minecraft Server">
+<meta name="twitter:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family.">
+<meta name="twitter:image" content="/lg.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Bandhilki SMP",
+  "logo": "https://minecraft.bandhilki.family/lg.png",
+  "sameAs": [
+    "https://discord.gg/KSAm2yd9gC"
+  ]
+}
+</script>
+<link rel="icon" type="image/x-icon" href="/favicon.ico?v=1" />
+<link rel="stylesheet" href="/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Premium Government Office Aesthetic */
+  .gov-portal-wrapper {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+  }
+
+  .gov-header {
+    text-align: center;
+    border-bottom: 3px double #d97706;
+    padding: 24px 20px;
+    margin-bottom: 35px;
+    position: relative;
+    background: rgba(15, 23, 42, 0.4);
+    border-radius: 6px;
+    box-shadow: var(--shadow-md);
+  }
+
+  .gov-seal-box {
+    margin: 0 auto 15px;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    border: 2px dashed #d97706;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(217, 119, 6, 0.05);
+    box-shadow: 0 0 15px rgba(217, 119, 6, 0.2);
+  }
+
+  .gov-seal-img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(217, 119, 6, 0.5));
+  }
+
+  .gov-title {
+    font-family: 'Oswald', sans-serif;
+    color: #ffd700;
+    font-size: 2.2rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .gov-subtitle {
+    font-size: 0.88rem;
+    letter-spacing: 0.18em;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+
+  /* Form & Document dossier style */
+  .gov-document {
+    background: rgba(15, 23, 42, 0.45);
+    border: 1px solid #1e293b;
+    border-left: 5px solid #d97706;
+    border-radius: 4px;
+    padding: 30px;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gov-doc-serial {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 0.85rem;
+    color: #fca5a5;
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: 3px;
+    padding: 2px 8px;
+    display: inline-block;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .gov-form-title {
+    font-family: 'Oswald', sans-serif;
+    color: #ffd700;
+    font-size: 1.25rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #1e293b;
+    padding-bottom: 8px;
+  }
+
+  .gov-form-desc {
+    font-size: 0.88rem;
+    color: #94a3b8;
+    line-height: 1.6;
+    margin-bottom: 25px;
+  }
+
+  /* Stamps */
+  .gov-stamp {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    border: 3px double #10b981;
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transform: rotate(5deg);
+    opacity: 0;
+    background: rgba(13, 19, 31, 0.95);
+    pointer-events: none;
+    z-index: 2;
+    color: #10b981;
+    transition: opacity 0.5s ease;
+  }
+  .gov-stamp.visible {
+    opacity: 0.85;
+  }
+
+  .gov-option-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px dashed #1e293b;
+    padding: 18px 24px;
+    border-radius: 4px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  /* Form inputs gov style */
+  .form-input, .form-textarea {
+    border: 1px solid #1e293b;
+    background: rgba(8, 3, 4, 0.65);
+    border-radius: 3px;
+    color: #fff;
+  }
+
+  .form-input:focus, .form-textarea:focus {
+    border-color: #d97706;
+    box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.12);
+  }
+
+  .btn-gov {
+    border-color: #d97706;
+    background: linear-gradient(90deg, #d97706, #b45309);
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  #status {
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 4px;
+  }
+</style>
+    <link rel="canonical" href="https://minecraft.bandhilki.family/contact.html" />
+</head>
+<body>
+<div class="portal-ticker" aria-hidden="true">
+  <div class="portal-ticker-track">
+    <span>Need support, bug reports, or whitelist help -</span>
+    <span>Discord remains the fastest response channel -</span>
+    <span>Bandhilki SMP contact systems online -</span>
+  </div>
+</div>
+
+<div class="portal-nav-wrap">
+  <nav class="portal-nav" aria-label="Primary Navigation">
+    <a href="index.html" class="portal-brand">
+      <img src="/lg.png" alt="Bandhilki SMP Logo">
+      <span>Bandhilki SMP</span>
+    </a>
+    <a href="index.html" class="portal-link">Home</a>
+    <a href="events.html" class="portal-link">Events</a>
+    <a href="gallery.html" class="portal-link">Gallery</a>
+    <a href="rules.html" class="portal-link">Rules</a>
+    <a href="hall.html" class="portal-link">Hall</a>
+    <a href="whitelist.html" class="portal-link">Whitelist</a>
+    <a href="tickets.html" class="portal-link">Tickets</a>
+    <a href="contracts.html" class="portal-link">Contracts</a>
+    <a href="social.html" class="portal-link">Socials</a>
+    <a href="developers.html" class="portal-link">Team</a>
+    <a href="staff.html" class="portal-link hidden">Staff</a>
+    <a href="contact.html" class="portal-link is-active">Contact</a>
+    <a href="game.html" class="portal-link">MiniGame</a>
+    <a href="user.html" id="navProfile" class="portal-link hidden">Profile</a>
+    <a href="login.html" id="navLogin" class="portal-link hidden">Login</a>
+    <a href="#" id="navLogout" class="portal-link hidden" onclick="doLogout()">Logout</a>
+  </nav>
+</div>
+
+<div class="gov-portal-wrapper">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-kicker">Get In Touch</div>
+    <h1 class="page-title">Contact <span class="text-gradient">Us</span></h1>
+    <p class="page-subtitle">Have a question or suggestion? Send us a message or connect via Discord.</p>
+  </div>
+
+  <!-- CONTACT CONTENT -->
+  <div class="gov-document">
+    <div class="gov-form-title">CONTACT FORM</div>
+    <p class="gov-form-desc">
+      Have a question, suggestion, or need to get in touch? Use the form below to send a message to the Bandhilki SMP team.
+    </p>
+
+    <div class="gov-option-box">
+      <div>
+        <strong style="color:#fff; font-size:0.92rem; display:block; margin-bottom:4px;">Official Discord Server</strong>
+        <span style="font-size:0.82rem; color:#94a3b8;">Join our Discord for the fastest response and community discussion.</span>
+      </div>
+      <a href="https://discord.gg/KSAm2yd9gC" target="_blank" class="btn btn-discord btn-sm">Connect Discord</a>
+    </div>
+
+    <!-- Contact Form -->
+    <form id="contactForm">
+      <div style="display:grid; gap:1.2rem;">
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:15px;">
+          <div class="form-group">
+            <label class="form-label" for="userName">Your Name / IGN *</label>
+            <input id="userName" class="form-input" placeholder="Your name or IGN" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="discordId">Discord Username *</label>
+            <input id="discordId" class="form-input" placeholder="e.g. username" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="message">Message *</label>
+          <textarea id="message" class="form-textarea" rows="6" placeholder="Write your message here..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-gov" id="sendBtn" style="width:100%; padding:14px;">Send Message</button>
+        <div id="status" style="display:none;"></div>
+        
+        <p style="font-size:0.75rem; text-align:center; color:var(--text-muted); margin-top:8px;">
+          * Your message will be instantly sent to our team via Discord.
+        </p>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  Â© 2026 BANDHILKI SMP &bull; Secretariat Helpline &bull; <a href="https://discord.gg/KSAm2yd9gC" target="_blank" style="color:var(--green-1);text-decoration:none;">Discord</a>
+</footer>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const btn = document.getElementById('sendBtn');
+  const status = document.getElementById('status');
+  
+  btn.disabled = true; 
+  btn.textContent = 'Sending Messageâ€¦';
+  status.style.display = 'block';
+  status.style.background = 'rgba(255, 255, 255, 0.05)';
+  status.style.color = 'var(--muted)';
+  status.textContent = 'Sending message details...';
+
+  const nameVal = document.getElementById('userName').value;
+  const discordVal = document.getElementById('discordId').value;
+  const messageVal = document.getElementById('message').value;
+
+  try {
+    const res = await fetch('/api/contact', {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: nameVal, discord: discordVal, message: messageVal })
+    });
+    const data = await res.json();
+    
+    if (res.ok && data.success) {
+      status.style.background = 'rgba(16, 185, 129, 0.1)';
+      status.style.color = '#10b981';
+      status.innerHTML = 'âœ… Message sent successfully! We will get back to you on Discord.';
+      document.getElementById('contactForm').reset();
+    } else {
+      status.style.background = 'rgba(239, 68, 68, 0.1)';
+      status.style.color = '#f87171';
+      status.innerHTML = `âŒ Failed to send message: ${data.error || 'Please connect via Discord instead.'}`;
+    }
+  } catch {
+    status.style.background = 'rgba(239, 68, 68, 0.1)';
+    status.style.color = '#f87171';
+    status.innerHTML = 'âŒ Network failure. Please connect via Discord instead.';
+  }
+  btn.disabled = false; 
+  btn.textContent = 'Send Message';
+});
+
+async function checkAuth() {
+  try {
+    const res = await fetch('/api/me');
+    const data = await res.json();
+    
+    if (data.loggedIn) {
+      document.getElementById('navLogin').classList.add('hidden');
+      const navProfile = document.getElementById('navProfile');
+      if (navProfile) navProfile.classList.remove('hidden');
+      document.getElementById('navLogout').classList.remove('hidden');
+      
+      if (data.isStaff) {
+        const navStaff = document.querySelector('nav a[href="staff.html"]');
+        if (navStaff) navStaff.classList.remove('hidden');
+      }
+    } else {
+      document.getElementById('navLogin').classList.remove('hidden');
+      const navProfile = document.getElementById('navProfile');
+      if (navProfile) navProfile.classList.add('hidden');
+      document.getElementById('navLogout').classList.add('hidden');
+      const navStaff = document.querySelector('nav a[href="staff.html"]');
+      if (navStaff) navStaff.classList.add('hidden');
+    }
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+async function doLogout() {
+  try {
+    await fetch('/api/logout', { method: 'POST' });
+    window.location.href = '/index.html';
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+checkAuth();
+</script>
+<script src="/ticker.js"></script>
+</body>
+</html>
+

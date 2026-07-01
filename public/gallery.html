@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bandhilki SMP Gallery â€“ Minecraft Builds & Community Moments</title>
+<meta name="description" content="View screenshots, builds, events and memorable moments from Bandhilki SMP â€“ Indian Minecraft Survival server.">
+<meta name="keywords" content="bandhilki smp, minecraft, bandhilki family, shreeman legend, bandhilkismp, indian minecraft server, survival multiplayer, pvp server, minecraft india, gaming community, minecraft survival, best indian smp, Bandhilki Family, minecraft community, smp server, best smp server in india, indian minecraft community">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Bandhilki SMP â€“ Indian Minecraft Server">
+<meta property="og:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family. Join survival, creative, PvP & events.">
+<meta property="og:image" content="/lg.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bandhilki SMP â€“ Indian Minecraft Server">
+<meta name="twitter:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family.">
+<meta name="twitter:image" content="/lg.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Bandhilki SMP",
+  "logo": "https://minecraft.bandhilki.family/lg.png",
+  "sameAs": [
+    "https://discord.gg/KSAm2yd9gC"
+  ]
+}
+</script>
+<link rel="icon" type="image/x-icon" href="/favicon.ico?v=1" />
+<link rel="stylesheet" href="/style.css">
+<style>
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+  .gallery-item {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border-glass);
+    cursor: zoom-in;
+    aspect-ratio: 4/3;
+    background: rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .gallery-item:hover {
+    transform: scale(1.03) translateY(-3px);
+    border-color: var(--border-glass-hover);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.6), 0 0 16px var(--glow-green);
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.06); }
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 60%);
+    display: flex;
+    align-items: flex-end;
+    padding: 0.75rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+  .overlay-text { font-size: 0.8rem; color: rgba(255,255,255,0.85); }
+  .page-header { text-align: center; }
+  .hidden { display: none !important; }
+</style>
+    <link rel="canonical" href="https://minecraft.bandhilki.family/gallery.html" />
+</head>
+<body>
+<div class="portal-ticker" aria-hidden="true">
+  <div class="portal-ticker-track">
+    <span>Captured builds, raids, events, and community moments -</span>
+    <span>Bandhilki SMP visual archive online -</span>
+    <span>Open any frame for full-size inspection -</span>
+  </div>
+</div>
+
+<div class="portal-nav-wrap">
+  <nav class="portal-nav" aria-label="Primary Navigation">
+    <a href="index.html" class="portal-brand">
+      <img src="/lg.png" alt="Bandhilki SMP Logo">
+      <span>Bandhilki SMP</span>
+    </a>
+    <a href="index.html" class="portal-link">Home</a>
+    <a href="events.html" class="portal-link">Events</a>
+    <a href="gallery.html" class="portal-link is-active">Gallery</a>
+    <a href="rules.html" class="portal-link">Rules</a>
+    <a href="hall.html" class="portal-link">Hall</a>
+    <a href="whitelist.html" class="portal-link">Whitelist</a>
+    <a href="tickets.html" class="portal-link">Tickets</a>
+    <a href="contracts.html" class="portal-link">Contracts</a>
+    <a href="social.html" class="portal-link">Socials</a>
+    <a href="developers.html" class="portal-link">Team</a>
+    <a href="staff.html" class="portal-link hidden">Staff</a>
+    <a href="contact.html" class="portal-link">Contact</a>
+    <a href="game.html" class="portal-link">MiniGame</a>
+    <a href="user.html" id="navProfile" class="portal-link hidden">Profile</a>
+    <a href="login.html" id="navLogin" class="portal-link hidden">Login</a>
+    <a href="#" id="navLogout" class="portal-link hidden" onclick="doLogout()">Logout</a>
+  </nav>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-kicker">Visual Archive</div>
+  <h1 class="page-title">Server <span class="text-gradient">Gallery</span></h1>
+  <p class="page-subtitle">Screenshots, builds and memorable moments from Bandhilki SMP. Click any image to view full size.</p>
+</div>
+
+<!-- GALLERY GRID -->
+<div class="container" style="padding-bottom:4rem;">
+  <div class="gallery-grid" id="galleryGrid">
+    <div style="grid-column: 1/-1; text-align:center; padding:30px; color:var(--muted);">Loading gallery images...</div>
+  </div>
+</div>
+
+<!-- LIGHTBOX MODAL -->
+<div id="lightbox" onclick="closeLightbox(event)">
+  <button id="lightbox-close" onclick="closeLightbox()">âœ•</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  Â© 2026 BANDHILKI SMP &bull; Gallery by BANDHILKI SMP MEDIA &bull; <a href="https://discord.gg/KSAm2yd9gC" target="_blank" style="color:var(--green-1);text-decoration:none;">Discord</a>
+</footer>
+
+<script>
+function openLightbox(src, alt) {
+  const lb = document.getElementById('lightbox');
+  const img = document.getElementById('lightbox-img');
+  img.src = src;
+  img.alt = alt;
+  lb.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(e) {
+  if (e && e.target !== document.getElementById('lightbox') && e.target !== document.getElementById('lightbox-close')) return;
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox({ target: document.getElementById('lightbox') }); });
+
+async function checkAuth() {
+  try {
+    const res = await fetch('/api/me');
+    const data = await res.json();
+    
+    if (data.loggedIn) {
+      document.getElementById('navLogin').classList.add('hidden');
+      const navProfile = document.getElementById('navProfile');
+      if (navProfile) navProfile.classList.remove('hidden');
+      document.getElementById('navLogout').classList.remove('hidden');
+      
+      if (data.isStaff) {
+        const navStaff = document.querySelector('nav a[href="staff.html"]');
+        if (navStaff) navStaff.classList.remove('hidden');
+      }
+    } else {
+      document.getElementById('navLogin').classList.remove('hidden');
+      const navProfile = document.getElementById('navProfile');
+      if (navProfile) navProfile.classList.add('hidden');
+      document.getElementById('navLogout').classList.add('hidden');
+      const navStaff = document.querySelector('nav a[href="staff.html"]');
+      if (navStaff) navStaff.classList.add('hidden');
+    }
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+async function doLogout() {
+  try {
+    await fetch('/api/logout', { method: 'POST' });
+    window.location.href = '/index.html';
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+async function loadGallery() {
+  try {
+    const res = await fetch('/api/gallery');
+    if (!res.ok) throw new Error('Failed to fetch gallery images');
+    const images = await res.json();
+    const grid = document.getElementById('galleryGrid');
+    if (!images || !images.length) {
+      grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--muted);">No gallery images found.</div>';
+      return;
+    }
+    grid.innerHTML = images.map(img => `
+      <div class="gallery-item" onclick="openLightbox('${escapeHTML(img.url)}', '${escapeHTML(img.description || 'Gallery Image')}')">
+        <img src="${escapeHTML(img.url)}" alt="${escapeHTML(img.description || 'Gallery Image')}" loading="lazy">
+        <div class="gallery-overlay"><div class="overlay-text">ðŸ” Click to enlarge</div></div>
+      </div>
+    `).join('');
+  } catch (e) {
+    console.error('Failed to load gallery images', e);
+    const grid = document.getElementById('galleryGrid');
+    if (grid) {
+      grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--red-soft);">Failed to load gallery.</div>';
+    }
+  }
+}
+
+function escapeHTML(str) {
+  if (!str) return '';
+  return str.replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+}
+
+checkAuth();
+loadGallery();
+</script>
+<script src="/ticker.js"></script>
+</body>
+</html>
+

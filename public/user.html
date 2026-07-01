@@ -1,0 +1,1543 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>User Profile â€“ Bandhilki SMP</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico?v=1" />
+<link rel="stylesheet" href="/style.css">
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* â”€â”€ PREMIUM MINECRAFT NETHER PORTAL UI SYSTEM â”€â”€ */
+  :root {
+    --obsidian-texture: none;
+  }
+
+  body {
+    background: #000;
+    position: relative;
+    overflow-x: hidden;
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  /* Full-Screen Animated Canvas Portal */
+  #portalCanvas {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    width: 100vw;
+    height: 100vh;
+    image-rendering: pixelated;
+  }
+
+  /* Full Viewport Obsidian Portal Frame */
+  body::before {
+    content: "" !important;
+    position: fixed !important;
+    inset: 0 !important;
+    border: 24px solid transparent !important;
+    border-image: var(--obsidian-texture) 4 repeat !important;
+    background: none !important;
+    opacity: 1 !important;
+    z-index: 1000 !important;
+    pointer-events: none !important;
+    image-rendering: pixelated !important;
+  }
+  body::after {
+    display: none !important;
+  }
+  @media (max-width: 768px) {
+    body::before {
+      border-width: 12px !important;
+    }
+  }
+
+  /* Minecraft Styled Headers */
+  .page-title, 
+  .section-title, 
+  .server-status-title, 
+  .leaderboard-compact-title, 
+  .profile-username, 
+  .stat-val, 
+  .event-name, 
+  .ticket-id {
+    font-family: 'VT323', monospace !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase;
+  }
+
+  .page-kicker {
+    font-family: 'VT323', monospace !important;
+    font-size: 1.4rem !important;
+    color: #e040fb !important;
+    letter-spacing: 0.15em !important;
+    text-shadow: 2px 2px 0px #000;
+  }
+
+  .page-title {
+    font-size: clamp(3rem, 7vw, 5.2rem) !important;
+    text-shadow: 4px 4px 0px #000, 0 0 25px rgba(168, 85, 247, 0.6);
+    color: #dfaaff;
+  }
+
+  .page-subtitle {
+    font-family: 'Outfit', sans-serif !important;
+    color: #cbd5e1 !important;
+    font-size: 1.1rem !important;
+  }
+
+  .section-title {
+    font-size: 2.1rem !important;
+    text-shadow: 2px 2px 0px #000;
+    color: #ffd700; /* Gold Section Titles */
+  }
+
+  .user-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2.5rem;
+    max-width: var(--content);
+    margin: 0 auto;
+    padding: 0 2rem 80px;
+    position: relative;
+    z-index: 10;
+  }
+  @media (max-width: 860px) {
+    .user-grid {
+      grid-template-columns: 1fr;
+      padding-bottom: 40px;
+    }
+  }
+
+  /* Glowing Obsidian Glass Panels */
+  .glass {
+    position: relative;
+    background: rgba(12, 6, 22, 0.94) !important;
+    border: 12px solid transparent !important;
+    border-image: var(--obsidian-texture) 4 repeat !important;
+    border-radius: 0px !important; /* Authentic Square look */
+    background-clip: padding-box !important;
+    box-shadow: 
+      0 16px 40px rgba(0, 0, 0, 0.85), 
+      inset 0 0 24px rgba(168, 85, 247, 0.25), 
+      0 0 20px rgba(168, 85, 247, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    transition: all 0.15s steps(4) !important; /* Retro step transitions */
+    overflow: hidden;
+  }
+  .glass::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    pointer-events: none !important;
+  }
+  .glass:hover {
+    border-image: var(--obsidian-texture) 4 repeat !important;
+    box-shadow: 
+      0 24px 48px rgba(0, 0, 0, 0.95), 
+      0 0 35px rgba(168, 85, 247, 0.45), 
+      inset 0 0 32px rgba(168, 85, 247, 0.3) !important;
+    transform: translateY(-2px);
+  }
+
+  /* Profile Card & Avatar */
+  .profile-card {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .profile-avatar-wrap {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+    background: #0f0a1c;
+    border: 4px solid #7c3aed;
+    box-shadow: 0 0 25px rgba(124, 58, 237, 0.5);
+    padding: 4px;
+    border-radius: 0px; /* Square */
+    image-rendering: pixelated;
+  }
+  .profile-avatar {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0px !important;
+    object-fit: cover;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  .mc-avatar-lvl {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    background: #111;
+    border: 2px solid #55ff55;
+    color: #55ff55;
+    font-family: 'VT323', monospace;
+    font-size: 1.4rem;
+    font-weight: 900;
+    width: 32px;
+    height: 32px;
+    display: none;
+    place-items: center;
+    border-radius: 0px;
+    text-shadow: 2px 2px 0px #000;
+    box-shadow: 0 0 12px rgba(85, 255, 85, 0.5);
+    z-index: 10;
+  }
+  .profile-username {
+    font-size: 2.8rem !important;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    color: #ffd700; /* Classic Minecraft Gold */
+    text-shadow: 3px 3px 0px #000;
+  }
+  .profile-discord-id {
+    font-size: 0.95rem;
+    color: #c084fc;
+    font-family: monospace;
+    margin-bottom: 1.5rem;
+    background: rgba(0, 0, 0, 0.65);
+    display: inline-block;
+    padding: 4px 12px;
+    border: 2px solid rgba(168, 85, 247, 0.3);
+    border-radius: 0px;
+  }
+
+  /* Whitelist Section */
+  .status-section {
+    padding: 1.25rem;
+    background: rgba(0, 0, 0, 0.65);
+    border: 3px solid !important;
+    border-color: #2a2a2a #8c8c8c #8c8c8c #2a2a2a !important; /* bevel indentation */
+    border-radius: 0px;
+    margin-bottom: 1.5rem;
+  }
+  .status-label {
+    font-family: 'VT323', monospace;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #c084fc;
+    margin-bottom: 0.5rem;
+  }
+  .status-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    font-weight: 700;
+    border-radius: 0px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: 'VT323', monospace;
+    font-size: 1.4rem !important;
+    border: 3px solid !important;
+  }
+  .status-allowlisted {
+    background: rgba(16, 185, 129, 0.15) !important;
+    color: #55ff55 !important;
+    border-color: #8c8c8c #2a2a2a #2a2a2a #8c8c8c !important;
+    box-shadow: 0 0 15px rgba(85, 255, 85, 0.3) !important;
+    text-shadow: 2px 2px 0px #000;
+  }
+  .status-pending {
+    background: rgba(245, 158, 11, 0.15) !important;
+    color: #ffaa00 !important;
+    border-color: #8c8c8c #2a2a2a #2a2a2a #8c8c8c !important;
+    box-shadow: 0 0 15px rgba(245, 170, 0, 0.3) !important;
+    text-shadow: 2px 2px 0px #000;
+  }
+  .status-rejected {
+    background: rgba(239, 68, 68, 0.15) !important;
+    color: #ff5555 !important;
+    border-color: #8c8c8c #2a2a2a #2a2a2a #8c8c8c !important;
+    box-shadow: 0 0 15px rgba(255, 85, 85, 0.3) !important;
+    text-shadow: 2px 2px 0px #000;
+  }
+  .status-none {
+    background: rgba(75, 85, 99, 0.15) !important;
+    color: #aaaaaa !important;
+    border-color: #8c8c8c #2a2a2a #2a2a2a #8c8c8c !important;
+  }
+  .mc-details {
+    margin-top: 0.75rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 8px;
+    border-radius: 0px;
+    font-family: 'VT323', monospace;
+    font-size: 1.4rem;
+    border: 2px solid #581c87;
+  }
+  .mc-ign {
+    font-weight: 700;
+    color: #ffd700;
+    font-family: 'VT323', monospace;
+    text-shadow: 1px 1px 0px #000;
+  }
+
+  /* Minecraft Styled Beveled Buttons */
+  .btn {
+    font-family: 'VT323', monospace !important;
+    font-size: 1.4rem !important;
+    text-transform: uppercase !important;
+    border: 3px solid !important;
+    border-color: #8c8c8c #2a2a2a #2a2a2a #8c8c8c !important; /* retro bevel edge */
+    background: #4a4a4a !important;
+    color: #e0e0e0 !important;
+    text-shadow: 2px 2px 0px #111 !important;
+    padding: 8px 16px !important;
+    border-radius: 0px !important; /* Square MC look */
+    image-rendering: pixelated;
+    transition: none !important; /* Snappy MC clicks */
+    box-shadow: none !important;
+    cursor: pointer;
+  }
+  .btn:hover {
+    background: #5c5c5c !important;
+    border-color: #9d9d9d #3c3c3c #3c3c3c #9d9d9d !important;
+    color: #ffffa0 !important; /* classic yellow text hover */
+    transform: none !important;
+  }
+  .btn:active {
+    border-color: #2a2a2a #8c8c8c #8c8c8c #2a2a2a !important;
+    background: #3c3c3c !important;
+  }
+  .btn-primary {
+    background: #5c3c8c !important;
+    border-color: #8c5cbe #2c1a4b #2c1a4b #8c5cbe !important;
+    color: #fff !important;
+  }
+  .btn-primary:hover {
+    background: #6d47a4 !important;
+    border-color: #9c68da #3b2064 #3b2064 #9c68da !important;
+    color: #ffffa0 !important;
+  }
+  .btn-discord {
+    background: #3c448c !important;
+    border-color: #5c64be #1a204b #1a204b #5c64be !important;
+    color: #fff !important;
+  }
+  .btn-discord:hover {
+    background: #4a54a4 !important;
+    border-color: #6c78da #273064 #273064 #6c78da !important;
+    color: #ffffa0 !important;
+  }
+
+  /* Minecraft Hotbar Styled Navigation */
+  .portal-nav-wrap {
+    padding: 20px 16px 0 !important;
+  }
+  .portal-nav {
+    background: #8f8f8f !important;
+    border: 4px solid !important;
+    border-color: #373737 #dfdfdf #dfdfdf #373737 !important; /* classic retro light/dark grey bevel */
+    border-radius: 0px !important;
+    padding: 3px !important;
+    box-shadow: 0 8px 0px rgba(0, 0, 0, 0.6) !important;
+    image-rendering: pixelated;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    justify-content: center;
+    max-width: var(--content);
+    margin: 0 auto;
+  }
+  .portal-brand,
+  .portal-link {
+    height: 40px !important;
+    font-family: 'VT323', monospace !important;
+    font-size: 1.4rem !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    border-radius: 0px !important;
+    border: 2px solid !important;
+    padding: 0 14px !important;
+    transition: none !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .portal-brand {
+    background: #2e2e2e !important;
+    border-color: #1a1a1a #5c5c5c #5c5c5c #1a1a1a !important;
+    color: #ffd700 !important; /* Gold logo name */
+    font-weight: 700 !important;
+    text-shadow: 2px 2px 0px #000 !important;
+  }
+  .portal-brand img {
+    filter: drop-shadow(2px 2px 0px #000) !important;
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .portal-link {
+    background: #4a4a4a !important;
+    border-color: #8c8c8c #2a2a2a #2a2a2a #8c8c8c !important; /* beveled slot look */
+    color: #e0e0e0 !important;
+    text-shadow: 2px 2px 0px #111 !important;
+  }
+  .portal-link:hover {
+    background: #5c5c5c !important;
+    border-color: #9d9d9d #3c3c3c #3c3c3c #9d9d9d !important;
+    color: #ffffa0 !important;
+  }
+  .portal-link.is-active {
+    background: #4a4a4a !important;
+    border: 4px solid #ffffff !important; /* Thick white selected border */
+    margin: -2px 0px !important; /* offset border thickness */
+    z-index: 10;
+    color: #ffffff !important;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.4) !important;
+  }
+
+  /* Live Server Widget Style */
+  .server-status-card {
+    padding: 1.5rem;
+    text-align: left;
+  }
+  .server-status-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #581c87;
+    padding-bottom: 0.5rem;
+  }
+  .server-status-title {
+    font-size: 1.6rem !important;
+    color: #ffd700;
+    text-shadow: 2px 2px 0 #000;
+  }
+  .server-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .indicator-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 0px; /* Square indicator */
+    border: 2px solid #000;
+  }
+  .indicator-online {
+    background-color: #55ff55;
+    box-shadow: 0 0 12px #55ff55;
+  }
+  .indicator-offline {
+    background-color: #ff5555;
+    box-shadow: 0 0 12px #ff5555;
+  }
+  
+  .mc-server-node {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    border: 3px solid !important;
+    border-color: #2a2a2a #8c8c8c #8c8c8c #2a2a2a !important; /* pressed bevel */
+    padding: 12px;
+    border-radius: 0px;
+    margin-bottom: 12px;
+  }
+  .mc-server-favicon {
+    width: 64px;
+    height: 64px;
+    background: #0d0818;
+    border: 2px solid #7c3aed;
+    border-radius: 0px;
+    image-rendering: pixelated;
+    display: grid;
+    place-items: center;
+    font-size: 2.2rem;
+    flex-shrink: 0;
+    box-shadow: 0 0 10px rgba(124, 58, 237, 0.3);
+  }
+  .mc-server-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow: hidden;
+  }
+  .mc-server-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .mc-server-name {
+    font-family: 'VT323', monospace;
+    font-size: 1.8rem;
+    color: #ffd700;
+    text-shadow: 2px 2px 0 #000;
+  }
+  .mc-server-players {
+    font-family: 'VT323', monospace;
+    font-size: 1.6rem;
+    color: #55ff55;
+    text-shadow: 2px 2px 0 #000;
+  }
+
+  .server-detail-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.25rem;
+    font-family: 'VT323', monospace;
+    padding: 8px 0;
+    border-bottom: 2px dashed rgba(168, 85, 247, 0.2);
+  }
+  .server-detail-row:last-child {
+    border-bottom: none;
+  }
+  .server-detail-label {
+    color: #c084fc;
+  }
+  .server-detail-val {
+    font-weight: 700;
+    color: #fff;
+  }
+  .ip-copy-btn {
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 1.4rem !important;
+  }
+
+  /* Section Styles */
+  .dashboard-section {
+    padding: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    border-bottom: 2px solid #581c87;
+    padding-bottom: 0.75rem;
+  }
+
+  /* Support Tickets List */
+  .tickets-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .tickets-table th, .tickets-table td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 2px solid rgba(168, 85, 247, 0.15);
+  }
+  .tickets-table th {
+    font-family: 'VT323', monospace !important;
+    font-size: 1.4rem !important;
+    font-weight: 700;
+    color: #ffd700 !important; /* Gold Headers */
+    text-shadow: 2px 2px 0px #000;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .tickets-table td {
+    font-family: 'VT323', monospace !important;
+    font-size: 1.3rem !important;
+    color: #fff !important;
+    text-shadow: 1px 1px 0px #000;
+  }
+  .tickets-table tr:last-child td {
+    border-bottom: none;
+  }
+  .ticket-row-link {
+    cursor: pointer;
+    transition: background 0.1s steps(2);
+  }
+  .ticket-row-link:hover {
+    background: rgba(168, 85, 247, 0.15);
+  }
+  .ticket-id {
+    font-weight: 700;
+    color: #c084fc !important;
+    font-size: 1.4rem !important;
+    text-shadow: 1px 1px 0px #000;
+  }
+  .ticket-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    border-radius: 0px;
+    text-transform: uppercase;
+    font-family: 'VT323', monospace;
+    border: 2px solid transparent;
+  }
+  .ticket-open { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border-color: #3b82f6; }
+  .ticket-inprogress { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border-color: #f59e0b; }
+  .ticket-resolved { background: rgba(16, 185, 129, 0.15); color: #55ff55; border-color: #10b981; }
+  .ticket-closed { background: rgba(156, 163, 175, 0.15); color: #9ca3af; border-color: #6b7280; }
+
+  /* Upcoming Events List */
+  .event-item {
+    padding: 1.25rem;
+    background: rgba(0, 0, 0, 0.6) !important;
+    border: 3px solid !important;
+    border-color: #2a2a2a #8c8c8c #8c8c8c #2a2a2a !important; /* beveled button insert */
+    border-radius: 0px !important;
+    margin-bottom: 1rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1.25rem;
+    align-items: center;
+  }
+  .event-item:hover {
+    border-color: #3a3a3a #acacac #acacac #3a3a3a !important;
+  }
+  @media (max-width: 600px) {
+    .event-item {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      text-align: center;
+    }
+  }
+  .event-icon-box {
+    width: 48px;
+    height: 48px;
+    background: rgba(124, 58, 237, 0.2);
+    border: 2px solid #7c3aed !important;
+    border-radius: 0px !important;
+    display: grid;
+    place-items: center;
+    font-size: 1.8rem;
+  }
+  @media (max-width: 600px) {
+    .event-icon-box {
+      margin: 0 auto;
+    }
+  }
+  .event-name {
+    font-size: 1.6rem !important;
+    font-weight: 700;
+    color: #ffd700 !important;
+    margin-bottom: 0.25rem;
+    text-shadow: 2px 2px 0 #000;
+  }
+  .event-desc {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    line-height: 1.4;
+  }
+  .event-meta {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  @media (max-width: 600px) {
+    .event-meta {
+      text-align: center;
+      align-items: center;
+    }
+  }
+  .event-time-badge {
+    font-size: 1.2rem;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #581c87;
+    padding: 2px 8px;
+    border-radius: 0px !important;
+    font-family: 'VT323', monospace;
+    color: #e9d5ff;
+    display: inline-block;
+  }
+  .event-countdown {
+    font-size: 1.25rem;
+    font-family: 'VT323', monospace;
+    font-weight: 700;
+    color: #fca5a5;
+    text-shadow: 1px 1px 0px #000;
+  }
+
+  /* MiniGame Stats HUD Styles */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  @media (max-width: 480px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .stat-card {
+    background: rgba(0, 0, 0, 0.6);
+    border: 3px solid !important;
+    border-color: #2a2a2a #8c8c8c #8c8c8c #2a2a2a !important; /* pressed bevel */
+    border-radius: 0px;
+    padding: 1.25rem;
+    text-align: center;
+  }
+  .stat-val {
+    font-size: 2.8rem !important;
+    color: #55ff55 !important; /* XP Level Green */
+    font-weight: 700;
+    margin-top: 0.25rem;
+    text-shadow: 2px 2px 0px #000;
+  }
+  .stat-label {
+    font-size: 1.25rem;
+    font-family: 'VT323', monospace;
+    color: #c084fc;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Experience Bar (Minecraft Styled Hotbar) */
+  .xp-bar-container {
+    width: 100%;
+    height: 12px;
+    background: #111111;
+    border: 2px solid #5d5d5d;
+    border-radius: 0px;
+    overflow: hidden;
+    position: relative;
+    margin: 24px 0 12px;
+  }
+  .xp-bar-fill {
+    height: 100%;
+    background: #55ff55;
+    box-shadow: inset 0 -2px 0px #3bba3b !important;
+    width: 0%;
+    image-rendering: pixelated;
+  }
+  .xp-bar-level {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'VT323', monospace;
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: #55ff55;
+    text-shadow: 
+      -1px -1px 0 #000,  
+       1px -1px 0 #000,
+      -1px  1px 0 #000,
+       1px  1px 0 #000 !important;
+    z-index: 5;
+  }
+
+  /* Compact Leaderboard */
+  .leaderboard-compact {
+    margin-top: 1.5rem;
+    border-top: 2px solid #581c87;
+    padding-top: 1.25rem;
+  }
+  .leaderboard-compact-title {
+    font-size: 1.6rem !important;
+    margin-bottom: 1rem;
+    text-align: left;
+    color: #ffd700;
+    text-shadow: 2px 2px 0 #000;
+  }
+  .leaderboard-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 3px solid !important;
+    border-color: #2a2a2a #8c8c8c #8c8c8c #2a2a2a !important; /* pressed bevel */
+    border-radius: 0px;
+    margin-bottom: 8px;
+    font-family: 'VT323', monospace;
+  }
+  .leaderboard-rank {
+    font-family: 'VT323', monospace;
+    font-weight: 800;
+    font-size: 1.8rem;
+    width: 24px;
+    text-align: center;
+  }
+  .rank-1 { color: #ffd700; text-shadow: 2px 2px 0px #000; }
+  .rank-2 { color: #e5e7eb; text-shadow: 2px 2px 0px #000; }
+  .rank-3 { color: #d97706; text-shadow: 2px 2px 0px #000; }
+  
+  .leaderboard-name {
+    font-weight: 700;
+    font-size: 1.4rem;
+    flex-grow: 1;
+    text-align: left;
+    color: #fff;
+    text-shadow: 1px 1px 0px #000;
+  }
+  .leaderboard-score {
+    font-family: 'VT323', monospace;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #55ff55;
+    text-shadow: 2px 2px 0 #000;
+  }
+  
+  .empty-state {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    color: #cbd5e1;
+    font-size: 1.35rem;
+    font-family: 'VT323', monospace;
+  }
+
+  .footer {
+    font-family: 'VT323', monospace !important;
+    font-size: 1.3rem !important;
+    color: #a78bfa !important;
+    text-shadow: 1px 1px 0px #000;
+    background: rgba(8, 3, 15, 0.95) !important;
+    border-top: 4px solid !important;
+    border-color: #373737 #dfdfdf #dfdfdf #373737 !important;
+    padding: 24px 0 !important;
+    position: relative;
+    z-index: 10;
+  }
+</style>
+    <link rel="canonical" href="https://minecraft.bandhilki.family/user.html" />
+</head>
+<body>
+<canvas id="portalCanvas"></canvas>
+
+<div class="portal-ticker" aria-hidden="true">
+  <div class="portal-ticker-track">
+    <span>Manage your profile -</span>
+    <span>Check whitelist status & tickets -</span>
+    <span>MiniGame stats and leaderboard live -</span>
+  </div>
+</div>
+
+<div class="portal-nav-wrap">
+  <nav class="portal-nav" aria-label="Primary Navigation">
+    <a href="index.html" class="portal-brand">
+      <img src="/lg.png" alt="Bandhilki SMP Logo">
+      <span>Bandhilki SMP</span>
+    </a>
+    <a href="index.html" class="portal-link">Home</a>
+    <a href="events.html" class="portal-link">Events</a>
+    <a href="gallery.html" class="portal-link">Gallery</a>
+    <a href="rules.html" class="portal-link">Rules</a>
+    <a href="hall.html" class="portal-link">Hall</a>
+    <a href="whitelist.html" class="portal-link">Whitelist</a>
+    <a href="tickets.html" class="portal-link">Tickets</a>
+    <a href="contracts.html" class="portal-link">Contracts</a>
+    <a href="social.html" class="portal-link">Socials</a>
+    <a href="developers.html" class="portal-link">Team</a>
+    <a href="staff.html" class="portal-link hidden">Staff</a>
+    <a href="contact.html" class="portal-link">Contact</a>
+    <a href="game.html" class="portal-link">MiniGame</a>
+    <a href="user.html" id="navProfile" class="portal-link is-active hidden">Profile</a>
+    <a href="login.html" id="navLogin" class="portal-link hidden">Login</a>
+    <a href="#" id="navLogout" class="portal-link hidden" onclick="doLogout()">Logout</a>
+  </nav>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-kicker">Member Portal</div>
+  <h1 class="page-title">Your <span class="text-gradient">Profile</span></h1>
+  <p class="page-subtitle">Manage your whitelist status, check your support tickets, and play the server minigame.</p>
+</div>
+
+<div class="user-grid">
+  <!-- Left Side: Profile & Whitelist Status & Live Server Widget -->
+  <div>
+    <!-- Profile Card -->
+    <div class="glass profile-card">
+      <div class="profile-avatar-wrap">
+        <img id="userAvatar" class="profile-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar">
+        <div class="mc-avatar-lvl" id="mcLvl">0</div>
+      </div>
+      <div class="profile-username" id="username">Loading...</div>
+      <div class="profile-discord-id" id="discordId">Discord ID: ---</div>
+      
+      <!-- Whitelist status -->
+      <div class="status-section">
+        <div class="status-label">Whitelist Status</div>
+        <div id="statusBadge" class="status-badge status-none">Checking...</div>
+        <div id="mcDetails" class="mc-details" style="display:none;">
+          Minecraft IGN: <span class="mc-ign" id="mcIgn">---</span>
+        </div>
+      </div>
+      
+      <!-- Action buttons -->
+      <div style="display:grid; gap:0.75rem;" id="profileActions">
+        <!-- populated dynamically -->
+      </div>
+    </div>
+
+    <!-- Live Server Status Widget -->
+    <div class="glass server-status-card">
+      <div class="server-status-header">
+        <h3 class="server-status-title">Live Server Status</h3>
+        <div id="serverIndicator" class="server-indicator">
+          <span class="indicator-dot indicator-offline"></span>
+          <span id="serverIndicatorText" style="font-family:'VT323', monospace; font-size:1.2rem;">Offline</span>
+        </div>
+      </div>
+      
+      <!-- Minecraft styled server node -->
+      <div class="mc-server-node">
+        <div class="mc-server-favicon" id="mcFavicon">
+          ðŸŽ®
+        </div>
+        <div class="mc-server-details">
+          <div class="mc-server-title-row" style="margin-top: 8px;">
+            <span class="mc-server-name">Bandhilki SMP</span>
+            <span class="mc-server-players" id="mcPlayers">Offline</span>
+          </div>
+        </div>
+      </div>
+      
+      <div id="ipSection" style="display:none;">
+        <div class="server-detail-row" style="margin-top: 8px;">
+          <span class="server-detail-label">IP Address</span>
+          <span class="server-detail-val" style="font-family: monospace; font-size: 0.95rem;">mc.iucnetwork.in:1999</span>
+        </div>
+        
+        <button class="btn btn-outline btn-sm ip-copy-btn" id="copyIpBtn" onclick="copyServerIP()">
+          <span>ðŸ“‹ Copy Server IP</span>
+        </button>
+      </div>
+      
+      <div id="ipRestrictedMsg" style="margin-top: 12px; font-family: 'VT323', monospace; font-size: 1.25rem; color: #ff5555; text-align: center; background: rgba(255, 85, 85, 0.08); border: 2px dashed rgba(255, 85, 85, 0.3); padding: 8px;">
+        ðŸ”’ IP Address hidden until whitelisted.
+      </div>
+    </div>
+
+    <!-- Quick Links Widget -->
+    <div class="glass server-status-card" style="margin-top: 1.5rem;">
+      <div class="server-status-header">
+        <h3 class="server-status-title">Quick Links</h3>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <a href="https://discord.gg/KSAm2yd9gC" target="_blank" class="btn btn-outline" style="text-align:left; justify-content:flex-start;">
+          ðŸ’¬ Join our Discord
+        </a>
+        <a href="rules.html" class="btn btn-outline" style="text-align:left; justify-content:flex-start;">
+          ðŸ“œ Server Rules
+        </a>
+        <a href="gallery.html" class="btn btn-outline" style="text-align:left; justify-content:flex-start;">
+          ðŸ–¼ï¸ View Gallery
+        </a>
+        <a href="developers.html" class="btn btn-outline" style="text-align:left; justify-content:flex-start;">
+          ðŸ‘¥ Meet the Team
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Right Side: Tickets & Upcoming Events & Achievements -->
+  <div>
+    <!-- Upcoming Server Events Card -->
+    <div class="glass dashboard-section">
+      <div class="section-header">
+        <h2 class="section-title">Upcoming Server Events</h2>
+        <a href="events.html" class="btn btn-outline btn-sm">All Events</a>
+      </div>
+      <div id="eventsContainer">
+        <div id="eventsEmpty" class="empty-state">Loading server events...</div>
+        <div id="eventsList" style="display:none;">
+          <!-- populated dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Support Tickets Card -->
+    <div class="glass dashboard-section">
+      <div class="section-header">
+        <h2 class="section-title">Your Support Tickets</h2>
+        <a href="tickets.html" class="btn btn-outline btn-sm">New Ticket</a>
+      </div>
+      <div style="overflow-x:auto;">
+        <table class="tickets-table" id="ticketsTable" style="display:none;">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Category</th>
+              <th>Status</th>
+              <th>Updated</th>
+            </tr>
+          </thead>
+          <tbody id="ticketsBody">
+            <!-- populated dynamically -->
+          </tbody>
+        </table>
+        <div id="ticketsEmpty" class="empty-state">Loading tickets...</div>
+      </div>
+    </div>
+    
+    <!-- MiniGame Stats Card -->
+    <div class="glass dashboard-section">
+      <div class="section-header">
+        <h2 class="section-title">MiniGame Stats</h2>
+        <a href="game.html" class="btn btn-primary btn-sm">Play Now</a>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Personal High Score</div>
+          <div class="stat-val" id="minesweeperScore">---</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Highest Level Cleared</div>
+          <div class="stat-val" id="minesweeperLevel">---</div>
+        </div>
+      </div>
+      
+      <!-- Experience Bar (Minecraft Styled) -->
+      <div class="xp-bar-container">
+        <div class="xp-bar-fill" id="xpBarFill"></div>
+        <div class="xp-bar-level" id="xpBarLevel">0</div>
+      </div>
+
+      <!-- MiniGame Leaderboard Top 3 -->
+      <div class="leaderboard-compact">
+        <h3 class="leaderboard-compact-title">ðŸ† Global Leaderboard (Top 3)</h3>
+        <div id="leaderboardTop3">
+          <!-- populated dynamically -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  Â© 2026 BANDHILKI SMP &bull; Built with â¤ï¸ by Team Insane &bull; <a href="https://discord.gg/KSAm2yd9gC" target="_blank" style="color:var(--green-1);text-decoration:none;">Discord</a>
+</footer>
+
+<script>
+let currentUser = null;
+
+async function checkAuth() {
+  try {
+    const res = await fetch('/api/me');
+    const data = await res.json();
+    
+    if (data.loggedIn) {
+      currentUser = data.user;
+      
+      // Update Navigation
+      document.getElementById('navLogin').classList.add('hidden');
+      document.getElementById('navLogout').classList.remove('hidden');
+      
+      const navProfile = document.getElementById('navProfile');
+      if (navProfile) navProfile.classList.remove('hidden');
+      
+      if (data.isStaff) {
+        const navStaff = document.querySelector('nav a[href="staff.html"]');
+        if (navStaff) navStaff.classList.remove('hidden');
+      }
+      
+      // Update profile info
+      document.getElementById('username').textContent = currentUser.username;
+      document.getElementById('discordId').textContent = `Discord ID: ${currentUser.id}`;
+      if (currentUser.avatar) {
+        document.getElementById('userAvatar').src = currentUser.avatar;
+      }
+      
+      // Render Whitelist Info
+      renderWhitelistStatus(data);
+      
+      // Load live server stats
+      loadLiveServerStats();
+      setInterval(loadLiveServerStats, 30000);
+      
+      // Load server events
+      loadServerEvents();
+      
+      // Load user's tickets
+      loadUserTickets();
+      
+      // Load minigame stats
+      loadMinigameStats(currentUser.id);
+      
+    } else {
+      // Not logged in -> Redirect to login page
+      window.location.href = '/login.html?error=' + encodeURIComponent('You must be logged in to view your profile.');
+    }
+  } catch (e) {
+    console.error(e);
+    window.location.href = '/login.html?error=' + encodeURIComponent('An error occurred during authentication.');
+  }
+}
+
+function renderWhitelistStatus(data) {
+  const badge = document.getElementById('statusBadge');
+  const mcDetails = document.getElementById('mcDetails');
+  const actionsDiv = document.getElementById('profileActions');
+  const ipSection = document.getElementById('ipSection');
+  const ipRestrictedMsg = document.getElementById('ipRestrictedMsg');
+  
+  badge.className = 'status-badge';
+  let actionsHtml = '';
+  
+  if (data.hasWhitelistRole) {
+    badge.classList.add('status-allowlisted');
+    badge.textContent = 'Allowlisted';
+    
+    // Check if we have whitelisted IGN
+    const statusObj = data.whitelistDetails || {};
+    if (statusObj.mcUsername) {
+      mcDetails.style.display = 'block';
+      document.getElementById('mcIgn').textContent = statusObj.mcUsername;
+    }
+    
+    actionsHtml += `<a href="index.html" class="btn btn-primary">Join Server</a>`;
+    
+    // Show IP Section
+    if (ipSection) ipSection.style.display = 'block';
+    if (ipRestrictedMsg) ipRestrictedMsg.style.display = 'none';
+    
+  } else {
+    // Hide IP Section
+    if (ipSection) ipSection.style.display = 'none';
+    if (ipRestrictedMsg) ipRestrictedMsg.style.display = 'block';
+    
+    if (data.whitelistStatus === 'pending') {
+      badge.classList.add('status-pending');
+      badge.textContent = 'Pending Review';
+      
+      actionsHtml += `<a href="https://discord.gg/KSAm2yd9gC" target="_blank" class="btn btn-discord">Check Discord Support</a>`;
+      
+    } else if (data.whitelistStatus === 'rejected') {
+      badge.classList.add('status-rejected');
+      badge.textContent = 'Application Rejected';
+      
+      actionsHtml += `<a href="whitelist.html" class="btn btn-primary">Re-apply Now</a>`;
+    } else {
+      badge.classList.add('status-none');
+      badge.textContent = 'Not Whitelisted';
+      
+      actionsHtml += `<a href="whitelist.html" class="btn btn-primary">Apply for Whitelist</a>`;
+    }
+  }
+  
+  if (data.isStaff) {
+    actionsHtml += `<a href="staff.html" class="btn btn-outline">Staff Dashboard</a>`;
+  }
+  
+  actionsDiv.innerHTML = actionsHtml;
+}
+
+async function loadLiveServerStats() {
+  const dot = document.querySelector('#serverIndicator .indicator-dot');
+  const text = document.getElementById('serverIndicatorText');
+  const favicon = document.getElementById('mcFavicon');
+  const players = document.getElementById('mcPlayers');
+  
+  try {
+    const res = await fetch('/api/servers');
+    const servers = await res.json();
+    
+    if (servers && servers.length > 0) {
+      const server = servers[0];
+      if (server.online) {
+        dot.className = 'indicator-dot indicator-online';
+        text.textContent = 'Online';
+        text.style.color = '#10b981';
+        
+        // Populate custom MC details
+        if (server.favicon) {
+          favicon.innerHTML = `<img src="${server.favicon}" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" alt="Server Icon">`;
+        } else {
+          favicon.innerHTML = 'ðŸŽ®';
+        }
+        players.textContent = `${server.players}/${server.max}`;
+      } else {
+        setServerOffline(dot, text, favicon, players);
+      }
+    } else {
+      setServerOffline(dot, text, favicon, players);
+    }
+  } catch (e) {
+    console.error(e);
+    setServerOffline(dot, text, favicon, players);
+  }
+}
+
+function setServerOffline(dot, text, favicon, players) {
+  dot.className = 'indicator-dot indicator-offline';
+  text.textContent = 'Offline';
+  text.style.color = '#ef4444';
+  if (favicon) favicon.innerHTML = 'âŒ';
+  if (players) players.textContent = 'Offline';
+}
+
+function copyServerIP() {
+  const ip = "mc.iucnetwork.in:1999";
+  navigator.clipboard.writeText(ip).then(() => {
+    const btn = document.getElementById('copyIpBtn');
+    btn.innerHTML = '<span>âœ… Copied IP!</span>';
+    setTimeout(() => {
+      btn.innerHTML = '<span>ðŸ“‹ Copy Server IP</span>';
+    }, 2000);
+  });
+}
+
+async function loadServerEvents() {
+  const container = document.getElementById('eventsList');
+  const empty = document.getElementById('eventsEmpty');
+  
+  try {
+    const res = await fetch('/api/events/public');
+    const data = await res.json();
+    const events = data.events || [];
+    
+    // Show only ongoing and upcoming events (exclude completed events if there are plenty)
+    const activeEvents = events.filter(e => !e.completed).slice(0, 3);
+    
+    if (activeEvents.length > 0) {
+      empty.style.display = 'none';
+      container.style.display = 'block';
+      
+      let html = '';
+      activeEvents.forEach(e => {
+        const icon = getEventIcon(e.type);
+        const timeText = new Date(e.startsAt).toLocaleDateString(undefined, {
+          month: 'short',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+        const countdown = formatEventCountdown(e.startsAt);
+        
+        html += `
+          <div class="event-item">
+            <div class="event-icon-box">${icon}</div>
+            <div class="event-info">
+              <span class="event-name">${escapeHtml(e.title)}</span>
+              <span class="event-desc">${escapeHtml(e.description)}</span>
+            </div>
+            <div class="event-meta">
+              <span class="event-time-badge">${timeText}</span>
+              <span class="event-countdown">${countdown}</span>
+            </div>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+    } else {
+      empty.textContent = 'No upcoming server events scheduled right now.';
+    }
+  } catch (e) {
+    console.error(e);
+    empty.textContent = 'Failed to load server events.';
+  }
+}
+
+function getEventIcon(type) {
+  const t = String(type || '').toLowerCase();
+  if (t.includes('pvp') || t.includes('fight') || t.includes('arena')) return 'âš”ï¸';
+  if (t.includes('build') || t.includes('creative')) return 'ðŸ§±';
+  if (t.includes('giveaway') || t.includes('loot') || t.includes('drop')) return 'ðŸŽ';
+  return 'ðŸ†';
+}
+
+function formatEventCountdown(startsAt) {
+  const now = Date.now();
+  const diff = startsAt - now;
+  if (diff <= 0) {
+    return 'ðŸ”´ Live Now';
+  }
+  const sec = Math.floor(diff / 1000);
+  const d = Math.floor(sec / 86400);
+  const h = Math.floor((sec % 86400) / 3600);
+  const m = Math.floor((sec % 3600) / 60);
+
+  if (d > 0) return `Starts in ${d}d ${h}h`;
+  if (h > 0) return `Starts in ${h}h ${m}m`;
+  return `Starts in ${m}m`;
+}
+
+async function loadUserTickets() {
+  const table = document.getElementById('ticketsTable');
+  const tbody = document.getElementById('ticketsBody');
+  const empty = document.getElementById('ticketsEmpty');
+  
+  try {
+    const res = await fetch('/api/tickets/my');
+    const tickets = await res.json();
+    
+    if (tickets && tickets.length > 0) {
+      empty.style.display = 'none';
+      table.style.display = 'table';
+      
+      let html = '';
+      tickets.forEach(t => {
+        const date = new Date(t.updatedAt || t.createdAt).toLocaleDateString(undefined, {
+          month: 'short',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+        
+        html += `
+          <tr class="ticket-row-link" onclick="window.location.href='/tickets.html?id=${t.id}'">
+            <td class="ticket-id">#${t.id}</td>
+            <td>${escapeHtml(t.category)}</td>
+            <td><span class="ticket-badge ticket-${t.status}">${t.status}</span></td>
+            <td>${date}</td>
+          </tr>
+        `;
+      });
+      tbody.innerHTML = html;
+    } else {
+      empty.textContent = 'You have not submitted any support tickets.';
+    }
+  } catch (e) {
+    console.error(e);
+    empty.textContent = 'Failed to load tickets.';
+  }
+}
+
+async function loadMinigameStats(userId) {
+  try {
+    const res = await fetch('/api/minigames/minicraft-minesweeper/leaderboard');
+    const data = await res.json();
+    
+    const scores = data.scores || [];
+    
+    // Personal stats
+    const userBest = scores.find(s => s.playerId === userId);
+    const xpFill = document.getElementById('xpBarFill');
+    const xpLvl = document.getElementById('xpBarLevel');
+    const avatarLvl = document.getElementById('mcLvl');
+
+    if (userBest) {
+      document.getElementById('minesweeperScore').textContent = userBest.score;
+      const levelNum = userBest.level || 1;
+      document.getElementById('minesweeperLevel').textContent = `Level ${levelNum}`;
+      
+      // Update XP Bar (assuming max level is 10)
+      const percent = Math.min(100, Math.max(0, levelNum * 10));
+      if (xpFill) xpFill.style.width = `${percent}%`;
+      if (xpLvl) xpLvl.textContent = levelNum;
+      if (avatarLvl) {
+        avatarLvl.textContent = levelNum;
+        avatarLvl.style.display = 'grid';
+      }
+    } else {
+      document.getElementById('minesweeperScore').textContent = 'No Score';
+      document.getElementById('minesweeperLevel').textContent = 'Not Played';
+      if (xpFill) xpFill.style.width = '0%';
+      if (xpLvl) xpLvl.textContent = '0';
+      if (avatarLvl) avatarLvl.style.display = 'none';
+    }
+
+    // Top 3 Global
+    const top3 = scores.slice(0, 3);
+    const leaderboardDiv = document.getElementById('leaderboardTop3');
+    
+    if (top3.length > 0) {
+      let html = '';
+      top3.forEach((s, idx) => {
+        const rank = idx + 1;
+        html += `
+          <div class="leaderboard-row">
+            <span class="leaderboard-rank rank-${rank}">${rank}</span>
+            <span class="leaderboard-name">${escapeHtml(s.playerName)}</span>
+            <span class="leaderboard-score">${s.score} pts (Lvl ${s.level || 1})</span>
+          </div>
+        `;
+      });
+      leaderboardDiv.innerHTML = html;
+    } else {
+      leaderboardDiv.innerHTML = '<div class="empty-state" style="padding:1rem;">No leaderboard records found.</div>';
+    }
+
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+async function doLogout() {
+  try {
+    await fetch('/api/logout', { method: 'POST' });
+    window.location.href = '/index.html';
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return str.replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+}
+
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// PREMIUM MINECRAFT NETHER PORTAL ENGINE (Canvas + Obsidian Generator)
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+function generateObsidianTexture() {
+  const canvas = document.createElement('canvas');
+  canvas.width = 16;
+  canvas.height = 16;
+  const ctx = canvas.getContext('2d');
+  
+  const palette = [
+    '#0b0713', '#100c18', '#140d1e', // deepest black/purples
+    '#1a1126', '#1e142c', '#241836', // dark purple-grey
+    '#2c1c44', '#332050', '#3a2256', // mid purples
+    '#462b66', '#4e306b', '#5a3a7c', // highlights
+    '#12081f', '#09040c'
+  ];
+  
+  for (let y = 0; y < 16; y++) {
+    for (let x = 0; x < 16; x++) {
+      let n = Math.sin(x * 0.9) * Math.cos(y * 0.9) + Math.cos(x * 0.5 + y * 0.7);
+      let noise = Math.random() * 0.45;
+      let val = Math.floor(((n + 2) / 4 + noise) * palette.length);
+      val = Math.max(0, Math.min(palette.length - 1, val));
+      
+      if ((x + y) % 7 === 0 && Math.random() > 0.5) {
+        val = 11; // highlight #5a3a7c
+      }
+      if ((x === 0 || y === 0) && Math.random() > 0.3) {
+        val = Math.min(palette.length - 1, val + 2);
+      }
+      if ((x === 15 || y === 15) && Math.random() > 0.3) {
+        val = Math.max(0, val - 3);
+      }
+      ctx.fillStyle = palette[val];
+      ctx.fillRect(x, y, 1, 1);
+    }
+  }
+  return canvas.toDataURL();
+}
+
+function initPortalEffects() {
+  const obsidianDataUrl = generateObsidianTexture();
+  document.documentElement.style.setProperty('--obsidian-texture', `url(${obsidianDataUrl})`);
+
+  const canvas = document.getElementById('portalCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  
+  let width, height;
+  const scale = 4; // Render at 1/4 size for authentic pixel look
+  
+  const tileSize = 32;
+  const offscreen = document.createElement('canvas');
+  offscreen.width = tileSize;
+  offscreen.height = tileSize;
+  const oCtx = offscreen.getContext('2d');
+  
+  function resize() {
+    width = canvas.width = Math.ceil(window.innerWidth / scale);
+    height = canvas.height = Math.ceil(window.innerHeight / scale);
+    ctx.imageSmoothingEnabled = false;
+    oCtx.imageSmoothingEnabled = false;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+  
+  const portalPalette = [
+    '#110426', // deep background
+    '#220942', // dark purple
+    '#390f64', // purple
+    '#58168f', // medium violet
+    '#7b1fa2', // bright violet
+    '#9c27b0', // bright magenta
+    '#ba68c8'  // pink highlight
+  ];
+  
+  let particles = [];
+  const maxParticles = 80;
+  
+  function createParticle(bottom = false) {
+    return {
+      x: Math.random() * width,
+      y: bottom ? height + 10 : Math.random() * height,
+      size: [2, 3, 4, 5][Math.floor(Math.random() * 4)],
+      speedY: -(0.4 + Math.random() * 0.8),
+      speedX: (Math.random() - 0.5) * 0.2,
+      color: ['#ba68c8', '#a855f7', '#d8b4fe', '#c084fc', '#f472b6'][Math.floor(Math.random() * 5)],
+      alpha: 0.2 + Math.random() * 0.8,
+      fade: 0.003 + Math.random() * 0.005
+    };
+  }
+  
+  for (let i = 0; i < maxParticles; i++) {
+    particles.push(createParticle(false));
+  }
+  
+  let time = 0;
+  
+  function animate() {
+    time += 0.02;
+    oCtx.clearRect(0, 0, tileSize, tileSize);
+    
+    for (let y = 0; y < tileSize; y++) {
+      for (let x = 0; x < tileSize; x++) {
+        let nx = (x - tileSize/2) / (tileSize/2);
+        let ny = (y - tileSize/2) / (tileSize/2);
+        let r = Math.sqrt(nx*nx + ny*ny);
+        let angle = Math.atan2(ny, nx);
+        
+        let spiral1 = Math.sin(angle * 2 - r * 5 + time * 3.5);
+        let spiral2 = Math.cos(angle * -1 - r * 3 - time * 2.0);
+        let combined = (spiral1 * 0.65 + spiral2 * 0.35);
+        
+        let val = Math.floor((combined + 1.0) / 2.0 * portalPalette.length);
+        val = Math.max(0, Math.min(portalPalette.length - 1, val));
+        
+        if (Math.random() > 0.96) {
+          val = Math.min(portalPalette.length - 1, val + 1);
+        }
+        
+        oCtx.fillStyle = portalPalette[val];
+        oCtx.fillRect(x, y, 1, 1);
+      }
+    }
+    
+    const pattern = ctx.createPattern(offscreen, 'repeat');
+    ctx.fillStyle = pattern;
+    ctx.fillRect(0, 0, width, height);
+    
+    for (let i = 0; i < particles.length; i++) {
+      let p = particles[i];
+      p.y += p.speedY;
+      p.x += p.speedX;
+      p.alpha -= p.fade;
+      
+      if (p.alpha <= 0 || p.y < -10) {
+        particles[i] = createParticle(true);
+        continue;
+      }
+      
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.alpha;
+      ctx.fillRect(Math.floor(p.x), Math.floor(p.y), p.size, p.size);
+    }
+    ctx.globalAlpha = 1.0;
+    
+    requestAnimationFrame(animate);
+  }
+  
+  animate();
+}
+
+// Start portal effects immediately
+initPortalEffects();
+
+checkAuth();
+</script>
+<script src="/ticker.js"></script>
+</body>
+</html>
+

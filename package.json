@@ -1,0 +1,32 @@
+{
+  "name": "kaju-minecraft-status-bot",
+  "version": "1.0.0",
+  "description": "A powerful Discord bot that monitors Minecraft server status with beautiful embed messages",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "deploy": "node deploy-commands.js"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "minecraft",
+    "server",
+    "status",
+    "monitor"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "canvas": "^3.1.0",
+    "chalk": "^4.1.2",
+    "chart.js": "^4.4.9",
+    "discord.js": "^14.11.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "kaju-minecraft-status-bot": "file:",
+    "minecraft-server-util": "^5.4.4",
+    "mongodb": "^7.3.0",
+    "mongoose": "^9.7.0"
+  }
+}

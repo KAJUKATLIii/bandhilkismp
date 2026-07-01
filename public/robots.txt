@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://minecraft.bandhilki.family/sitemap.xml

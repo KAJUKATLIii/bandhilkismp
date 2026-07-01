@@ -1,0 +1,3042 @@
+﻿ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff Dashboard â€“ Bandhilki SMP</title>
+<meta name="description" content="Staff-only dashboard for Bandhilki SMP. Manage tickets, assign tasks, and track activity.">
+<meta name="keywords" content="bandhilki smp, minecraft, bandhilki family, shreeman legend, bandhilkismp, indian minecraft server, survival multiplayer, pvp server, minecraft india, gaming community, minecraft survival, best indian smp, Bandhilki Family, minecraft community, smp server, best smp server in india, indian minecraft community">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Bandhilki SMP â€“ Indian Minecraft Server">
+<meta property="og:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family. Join survival, creative, PvP & events.">
+<meta property="og:image" content="/lg.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bandhilki SMP â€“ Indian Minecraft Server">
+<meta name="twitter:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family.">
+<meta name="twitter:image" content="/lg.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Bandhilki SMP",
+  "logo": "https://minecraft.bandhilki.family/lg.png",
+  "sameAs": [
+    "https://discord.gg/KSAm2yd9gC"
+  ]
+}
+</script>
+<link rel="icon" type="image/x-icon" href="/favicon.ico?v=1" />
+<link rel="stylesheet" href="/style.css">
+<style>
+  .staff-section-title {
+    font-size: 1rem; font-weight: 700; margin-bottom: 18px;
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    padding-bottom: 10px; border-bottom: 1px solid var(--line);
+    font-family: 'Oswald', sans-serif; letter-spacing: 0.04em;
+  }
+  .staff-section-title span { font-size: 0.88rem; font-family: 'Rajdhani', sans-serif; color: var(--muted); font-weight: 400; letter-spacing: 0; text-transform: none; }
+  .glass-box { background: linear-gradient(180deg, rgba(255,76,108,0.04), transparent 22%), var(--panel); border: 1px solid var(--line); border-radius: var(--radius-md); box-shadow: var(--shadow-md); overflow: hidden; margin-bottom: 22px; }
+  .todo-form { display: flex; gap: 8px; padding: 14px 16px; border-bottom: 1px solid var(--line); }
+  .todo-form input { flex: 1; padding: 8px 12px; border-radius: var(--radius-sm); border: 1px solid var(--line); background: rgba(8,3,4,0.74); color: var(--text); font: inherit; font-size: 0.88rem; outline: none; }
+  .todo-form input:focus { border-color: var(--line-bright); }
+  .todo-form select { padding: 8px 10px; border-radius: var(--radius-sm); border: 1px solid var(--line); background: rgba(8,3,4,0.74); color: var(--text); font: inherit; font-size: 0.88rem; outline: none; }
+  .assign-form { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+  .assign-form input { flex: 1; min-width: 120px; padding: 6px 10px; border-radius: var(--radius-sm); border: 1px solid var(--line); background: rgba(8,3,4,0.74); color: var(--text); font: inherit; font-size: 0.82rem; outline: none; }
+  .hidden { display: none !important; }
+  .staff-header { padding: 18px 24px; background: rgba(8,3,4,0.92); border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  .staff-user-chip { display: flex; align-items: center; gap: 10px; }
+  .staff-avatar { width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--line-strong); }
+  .staff-user-info { font-size: 12px; }
+  .staff-user-info .name { font-weight: 700; color: var(--text); }
+  .staff-user-info .role { color: var(--red-soft); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .reply-input-area-staff { display: flex; gap: 8px; margin-top: 10px; }
+  .reply-input-area-staff textarea { flex: 1; padding: 8px 12px; border-radius: var(--radius-sm); border: 1px solid var(--line); background: rgba(8,3,4,0.74); color: var(--text); font: inherit; font-size: 0.87rem; resize: none; outline: none; }
+  .reply-input-area-staff textarea:focus { border-color: var(--line-bright); box-shadow: 0 0 0 3px rgba(248,71,98,0.12); }
+  /* Work Update Panel */
+  .wu-form { display: flex; flex-direction: column; gap: 10px; padding: 16px; border-bottom: 1px solid var(--line); }
+  .wu-form textarea { padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--line); background: rgba(8,3,4,0.74); color: var(--text); font: inherit; font-size: 0.88rem; resize: vertical; outline: none; min-height: 80px; }
+  .wu-form textarea:focus { border-color: var(--line-bright); box-shadow: 0 0 0 3px rgba(248,71,98,0.12); }
+  .wu-form-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .wu-form select { padding: 8px 10px; border-radius: var(--radius-sm); border: 1px solid var(--line); background: rgba(8,3,4,0.74); color: var(--text); font: inherit; font-size: 0.88rem; outline: none; }
+  .wu-card { padding: 14px 16px; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px; }
+  .wu-card:last-child { border-bottom: none; }
+  .wu-card-header { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: space-between; }
+  .wu-card-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .wu-avatar { width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--line); }
+  .wu-author { font-weight: 700; font-size: 0.88rem; }
+  .wu-time { font-size: 0.75rem; color: var(--muted); }
+  .wu-cat-badge { padding: 2px 10px; border-radius: 999px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+  .wu-cat-general { background: rgba(156,163,175,0.15); border: 1px solid rgba(156,163,175,0.3); color: #9ca3af; }
+  .wu-cat-tickets { background: rgba(96,165,250,0.12); border: 1px solid rgba(96,165,250,0.28); color: #60a5fa; }
+  .wu-cat-events { background: rgba(248,196,44,0.12); border: 1px solid rgba(248,196,44,0.28); color: #f8c42c; }
+  .wu-cat-moderation { background: rgba(248,71,98,0.12); border: 1px solid rgba(248,71,98,0.28); color: #f84762; }
+  .wu-cat-development { background: rgba(74,222,128,0.12); border: 1px solid rgba(74,222,128,0.28); color: #4ade80; }
+  .wu-cat-other { background: rgba(167,139,250,0.12); border: 1px solid rgba(167,139,250,0.28); color: #a78bfa; }
+  .wu-summary { font-size: 0.9rem; color: var(--text); line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
+  
+  /* Gallery Manager Grid & Items */
+  .manager-gallery-item {
+    position: relative;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 1px solid var(--line);
+    aspect-ratio: 4/3;
+    background: rgba(8,3,4,0.5);
+    transition: border-color 0.2s;
+  }
+  .manager-gallery-item:hover {
+    border-color: var(--line-bright);
+  }
+  .manager-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .manager-gallery-delete {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: rgba(248,71,98,0.85);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 3px 7px;
+    font-size: 0.72rem;
+    cursor: pointer;
+    font-weight: 700;
+    z-index: 5;
+    transition: background 0.2s;
+  }
+  .manager-gallery-delete:hover {
+    background: rgb(248,71,98);
+  }
+  .manager-gallery-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(8,3,4,0.85);
+    padding: 6px 8px;
+    font-size: 0.72rem;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-top: 1px solid var(--line);
+  }
+  
+  /* Team Drag & Order styling */
+  .manager-team-card {
+    cursor: grab;
+    transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s, border-color 0.2s;
+    user-select: none;
+    -webkit-user-drag: element;
+  }
+  .manager-team-card:active {
+    cursor: grabbing;
+  }
+  .manager-team-card.dragging {
+    opacity: 0.45;
+    transform: scale(0.98);
+    box-shadow: 0 0 16px rgba(248,71,98,0.25);
+    border-color: var(--line-bright) !important;
+  }
+  .drag-handle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    cursor: grab;
+    padding: 4px;
+    border-radius: var(--radius-sm);
+    transition: color 0.2s, background 0.2s;
+    flex-shrink: 0;
+  }
+  .drag-handle:hover {
+    color: var(--text);
+    background: rgba(255,255,255,0.08);
+  }
+
+  /* â”€â”€ Whitelist Applications Panel â”€â”€ */
+  .wl-card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .wl-card.status-pending { border-left: 3px solid #fbbf24; }
+  .wl-card.status-approved { border-left: 3px solid #4ade80; }
+  .wl-card.status-rejected { border-left: 3px solid #f87171; }
+  .wl-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    cursor: pointer;
+    user-select: none;
+    flex-wrap: wrap;
+  }
+  .wl-card-header:hover { background: rgba(255,255,255,0.025); }
+  .wl-avatar { width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--line); flex-shrink: 0; background: rgba(255,255,255,0.07); }
+  .wl-card-info { flex: 1; min-width: 0; }
+  .wl-ign { font-weight: 700; font-size: 0.95rem; }
+  .wl-discord { font-size: 0.78rem; color: var(--muted); }
+  .wl-badge {
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .wl-badge.pending  { background: rgba(251,191,36,0.14);  border: 1px solid rgba(251,191,36,0.35);  color: #fbbf24; }
+  .wl-badge.approved { background: rgba(74,222,128,0.12);  border: 1px solid rgba(74,222,128,0.3);   color: #4ade80; }
+  .wl-badge.rejected { background: rgba(248,113,113,0.12); border: 1px solid rgba(248,113,113,0.3);  color: #f87171; }
+  .wl-score-badge {
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    background: rgba(96,165,250,0.13);
+    border: 1px solid rgba(96,165,250,0.3);
+    color: #60a5fa;
+    flex-shrink: 0;
+  }
+  .wl-body {
+    display: none;
+    padding: 0 16px 16px;
+    border-top: 1px solid var(--line);
+  }
+  .wl-body.open { display: block; }
+  .wl-field-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .wl-field {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+  }
+  .wl-field-label { font-size: 0.68rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 4px; }
+  .wl-field-value { font-size: 0.88rem; color: var(--text); line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
+  .wl-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+  }
+  .wl-reason-input {
+    flex: 1;
+    min-width: 180px;
+    padding: 7px 11px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--line);
+    background: rgba(8,3,4,0.74);
+    color: var(--text);
+    font: inherit;
+    font-size: 0.82rem;
+    outline: none;
+  }
+  .wl-reason-input:focus { border-color: var(--line-bright); }
+  .wl-reviewed-note { font-size: 0.78rem; color: var(--muted); font-style: italic; }
+  .wl-time { font-size: 0.75rem; color: var(--muted); flex-shrink: 0; }
+
+  /* â”€â”€ Discord Embed Builder â”€â”€ */
+  .eb-layout {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 20px;
+    align-items: start;
+  }
+  @media (max-width: 1100px) { .eb-layout { grid-template-columns: 1fr; } }
+  .eb-form-box {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .eb-section {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .eb-section:last-child { border-bottom: none; }
+  .eb-section-title {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .eb-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .eb-field { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 120px; }
+  .eb-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; color: var(--muted); text-transform: uppercase; }
+  .eb-input {
+    padding: 7px 10px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--line);
+    background: rgba(8,3,4,0.74);
+    color: var(--text);
+    font: inherit;
+    font-size: 0.85rem;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.18s;
+  }
+  .eb-input:focus { border-color: var(--line-bright); box-shadow: 0 0 0 3px rgba(248,71,98,0.1); }
+  .eb-textarea {
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--line);
+    background: rgba(8,3,4,0.74);
+    color: var(--text);
+    font: inherit;
+    font-size: 0.85rem;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+    resize: vertical;
+    min-height: 80px;
+    transition: border-color 0.18s;
+  }
+  .eb-textarea:focus { border-color: var(--line-bright); box-shadow: 0 0 0 3px rgba(248,71,98,0.1); }
+  .eb-color-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .eb-color-swatch {
+    width: 28px; height: 28px; border-radius: 6px; border: 2px solid var(--line);
+    cursor: pointer; flex-shrink: 0; transition: transform 0.15s, border-color 0.15s;
+  }
+  .eb-color-swatch:hover { transform: scale(1.15); border-color: var(--line-bright); }
+  .eb-color-input { width: 110px; }
+  /* Field rows */
+  .eb-field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto auto;
+    gap: 6px;
+    align-items: center;
+    background: rgba(255,255,255,0.025);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 8px 10px;
+    margin-bottom: 6px;
+  }
+  .eb-field-row input { font-size: 0.82rem; }
+  .eb-inline-toggle { display: flex; align-items: center; gap: 4px; font-size: 0.78rem; color: var(--muted); white-space: nowrap; cursor: pointer; }
+  .eb-inline-toggle input { cursor: pointer; accent-color: var(--red-soft); margin: 0; }
+  .eb-rm-btn {
+    background: rgba(248,71,98,0.15); border: 1px solid rgba(248,71,98,0.3); color: #f84762;
+    border-radius: var(--radius-sm); padding: 3px 8px; cursor: pointer; font-size: 0.78rem; font-weight: 700; transition: background 0.15s;
+  }
+  .eb-rm-btn:hover { background: rgba(248,71,98,0.3); }
+  /* Preview pane */
+  .eb-preview-pane {
+    position: sticky;
+    top: 80px;
+  }
+  .eb-preview-wrap {
+    background: #313338;
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .eb-preview-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 10px;
+  }
+  .eb-preview-msg {
+    display: flex;
+    gap: 10px;
+  }
+  .eb-preview-bot-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: linear-gradient(135deg,#f84762,#f8c42c);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+  }
+  .eb-preview-msg-right { flex: 1; min-width: 0; }
+  .eb-preview-bot-name { font-size: 0.88rem; font-weight: 700; color: #fff; margin-bottom: 2px; }
+  .eb-preview-bot-tag { font-size: 0.7rem; background: #5865f2; color: #fff; padding: 1px 5px; border-radius: 3px; margin-left: 5px; font-weight: 700; letter-spacing: 0.02em; }
+  .eb-preview-content { font-size: 0.9rem; color: #dcddde; margin-bottom: 6px; word-break: break-word; white-space: pre-wrap; }
+  /* The actual embed card */
+  .discord-embed {
+    background: #2b2d31;
+    border-radius: 4px;
+    border-left: 4px solid #f84762;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  .discord-embed-inner { padding: 10px 14px 10px 12px; display: flex; gap: 12px; }
+  .discord-embed-body { flex: 1; min-width: 0; }
+  .discord-embed-author { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+  .discord-embed-author-icon { width: 20px; height: 20px; border-radius: 50%; object-fit: cover; }
+  .discord-embed-author-name { font-size: 0.8rem; font-weight: 700; color: #fff; }
+  .discord-embed-title { font-size: 0.98rem; font-weight: 700; color: #fff; margin-bottom: 6px; word-break: break-word; }
+  .discord-embed-title a { color: #00aff4; text-decoration: none; }
+  .discord-embed-title a:hover { text-decoration: underline; }
+  .discord-embed-desc { font-size: 0.85rem; color: #dbdee1; line-height: 1.45; white-space: pre-wrap; word-break: break-word; margin-bottom: 8px; }
+  .discord-embed-fields { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .discord-embed-field { min-width: 120px; }
+  .discord-embed-field.inline { flex: 1; }
+  .discord-embed-field-name { font-size: 0.82rem; font-weight: 700; color: #fff; margin-bottom: 2px; }
+  .discord-embed-field-value { font-size: 0.82rem; color: #dbdee1; white-space: pre-wrap; word-break: break-word; }
+  .discord-embed-image img { width: 100%; border-radius: 4px; margin-top: 8px; display: block; }
+  .discord-embed-thumbnail { width: 80px; height: 80px; flex-shrink: 0; border-radius: 4px; object-fit: cover; align-self: flex-start; }
+  .discord-embed-footer { display: flex; align-items: center; gap: 6px; margin-top: 8px; }
+  .discord-embed-footer-icon { width: 16px; height: 16px; border-radius: 50%; object-fit: cover; }
+  .discord-embed-footer-text { font-size: 0.75rem; color: #949ba4; }
+  .discord-embed-footer-sep { font-size: 0.75rem; color: #949ba4; margin: 0 4px; }
+  .eb-send-row {
+    display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap;
+    margin-top: 14px;
+  }
+  .eb-channel-select {
+    flex: 1; min-width: 160px;
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--line);
+    background: rgba(8,3,4,0.74);
+    color: var(--text);
+    font: inherit;
+    font-size: 0.85rem;
+    outline: none;
+  }
+  .eb-send-status { font-size: 0.82rem; color: var(--muted); min-height: 20px; margin-top: 6px; }
+</style>
+    <link rel="canonical" href="https://minecraft.bandhilki.family/staff.html" />
+</head>
+<body>
+<div class="portal-ticker" aria-hidden="true">
+  <div class="portal-ticker-track">
+    <span>Staff Dashboard â€” Bandhilki SMP â€”</span>
+    <span>Ticket management Â· Activity logs Â· Staff tools â€”</span>
+    <span>Staff Dashboard â€” Bandhilki SMP â€”</span>
+  </div>
+</div>
+
+<div class="portal-nav-wrap">
+  <nav class="portal-nav" aria-label="Primary Navigation">
+    <a href="index.html" class="portal-brand">
+      <img src="/lg.png" alt="Bandhilki SMP Logo">
+      <span>Bandhilki SMP</span>
+    </a>
+    <a href="index.html" class="portal-link">Home</a>
+    <a href="events.html" class="portal-link">Events</a>
+    <a href="gallery.html" class="portal-link">Gallery</a>
+    <a href="rules.html" class="portal-link">Rules</a>
+    <a href="hall.html" class="portal-link">Hall</a>
+    <a href="whitelist.html" class="portal-link">Whitelist</a>
+    <a href="tickets.html" class="portal-link">Tickets</a>
+    <a href="contracts.html" class="portal-link">Contracts</a>
+    <a href="social.html" class="portal-link">Socials</a>
+    <a href="developers.html" class="portal-link">Team</a>
+    <a href="staff.html" class="portal-link is-active">Staff</a>
+    <a href="contact.html" class="portal-link">Contact</a>
+    <a href="game.html" class="portal-link">MiniGame</a>
+    <a href="user.html" id="navProfile" class="portal-link hidden">Profile</a>
+    <a href="login.html" id="navLogin" class="portal-link hidden">Login</a>
+    <a href="#" id="navLogout" class="portal-link hidden" onclick="doLogout()">Logout</a>
+  </nav>
+</div>
+
+<!-- ACCESS DENIED (not logged in / not staff) -->
+<div id="accessDenied" class="hidden">
+  <div class="access-denied">
+    <div class="access-denied-icon">ðŸš«</div>
+    <h2 style="font-size:1.4rem;">Access Denied</h2>
+    <p style="color:var(--muted);max-width:400px;" id="accessMsg">You need to login with Discord and have the staff role to access this dashboard.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
+      <a href="/api/auth/discord/login" class="btn btn-primary">Login with Discord</a>
+      <a href="index.html" class="btn btn-outline">Back to Home</a>
+    </div>
+  </div>
+</div>
+
+<!-- STAFF DASHBOARD -->
+<div id="staffDash" class="hidden">
+
+  <!-- Staff Header -->
+  <div class="staff-header">
+    <div>
+      <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);font-weight:700;">Bandhilki SMP</div>
+      <h1 style="font-size:1.2rem;margin-top:2px;">Staff Dashboard</h1>
+    </div>
+    <div class="staff-user-chip">
+      <img class="staff-avatar" id="staffAvatar" src="" alt="Avatar">
+      <div class="staff-user-info">
+        <div class="name" id="staffName">â€”</div>
+        <div class="role">âš”ï¸ Staff</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="staff-shell">
+    <!-- Sidebar -->
+    <nav class="staff-sidebar">
+      <button class="staff-nav-item" id="nav-overview" onclick="showPanel('overview')">ðŸ“Š Overview</button>
+      <button class="staff-nav-item" id="nav-tickets" onclick="showPanel('tickets')">
+        ðŸŽ« Tickets
+        <span class="staff-nav-badge" id="openBadge">0</span>
+      </button>
+      <button class="staff-nav-item" id="nav-todo" onclick="showPanel('todo')">âœ… Todo</button>
+      <button class="staff-nav-item" id="nav-events" onclick="showPanel('events')">ðŸŽ‰ Events</button>
+      <button class="staff-nav-item" id="nav-contracts" onclick="showPanel('contracts')">ðŸ“œ Contracts</button>
+      <button class="staff-nav-item" id="nav-workupdate" onclick="showPanel('workupdate')">ðŸ“ Work Update</button>
+      <button class="staff-nav-item" id="nav-whitelist" onclick="showPanel('whitelist')">ðŸ“‹ Whitelist
+        <span class="staff-nav-badge" id="wlPendingBadge" style="background:#fbbf24;color:#000;">0</span>
+      </button>
+      <button class="staff-nav-item" id="nav-activity" onclick="showPanel('activity')">ðŸ“œ Activity</button>
+      <button class="staff-nav-item" id="nav-gallery" onclick="showPanel('gallery')">ðŸ–¼ï¸ Gallery</button>
+      <button class="staff-nav-item" id="nav-team" onclick="showPanel('team')">ðŸ‘¥ Team</button>
+      <button class="staff-nav-item" id="nav-hall" onclick="showPanel('hall')">ðŸ† Community Hall</button>
+      <button class="staff-nav-item" id="nav-embeds" onclick="showPanel('embeds')">ðŸ¤– Embed Builder</button>
+      <a class="staff-nav-item" style="text-decoration:none;display:flex;align-items:center;justify-content:center;" href="api-health.html">ðŸ©º API Health</a>
+
+
+    </nav>
+
+    <!-- Main Content -->
+    <div class="staff-content">
+
+      <!-- â”€â”€ OVERVIEW PANEL â”€â”€ -->
+      <div id="panel-overview" class="staff-panel active">
+        <div class="staff-section-title">ðŸ“Š Overview</div>
+        <div class="stat-cards" id="statCards">
+          <div class="stat-card"><span class="stat-card-value" id="statTotal">â€”</span><span class="stat-card-label">Total Tickets</span></div>
+          <div class="stat-card"><span class="stat-card-value" id="statOpen" style="color:#4ade80;">â€”</span><span class="stat-card-label">Open</span></div>
+          <div class="stat-card"><span class="stat-card-value" id="statIP" style="color:#fbbf24;">â€”</span><span class="stat-card-label">In Progress</span></div>
+          <div class="stat-card"><span class="stat-card-value" id="statWaiting" style="color:#60a5fa;">â€”</span><span class="stat-card-label">Awaiting Player</span></div>
+          <div class="stat-card"><span class="stat-card-value" id="statClosed" style="color:#f87171;">â€”</span><span class="stat-card-label">Closed</span></div>
+        </div>
+
+        <div class="staff-section-title">Recent Activity <span>Last 5 actions</span></div>
+        <div class="glass-box" id="recentActivity">
+          <div style="padding:20px;color:var(--muted);text-align:center;">No activity yet.</div>
+        </div>
+      </div>
+
+      <!-- â”€â”€ TICKETS PANEL â”€â”€ -->
+      <div id="panel-tickets" class="staff-panel">
+        <div class="staff-section-title">ðŸŽ« All Tickets <span id="ticketCountLabel"></span></div>
+
+        <div class="filter-row">
+          <button class="filter-btn active" onclick="filterTickets('all',this)">All</button>
+          <button class="filter-btn" onclick="filterTickets('open',this)">ðŸŸ¢ Open</button>
+          <button class="filter-btn" onclick="filterTickets('inprogress',this)">ðŸŸ¡ In Progress</button>
+          <button class="filter-btn" onclick="filterTickets('waiting',this)">ðŸ”µ Waiting</button>
+          <button class="filter-btn" onclick="filterTickets('closed',this)">ðŸ”´ Closed</button>
+          <button class="btn btn-sm btn-outline" onclick="loadAllTickets()" style="margin-left:auto;">â†» Refresh</button>
+        </div>
+
+        <div id="staffTicketsList" style="display:flex;flex-direction:column;gap:10px;">
+          <div style="text-align:center;padding:30px;color:var(--muted);">Loading ticketsâ€¦</div>
+        </div>
+      </div>
+
+      <!-- â”€â”€ TODO PANEL â”€â”€ -->
+      <div id="panel-todo" class="staff-panel">
+        <div class="staff-section-title">âœ… Staff Todo List</div>
+        <div class="glass-box">
+          <div class="todo-form">
+            <input id="todoText" placeholder="Add a new taskâ€¦" onkeydown="if(event.key==='Enter')addTodo()">
+            <select id="todoPriority">
+              <option value="normal">Normal</option>
+              <option value="high">ðŸ”´ High</option>
+              <option value="low">ðŸŸ¢ Low</option>
+            </select>
+            <button class="btn btn-primary btn-sm" onclick="addTodo()">+ Add</button>
+          </div>
+          <div id="todoList"><div style="padding:20px;text-align:center;color:var(--muted);">No tasks yet.</div></div>
+        </div>
+      </div>
+
+      <!-- â”€â”€ EVENTS PANEL â”€â”€ -->
+      <div id="panel-events" class="staff-panel">
+        <div class="staff-section-title">ðŸŽ‰ Event Manager <span>Create &amp; manage server events</span></div>
+
+        <!-- TEMPLATE PICKER -->
+        <div class="glass-box" style="padding:14px 16px; margin-bottom:12px;">
+          <div style="font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">âš¡ Quick Templates â€” click to fill form</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;" id="eventTemplates">
+            <button class="btn btn-sm btn-outline" onclick="applyTemplate('pvp')">âš”ï¸ PvP Tournament</button>
+            <button class="btn btn-sm btn-outline" onclick="applyTemplate('build')">ðŸ—ï¸ Build Night</button>
+            <button class="btn btn-sm btn-outline" onclick="applyTemplate('quiz')">â“ Quiz Night</button>
+            <button class="btn btn-sm btn-outline" onclick="applyTemplate('movie')">ðŸŽ¬ Movie Night</button>
+            <button class="btn btn-sm btn-outline" onclick="applyTemplate('staff')">ðŸ‘¥ Staff Meeting</button>
+            <button class="btn btn-sm btn-outline" onclick="applyTemplate('custom')">âœï¸ Custom</button>
+          </div>
+        </div>
+
+        <!-- FORM -->
+        <div class="glass-box" id="eventFormBox">
+          <div style="padding:14px 16px; border-bottom:1px solid var(--line); display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <div style="flex:2;min-width:160px;">
+                <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;">Event Title *</label>
+                <input id="eventTitle" placeholder="e.g. Weekly PvP Tournament" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.87rem;outline:none;box-sizing:border-box;" />
+              </div>
+              <div style="flex:1;min-width:120px;">
+                <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;">Category</label>
+                <input id="eventType" placeholder="e.g. PvP, Build, Social" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.87rem;outline:none;box-sizing:border-box;" />
+              </div>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <div style="flex:1;min-width:160px;">
+                <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;">Starts At *</label>
+                <input id="eventStartsAt" type="datetime-local" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.87rem;outline:none;box-sizing:border-box;color-scheme:dark;" />
+              </div>
+              <div style="flex:1;min-width:160px;">
+                <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;">Ends At</label>
+                <input id="eventEndsAt" type="datetime-local" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.87rem;outline:none;box-sizing:border-box;color-scheme:dark;" />
+              </div>
+            </div>
+          </div>
+
+          <div style="padding:12px 16px; border-bottom:1px solid var(--line);">
+            <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Description *</label>
+            <textarea id="eventDescription" rows="3" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.87rem;resize:vertical;outline:none;box-sizing:border-box;" placeholder="Describe the event â€” rules, how to join, prizes, etc."></textarea>
+          </div>
+
+          <div style="padding:12px 16px; border-bottom:1px solid var(--line);">
+            <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Discord Announcement Text <span style="font-weight:400;text-transform:none;">(optional)</span></label>
+            <textarea id="eventAnnouncementText" rows="2" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.82rem;resize:none;outline:none;box-sizing:border-box;" placeholder="Custom text to send to the events Discord channelâ€¦"></textarea>
+          </div>
+
+          <div style="padding:12px 16px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+            <button type="button" class="btn btn-primary btn-sm" id="eventPrimaryBtn" onclick="handleCreateEvent()">+ Create Event</button>
+            <button type="button" class="btn btn-sm btn-outline" onclick="clearEventForm()">âœ• Clear</button>
+            <button type="button" class="btn btn-sm btn-outline" onclick="loadEvents()">â†» Refresh List</button>
+          </div>
+
+          <!-- Status bar â€” replaces alert() boxes -->
+          <div id="eventStatus" style="padding:0 16px 12px; font-size:0.83rem; display:none;"></div>
+        </div>
+
+        <!-- EVENTS LIST -->
+        <div class="glass-box" style="margin-top:12px;">
+          <div style="padding:12px 16px; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between;">
+            <span style="font-weight:700; font-size:0.88rem;">ðŸ“‹ Events <span id="eventsCount" style="color:var(--muted); font-weight:400;">â€”</span></span>
+          </div>
+          <div id="eventsList" style="display:flex;flex-direction:column;">
+            <div style="text-align:center;padding:30px;color:var(--muted);">Loading eventsâ€¦</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- â”€â”€ CONTRACTS PANEL â”€â”€ -->
+      <div id="panel-contracts" class="staff-panel">
+        <div class="staff-section-title">ðŸ“œ Contract Manager <span>Create and manage server contracts & quotations</span></div>
+        
+        <!-- Post New Contract Form -->
+        <div class="glass-box">
+          <div style="padding:14px 16px; border-bottom:1px solid var(--line); display:flex; flex-direction:column; gap:10px;">
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <div style="flex:2; min-width:160px;">
+                <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;">Contract Title *</label>
+                <input id="contractTitle" placeholder="e.g. Build Spawn Arena" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.87rem;outline:none;box-sizing:border-box;" />
+              </div>
+              <div style="flex:1; min-width:120px;">
+                <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;">Category / Type</label>
+                <input id="contractCategory" placeholder="e.g. Building, Redstone, Farming" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.87rem;outline:none;box-sizing:border-box;" />
+              </div>
+              <div style="flex:1; min-width:120px;">
+                <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;">Budget / Reward</label>
+                <input id="contractBudget" placeholder="e.g. 64 Diamonds, 10k Coins" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.87rem;outline:none;box-sizing:border-box;" />
+              </div>
+              <div style="flex:1.5; min-width:150px;">
+                <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;">Image URL (Optional)</label>
+                <input id="contractImageUrl" placeholder="e.g. https://imgur.com/abc.png" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.87rem;outline:none;box-sizing:border-box;" />
+              </div>
+            </div>
+            <div>
+              <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;">Description / Guidelines *</label>
+              <textarea id="contractDescription" rows="3" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.87rem;resize:vertical;outline:none;box-sizing:border-box;" placeholder="Describe what needs to be done, requirements, coordinates, etc."></textarea>
+            </div>
+            <div style="display:flex; gap:10px; align-items:center; margin-top:6px;">
+              <button class="btn btn-primary btn-sm" onclick="createContract()">âž• Post Contract</button>
+              <button class="btn btn-sm btn-outline" onclick="loadContractsList()">â†» Refresh List</button>
+            </div>
+            <div id="contractFormStatus" style="font-size:0.83rem; display:none; padding-top:4px;"></div>
+          </div>
+        </div>
+
+        <!-- Contracts List -->
+        <div class="glass-box" style="margin-top:12px;">
+          <div style="padding:12px 16px; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between;">
+            <span style="font-weight:700; font-size:0.88rem;">ðŸ“‹ Posted Contracts</span>
+          </div>
+          <div id="staffContractsList" style="display:flex; flex-direction:column;">
+            <div style="text-align:center; padding:30px; color:var(--muted);">Loading contractsâ€¦</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- â”€â”€ EMBEDS PANEL â”€â”€ -->
+      <div id="panel-embeds" class="staff-panel">
+        <div class="staff-section-title">ðŸ¤– Embed Builder <span>Create and send Discord embeds</span></div>
+        <div class="eb-layout">
+          
+          <!-- Editor Form -->
+          <div class="eb-form-box">
+            
+            <div class="eb-section">
+              <div class="eb-section-title">Message Context</div>
+              <div class="eb-row">
+                <div class="eb-field">
+                  <label class="eb-label">Content (Normal Text)</label>
+                  <textarea id="ebContent" class="eb-textarea" placeholder="Message content outside the embed..." oninput="updateEBPreview()"></textarea>
+                </div>
+              </div>
+              <div class="eb-send-row">
+                <select id="ebChannelId" class="eb-channel-select">
+                  <option value="">-- Select Channel --</option>
+                  <!-- Add options dynamically via JS or hardcode some typical ones if known, for now just free text input -->
+                </select>
+                <input type="text" id="ebCustomChannel" class="eb-input" placeholder="Or paste Channel ID..." style="flex:1;min-width:140px;">
+                <button class="btn btn-sm" style="background:#5865f2;color:#fff;font-weight:700;padding:8px 16px;" onclick="sendEmbed()">ðŸš€ Send Message</button>
+              </div>
+              <div id="ebSendStatus" class="eb-send-status"></div>
+            </div>
+
+            <div class="eb-section">
+              <div class="eb-section-title">Author</div>
+              <div class="eb-row">
+                <div class="eb-field">
+                  <label class="eb-label">Author Name</label>
+                  <input type="text" id="ebAuthorName" class="eb-input" placeholder="Name" oninput="updateEBPreview()">
+                </div>
+                <div class="eb-field">
+                  <label class="eb-label">Author Icon URL</label>
+                  <input type="text" id="ebAuthorIcon" class="eb-input" placeholder="https://..." oninput="updateEBPreview()">
+                </div>
+              </div>
+            </div>
+
+            <div class="eb-section">
+              <div class="eb-section-title">Body</div>
+              <div class="eb-row" style="margin-bottom:10px;">
+                <div class="eb-field">
+                  <label class="eb-label">Title</label>
+                  <input type="text" id="ebTitle" class="eb-input" placeholder="Embed Title" oninput="updateEBPreview()">
+                </div>
+                <div class="eb-field">
+                  <label class="eb-label">Title URL</label>
+                  <input type="text" id="ebTitleUrl" class="eb-input" placeholder="https://..." oninput="updateEBPreview()">
+                </div>
+              </div>
+              <div class="eb-row" style="margin-bottom:10px;">
+                <div class="eb-field">
+                  <label class="eb-label">Description</label>
+                  <textarea id="ebDesc" class="eb-textarea" placeholder="Embed description (supports markdown)..." oninput="updateEBPreview()"></textarea>
+                </div>
+              </div>
+              <div class="eb-row">
+                <div class="eb-field">
+                  <label class="eb-label">Embed Color</label>
+                  <div class="eb-color-row">
+                    <input type="color" id="ebColorPicker" class="eb-input eb-color-input" value="#f84762" oninput="document.getElementById('ebColorHex').value=this.value;updateEBPreview()">
+                    <input type="text" id="ebColorHex" class="eb-input" value="#f84762" style="width:90px;" oninput="document.getElementById('ebColorPicker').value=this.value;updateEBPreview()">
+                    <div class="eb-color-swatch" style="background:#f84762;" onclick="setEBColor('#f84762')"></div>
+                    <div class="eb-color-swatch" style="background:#5865f2;" onclick="setEBColor('#5865f2')"></div>
+                    <div class="eb-color-swatch" style="background:#57f287;" onclick="setEBColor('#57f287')"></div>
+                    <div class="eb-color-swatch" style="background:#fee75c;" onclick="setEBColor('#fee75c')"></div>
+                    <div class="eb-color-swatch" style="background:#ed4245;" onclick="setEBColor('#ed4245')"></div>
+                    <div class="eb-color-swatch" style="background:#2b2d31;" onclick="setEBColor('#2b2d31')"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="eb-section">
+              <div class="eb-section-title">Images</div>
+              <div class="eb-row">
+                <div class="eb-field">
+                  <label class="eb-label">Image URL</label>
+                  <input type="text" id="ebImage" class="eb-input" placeholder="https://..." oninput="updateEBPreview()">
+                </div>
+                <div class="eb-field">
+                  <label class="eb-label">Thumbnail URL</label>
+                  <input type="text" id="ebThumbnail" class="eb-input" placeholder="https://..." oninput="updateEBPreview()">
+                </div>
+              </div>
+            </div>
+
+            <div class="eb-section">
+              <div class="eb-section-title">Fields <button class="btn btn-sm btn-outline" style="padding:2px 8px;font-size:0.7rem;margin-left:6px;" onclick="addEBField()">+ Add Field</button></div>
+              <div id="ebFieldsContainer"></div>
+            </div>
+
+            <div class="eb-section">
+              <div class="eb-section-title">Footer</div>
+              <div class="eb-row" style="margin-bottom:10px;">
+                <div class="eb-field">
+                  <label class="eb-label">Footer Text</label>
+                  <input type="text" id="ebFooterText" class="eb-input" placeholder="Footer text" oninput="updateEBPreview()">
+                </div>
+                <div class="eb-field">
+                  <label class="eb-label">Footer Icon URL</label>
+                  <input type="text" id="ebFooterIcon" class="eb-input" placeholder="https://..." oninput="updateEBPreview()">
+                </div>
+              </div>
+              <label class="eb-inline-toggle">
+                <input type="checkbox" id="ebTimestamp" onchange="updateEBPreview()"> Add Current Timestamp
+              </label>
+            </div>
+
+          </div>
+
+          <!-- Preview Pane -->
+          <div class="eb-preview-pane">
+            <div class="eb-preview-label">Live Discord Preview</div>
+            <div class="eb-preview-wrap">
+              <div class="eb-preview-msg">
+                <div class="eb-preview-bot-avatar">ðŸ¤–</div>
+                <div class="eb-preview-msg-right">
+                  <div class="eb-preview-bot-name">Bandhilki SMP Bot <span class="eb-preview-bot-tag">APP</span></div>
+                  <div id="pvContent" class="eb-preview-content" style="display:none;"></div>
+                  
+                  <div class="discord-embed" id="pvEmbedCard">
+                    <div class="discord-embed-inner">
+                      <div class="discord-embed-body">
+                        <div class="discord-embed-author" id="pvAuthor" style="display:none;">
+                          <img id="pvAuthorIcon" class="discord-embed-author-icon" src="" style="display:none;">
+                          <span id="pvAuthorName" class="discord-embed-author-name"></span>
+                        </div>
+                        <div class="discord-embed-title" id="pvTitle" style="display:none;"></div>
+                        <div class="discord-embed-desc" id="pvDesc" style="display:none;"></div>
+                        <div class="discord-embed-fields" id="pvFields"></div>
+                        <div class="discord-embed-image" id="pvImage" style="display:none;">
+                          <img src="">
+                        </div>
+                        <div class="discord-embed-footer" id="pvFooter" style="display:none;">
+                          <img id="pvFooterIcon" class="discord-embed-footer-icon" src="" style="display:none;">
+                          <span id="pvFooterText" class="discord-embed-footer-text"></span>
+                          <span id="pvFooterSep" class="discord-embed-footer-sep" style="display:none;">â€¢</span>
+                          <span id="pvFooterTime" class="discord-embed-footer-text" style="display:none;">Today at 12:00 PM</span>
+                        </div>
+                      </div>
+                      <img id="pvThumbnail" class="discord-embed-thumbnail" src="" style="display:none;">
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            
+            <div style="margin-top:16px;">
+              <button class="btn btn-sm btn-outline" style="width:100%;" onclick="clearEB()">ðŸ—‘ï¸ Clear All Fields</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <!-- â”€â”€ WHITELIST APPLICATIONS PANEL â”€â”€ -->
+      <div id="panel-whitelist" class="staff-panel">
+        <div class="staff-section-title">ðŸ“‹ Whitelist Applications <span id="wlCountLabel"></span></div>
+
+        <!-- Filters -->
+        <div class="filter-row">
+          <button class="filter-btn active" id="wlFilterAll"    onclick="filterWL('all',this)">All</button>
+          <button class="filter-btn"        id="wlFilterPending"  onclick="filterWL('pending',this)">â³ Pending</button>
+          <button class="filter-btn"        id="wlFilterApproved" onclick="filterWL('approved',this)">âœ… Approved</button>
+          <button class="filter-btn"        id="wlFilterRejected" onclick="filterWL('rejected',this)">âŒ Rejected</button>
+          <button class="btn btn-sm btn-outline" onclick="loadWhitelistApps()" style="margin-left:auto;">â†» Refresh</button>
+        </div>
+
+        <div id="wlList" style="display:flex;flex-direction:column;gap:10px;">
+          <div style="text-align:center;padding:30px;color:var(--muted);">Loading applicationsâ€¦</div>
+        </div>
+      </div>
+
+      <!-- â”€â”€ ACTIVITY PANEL â”€â”€ -->
+      <div id="panel-activity" class="staff-panel">
+        <div class="staff-section-title">ðŸ“œ Activity Logs <span>All staff actions</span></div>
+        <div class="glass-box">
+          <div id="activityList"><div style="padding:20px;text-align:center;color:var(--muted);">No activity logged.</div></div>
+        </div>
+      </div>
+
+      <!-- â”€â”€ WORK UPDATE PANEL â”€â”€ -->
+      <div id="panel-workupdate" class="staff-panel">
+        <div class="staff-section-title">ðŸ“ Work Updates <span>What did you do today?</span></div>
+        <div class="glass-box">
+          <!-- Post Form -->
+          <div class="wu-form">
+            <textarea id="wuSummary" placeholder="What did you work on? Describe your shift update, actions taken, progress madeâ€¦" rows="4"></textarea>
+            <div class="wu-form-row">
+              <select id="wuCategory">
+                <option value="General">ðŸ“‹ General</option>
+                <option value="Tickets">ðŸŽ« Tickets</option>
+                <option value="Events">ðŸŽ‰ Events</option>
+                <option value="Moderation">âš”ï¸ Moderation</option>
+                <option value="Development">ðŸ’» Development</option>
+                <option value="Other">ðŸ”§ Other</option>
+              </select>
+              <button class="btn btn-primary btn-sm" onclick="postWorkUpdate()">ðŸ“¤ Post Update</button>
+              <button class="btn btn-sm btn-outline" onclick="loadWorkUpdates()">â†» Refresh</button>
+            </div>
+            <div id="wuStatus" style="font-size:0.82rem;color:var(--muted);"></div>
+          </div>
+          <!-- Updates Feed -->
+          <div id="wuFeed">
+            <div style="padding:20px;text-align:center;color:var(--muted);">Loading updatesâ€¦</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- â”€â”€ GALLERY PANEL â”€â”€ -->
+      <div id="panel-gallery" class="staff-panel">
+        <div class="staff-section-title">ðŸ–¼ï¸ Gallery Manager <span>Add or remove images in the server gallery</span></div>
+        <div class="glass-box">
+          <!-- Add Form -->
+          <div style="padding:16px; border-bottom:1px solid var(--line); display:flex; flex-direction:column; gap:12px;">
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+              <div style="flex:2; min-width:260px;">
+                <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;">Image URL *</label>
+                <input id="galleryUrl" placeholder="https://i.imgur.com/your-image.png" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.87rem;outline:none;box-sizing:border-box;" />
+              </div>
+              <div style="flex:1; min-width:180px;">
+                <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;">Description / Title</label>
+                <input id="galleryDesc" placeholder="e.g. Spawn area builds" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.87rem;outline:none;box-sizing:border-box;" />
+              </div>
+            </div>
+            <div style="display:flex; gap:10px; align-items:center;">
+              <button class="btn btn-primary btn-sm" onclick="addGalleryImage()">âž• Add Image</button>
+              <button class="btn btn-sm btn-outline" onclick="loadGalleryManager()">â†» Refresh List</button>
+            </div>
+            <div id="galleryStatus" style="font-size:0.83rem; display:none; padding-top:4px;"></div>
+          </div>
+          <!-- Images List / Grid -->
+          <div style="padding:16px;">
+            <div style="font-weight:700; font-size:0.88rem; margin-bottom:12px; color:var(--text);">Current Gallery Images</div>
+            <div id="galleryManagerGrid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(180px, 1fr)); gap:16px;">
+              <div style="grid-column: 1/-1; text-align:center; padding:20px; color:var(--muted);">Loading imagesâ€¦</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- â”€â”€ TEAM PANEL â”€â”€ -->
+      <div id="panel-team" class="staff-panel">
+        <div class="staff-section-title">ðŸ‘¥ Team Manager <span>Add, update, or remove team members displayed on the Team page</span></div>
+        <div class="glass-box">
+          <!-- Add/Update Form -->
+          <div style="padding:16px; border-bottom:1px solid var(--line); display:flex; flex-direction:column; gap:12px;">
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px;">
+              <div>
+                <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;">Discord User ID *</label>
+                <input id="teamDiscordId" placeholder="e.g. 780345293237125152" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.87rem;outline:none;box-sizing:border-box;" />
+              </div>
+              <div>
+                <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;">Badge Role *</label>
+                <input id="teamRole" placeholder="e.g. Owner, Admin, Developer" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.87rem;outline:none;box-sizing:border-box;" />
+              </div>
+              <div>
+                <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;">Custom Title</label>
+                <input id="teamTitle" placeholder="e.g. Lead Developer, Creative Head" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.87rem;outline:none;box-sizing:border-box;" />
+              </div>
+              <div>
+                <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;">Key Skills</label>
+                <input id="teamSkills" placeholder="e.g. Plugins Â· Java Â· Hosting" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.87rem;outline:none;box-sizing:border-box;" />
+              </div>
+            </div>
+            <div style="display:flex; gap:10px; align-items:center;">
+              <button class="btn btn-primary btn-sm" onclick="addTeamMember()">âž• Add / Update Member</button>
+              <button class="btn btn-sm btn-outline" onclick="loadTeamManager()">â†» Refresh List</button>
+            </div>
+            <div id="teamStatus" style="font-size:0.83rem; display:none; padding-top:4px;"></div>
+          </div>
+          <!-- Team List / Grid -->
+          <div style="padding:16px;">
+            <div style="font-weight:700; font-size:0.88rem; margin-bottom:12px; color:var(--text);">Current Team Members</div>
+            <div id="teamManagerGrid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:16px;">
+              <div style="grid-column: 1/-1; text-align:center; padding:20px; color:var(--muted);">Loading team membersâ€¦</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- â”€â”€ COMMUNITY HALL PANEL â”€â”€ -->
+      <div id="panel-hall" class="staff-panel">
+        <div class="staff-section-title">ðŸ† Community Hall Manager <span>Manage entries in the Hall of Shame and Appreciation</span></div>
+        <div class="glass-box">
+          <!-- Add Form -->
+          <div style="padding:16px; border-bottom:1px solid var(--line); display:flex; flex-direction:column; gap:12px;">
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px;">
+              <div>
+                <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;">Discord User ID *</label>
+                <input id="hallDiscordId" placeholder="e.g. 155149108183695360" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.87rem;outline:none;box-sizing:border-box;" />
+              </div>
+              <div>
+                <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;">Type *</label>
+                <select id="hallType" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.87rem;outline:none;box-sizing:border-box;">
+                  <option value="appreciation">ðŸ’š Appreciation</option>
+                  <option value="shame">ðŸ’€ Shame</option>
+                </select>
+              </div>
+              <div style="grid-column: span 2;">
+                <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;">Reason / Contribution *</label>
+                <input id="hallReason" placeholder="Describe what they did..." style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.87rem;outline:none;box-sizing:border-box;" />
+              </div>
+            </div>
+            <div style="display:flex; gap:10px; align-items:center;">
+              <button class="btn btn-primary btn-sm" onclick="addHallEntry()">âž• Add Entry</button>
+              <button class="btn btn-sm btn-outline" onclick="loadHallManager()">â†» Refresh List</button>
+            </div>
+            <div id="hallStatus" style="font-size:0.83rem; display:none; padding-top:4px;"></div>
+          </div>
+          <!-- Entries Table -->
+          <div style="padding:16px;">
+            <div style="font-weight:700; font-size:0.88rem; margin-bottom:12px; color:var(--text);">Current Hall Entries</div>
+            <div style="overflow-x:auto;">
+              <table style="width:100%; border-collapse:collapse; font-size:0.87rem;">
+                <thead>
+                  <tr style="border-bottom:1px solid var(--line); text-align:left; color:var(--muted);">
+                    <th style="padding:8px 12px; width:48px;">Avatar</th>
+                    <th style="padding:8px 12px;">Discord User</th>
+                    <th style="padding:8px 12px;">Type</th>
+                    <th style="padding:8px 12px;">Reason</th>
+                    <th style="padding:8px 12px;">Added By</th>
+                    <th style="padding:8px 12px; text-align:right; width:80px;">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="hallManagerTableBody">
+                  <tr>
+                    <td colspan="6" style="text-align:center; padding:20px; color:var(--muted);">Loading hall entriesâ€¦</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  Â© 2026 BANDHILKI SMP &bull; Staff Portal &bull;
+  <a href="https://discord.gg/KSAm2yd9gC" target="_blank" style="color:var(--green-1);text-decoration:none;">Discord</a>
+</footer>
+
+<script>
+let allTickets = [];
+let currentFilter = 'all';
+let currentStaff = null;
+let staffList = [];
+let staffById = new Map();
+
+const STATUS_LABELS = {
+  'open':'ðŸŸ¢ Open','inprogress':'ðŸŸ¡ In Progress','waiting':'ðŸ”µ Waiting For Player','closed':'ðŸ”´ Closed'
+};
+const CAT_EMOJIS = {
+  'Support':'ðŸ› ï¸','Report Player':'ðŸš¨','Bug Report':'ðŸ›','Ban Appeal':'âš–ï¸','Staff Complaint':'ðŸ“¢'
+};
+
+// â”€â”€ AUTH â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+async function init() {
+  if (window.location.protocol === 'file:') {
+    showDenied('âš ï¸ You are opening this page directly from your file system. Please run the server ("npm start") and visit http://localhost:3000/staff.html in your browser.');
+    return;
+  }
+  try {
+    // Helpful debugging if dropdown is empty
+    window.__staffDebug = {};
+
+    const res = await fetch('/api/staff/me');
+    if (!res.ok) {
+      if (res.status === 401) {
+        window.location.href = '/login.html?error=' + encodeURIComponent('You need to login with Discord to access the staff dashboard.');
+      } else {
+        let errMsg = 'Access denied.';
+        try {
+          const d = await res.json();
+          errMsg = d.error || errMsg;
+        } catch (_) {}
+        window.location.href = '/login.html?error=' + encodeURIComponent(errMsg);
+      }
+      return;
+    }
+    let data;
+    try {
+      data = await res.json();
+    } catch (_) {
+      showDenied('Failed to parse staff authorization response.');
+      return;
+    }
+    if (!data.isStaff) {
+      window.location.href = '/login.html?error=' + encodeURIComponent('Access denied. You do not have the required staff role on Discord to access this dashboard.');
+      return;
+    }
+    currentStaff = data.user;
+    document.getElementById('accessDenied').classList.add('hidden');
+    document.getElementById('staffDash').classList.remove('hidden');
+    document.getElementById('navLogin').classList.add('hidden');
+      const navProfile = document.getElementById('navProfile');
+      if (navProfile) navProfile.classList.remove('hidden');
+    document.getElementById('navLogout').classList.remove('hidden');
+    document.getElementById('staffName').textContent = data.user.username;
+    document.getElementById('staffAvatar').src = data.user.avatar || '';
+    // Set overview as active panel
+    document.getElementById('panel-overview').classList.add('active');
+    document.getElementById('nav-overview').classList.add('active');
+    await loadStaffList();
+    loadAll();
+  } catch (e) {
+    showDenied('Failed to verify staff status. Make sure the backend server is running and you are connected to the network.');
+  }
+}
+
+function showDenied(msg) {
+  document.getElementById('accessMsg').textContent = msg;
+  document.getElementById('accessDenied').classList.remove('hidden');
+  document.getElementById('staffDash').classList.add('hidden');
+  // Nav
+  fetch('/api/me').then(r=>r.json()).then(d=>{
+    if(d.loggedIn){
+      document.getElementById('navLogin').classList.add('hidden');
+      document.getElementById('navLogout').classList.remove('hidden');
+    }
+  }).catch(()=>{});
+}
+
+async function doLogout() {
+  await fetch('/api/logout', { method: 'POST' });
+  window.location.href = '/index.html';
+}
+
+// â”€â”€ PANEL SWITCHING â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function showPanel(p) {
+  document.querySelectorAll('.staff-panel').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.staff-nav-item').forEach(el => el.classList.remove('active'));
+  document.getElementById('panel-' + p).classList.add('active');
+  const navEl = document.getElementById('nav-' + p);
+  if (navEl) navEl.classList.add('active');
+
+  if (p === 'tickets')   loadAllTickets();
+  if (p === 'todo')      loadTodos();
+  if (p === 'activity')  loadActivity();
+  if (p === 'overview')  loadOverview();
+  if (p === 'events')    loadEvents();
+  if (p === 'workupdate') loadWorkUpdates();
+  if (p === 'gallery')   loadGalleryManager();
+  if (p === 'team')      loadTeamManager();
+  if (p === 'hall')      loadHallManager();
+  if (p === 'embeds')    updateEBPreview();
+  if (p === 'whitelist') loadWhitelistApps();
+  if (p === 'contracts') loadContractsList();
+}
+
+async function loadStaffList() {
+  try {
+    const res = await fetch('/api/staff/list');
+    if (!res.ok) return;
+    const data = await res.json();
+    staffList = Array.isArray(data.staff) ? data.staff : [];
+    staffById = new Map(staffList.map(s => [String(s.id), s]));
+
+    window.__staffDebug.lastList = data;
+
+    // Populate every staff dropdown that exists in DOM.
+    document.querySelectorAll('select[id^="assignStaff_"]').forEach(sel => {
+      const current = sel.value;
+      sel.innerHTML = '<option value="">Select staffâ€¦</option>' + staffList.map(s => {
+        const id = String(s.id);
+        // Backend already returns displayName, but keep robust fallback anyway.
+        const name = (s.displayName ?? s.nickname ?? s.username ?? id);
+        return `<option value="${id}">${name}</option>`;
+      }).join('');
+      sel.value = current;
+    });
+  } catch (e) {
+    console.error('Failed to load staff list', e);
+  }
+}
+
+function onAssignStaffChange(ticketId, staffId) {
+  const s = staffById.get(String(staffId));
+  document.getElementById('assignId_' + ticketId).value = staffId || '';
+  document.getElementById('assignName_' + ticketId).value = s ? (s.displayName || s.username || '') : '';
+}
+
+
+// â”€â”€ LOAD ALL DATA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+async function loadAll() {
+  await Promise.all([loadOverview(), loadAllTickets(), loadTodos(), loadActivity(), loadWorkUpdates(), loadWhitelistApps()]);
+}
+
+// â”€â”€ OVERVIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+async function loadOverview() {
+  try {
+    const [statsRes, actRes] = await Promise.all([
+      fetch('/api/tickets/stats'), fetch('/api/staff/activity')
+    ]);
+    const stats = await statsRes.json();
+    const acts  = await actRes.json();
+    document.getElementById('statTotal').textContent   = stats.total;
+    document.getElementById('statOpen').textContent    = stats.open;
+    document.getElementById('statIP').textContent      = stats.inprogress;
+    document.getElementById('statWaiting').textContent = stats.waiting;
+    document.getElementById('statClosed').textContent  = stats.closed;
+    document.getElementById('openBadge').textContent   = stats.open;
+    renderActivity(acts.slice(0, 5), 'recentActivity');
+  } catch (e) { console.error(e); }
+}
+
+// â”€â”€ ALL TICKETS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+async function loadAllTickets() {
+  try {
+    const res = await fetch('/api/tickets/all');
+    if (!res.ok) return;
+    allTickets = await res.json();
+    renderStaffTickets();
+    await loadStaffList();
+  } catch (e) { console.error(e); }
+}
+
+function filterTickets(filter, btn) {
+  currentFilter = filter;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderStaffTickets();
+}
+
+function renderStaffTickets() {
+  const list = document.getElementById('staffTicketsList');
+
+  const filtered = currentFilter === 'all'
+    ? allTickets
+    : allTickets.filter(t => t.status === currentFilter);
+
+  document.getElementById('ticketCountLabel').textContent =
+    `${filtered.length} ticket${filtered.length !== 1 ? 's' : ''}`;
+
+  if (!filtered.length) {
+    list.innerHTML =
+      '<div style="text-align:center;padding:40px;color:var(--muted);">No tickets found.</div>';
+    return;
+  }
+
+  list.innerHTML = filtered.map(t => staffTicketHTML(t)).join('');
+
+  // Populate dropdowns AFTER ticket cards are rendered
+  document.querySelectorAll('select[id^="assignStaff_"]').forEach(sel => {
+    const current = sel.value;
+
+    sel.innerHTML =
+      '<option value="">Select staff member...</option>' +
+      staffList.map(staff => {
+        const id = String(staff.id);
+        const name =
+          staff.displayName ||
+          staff.nickname ||
+          staff.username ||
+          id;
+
+        return `<option value="${id}">${name}</option>`;
+      }).join('');
+
+    sel.value = current;
+  });
+}
+
+function staffTicketHTML(t) {
+  const catEmoji = CAT_EMOJIS[t.category] || 'ðŸŽ«';
+  const statusLabel = STATUS_LABELS[t.status] || t.status;
+  const date = new Date(t.createdAt).toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
+  const claimed = t.claimedBy ? `<span style="font-size:10px;color:var(--muted);">Claimed by <strong>${t.claimedBy.username}</strong></span>` : '';
+  const screenshot = t.screenshotUrl
+    ? `<div class="ticket-screenshot"><a href="${t.screenshotUrl}" target="_blank"><img src="${t.screenshotUrl}" alt="Screenshot" onerror="this.parentElement.parentElement.remove()"></a></div>` : '';
+
+  const replies = t.replies.map(r => `
+    <div class="reply-bubble ${r.from}">
+      <div class="reply-author">${r.from==='staff'?'ðŸ‘® '+r.author:'ðŸ‘¤ '+r.author}</div>
+      <div>${r.message}</div>
+      <div class="reply-time">${timeAgo(r.ts)}</div>
+    </div>`).join('');
+
+  const statusOptions = ['open','inprogress','waiting','closed'].map(s =>
+    `<option value="${s}" ${t.status===s?'selected':''}>${STATUS_LABELS[s]}</option>`).join('');
+
+  return `
+  <div class="ticket-card" id="stc_${t.id}">
+    <div class="ticket-card-header" onclick="toggleStaffTicket('${t.id}')">
+      <div class="ticket-card-header-left">
+        <span class="ticket-id">${t.id}</span>
+        <span class="ticket-category">${catEmoji} ${t.category}</span>
+        <span class="ticket-title-text">${t.description.slice(0,60)}${t.description.length>60?'â€¦':''}</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end;">
+        <span style="font-size:10px;color:var(--muted);">ðŸ‘¤ ${t.createdBy.username}</span>
+        ${claimed}
+        <span class="ticket-status ${t.status}">${statusLabel}</span>
+        <span style="color:var(--muted);font-size:10px;">${date}</span>
+        <span style="color:var(--muted);font-size:14px;">â–¼</span>
+      </div>
+    </div>
+    <div class="ticket-body" id="stb_${t.id}">
+      <div class="ticket-desc">${t.description}</div>
+      ${screenshot}
+
+      <div class="reply-thread" id="srt_${t.id}">${replies}</div>
+
+      <!-- Staff Reply -->
+      <div class="reply-input-area-staff">
+        <textarea rows="2" id="sReply_${t.id}" placeholder="Reply to playerâ€¦"></textarea>
+        <button class="btn btn-primary btn-sm" onclick="staffReply('${t.id}')">Reply</button>
+      </div>
+
+      <!-- Actions -->
+      <div class="ticket-actions">
+        <button class="btn btn-sm btn-outline" onclick="claimTicket('${t.id}')">ðŸ“Œ Claim</button>
+        <button class="btn btn-sm btn-outline" onclick="closeTicket('${t.id}')">ðŸ”´ Close</button>
+        <button class="btn btn-sm btn-outline" onclick="reopenTicket('${t.id}')">ðŸŸ¢ Reopen</button>
+        <button class="btn btn-sm btn-outline" onclick="deleteTicket('${t.id}')" style="color:var(--red-soft);border-color:rgba(248,71,98,0.35);">âœ• Delete</button>
+        <select onchange="changeStatus('${t.id}', this.value)" style="padding:5px 10px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:11px;cursor:pointer;">
+          ${statusOptions}
+        </select>
+        <div class="assign-form">
+          <select id="assignStaff_${t.id}" onchange="onAssignStaffChange('${t.id}', this.value)" style="min-width:210px;">
+            <option value="">Select staffâ€¦</option>
+          </select>
+          <input id="assignId_${t.id}" type="hidden">
+          <input id="assignName_${t.id}" type="hidden">
+          <button class="btn btn-sm btn-outline" onclick="assignTicket('${t.id}')">â†— Assign</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function toggleStaffTicket(id) {
+  document.getElementById('stb_' + id).classList.toggle('open');
+}
+
+// â”€â”€ TICKET ACTIONS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+async function apiPost(url, body) {
+  const res = await fetch(url, { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(body) });
+  const txt = await res.text();
+  let d;
+  try { d = JSON.parse(txt); } catch (_) { d = null; }
+  if (!res.ok) throw new Error(d?.error || txt || 'Failed');
+  return d || {};
+}
+
+async function apiGetJson(url) {
+  const res = await fetch(url);
+  const txt = await res.text();
+  let d;
+  try { d = JSON.parse(txt); } catch (_) { d = null; }
+  if (!res.ok) {
+    const msg = d?.error || (txt && txt.includes('<!DOCTYPE') ? 'Server returned HTML (likely redirected: login/session expired).' : 'Failed');
+
+    throw new Error(msg);
+  }
+  return d;
+}
+
+async function claimTicket(id) {
+  try { await apiPost(`/api/tickets/${id}/claim`); await loadAllTickets(); await loadOverview(); }
+  catch(e) { alert('Error: ' + e.message); }
+}
+
+async function closeTicket(id) {
+  try { await apiPost(`/api/tickets/${id}/close`); await loadAllTickets(); await loadOverview(); }
+  catch(e) { alert('Error: ' + e.message); }
+}
+
+async function reopenTicket(id) {
+  try { await apiPost(`/api/tickets/${id}/reopen`); await loadAllTickets(); await loadOverview(); }
+  catch(e) { alert('Error: ' + e.message); }
+}
+
+async function deleteTicket(id) {
+  if (!confirm('Are you sure you want to delete this ticket? This cannot be undone.')) return;
+  try {
+    const res = await fetch(`/api/tickets/${id}`, { method: 'DELETE' });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error || 'Failed');
+    await loadAllTickets();
+    await loadOverview();
+  } catch (e) {
+    alert('Error: ' + e.message);
+  }
+}
+
+async function changeStatus(id, status) {
+  try { await apiPost(`/api/tickets/${id}/status`, { status }); await loadAllTickets(); await loadOverview(); }
+  catch(e) { alert('Error: ' + e.message); }
+}
+
+async function assignTicket(id) {
+  const assignToId = document.getElementById('assignId_' + id).value.trim();
+  const assignToName = document.getElementById('assignName_' + id).value.trim();
+
+  if (!assignToId || !assignToName) {
+    return alert('Select a staff member from the dropdown first.');
+  }
+
+  try {
+    await apiPost(`/api/tickets/${id}/assign`, { assignToId, assignToName });
+    await loadAllTickets();
+  } catch (e) {
+    alert('Error: ' + e.message);
+  }
+}
+
+async function staffReply(id) {
+  const msg = document.getElementById('sReply_' + id).value.trim();
+  if (!msg) return;
+  try {
+    await apiPost(`/api/tickets/${id}/reply`, { message: msg });
+    document.getElementById('sReply_' + id).value = '';
+    await loadAllTickets(); await loadOverview();
+    setTimeout(() => {
+      const b = document.getElementById('stb_' + id);
+      if (b) b.classList.add('open');
+    }, 100);
+  } catch(e) { alert('Error: ' + e.message); }
+}
+
+// â”€â”€ TODO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+async function loadTodos() {
+  try {
+    const res = await fetch('/api/staff/todos');
+    const todos = await res.json();
+    renderTodos(todos);
+  } catch (e) { console.error(e); }
+}
+
+function renderTodos(todos) {
+  const el = document.getElementById('todoList');
+  if (!todos.length) { el.innerHTML = '<div style="padding:20px;text-align:center;color:var(--muted);">No tasks yet. Add one above!</div>'; return; }
+  el.innerHTML = todos.map(t => `
+    <div class="todo-item ${t.done?'done':''}" id="todo_${t.id}">
+      <div class="todo-checkbox ${t.done?'checked':''}" onclick="toggleTodo(${t.id}, ${!t.done})">
+        ${t.done ? 'âœ“' : ''}
+      </div>
+      <span class="todo-text">${t.text}</span>
+      <span class="todo-priority ${t.priority}">${t.priority}</span>
+      <span style="font-size:9px;color:var(--muted);">by ${t.createdBy}</span>
+      <button onclick="deleteTodo(${t.id})" style="background:transparent;border:none;color:var(--muted);cursor:pointer;font-size:16px;padding:0 4px;" title="Delete">âœ•</button>
+    </div>`).join('');
+}
+
+async function addTodo() {
+  const text     = document.getElementById('todoText').value.trim();
+  const priority = document.getElementById('todoPriority').value;
+  if (!text) return;
+  try {
+    const res = await fetch('/api/staff/todos', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ text, priority }) });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error);
+    document.getElementById('todoText').value = '';
+    loadTodos();
+  } catch(e) { alert('Error: ' + e.message); }
+}
+
+async function toggleTodo(id, done) {
+  try {
+    await fetch(`/api/staff/todos/${id}`, { method:'PATCH', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ done }) });
+    loadTodos();
+  } catch(e) { alert('Error: ' + e.message); }
+}
+
+async function deleteTodo(id) {
+  try {
+    await fetch(`/api/staff/todos/${id}`, { method:'DELETE' });
+    loadTodos();
+  } catch(e) { alert('Error: ' + e.message); }
+}
+
+// â”€â”€ EVENTS (Manager UI) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function msToCountdown(ms) {
+  if (!ms || ms <= 0) return 'Live / started';
+  const sec = Math.floor(ms / 1000);
+  const d = Math.floor(sec / 86400);
+  const h = Math.floor((sec % 86400) / 3600);
+  const m = Math.floor((sec % 3600) / 60);
+  if (d) return `${d}d ${h}h ${m}m`;
+  if (h) return `${h}h ${m}m`;
+  return `${m}m`;
+}
+
+
+function renderEventsList(events) {
+  const el = document.getElementById('eventsList');
+  const countEl = document.getElementById('eventsCount');
+  if (!el) return;
+
+  const arr = Array.isArray(events) ? events : [];
+  if (countEl) countEl.textContent = arr.length;
+
+  if (!arr.length) {
+    el.innerHTML = '<div style="text-align:center;padding:20px;color:var(--muted);">No events created yet.</div>';
+    return;
+  }
+
+  el.innerHTML = arr.map(ev => {
+    const startsAt = ev.startsAt ? new Date(ev.startsAt) : null;
+    const now = Date.now();
+    const timeLeft = startsAt ? msToCountdown(startsAt.getTime() - now) : 'â€”';
+
+    const statusText = ev.completed ? 'Completed' : (ev.pinned ? 'ðŸ“Œ Pinned' : 'Upcoming');
+    const statusStyle = ev.completed
+      ? 'background:rgba(156,163,175,0.18);border:1px solid rgba(156,163,175,0.35);color:var(--muted);'
+      : ev.pinned
+        ? 'background:rgba(248,71,98,0.16);border:1px solid rgba(248,71,98,0.35);color:var(--text);'
+        : 'background:rgba(96,165,250,0.12);border:1px solid rgba(96,165,250,0.28);color:#60a5fa;';
+
+    return `
+      <div class="glass" style="padding:14px 16px;">
+        <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:flex-start;">
+          <div style="min-width:220px;flex:1;">
+            <div style="font-weight:800;">${ev.title}</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:4px;">
+              ${startsAt ? `ðŸ“… ${startsAt.toLocaleString('en-IN')}` : 'ðŸ“… To be announced'}
+              ${ev.completed ? '' : ` â€¢ â³ ${timeLeft}`}
+              <span style="display:inline-block;margin-left:10px; padding:2px 10px; border-radius:999px; font-size:0.78rem; ${statusStyle}">${statusText}</span>
+            </div>
+            <div style="margin-top:8px;color:var(--text-muted);font-size:13px;">${(ev.description || '').slice(0,180)}${(ev.description||'').length>180?'â€¦':''}</div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:8px;min-width:240px;">
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <button class="btn btn-sm btn-outline" onclick="loadEventIntoForm('${ev.id}')">Edit</button>
+              <button class="btn btn-sm btn-outline" onclick="toggleComplete('${ev.id}', ${ev.completed ? 'true' : 'false'})">${ev.completed ? 'Uncomplete' : 'Complete'}</button>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <button class="btn btn-sm btn-outline" onclick="togglePin('${ev.id}', ${ev.pinned ? 'true' : 'false'})">${ev.pinned ? 'Unpin' : 'Pin'}</button>
+              <button class="btn btn-sm btn-outline" onclick="deleteEvent('${ev.id}')" style="color:var(--red-soft);border-color:rgba(248,71,98,0.35);">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function showEventStatus(msg, isError) {
+  const el = document.getElementById('eventStatus');
+  if (!el) return;
+  el.textContent = msg || '';
+  el.style.color = isError ? 'var(--red-soft, #f87171)' : '#4ade80';
+  el.style.display = msg ? 'block' : 'none';
+}
+function hideEventStatus() {
+  const el = document.getElementById('eventStatus');
+  if (el) el.style.display = 'none';
+}
+function setEventStatus(msg, isError = false) { showEventStatus(msg, isError); }
+
+async function loadEvents(ev) {
+  if (ev && typeof ev.preventDefault === 'function') ev.preventDefault();
+  try {
+    const res = await fetch('/api/events');
+    const data = await readJsonResponse(res);
+    if (!res.ok) throw new Error(data.error || 'Failed to load events');
+    window.__eventsCache = data.events || [];
+    renderEventsList(data.events || []);
+  } catch (e) {
+    console.error('loadEvents error:', e);
+    const el = document.getElementById('eventsList');
+    if (el) el.innerHTML = `<div style="padding:20px;text-align:center;color:var(--muted);">Could not load events: ${e.message}</div>`;
+  }
+}
+
+function loadEventIntoForm(id) {
+  const ev = (window.__eventsCache || []).find(x => String(x.id) === String(id));
+  if (!ev) return;
+  document.getElementById('eventTitle').value = ev.title || '';
+  document.getElementById('eventType').value = ev.type || '';
+
+  // Convert stored UTC millis back into datetime-local input value.
+  // Input expects "YYYY-MM-DDTHH:mm" in *local time*, so we format using local getters.
+  const toLocalInput = (ms) => {
+    if (!ms) return '';
+    const d = new Date(ms);
+    const pad = (n) => String(n).padStart(2, '0');
+    const yyyy = d.getFullYear();
+    const MM = pad(d.getMonth() + 1);
+    const dd = pad(d.getDate());
+    const hh = pad(d.getHours());
+    const mm = pad(d.getMinutes());
+    return `${yyyy}-${MM}-${dd}T${hh}:${mm}`;
+  };
+
+  document.getElementById('eventStartsAt').value = ev.startsAt ? toLocalInput(ev.startsAt) : '';
+  document.getElementById('eventEndsAt').value = ev.endsAt ? toLocalInput(ev.endsAt) : '';
+
+  document.getElementById('eventDescription').value = ev.description || '';
+  document.getElementById('eventAnnouncementText').value = ev.discordAnnouncementText || '';
+  document.getElementById('eventTitle').focus();
+  window.__editingEventId = ev.id;
+  const btn = document.getElementById('eventPrimaryBtn');
+  if (btn) btn.textContent = 'Update Event';
+}
+
+
+async function createOrUpdateEvent(body) {
+  const editingId = window.__editingEventId || null;
+  try {
+    let res;
+    if (editingId) {
+      res = await fetch(`/api/events/${editingId}`, { method:'PATCH', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+    } else {
+      res = await fetch('/api/events', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+    }
+    const d = await readJsonResponse(res);
+    if (!res.ok) throw new Error(d.error || (editingId ? 'Failed to edit event' : 'Failed to create event'));
+  } catch (e) {
+    throw e;
+  }
+
+  window.__editingEventId = null;
+  const btn = document.getElementById('eventPrimaryBtn');
+  if (btn) btn.textContent = '+ Create Event';
+  await loadEvents();
+}
+
+async function readJsonResponse(res) {
+  const text = await res.text();
+  try {
+    return text ? JSON.parse(text) : {};
+  } catch (_) {
+    return { error: text && text.includes('<!DOCTYPE') ? 'Login/session expired. Please login again.' : (text || 'Unexpected server response') };
+  }
+}
+
+async function handleCreateEvent() {
+  try {
+    showEventStatus('Saving eventâ€¦', false);
+    const title = (document.getElementById('eventTitle').value || '').trim();
+    const type  = (document.getElementById('eventType').value || '').trim();
+    const startsAtRaw = (document.getElementById('eventStartsAt').value || '').trim();
+    const endsAtRaw   = (document.getElementById('eventEndsAt').value || '').trim();
+    const description = (document.getElementById('eventDescription').value || '').trim();
+    const discordAnnouncementText = (document.getElementById('eventAnnouncementText').value || '').trim();
+
+    if (!title) { showEventStatus('âš ï¸ Event title is required.', true); return; }
+    if (!description) { showEventStatus('âš ï¸ Description is required.', true); return; }
+    if (!startsAtRaw) { showEventStatus('âš ï¸ Starts At date/time is required.', true); return; }
+
+    const toMs = (v) => {
+      if (!v) return null;
+      const s = String(v).trim();
+      const looksLikeDatetimeLocal = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(s);
+      const d = looksLikeDatetimeLocal ? new Date(s + ':00') : new Date(s);
+      const ms = d.getTime();
+      return Number.isNaN(ms) ? null : ms;
+    };
+
+    const startsAt = toMs(startsAtRaw);
+    if (!startsAt) { showEventStatus('âš ï¸ Invalid start date. Use the date picker.', true); return; }
+
+    const endsAt = toMs(endsAtRaw);
+    if (endsAtRaw && endsAt === null) {
+      showEventStatus('âš ï¸ Invalid end date.', true); return;
+    }
+    if (endsAt && endsAt < startsAt) {
+      showEventStatus('âš ï¸ End date must be after start date.', true); return;
+    }
+
+    await createOrUpdateEvent({
+      title,
+      type: type || undefined,
+      description,
+      startsAt,
+      endsAt: endsAt || undefined,
+      discordAnnouncementText: discordAnnouncementText || undefined
+    });
+
+    clearEventForm();
+    showEventStatus('âœ… Event saved successfully!', false);
+    setTimeout(() => hideEventStatus(), 4000);
+  } catch (e) {
+    showEventStatus('âŒ Error: ' + e.message, true);
+    console.error('Event create error:', e);
+  }
+}
+
+function clearEventForm() {
+  document.getElementById('eventTitle').value = '';
+  document.getElementById('eventType').value = '';
+  document.getElementById('eventStartsAt').value = '';
+  document.getElementById('eventEndsAt').value = '';
+  document.getElementById('eventDescription').value = '';
+  document.getElementById('eventAnnouncementText').value = '';
+  window.__editingEventId = null;
+  const btn = document.getElementById('eventPrimaryBtn');
+  if (btn) btn.textContent = '+ Create Event';
+  hideEventStatus();
+}
+
+// â”€â”€ EVENT TEMPLATES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function getNextDatetime(hoursFromNow = 24, durationHours = 2) {
+  const now = Date.now();
+  const pad = n => String(n).padStart(2, '0');
+  const fmt = (ms) => {
+    const d = new Date(ms);
+    return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+  };
+  const start = now + hoursFromNow * 3600000;
+  const end   = start + durationHours * 3600000;
+  return { start: fmt(start), end: fmt(end) };
+}
+
+const EVENT_TEMPLATES = {
+  pvp: () => {
+    const t = getNextDatetime(24, 2);
+    return {
+      title: 'Weekly PvP Tournament',
+      type: 'PvP',
+      description: 'ðŸ—¡ï¸ Join us for our weekly PvP tournament!\n\nðŸ† Prizes: Top 3 winners get exclusive rewards\nâš”ï¸ Format: 1v1 elimination brackets\nðŸ“ Location: PvP Arena â€” /warp pvp\n\nRules:\n- No hacked clients\n- No outside help\n- Report to a staff member when ready',
+      announcement: 'ðŸ—¡ï¸ @everyone **Weekly PvP Tournament** is starting soon! Head to /warp pvp to join. Top 3 winners get rewards!',
+      start: t.start, end: t.end
+    };
+  },
+  build: () => {
+    const t = getNextDatetime(48, 3);
+    return {
+      title: 'Community Build Night',
+      type: 'Build',
+      description: 'ðŸ—ï¸ Join us for a collaborative build night!\n\nðŸŽ¨ Theme: To be announced at start\nâ° Duration: 3 hours\nðŸ“ Location: Creative World â€” /warp creative\n\nAnyone can participate! Staff will judge the best builds at the end.',
+      announcement: 'ðŸ—ï¸ @everyone **Build Night** is tonight! Join us in the creative world for a themed build competition. Prizes for top 3!',
+      start: t.start, end: t.end
+    };
+  },
+  quiz: () => {
+    const t = getNextDatetime(72, 1);
+    return {
+      title: 'Minecraft Quiz Night',
+      type: 'Quiz',
+      description: 'â“ Test your Minecraft knowledge!\n\nðŸ“š Categories: Mobs, Crafting, Redstone, History, Biomes\nðŸ† Winner gets a special prize\nðŸ’¬ Hosted in: #quiz-night Discord channel\n\nBe ready at the start time. Answers in chat within 10 seconds!',
+      announcement: 'â“ @everyone **Quiz Night** starts soon! Join #quiz-night channel and test your Minecraft knowledge. Fastest correct answer wins each round!',
+      start: t.start, end: t.end
+    };
+  },
+  movie: () => {
+    const t = getNextDatetime(48, 2);
+    return {
+      title: 'Community Movie Night',
+      type: 'Social',
+      description: 'ðŸŽ¬ Community movie night on our Discord watch-together!\n\nðŸŽ¥ Movie: To be voted on in #movie-poll\nâ° Duration: ~2 hours\nðŸ’¬ Channel: Movie Night voice channel\n\nJust show up and relax with the community!',
+      announcement: 'ðŸŽ¬ @everyone **Movie Night** tonight! Join the Movie Night voice channel on Discord. Vote for the movie in #movie-poll now!',
+      start: t.start, end: t.end
+    };
+  },
+  staff: () => {
+    const t = getNextDatetime(24, 1);
+    return {
+      title: 'Staff Meeting',
+      type: 'Meeting',
+      description: 'ðŸ‘¥ Monthly staff meeting â€” all staff are required to attend.\n\nAgenda:\n1. Server performance review\n2. Pending applications\n3. Event planning\n4. Open discussion\n\nLocation: Staff Meeting voice channel on Discord.',
+      announcement: 'ðŸ‘¥ Staff meeting scheduled. All staff please be on time.',
+      start: t.start, end: t.end
+    };
+  },
+  custom: () => ({
+    title: '', type: '', description: '', announcement: '',
+    start: getNextDatetime(24, 2).start, end: getNextDatetime(24, 2).end
+  })
+};
+
+function applyTemplate(key) {
+  const tpl = EVENT_TEMPLATES[key];
+  if (!tpl) return;
+  const data = tpl();
+  document.getElementById('eventTitle').value = data.title || '';
+  document.getElementById('eventType').value = data.type || '';
+  document.getElementById('eventStartsAt').value = data.start || '';
+  document.getElementById('eventEndsAt').value = data.end || '';
+  document.getElementById('eventDescription').value = data.description || '';
+  document.getElementById('eventAnnouncementText').value = data.announcement || '';
+  window.__editingEventId = null;
+  const btn = document.getElementById('eventPrimaryBtn');
+  if (btn) btn.textContent = '+ Create Event';
+  document.getElementById('eventTitle').focus();
+  showEventStatus('Template loaded â€” edit any fields and click Create Event.', false);
+  setTimeout(() => hideEventStatus(), 3000);
+}
+
+async function toggleComplete(id, isCurrentlyCompleted) {
+  try {
+    const res = await fetch(`/api/events/${id}/${isCurrentlyCompleted ? 'uncomplete' : 'complete'}`, { method:'POST' });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error || 'Failed');
+    await loadEvents();
+  } catch (e) {
+    alert('Error: ' + e.message);
+  }
+}
+
+async function togglePin(id, isCurrentlyPinned) {
+  try {
+    const res = await fetch(`/api/events/${id}/${isCurrentlyPinned ? 'unpin' : 'pin'}`, { method:'POST' });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error || 'Failed');
+    await loadEvents();
+  } catch (e) {
+    alert('Error: ' + e.message);
+  }
+}
+
+async function deleteEvent(id) {
+  if (!confirm('Delete this event?')) return;
+  try {
+    const res = await fetch(`/api/events/${id}`, { method:'DELETE' });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error || 'Failed');
+    window.__editingEventId = null;
+    await loadEvents();
+  } catch (e) {
+    alert('Error: ' + e.message);
+  }
+}
+
+// â”€â”€ ACTIVITY â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+async function loadActivity() {
+  try {
+    const res  = await fetch('/api/staff/activity');
+    const acts = await res.json();
+    renderActivity(acts, 'activityList');
+  } catch (e) { console.error(e); }
+}
+
+function renderActivity(acts, containerId) {
+  const el = document.getElementById(containerId);
+  if (!acts.length) { el.innerHTML = '<div style="padding:20px;text-align:center;color:var(--muted);">No activity logged yet.</div>'; return; }
+  el.innerHTML = acts.map(a => `
+    <div class="activity-item">
+      <div class="activity-dot"></div>
+      <div style="flex:1;">
+        <div class="activity-text"><strong>${a.staffName}</strong> â€” ${a.action}</div>
+        <div class="activity-time">${timeAgo(a.ts)} Â· ${new Date(a.ts).toLocaleString('en-IN')}</div>
+      </div>
+    </div>`).join('');
+}
+
+// â”€â”€ WORK UPDATES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+const WU_CAT_CLASS = {
+  'General': 'wu-cat-general',
+  'Tickets': 'wu-cat-tickets',
+  'Events': 'wu-cat-events',
+  'Moderation': 'wu-cat-moderation',
+  'Development': 'wu-cat-development',
+  'Other': 'wu-cat-other'
+};
+const WU_CAT_EMOJI = {
+  'General': 'ðŸ“‹', 'Tickets': 'ðŸŽ«', 'Events': 'ðŸŽ‰',
+  'Moderation': 'âš”ï¸', 'Development': 'ðŸ’»', 'Other': 'ðŸ”§'
+};
+
+async function loadWorkUpdates() {
+  try {
+    const res = await fetch('/api/staff/work-updates');
+    const updates = await res.json();
+    renderWorkUpdates(updates);
+  } catch (e) {
+    console.error('Failed to load work updates', e);
+    const el = document.getElementById('wuFeed');
+    if (el) el.innerHTML = '<div style="padding:20px;text-align:center;color:var(--muted);">Could not load updates.</div>';
+  }
+}
+
+function renderWorkUpdates(updates) {
+  const el = document.getElementById('wuFeed');
+  if (!el) return;
+  if (!updates || !updates.length) {
+    el.innerHTML = '<div style="padding:24px;text-align:center;color:var(--muted);">No work updates yet. Post one above!</div>';
+    return;
+  }
+  el.innerHTML = updates.map(u => {
+    const catClass = WU_CAT_CLASS[u.category] || 'wu-cat-general';
+    const catEmoji = WU_CAT_EMOJI[u.category] || 'ðŸ“‹';
+    const isOwn = currentStaff && (String(u.staffId) === String(currentStaff.id));
+    const avatarHtml = u.staffAvatar
+      ? `<img class="wu-avatar" src="${u.staffAvatar}" alt="" onerror="this.style.display='none'">`
+      : `<div class="wu-avatar" style="background:var(--line);display:flex;align-items:center;justify-content:center;font-size:12px;">ðŸ‘¤</div>`;
+    return `
+      <div class="wu-card" id="wu_${u.id}">
+        <div class="wu-card-header">
+          <div class="wu-card-meta">
+            ${avatarHtml}
+            <span class="wu-author">${u.staffName}</span>
+            <span class="wu-cat-badge ${catClass}">${catEmoji} ${u.category}</span>
+            <span class="wu-time">${timeAgo(u.ts)} Â· ${new Date(u.ts).toLocaleString('en-IN')}</span>
+          </div>
+          <button onclick="deleteWorkUpdate(${u.id})" style="background:transparent;border:none;cursor:pointer;color:var(--muted);font-size:14px;padding:2px 6px;border-radius:4px;" title="Delete update">âœ•</button>
+        </div>
+        <div class="wu-summary">${u.summary}</div>
+      </div>`;
+  }).join('');
+}
+
+async function postWorkUpdate() {
+  const summary = document.getElementById('wuSummary').value.trim();
+  const category = document.getElementById('wuCategory').value;
+  const statusEl = document.getElementById('wuStatus');
+  if (!summary) {
+    if (statusEl) { statusEl.textContent = 'âš ï¸ Please write something before posting.'; statusEl.style.color = 'var(--red-soft)'; }
+    return;
+  }
+  try {
+    if (statusEl) { statusEl.textContent = 'Postingâ€¦'; statusEl.style.color = 'var(--muted)'; }
+    const res = await fetch('/api/staff/work-updates', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ summary, category })
+    });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error || 'Failed');
+    document.getElementById('wuSummary').value = '';
+    if (statusEl) { statusEl.textContent = 'âœ… Update posted!'; statusEl.style.color = '#4ade80'; setTimeout(() => { statusEl.textContent = ''; }, 3000); }
+    await loadWorkUpdates();
+  } catch (e) {
+    if (statusEl) { statusEl.textContent = 'âŒ Error: ' + e.message; statusEl.style.color = 'var(--red-soft)'; }
+  }
+}
+
+async function deleteWorkUpdate(id) {
+  if (!confirm('Delete this work update?')) return;
+  try {
+    const res = await fetch(`/api/staff/work-updates/${id}`, { method: 'DELETE' });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error || 'Failed');
+    await loadWorkUpdates();
+  } catch (e) {
+    alert('Error: ' + e.message);
+  }
+}
+
+// â”€â”€ GALLERY MANAGER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+async function loadGalleryManager() {
+  try {
+    const res = await fetch('/api/gallery');
+    if (!res.ok) throw new Error('Failed to fetch gallery images');
+    const images = await res.json();
+    renderGalleryManager(images);
+  } catch (e) {
+    console.error('Failed to load gallery manager', e);
+    const grid = document.getElementById('galleryManagerGrid');
+    if (grid) grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:20px;color:var(--red-soft);">Failed to load images.</div>';
+  }
+}
+
+function renderGalleryManager(images) {
+  const grid = document.getElementById('galleryManagerGrid');
+  if (!grid) return;
+  if (!images || !images.length) {
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:20px;color:var(--muted);">No images in gallery. Add one above!</div>';
+    return;
+  }
+  
+  grid.innerHTML = images.map(img => {
+    const desc = img.description || 'No description';
+    return `
+      <div class="manager-gallery-item" id="mg_${img.id}">
+        <img src="${escapeHTML(img.url)}" alt="${escapeHTML(desc)}" onerror="this.src='/g1.png'">
+        <button class="manager-gallery-delete" onclick="deleteGalleryImage(${img.id})">Delete</button>
+        <div class="manager-gallery-info" title="${escapeHTML(desc)}">${escapeHTML(desc)}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+async function addGalleryImage() {
+  const url = document.getElementById('galleryUrl').value.trim();
+  const description = document.getElementById('galleryDesc').value.trim();
+  
+  if (!url) {
+    showGalleryStatus('âš ï¸ Please specify an Image URL.', true);
+    return;
+  }
+  
+  try {
+    showGalleryStatus('Adding imageâ€¦', false, 'var(--muted)');
+    const res = await fetch('/api/gallery', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url, description })
+    });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error || 'Failed');
+    
+    document.getElementById('galleryUrl').value = '';
+    document.getElementById('galleryDesc').value = '';
+    showGalleryStatus('âœ… Image added successfully!', false, '#4ade80');
+    setTimeout(() => hideGalleryStatus(), 3000);
+    await loadGalleryManager();
+  } catch (e) {
+    showGalleryStatus('âŒ Error: ' + e.message, true);
+  }
+}
+
+async function deleteGalleryImage(id) {
+  if (!confirm('Are you sure you want to delete this gallery image?')) return;
+  try {
+    const res = await fetch(`/api/gallery/${id}`, { method: 'DELETE' });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error || 'Failed');
+    await loadGalleryManager();
+  } catch (e) {
+    alert('Error: ' + e.message);
+  }
+}
+
+function showGalleryStatus(msg, isError, customColor = null) {
+  const statusEl = document.getElementById('galleryStatus');
+  if (!statusEl) return;
+  statusEl.style.display = 'block';
+  statusEl.textContent = msg;
+  if (customColor) {
+    statusEl.style.color = customColor;
+  } else {
+    statusEl.style.color = isError ? 'var(--red-soft)' : 'var(--text)';
+  }
+}
+
+function hideGalleryStatus() {
+  const statusEl = document.getElementById('galleryStatus');
+  if (statusEl) statusEl.style.display = 'none';
+}
+
+// â”€â”€ TEAM MANAGER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+async function loadTeamManager() {
+  try {
+    const res = await fetch('/api/team');
+    if (!res.ok) throw new Error('Failed to fetch team members');
+    const team = await res.json();
+    renderTeamManager(team);
+  } catch (e) {
+    console.error('Failed to load team manager', e);
+    const grid = document.getElementById('teamManagerGrid');
+    if (grid) grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:20px;color:var(--red-soft);">Failed to load team members.</div>';
+  }
+}
+
+function renderTeamManager(team) {
+  const grid = document.getElementById('teamManagerGrid');
+  if (!grid) return;
+  if (!team || !team.length) {
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:20px;color:var(--muted);">No team members found.</div>';
+    return;
+  }
+  
+  grid.innerHTML = team.map(member => {
+    const avatarHtml = member.avatar 
+      ? `<img src="${member.avatar}" style="width: 48px; height: 48px; border-radius: 8px; object-fit: cover; flex-shrink: 0;" alt="${member.name}">`
+      : `<div class="dev-avatar" style="width: 48px; height: 48px; margin: 0; font-size: 1.1rem; border-radius: 8px; flex-shrink: 0; display: grid; place-items: center;">${member.initials || 'US'}</div>`;
+    
+    return `
+      <div class="glass manager-team-card" draggable="true" data-id="${member.discordId}" style="padding: 12px; display: flex; align-items: center; gap: 12px; position: relative; border-radius: var(--radius-sm);">
+        <div class="drag-handle" title="Drag to reorder">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;"><path d="M8.5 6a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0 6a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0 6a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm10-12a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0 6a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0 6a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/></svg>
+        </div>
+        ${avatarHtml}
+        <div style="flex: 1; min-width: 0;">
+          <div style="font-weight: 700; font-size: 0.9rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text);">${escapeHTML(member.name)}</div>
+          <div style="margin-top: 4px; margin-bottom: 4px; display: flex;">
+            <span class="badge ${getBadgeClass(member.role)}">${getRoleIcon(member.role)}${escapeHTML(member.role)}</span>
+          </div>
+          <div style="font-size: 0.75rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${escapeHTML(member.title || 'No Title')}</div>
+        </div>
+        <button class="btn btn-sm btn-outline" onclick="deleteTeamMember('${member.discordId}')" style="padding: 4px 8px; font-size: 0.72rem; color: var(--red-soft); border-color: rgba(248,71,98,0.3); flex-shrink: 0;">Delete</button>
+      </div>
+    `;
+  }).join('');
+
+  // Attach Drag and Drop listeners
+  const cards = grid.querySelectorAll('.manager-team-card');
+  cards.forEach(card => {
+    card.addEventListener('dragstart', handleDragStart);
+    card.addEventListener('dragover', handleDragOver);
+    card.addEventListener('dragenter', handleDragEnter);
+    card.addEventListener('dragend', handleDragEnd);
+  });
+}
+
+function getBadgeClass(role) {
+  const r = role.toLowerCase();
+  if (r.includes('co owner') || r.includes('co-owner')) return 'badge-co-owner';
+  if (r.includes('owner')) return 'badge-owner';
+  if (r.includes('admin')) return 'badge-admin';
+  if (r.includes('lead coordinator') || r.includes('coordinator')) return 'badge-coordinator';
+  if (r.includes('management') || r.includes('manager')) return 'badge-management';
+  if (r.includes('moderator') || r.includes('moderation')) return 'badge-moderator';
+  if (r.includes('support') || r.includes('helper')) return 'badge-support';
+  if (r.includes('pr team') || r.includes('pr-team') || r.includes('pr')) return 'badge-pr';
+  if (r.includes('media') || r.includes('graphics') || r.includes('editor')) return 'badge-media';
+  if (r.includes('builder') || r.includes('creative') || r.includes('event')) return 'badge-builder';
+  return 'badge-default';
+}
+
+function getRoleIcon(role) {
+  const r = role.toLowerCase();
+  if (r.includes('co owner') || r.includes('co-owner')) {
+    return `<svg style="width:11px;height:11px;margin-right:5px;fill:currentColor;display:inline-block;vertical-align:middle;" viewBox="0 0 24 24"><path d="M12 2l4 5 5-1-3 9H6L3 6l5 1z"/><circle cx="12" cy="19" r="2"/></svg>`;
+  }
+  if (r.includes('owner')) {
+    return `<svg style="width:11px;height:11px;margin-right:5px;fill:currentColor;display:inline-block;vertical-align:middle;" viewBox="0 0 24 24"><path d="M12 2l4 5 5-1-3 9H6L3 6l5 1z"/><circle cx="12" cy="19" r="2"/></svg>`;
+  }
+  if (r.includes('admin')) {
+    return `<svg style="width:11px;height:11px;margin-right:5px;fill:currentColor;display:inline-block;vertical-align:middle;" viewBox="0 0 24 24"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm0 18.91C8.47 19.8 6 15.86 6 11.09V6.3l6-2.25 6 2.25v4.79c0 4.77-2.47 8.71-6 9.82z"/></svg>`;
+  }
+  if (r.includes('lead coordinator') || r.includes('coordinator')) {
+    return `<svg style="width:11px;height:11px;margin-right:5px;fill:currentColor;display:inline-block;vertical-align:middle;" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
+  }
+  if (r.includes('management') || r.includes('manager')) {
+    return `<svg style="width:11px;height:11px;margin-right:5px;fill:currentColor;display:inline-block;vertical-align:middle;" viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7-1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>`;
+  }
+  if (r.includes('moderator') || r.includes('moderation')) {
+    return `<svg style="width:11px;height:11px;margin-right:5px;fill:currentColor;display:inline-block;vertical-align:middle;" viewBox="0 0 24 24"><path d="M5.41 21L2 17.59l5-5 3.5 3.5-5.09 5.09zM19.14 8.78l-4.24-4.24 1.41-1.41 4.24 4.24-1.41 1.41zM10.66 6.66l4.24 4.24-5.66 5.66-4.24-4.24 5.66-5.66z"/></svg>`;
+  }
+  if (r.includes('support') || r.includes('helper')) {
+    return `<svg style="width:11px;height:11px;margin-right:5px;fill:currentColor;display:inline-block;vertical-align:middle;" viewBox="0 0 24 24"><path d="M18 8h-1.48C17.22 9.4 18 11.1 18 13v7h-5.48c-1.9 0-3.6-.78-4.82-2.06L6 19.38V22h14c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-4-6H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h2v3l3-3h5c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>`;
+  }
+  if (r.includes('pr team') || r.includes('pr-team') || r.includes('pr')) {
+    return `<svg style="width:11px;height:11px;margin-right:5px;fill:currentColor;display:inline-block;vertical-align:middle;" viewBox="0 0 24 24"><path d="M12 8H4v8h8l7 5V3l-7 5z"/></svg>`;
+  }
+  if (r.includes('media') || r.includes('graphics') || r.includes('editor')) {
+    return `<svg style="width:11px;height:11px;margin-right:5px;fill:currentColor;display:inline-block;vertical-align:middle;" viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1.45.9-1 1.45l4 4v-3.5c0-.55.45-1 1-1h8c.55 0 1 .45 1 1v3.5l4-4v7l-4-4zM21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14z"/></svg>`;
+  }
+  if (r.includes('builder') || r.includes('creative') || r.includes('event')) {
+    return `<svg style="width:11px;height:11px;margin-right:5px;fill:currentColor;display:inline-block;vertical-align:middle;" viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.3C.5 6.7.9 9.8 2.9 11.8c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>`;
+  }
+  return `<svg style="width:11px;height:11px;margin-right:5px;fill:currentColor;display:inline-block;vertical-align:middle;" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>`;
+}
+
+async function addTeamMember() {
+  const discordId = document.getElementById('teamDiscordId').value.trim();
+  const role = document.getElementById('teamRole').value.trim();
+  const title = document.getElementById('teamTitle').value.trim();
+  const skills = document.getElementById('teamSkills').value.trim();
+  
+  if (!discordId || discordId.length < 15) {
+    showTeamStatus('âš ï¸ Please specify a valid Discord User ID.', true);
+    return;
+  }
+  if (!role) {
+    showTeamStatus('âš ï¸ Please specify a Badge Role.', true);
+    return;
+  }
+  
+  try {
+    showTeamStatus('Saving team memberâ€¦', false, 'var(--muted)');
+    const res = await fetch('/api/team', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ discordId, role, title, skills })
+    });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error || 'Failed');
+    
+    document.getElementById('teamDiscordId').value = '';
+    document.getElementById('teamRole').value = '';
+    document.getElementById('teamTitle').value = '';
+    document.getElementById('teamSkills').value = '';
+    showTeamStatus('âœ… Team member updated successfully!', false, '#4ade80');
+    setTimeout(() => hideTeamStatus(), 3000);
+    await loadTeamManager();
+  } catch (e) {
+    showTeamStatus('âŒ Error: ' + e.message, true);
+  }
+}
+
+async function deleteTeamMember(discordId) {
+  if (!confirm('Are you sure you want to delete this team member?')) return;
+  try {
+    const res = await fetch(`/api/team/${discordId}`, { method: 'DELETE' });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error || 'Failed');
+    await loadTeamManager();
+  } catch (e) {
+    alert('Error: ' + e.message);
+  }
+}
+
+function showTeamStatus(msg, isError, customColor = null) {
+  const statusEl = document.getElementById('teamStatus');
+  if (!statusEl) return;
+  statusEl.style.display = 'block';
+  statusEl.textContent = msg;
+  if (customColor) {
+    statusEl.style.color = customColor;
+  } else {
+    statusEl.style.color = isError ? 'var(--red-soft)' : 'var(--text)';
+  }
+}
+
+function hideTeamStatus() {
+  const statusEl = document.getElementById('teamStatus');
+  if (statusEl) statusEl.style.display = 'none';
+}
+
+// â”€â”€ COMMUNITY HALL MANAGER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+async function loadHallManager() {
+  const tbody = document.getElementById('hallManagerTableBody');
+  if (!tbody) return;
+  tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:20px; color:var(--muted);">Loading entriesâ€¦</td></tr>';
+  
+  try {
+    const res = await fetch('/api/hall-entries');
+    const data = await res.json();
+    const entries = data.entries || [];
+    
+    if (entries.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:20px; color:var(--muted);">No entries in the Hall of Shame & Appreciation.</td></tr>';
+      return;
+    }
+    
+    let html = '';
+    entries.forEach(e => {
+      const typeBadge = e.type === 'shame' 
+        ? '<span style="background:rgba(239,68,68,0.2); color:#ef4444; padding:2px 8px; border-radius:4px; font-weight:bold; font-size:0.75rem;">ðŸ’€ Shame</span>'
+        : '<span style="background:rgba(16,185,129,0.2); color:#10b981; padding:2px 8px; border-radius:4px; font-weight:bold; font-size:0.75rem;">ðŸ’š Appreciation</span>';
+      
+      const dateStr = new Date(e.addedAt).toLocaleDateString(undefined, {
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+
+      const defaultAvatar = `https://cdn.discordapp.com/embed/avatars/${parseInt(e.discordId || '0') % 5}.png`;
+      const avatarUrl = e.minecraftIGN 
+        ? `https://mc-heads.net/avatar/${e.minecraftIGN}/32`
+        : (e.discordAvatar || defaultAvatar);
+
+      const displayName = e.playerName || 'Unknown User';
+      const displayIgnSub = e.minecraftIGN ? `<span style="font-size:0.72rem; color:var(--muted); font-weight:normal; display:block;">IGN: ${escapeHTML(e.minecraftIGN)}</span>` : '';
+
+      html += `
+        <tr style="border-bottom:1px solid var(--line); vertical-align: middle;">
+          <td style="padding:8px 12px; width:48px;">
+            <img src="${avatarUrl}" alt="${escapeHTML(displayName)} head" style="width:32px; height:32px; border-radius:4px; image-rendering:pixelated; background:rgba(255,255,255,0.05); display:block;" onerror="this.src='${defaultAvatar}'" />
+          </td>
+          <td style="padding:8px 12px; font-weight:700; color:var(--text);">${escapeHTML(displayName)} <span style="font-size:0.75rem; color:var(--muted); font-weight:normal;">(@${escapeHTML(e.discordId)})</span>${displayIgnSub}</td>
+          <td style="padding:8px 12px;">${typeBadge}</td>
+          <td style="padding:8px 12px; color:var(--text);">${escapeHTML(e.reason)}</td>
+          <td style="padding:8px 12px; color:var(--muted);">${escapeHTML(e.addedBy)} <span style="font-size:0.75rem; display:block;">at ${dateStr}</span></td>
+          <td style="padding:8px 12px; text-align:right;">
+            <button class="btn btn-sm btn-outline" style="border-color:var(--red-soft); color:var(--red-soft); padding:4px 8px;" onclick="deleteHallEntry('${e.id}')">ðŸ—‘ï¸ Delete</button>
+          </td>
+        </tr>
+      `;
+    });
+    tbody.innerHTML = html;
+  } catch (e) {
+    console.error(e);
+    tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:20px; color:var(--red-soft);">Failed to load hall entries: ${escapeHTML(e.message)}</td></tr>`;
+  }
+}
+
+async function addHallEntry() {
+  const discordId = document.getElementById('hallDiscordId').value.trim();
+  const type = document.getElementById('hallType').value;
+  const reason = document.getElementById('hallReason').value.trim();
+  
+  if (!discordId || !reason) {
+    showHallStatus('âŒ Please fill in Discord User ID and Reason.', true);
+    return;
+  }
+  
+  try {
+    showHallStatus('Adding entryâ€¦', false, 'var(--muted)');
+    const res = await fetch('/api/staff/hall-entries', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type, discordId, reason })
+    });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error || 'Failed');
+    
+    document.getElementById('hallDiscordId').value = '';
+    document.getElementById('hallReason').value = '';
+    showHallStatus('âœ… Entry added successfully!', false, '#4ade80');
+    setTimeout(() => hideHallStatus(), 3000);
+    await loadHallManager();
+  } catch (e) {
+    showHallStatus('âŒ Error: ' + e.message, true);
+  }
+}
+
+async function deleteHallEntry(id) {
+  if (!confirm('Are you sure you want to delete this community hall entry?')) return;
+  try {
+    const res = await fetch(`/api/staff/hall-entries/${id}`, { method: 'DELETE' });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error || 'Failed');
+    await loadHallManager();
+  } catch (e) {
+    alert('Error deleting entry: ' + e.message);
+  }
+}
+
+function showHallStatus(msg, isError, customColor = null) {
+  const statusEl = document.getElementById('hallStatus');
+  if (!statusEl) return;
+  statusEl.style.display = 'block';
+  statusEl.textContent = msg;
+  if (customColor) {
+    statusEl.style.color = customColor;
+  } else {
+    statusEl.style.color = isError ? 'var(--red-soft)' : 'var(--text)';
+  }
+}
+
+function hideHallStatus() {
+  const statusEl = document.getElementById('hallStatus');
+  if (statusEl) statusEl.style.display = 'none';
+}
+
+// â”€â”€ DRAG AND DROP TEAM MEMBERS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+let dragSourceEl = null;
+
+function handleDragStart(e) {
+  dragSourceEl = this;
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text/plain', this.dataset.id);
+  this.classList.add('dragging');
+}
+
+function handleDragOver(e) {
+  if (e.preventDefault) {
+    e.preventDefault();
+  }
+  return false;
+}
+
+function handleDragEnter(e) {
+  if (this === dragSourceEl) return;
+  
+  const container = this.parentNode;
+  const children = Array.from(container.children);
+  const dragIdx = children.indexOf(dragSourceEl);
+  const hoverIdx = children.indexOf(this);
+  
+  if (dragIdx < hoverIdx) {
+    container.insertBefore(dragSourceEl, this.nextSibling);
+  } else {
+    container.insertBefore(dragSourceEl, this);
+  }
+}
+
+function handleDragEnd(e) {
+  this.classList.remove('dragging');
+  saveNewTeamOrder();
+}
+
+async function saveNewTeamOrder() {
+  const grid = document.getElementById('teamManagerGrid');
+  if (!grid) return;
+  
+  const cards = Array.from(grid.querySelectorAll('.manager-team-card'));
+  const ids = cards.map(card => card.dataset.id);
+  
+  try {
+    showTeamStatus('Saving positionsâ€¦', false, 'var(--muted)');
+    const res = await fetch('/api/team/reorder', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ids })
+    });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error || 'Failed to reorder');
+    
+    showTeamStatus('âœ… Position order saved!', false, '#4ade80');
+    setTimeout(() => hideTeamStatus(), 2500);
+  } catch (e) {
+    showTeamStatus('âŒ Failed to save order: ' + e.message, true);
+  }
+}
+
+function escapeHTML(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+}
+
+// â”€â”€ WHITELIST APPLICATIONS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+let allWLApps = [];
+let wlFilter = 'all';
+
+async function loadWhitelistApps() {
+  try {
+    const res = await fetch('/api/staff/whitelist-applications');
+    if (!res.ok) return;
+    const data = await res.json();
+    allWLApps = Array.isArray(data.applications) ? data.applications : [];
+    renderWhitelistApps();
+    // Update pending badge
+    const pending = allWLApps.filter(a => a.status === 'pending').length;
+    const badge = document.getElementById('wlPendingBadge');
+    if (badge) { badge.textContent = pending; badge.style.display = pending > 0 ? '' : 'none'; }
+  } catch(e) { console.error('loadWhitelistApps:', e); }
+}
+
+function filterWL(f, btn) {
+  wlFilter = f;
+  document.querySelectorAll('#panel-whitelist .filter-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderWhitelistApps();
+}
+
+function renderWhitelistApps() {
+  const list = document.getElementById('wlList');
+  if (!list) return;
+  const filtered = wlFilter === 'all' ? allWLApps : allWLApps.filter(a => a.status === wlFilter);
+  const label = document.getElementById('wlCountLabel');
+  if (label) label.textContent = `${filtered.length} application${filtered.length !== 1 ? 's' : ''}`;
+
+  if (!filtered.length) {
+    list.innerHTML = `<div style="text-align:center;padding:40px;color:var(--muted);">No applications found.</div>`;
+    return;
+  }
+
+  list.innerHTML = filtered.map(a => wlCardHTML(a)).join('');
+}
+
+function wlCardHTML(a) {
+  const avatar = a.discordAvatar
+    ? `<img class="wl-avatar" src="${escapeHTML(a.discordAvatar)}" alt="Avatar" onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'">`
+    : `<div class="wl-avatar" style="display:flex;align-items:center;justify-content:center;font-size:1rem;">ðŸ‘¤</div>`;
+
+  const badgeLabel = a.status === 'pending' ? 'â³ Pending' : a.status === 'approved' ? 'âœ… Approved' : 'âŒ Rejected';
+  const scoreHTML = a.score !== null ? `<span class="wl-score-badge">Quiz: ${a.score}/10</span>` : '';
+  const timeStr = a.submittedAt ? timeAgo(a.submittedAt) : '';
+
+  const fields = [
+    { label: 'ðŸŽ® Minecraft IGN', value: a.ign },
+    { label: 'ðŸ’¬ Discord', value: a.discordUsername },
+    { label: 'ðŸŽ‚ Age', value: a.age },
+    { label: 'ðŸŒ Country / Timezone', value: a.country },
+    { label: 'â±ï¸ Weekly Playtime', value: a.weeklyHours },
+    { label: 'â³ MC Experience', value: a.experience },
+    { label: 'ðŸŽ­ Player Type', value: a.playerType },
+    { label: 'ðŸ—ï¸ Plans on Server', value: a.plans },
+    { label: 'ðŸš« Ban History', value: a.banHistory },
+    { label: 'ðŸ’¬ Why Whitelist?', value: a.whyWhitelist },
+  ].filter(f => f.value).map(f => `
+    <div class="wl-field">
+      <div class="wl-field-label">${f.label}</div>
+      <div class="wl-field-value">${escapeHTML(String(f.value))}</div>
+    </div>`).join('');
+
+  const actionsHTML = a.status === 'pending' ? `
+    <input class="wl-reason-input" id="wlReason_${a.discordId}" placeholder="Rejection reason (optional)â€¦">
+    <button class="btn btn-sm" style="background:#4ade80;color:#000;font-weight:700;" onclick="approveWL('${a.discordId}')">âœ… Approve</button>
+    <button class="btn btn-sm btn-outline" style="color:#f87171;border-color:rgba(248,113,113,0.35);" onclick="rejectWL('${a.discordId}')">âŒ Reject</button>
+    <span id="wlStatus_${a.discordId}" style="font-size:0.8rem;color:var(--muted);"></span>` : `
+    <span class="wl-reviewed-note">Reviewed by <strong>${escapeHTML(a.reviewedBy || 'Staff')}</strong></span>`;
+
+  return `
+  <div class="wl-card status-${a.status}" id="wlCard_${a.discordId}">
+    <div class="wl-card-header" onclick="toggleWLCard('${a.discordId}')">
+      ${avatar}
+      <div class="wl-card-info">
+        <div class="wl-ign">${escapeHTML(a.ign)}</div>
+        <div class="wl-discord">@${escapeHTML(a.discordUsername)} Â· <code style="font-size:0.72rem;opacity:0.7;">${a.discordId}</code></div>
+      </div>
+      ${scoreHTML}
+      <span class="wl-badge ${a.status}">${badgeLabel}</span>
+      <span class="wl-time">${timeStr}</span>
+      <span style="color:var(--muted);font-size:14px;">â–¼</span>
+    </div>
+    <div class="wl-body" id="wlBody_${a.discordId}">
+      <div class="wl-field-grid">${fields}</div>
+      <div class="wl-actions">${actionsHTML}</div>
+    </div>
+  </div>`;
+}
+
+function toggleWLCard(id) {
+  const body = document.getElementById('wlBody_' + id);
+  if (body) body.classList.toggle('open');
+}
+
+async function approveWL(discordId) {
+  const statusEl = document.getElementById('wlStatus_' + discordId);
+  if (statusEl) statusEl.textContent = 'Approvingâ€¦';
+  try {
+    const res = await fetch(`/api/staff/whitelist/${discordId}/approve`, { method: 'POST' });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error || 'Failed');
+    // Optimistic UI update
+    const app = allWLApps.find(a => a.discordId === discordId);
+    if (app) { app.status = 'approved'; app.reviewedBy = currentStaff?.username || 'Staff'; }
+    renderWhitelistApps();
+  } catch(e) {
+    if (statusEl) statusEl.textContent = 'âŒ ' + e.message;
+  }
+}
+
+async function rejectWL(discordId) {
+  const reason = (document.getElementById('wlReason_' + discordId)?.value || '').trim();
+  const statusEl = document.getElementById('wlStatus_' + discordId);
+  if (statusEl) statusEl.textContent = 'Rejectingâ€¦';
+  try {
+    const res = await fetch(`/api/staff/whitelist/${discordId}/reject`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ reason })
+    });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error || 'Failed');
+    // Optimistic UI update
+    const app = allWLApps.find(a => a.discordId === discordId);
+    if (app) { app.status = 'rejected'; app.reviewedBy = currentStaff?.username || 'Staff'; }
+    renderWhitelistApps();
+  } catch(e) {
+    if (statusEl) statusEl.textContent = 'âŒ ' + e.message;
+  }
+}
+
+// â”€â”€ EMBED BUILDER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+function setEBColor(hex) {
+  document.getElementById('ebColorPicker').value = hex;
+  document.getElementById('ebColorHex').value = hex;
+  updateEBPreview();
+}
+
+function addEBField() {
+  const container = document.getElementById('ebFieldsContainer');
+  if (container.children.length >= 25) {
+    alert("Discord embeds max out at 25 fields.");
+    return;
+  }
+  const idx = Date.now();
+  const html = `
+    <div class="eb-field-row" id="ebFieldRow_${idx}">
+      <input type="text" class="eb-input eb-f-name" placeholder="Name" oninput="updateEBPreview()">
+      <input type="text" class="eb-input eb-f-val" placeholder="Value" oninput="updateEBPreview()">
+      <label class="eb-inline-toggle"><input type="checkbox" class="eb-f-inline" checked onchange="updateEBPreview()"> Inline</label>
+      <button class="eb-rm-btn" onclick="this.parentElement.remove();updateEBPreview()">âœ•</button>
+    </div>
+  `;
+  container.insertAdjacentHTML('beforeend', html);
+  updateEBPreview();
+}
+
+function updateEBPreview() {
+  // Read values
+  const content = document.getElementById('ebContent').value;
+  const authorName = document.getElementById('ebAuthorName').value;
+  const authorIcon = document.getElementById('ebAuthorIcon').value;
+  const title = document.getElementById('ebTitle').value;
+  const titleUrl = document.getElementById('ebTitleUrl').value;
+  const desc = document.getElementById('ebDesc').value;
+  const color = document.getElementById('ebColorHex').value;
+  const image = document.getElementById('ebImage').value;
+  const thumb = document.getElementById('ebThumbnail').value;
+  const footerText = document.getElementById('ebFooterText').value;
+  const footerIcon = document.getElementById('ebFooterIcon').value;
+  const useTimestamp = document.getElementById('ebTimestamp').checked;
+
+  // Apply Content
+  const pvContent = document.getElementById('pvContent');
+  if (content) { pvContent.textContent = content; pvContent.style.display = 'block'; }
+  else { pvContent.style.display = 'none'; }
+
+  const card = document.getElementById('pvEmbedCard');
+  // If nothing in embed, hide the card
+  if (!authorName && !title && !desc && !image && !thumb && !footerText && document.getElementById('ebFieldsContainer').children.length === 0) {
+    card.style.display = 'none';
+    return;
+  } else {
+    card.style.display = 'block';
+  }
+
+  // Apply Color
+  card.style.borderLeftColor = color || '#2b2d31';
+
+  // Apply Author
+  const pvAuthor = document.getElementById('pvAuthor');
+  const pvAuthorIcon = document.getElementById('pvAuthorIcon');
+  const pvAuthorName = document.getElementById('pvAuthorName');
+  if (authorName) {
+    pvAuthor.style.display = 'flex';
+    pvAuthorName.textContent = authorName;
+    if (authorIcon) { pvAuthorIcon.src = authorIcon; pvAuthorIcon.style.display = 'block'; }
+    else { pvAuthorIcon.style.display = 'none'; }
+  } else { pvAuthor.style.display = 'none'; }
+
+  // Apply Title
+  const pvTitle = document.getElementById('pvTitle');
+  if (title) {
+    pvTitle.style.display = 'block';
+    if (titleUrl) {
+      pvTitle.innerHTML = `<a href="${escapeHTML(titleUrl)}" target="_blank">${escapeHTML(title)}</a>`;
+    } else {
+      pvTitle.textContent = title;
+    }
+  } else { pvTitle.style.display = 'none'; }
+
+  // Apply Desc
+  const pvDesc = document.getElementById('pvDesc');
+  if (desc) { pvDesc.textContent = desc; pvDesc.style.display = 'block'; }
+  else { pvDesc.style.display = 'none'; }
+
+  // Apply Fields
+  const pvFields = document.getElementById('pvFields');
+  pvFields.innerHTML = '';
+  const fieldRows = document.querySelectorAll('.eb-field-row');
+  fieldRows.forEach(row => {
+    const name = row.querySelector('.eb-f-name').value || '\u200B';
+    const val = row.querySelector('.eb-f-val').value || '\u200B';
+    const inline = row.querySelector('.eb-f-inline').checked;
+    
+    const fDiv = document.createElement('div');
+    fDiv.className = 'discord-embed-field' + (inline ? ' inline' : '');
+    fDiv.innerHTML = `<div class="discord-embed-field-name">${escapeHTML(name)}</div><div class="discord-embed-field-value">${escapeHTML(val)}</div>`;
+    pvFields.appendChild(fDiv);
+  });
+
+  // Apply Image
+  const pvImage = document.getElementById('pvImage');
+  if (image) { pvImage.querySelector('img').src = image; pvImage.style.display = 'block'; }
+  else { pvImage.style.display = 'none'; }
+
+  // Apply Thumbnail
+  const pvThumb = document.getElementById('pvThumbnail');
+  if (thumb) { pvThumb.src = thumb; pvThumb.style.display = 'block'; }
+  else { pvThumb.style.display = 'none'; }
+
+  // Apply Footer
+  const pvFooter = document.getElementById('pvFooter');
+  const pvFooterIcon = document.getElementById('pvFooterIcon');
+  const pvFooterText = document.getElementById('pvFooterText');
+  const pvFooterSep = document.getElementById('pvFooterSep');
+  const pvFooterTime = document.getElementById('pvFooterTime');
+  
+  if (footerText || useTimestamp) {
+    pvFooter.style.display = 'flex';
+    if (footerText) {
+      pvFooterText.textContent = footerText;
+      pvFooterText.style.display = 'block';
+      if (footerIcon) { pvFooterIcon.src = footerIcon; pvFooterIcon.style.display = 'block'; }
+      else { pvFooterIcon.style.display = 'none'; }
+    } else {
+      pvFooterText.style.display = 'none';
+      pvFooterIcon.style.display = 'none';
+    }
+
+    if (useTimestamp) {
+      pvFooterTime.style.display = 'block';
+      const d = new Date();
+      pvFooterTime.textContent = d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+      if (footerText) pvFooterSep.style.display = 'block';
+      else pvFooterSep.style.display = 'none';
+    } else {
+      pvFooterTime.style.display = 'none';
+      pvFooterSep.style.display = 'none';
+    }
+  } else {
+    pvFooter.style.display = 'none';
+  }
+}
+
+function clearEB() {
+  document.getElementById('ebContent').value = '';
+  document.getElementById('ebAuthorName').value = '';
+  document.getElementById('ebAuthorIcon').value = '';
+  document.getElementById('ebTitle').value = '';
+  document.getElementById('ebTitleUrl').value = '';
+  document.getElementById('ebDesc').value = '';
+  setEBColor('#f84762');
+  document.getElementById('ebImage').value = '';
+  document.getElementById('ebThumbnail').value = '';
+  document.getElementById('ebFieldsContainer').innerHTML = '';
+  document.getElementById('ebFooterText').value = '';
+  document.getElementById('ebFooterIcon').value = '';
+  document.getElementById('ebTimestamp').checked = false;
+  document.getElementById('ebSendStatus').textContent = '';
+  updateEBPreview();
+}
+
+async function sendEmbed() {
+  const statusEl = document.getElementById('ebSendStatus');
+  const channelSelect = document.getElementById('ebChannelId').value;
+  const channelCustom = document.getElementById('ebCustomChannel').value.trim();
+  const channelId = channelCustom || channelSelect;
+  
+  if (!channelId) {
+    statusEl.textContent = 'âŒ Please specify a Channel ID.';
+    statusEl.style.color = '#f87171';
+    return;
+  }
+
+  // Build JSON payload matching Discord Embed structure roughly
+  const payload = {
+    channelId,
+    content: document.getElementById('ebContent').value.trim(),
+    embed: {
+      title: document.getElementById('ebTitle').value.trim(),
+      url: document.getElementById('ebTitleUrl').value.trim(),
+      description: document.getElementById('ebDesc').value.trim(),
+      color: parseInt(document.getElementById('ebColorHex').value.replace('#',''), 16),
+      author: {
+        name: document.getElementById('ebAuthorName').value.trim(),
+        icon_url: document.getElementById('ebAuthorIcon').value.trim()
+      },
+      image: { url: document.getElementById('ebImage').value.trim() },
+      thumbnail: { url: document.getElementById('ebThumbnail').value.trim() },
+      footer: {
+        text: document.getElementById('ebFooterText').value.trim(),
+        icon_url: document.getElementById('ebFooterIcon').value.trim()
+      },
+      timestamp: document.getElementById('ebTimestamp').checked,
+      fields: []
+    }
+  };
+
+  const fieldRows = document.querySelectorAll('.eb-field-row');
+  fieldRows.forEach(row => {
+    const name = row.querySelector('.eb-f-name').value.trim() || '\u200B';
+    const val = row.querySelector('.eb-f-val').value.trim() || '\u200B';
+    const inline = row.querySelector('.eb-f-inline').checked;
+    payload.embed.fields.push({ name, value: val, inline });
+  });
+
+  statusEl.textContent = 'Sending...';
+  statusEl.style.color = 'var(--muted)';
+
+  try {
+    const res = await fetch('/api/staff/embed/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error || 'Failed to send embed');
+    
+    statusEl.textContent = 'âœ… Message sent successfully!';
+    statusEl.style.color = '#4ade80';
+    setTimeout(() => { statusEl.textContent = ''; }, 3000);
+  } catch (e) {
+    statusEl.textContent = 'âŒ ' + e.message;
+    statusEl.style.color = '#f87171';
+  }
+}
+
+// â”€â”€ CONTRACTS JS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+let staffContractsCache = [];
+
+async function loadContractsList() {
+  const listEl = document.getElementById('staffContractsList');
+  if (!listEl) return;
+  listEl.innerHTML = '<div style="text-align:center;padding:30px;color:var(--muted);">Loading contractsâ€¦</div>';
+  try {
+    const res = await fetch('/api/contracts');
+    if (!res.ok) throw new Error('Failed to load contracts');
+    staffContractsCache = await res.json();
+    renderStaffContractsList();
+  } catch (e) {
+    listEl.innerHTML = `<div style="text-align:center;padding:30px;color:var(--red-soft);">Failed to load contracts: ${e.message}</div>`;
+  }
+}
+
+function renderStaffContractsList() {
+  const container = document.getElementById('staffContractsList');
+  if (!container) return;
+
+  if (!staffContractsCache.length) {
+    container.innerHTML = '<div style="text-align:center;padding:40px;color:var(--muted);">No contracts found. Add one above!</div>';
+    return;
+  }
+
+  container.innerHTML = staffContractsCache.map(c => {
+    const date = new Date(c.createdAt).toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
+    const statusLabel = c.status === 'open' ? 'Open' : c.status === 'active' ? 'Active' : c.status === 'completed' ? 'Completed' : 'Cancelled';
+    const statusStyle = c.status === 'open' 
+      ? 'background:rgba(96,165,250,0.12);border:1px solid rgba(96,165,250,0.28);color:#60a5fa;'
+      : c.status === 'active'
+        ? 'background:rgba(248,196,44,0.12);border:1px solid rgba(248,196,44,0.28);color:#f8c42c;'
+        : c.status === 'completed'
+          ? 'background:rgba(74,222,128,0.12);border:1px solid rgba(74,222,128,0.28);color:#4ade80;'
+          : 'background:rgba(248,71,98,0.12);border:1px solid rgba(248,71,98,0.28);color:#f84762;';
+
+    // Build quotations HTML
+    let quotationsHtml = '';
+    if (c.quotations && c.quotations.length > 0) {
+      quotationsHtml = `
+        <div style="margin-top:16px; border-top:1px dashed var(--line); padding-top:12px;">
+          <div style="font-weight:700;font-size:0.8rem;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Quotations (${c.quotations.length})</div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            ${c.quotations.map(q => {
+              const avatar = q.playerAvatar || 'https://cdn.discordapp.com/embed/avatars/0.png';
+              const bidStatusStyle = q.status === 'accepted' ? 'color:#4ade80;background:rgba(74,222,128,0.1);' : q.status === 'rejected' ? 'color:#f84762;background:rgba(248,71,98,0.1);' : 'color:#fbbf24;background:rgba(248,196,44,0.1);';
+              return `
+                <div style="background:rgba(0,0,0,0.2); padding:10px; border:1px solid var(--line); border-radius:4px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                  <div style="display:flex; align-items:center; gap:10px;">
+                    <img src="${avatar}" style="width:28px; height:28px; border-radius:50%; border:1px solid var(--line);" />
+                    <div>
+                      <div style="font-weight:700; font-size:0.85rem;">${q.playerName} ${q.playerIGN ? `<span style="color:#55ff55;font-size:0.75rem;">(${q.playerIGN})</span>` : ''}</div>
+                      <div style="font-size:0.8rem; color:var(--text-muted); margin-top:2px;">Plan: ${q.message}</div>
+                    </div>
+                  </div>
+                  <div style="text-align:right; display:flex; align-items:center; gap:10px;">
+                    <div style="margin-right:10px;">
+                      <div style="font-weight:700; font-size:0.9rem; color:#ffd700;">Price: ${q.price}</div>
+                      <span style="font-size:0.7rem; padding:1px 6px; border-radius:4px; font-weight:700; text-transform:uppercase; ${bidStatusStyle}">${q.status}</span>
+                    </div>
+                    ${q.status === 'pending' && c.status === 'open' ? `
+                      <div style="display:flex; gap:4px;">
+                        <button class="btn btn-sm" style="background:#22c55e!important; color:#fff!important; padding:2px 8px!important;" onclick="reviewQuotation('${c.id}', '${q.id}', 'accepted')">âœ“ Accept</button>
+                        <button class="btn btn-sm" style="background:#ef4444!important; color:#fff!important; padding:2px 8px!important;" onclick="reviewQuotation('${c.id}', '${q.id}', 'rejected')">âœ• Reject</button>
+                      </div>
+                    ` : ''}
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+    } else {
+      quotationsHtml = `<div style="margin-top:12px; font-size:0.8rem; color:var(--muted); font-style:italic;">No quotations submitted yet.</div>`;
+    }
+
+    let billHtml = '';
+    if (c.bill) {
+      const billStatusLabel = c.bill.status === 'paid' ? 'Paid' : c.bill.status === 'rejected' ? 'Rejected' : 'Pending Review';
+      const billStatusStyle = c.bill.status === 'paid' 
+        ? 'color:#4ade80;background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.25);' 
+        : c.bill.status === 'rejected' 
+          ? 'color:#f84762;background:rgba(248,71,98,0.1);border:1px solid rgba(248,71,98,0.25);' 
+          : 'color:#fbbf24;background:rgba(248,196,44,0.1);border:1px solid rgba(248,196,44,0.25);';
+      
+      billHtml = `
+        <div style="margin-top:14px; background:rgba(255, 76, 108, 0.03); border:1px solid rgba(255, 76, 108, 0.14); border-radius:6px; padding:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:8px;">
+            <span style="font-weight:800; font-size:0.85rem; text-transform:uppercase; color:#fff; display:flex; align-items:center; gap:4px;">ðŸ‘· Submitted Completion Bill</span>
+            <span style="font-size:0.75rem; padding:2px 8px; border-radius:4px; font-weight:700; ${billStatusStyle}">${billStatusLabel}</span>
+          </div>
+          <div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:8px;"><strong>Proof:</strong> ${c.bill.message}</div>
+          ${c.bill.imageUrl ? `
+            <div style="margin-bottom:8px; max-width:300px; border:1px solid var(--line); border-radius:4px; overflow:hidden;">
+              <img src="${c.bill.imageUrl}" style="width:100%; height:auto; display:block;" />
+            </div>
+          ` : ''}
+          ${c.bill.status === 'rejected' ? `
+            <div style="font-size:0.8rem; color:#f87171; margin-top:4px;"><strong>Rejection Reason:</strong> ${c.bill.rejectedReason || 'None'}</div>
+          ` : ''}
+          
+          ${c.bill.status === 'pending' ? `
+            <div style="display:flex; gap:6px; margin-top:10px;">
+              <button class="btn btn-sm" style="background:#22c55e!important; border-color:#22c55e!important; color:#fff!important; padding:4px 12px!important;" onclick="payBill('${c.id}')">Approve &amp; Pay</button>
+              <button class="btn btn-sm btn-outline" style="color:#f87171!important; border-color:rgba(248,71,98,0.35)!important; padding:4px 12px!important;" onclick="rejectBill('${c.id}')">Reject Bill</button>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
+    return `
+      <div class="wu-card" id="staff_con_${c.id}" style="border-bottom:1px solid var(--line); padding:16px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px;">
+          <div>
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+              <span class="ticket-id" style="font-size:1.35rem; color:#a855f7;">${c.id}</span>
+              <span style="font-weight:800; font-size:1rem;">${c.title}</span>
+              <span class="wu-cat-badge wu-cat-general" style="font-size:0.75rem; padding:2px 8px; border-radius:4px;">${c.category}</span>
+              <span style="padding:2px 8px; border-radius:999px; font-size:0.75rem; font-weight:700; ${statusStyle}">${statusLabel}</span>
+            </div>
+            <div style="font-size:0.75rem; color:var(--muted); margin-top:4px;">
+              Posted by: <strong>${c.createdBy.username}</strong> â€¢ Budget: <strong>${c.budget || 'N/A'}</strong> â€¢ ðŸ“… ${date}
+            </div>
+            ${c.assignedPlayer ? `
+              <div style="font-size:0.8rem; color:#ffd700; font-weight:700; margin-top:6px;">
+                ðŸ¤ Assigned to: ${c.assignedPlayer.username} ${c.assignedPlayer.ign ? `(${c.assignedPlayer.ign})` : ''}
+              </div>
+            ` : ''}
+            <div style="margin-top:8px; font-size:0.88rem; color:var(--text); line-height:1.5; white-space:pre-wrap;">${c.description}</div>
+            
+            ${c.imageUrl ? `
+              <div style="margin-top:10px; max-width:300px; border:1px solid var(--line); border-radius:4px; overflow:hidden;">
+                <img src="${c.imageUrl}" style="width:100%; height:auto; display:block;" />
+              </div>
+            ` : ''}
+          </div>
+          
+          <div style="display:flex; gap:6px; flex-wrap:wrap; min-width:180px; justify-content:flex-end;">
+            ${c.status === 'active' ? `
+              <button class="btn btn-sm btn-outline" onclick="updateContractStatus('${c.id}', 'completed')" style="color:#4ade80; border-color:rgba(74,222,128,0.35);">Complete</button>
+            ` : ''}
+            ${c.status === 'open' || c.status === 'active' ? `
+              <button class="btn btn-sm btn-outline" onclick="updateContractStatus('${c.id}', 'cancelled')" style="color:#f87171; border-color:rgba(248,71,98,0.35);">Cancel</button>
+            ` : ''}
+            ${c.status === 'completed' || c.status === 'cancelled' ? `
+              <button class="btn btn-sm btn-outline" onclick="updateContractStatus('${c.id}', 'open')">Reopen</button>
+            ` : ''}
+            <button class="btn btn-sm btn-outline" onclick="deleteContract('${c.id}')" style="color:var(--red-soft); border-color:rgba(248,71,98,0.35);">âœ• Delete</button>
+          </div>
+        </div>
+        ${billHtml}
+        ${quotationsHtml}
+      </div>
+    `;
+  }).join('');
+}
+
+async function createContract() {
+  const title = document.getElementById('contractTitle').value.trim();
+  const description = document.getElementById('contractDescription').value.trim();
+  const category = document.getElementById('contractCategory').value.trim();
+  const budget = document.getElementById('contractBudget').value.trim();
+  const imageUrl = document.getElementById('contractImageUrl').value.trim();
+  const statusEl = document.getElementById('contractFormStatus');
+
+  if (!title || !description) {
+    statusEl.textContent = 'âš ï¸ Title and Description are required.';
+    statusEl.style.color = 'var(--red-soft)';
+    statusEl.style.display = 'block';
+    return;
+  }
+
+  statusEl.textContent = 'Posting contractâ€¦';
+  statusEl.style.color = 'var(--muted)';
+  statusEl.style.display = 'block';
+
+  try {
+    const res = await fetch('/api/contracts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title, description, category, budget, imageUrl })
+    });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error || 'Failed to create contract');
+    
+    statusEl.textContent = 'âœ… Contract posted successfully!';
+    statusEl.style.color = '#4ade80';
+    
+    // Clear inputs
+    document.getElementById('contractTitle').value = '';
+    document.getElementById('contractDescription').value = '';
+    document.getElementById('contractCategory').value = '';
+    document.getElementById('contractBudget').value = '';
+    document.getElementById('contractImageUrl').value = '';
+    
+    await loadContractsList();
+    setTimeout(() => { statusEl.style.display = 'none'; }, 3000);
+  } catch (e) {
+    statusEl.textContent = 'âŒ ' + e.message;
+    statusEl.style.color = 'var(--red-soft)';
+  }
+}
+
+async function payBill(contractId) {
+  if (!confirm('Are you sure you want to approve this bill and complete the contract?')) return;
+  try {
+    const res = await fetch(`/api/contracts/${contractId}/bill/pay`, { method: 'POST' });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error || 'Failed to approve bill');
+    await loadContractsList();
+  } catch (e) {
+    alert('Error: ' + e.message);
+  }
+}
+
+async function rejectBill(contractId) {
+  const reason = prompt('Please enter the reason for rejecting this bill:');
+  if (reason === null) return; // cancelled
+  if (!reason.trim()) return alert('A rejection reason is required.');
+
+  try {
+    const res = await fetch(`/api/contracts/${contractId}/bill/reject`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ reason })
+    });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error || 'Failed to reject bill');
+    await loadContractsList();
+  } catch (e) {
+    alert('Error: ' + e.message);
+  }
+}
+
+async function deleteContract(id) {
+  if (!confirm('Are you sure you want to delete this contract? This cannot be undone.')) return;
+  try {
+    const res = await fetch(`/api/contracts/${id}`, { method: 'DELETE' });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error || 'Failed');
+    await loadContractsList();
+  } catch (e) {
+    alert('Error: ' + e.message);
+  }
+}
+
+async function updateContractStatus(id, status) {
+  try {
+    const res = await fetch(`/api/contracts/${id}/status`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status })
+    });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error || 'Failed');
+    await loadContractsList();
+  } catch (e) {
+    alert('Error: ' + e.message);
+  }
+}
+
+async function reviewQuotation(contractId, quotationId, status) {
+  try {
+    const res = await fetch(`/api/contracts/${contractId}/quotations/${quotationId}/status`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status })
+    });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error || 'Failed');
+    await loadContractsList();
+  } catch (e) {
+    alert('Error: ' + e.message);
+  }
+}
+
+// â”€â”€ UTILS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function timeAgo(ts) {
+  const diff = Date.now() - ts;
+  if (diff < 60000) return 'just now';
+  if (diff < 3600000) return Math.floor(diff/60000) + 'm ago';
+  if (diff < 86400000) return Math.floor(diff/3600000) + 'h ago';
+  return Math.floor(diff/86400000) + 'd ago';
+}
+
+// Refresh stats every 30s
+setInterval(loadOverview, 30000);
+
+init();
+</script>
+<script src="/ticker.js"></script>
+</body>
+</html>
+

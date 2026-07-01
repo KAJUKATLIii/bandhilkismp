@@ -1,0 +1,712 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bandhilki SMP Whitelist â€“ Apply for Minecraft SMP</title>
+<meta name="description" content="Apply for Bandhilki SMP whitelist. Join the official discord server discord.gg/KSAm2yd9gC.">
+<meta name="keywords" content="bandhilki smp, minecraft, bandhilki family, shreeman legend, bandhilkismp, indian minecraft server, survival multiplayer, pvp server, minecraft india, gaming community, minecraft survival, best indian smp, Bandhilki Family, minecraft community, smp server, best smp server in india, indian minecraft community">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Bandhilki SMP â€“ Indian Minecraft Server">
+<meta property="og:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family. Join survival, creative, PvP & events.">
+<meta property="og:image" content="/lg.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bandhilki SMP â€“ Indian Minecraft Server">
+<meta name="twitter:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family.">
+<meta name="twitter:image" content="/lg.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Bandhilki SMP",
+  "logo": "https://minecraft.bandhilki.family/lg.png",
+  "sameAs": [
+    "https://discord.gg/KSAm2yd9gC"
+  ]
+}
+</script>
+<link rel="icon" type="image/x-icon" href="/favicon.ico?v=1" />
+<link rel="stylesheet" href="/style.css">
+<style>
+  .whitelist-shell { max-width: 980px; margin: 0 auto; padding: 2.75rem 1.5rem 4rem; }
+  .whitelist-header { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 1.5rem; margin-bottom: 1.25rem; }
+  .whitelist-kicker { color: var(--green-1); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.45rem; }
+  .whitelist-title { font-size: clamp(1.75rem, 4vw, 2.5rem); margin-bottom: 0.35rem; letter-spacing: 0; }
+  .whitelist-subtitle { max-width: 560px; color: var(--text-muted); font-size: 0.95rem; }
+  .whitelist-header h1:not(.whitelist-title) { display: none; }
+  .whitelist-panel { background: rgba(9, 14, 12, 0.86); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; box-shadow: 0 18px 48px rgba(0,0,0,0.55); overflow: hidden; }
+  .panel-topbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.025); }
+  .brand-chip { display: flex; align-items: center; gap: 0.75rem; min-width: 0; }
+  .brand-chip img { width: 38px; height: 38px; image-rendering: pixelated; }
+  .brand-name { color: var(--text-primary); font-size: 0.95rem; font-weight: 700; line-height: 1.2; }
+  .brand-meta { color: var(--text-muted); font-size: 0.78rem; line-height: 1.2; }
+  .empty-state > div[style] { display: none; }
+  .whitelist-panel > .logo-wrap,
+  .whitelist-panel > .logo-wrap + div,
+  .whitelist-panel > .logo-wrap + div + .divider { display: none; }
+  .user-banner { display: none; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.9rem 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.08); color: var(--text-muted); font-size: 0.9rem; }
+  .portal-body { padding: 1.5rem; }
+  .state-card { display: grid; grid-template-columns: 180px 1fr; align-items: center; gap: 1.5rem; min-height: 260px; }
+  .state-art { width: 100%; max-width: 180px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.10); background: rgba(0,0,0,0.24); }
+  .state-eyebrow { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.35rem; }
+  .state-title { font-size: clamp(1.45rem, 4vw, 2rem); letter-spacing: 0; margin-bottom: 0.5rem; }
+  .state-title.ok { color: var(--green-1); }
+  .state-title.warn { color: #f87171; }
+  .state-title.pending { color: #fbbf24; }
+  .state-copy { max-width: 520px; margin-bottom: 1.25rem; font-size: 0.95rem; }
+  .ip-chip { display: inline-flex; align-items: center; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(52,211,153,0.28); background: rgba(52,211,153,0.08); color: var(--green-1); font-family: 'Space Grotesk', monospace; font-size: 0.95rem; }
+  .empty-state { text-align: center; padding: 2.5rem 1rem; max-width: 520px; margin: 0 auto; }
+  .language-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.85rem; max-width: 520px; margin: 1.5rem auto 0; }
+  .language-card { width: 100%; background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); border-radius: 8px; padding: 1rem; text-align: left; cursor: pointer; transition: border-color 0.2s, background 0.2s, transform 0.2s; }
+  .language-card:hover { transform: translateY(-1px); border-color: rgba(52,211,153,0.35); background: rgba(52,211,153,0.07); }
+  .language-card strong { display: block; font-size: 1rem; margin-bottom: 0.2rem; }
+  .language-card span { display: block; color: var(--text-muted); font-size: 0.82rem; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-section-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--green-3);
+    font-weight: 700;
+    padding: 1rem 0 0.25rem;
+    border-top: 1px solid var(--border-glass);
+    margin-top: 0.5rem;
+  }
+  .form-section-label:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+  .quiz-intro { color: var(--text-muted); font-size: 0.9rem; margin: 0.4rem 0 1.4rem; }
+  .quiz-question { padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .quiz-question-title { font-size: 0.96rem; color: var(--text-primary); font-weight: 700; margin-bottom: 0.75rem; line-height: 1.45; }
+  .quiz-options { display: grid; gap: 0.55rem; }
+  .quiz-option { display: flex; align-items: flex-start; gap: 0.7rem; padding: 0.7rem 0.8rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; background: rgba(255,255,255,0.035); cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+  .quiz-option:hover { border-color: rgba(52,211,153,0.28); background: rgba(52,211,153,0.055); }
+  .quiz-option input { margin-top: 0.18rem; accent-color: var(--green-1); flex: 0 0 auto; }
+  .quiz-option span { color: var(--text-muted); font-size: 0.9rem; line-height: 1.45; }
+  .quiz-actions { display: grid; grid-template-columns: 1fr 2fr; gap: 0.85rem; margin-top: 1.5rem; }
+  .submit-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    position: relative;
+  }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none !important; }
+  #status { text-align: center; font-size: 0.88rem; padding: 8px 0; min-height: 24px; }
+  .checkbox-row { display: flex; align-items: flex-start; gap: 10px; }
+  .checkbox-row input[type="checkbox"] { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--green-3); cursor: pointer; flex-shrink: 0; }
+  .checkbox-row label { font-size: 0.88rem; color: var(--text-muted); cursor: pointer; }
+  .hidden { display: none !important; }
+
+  /* Step progress indicator */
+  .step-progress { display: flex; align-items: center; gap: 0; margin-bottom: 1.5rem; }
+  .step-dot { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; transition: all 0.3s; }
+  .step-dot.active { background: var(--green-1); color: #000; }
+  .step-dot.done { background: rgba(52,211,153,0.25); color: var(--green-1); border: 1px solid rgba(52,211,153,0.4); }
+  .step-dot.upcoming { background: rgba(255,255,255,0.06); color: var(--text-muted); border: 1px solid rgba(255,255,255,0.1); }
+  .step-line { flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
+  .step-line.done { background: rgba(52,211,153,0.35); }
+  .step-label { font-size: 0.7rem; color: var(--text-muted); text-align: center; margin-top: 0.3rem; }
+  .steps-wrap { margin-bottom: 1.5rem; }
+  .steps-row { display: flex; align-items: center; }
+  .step-item { display: flex; flex-direction: column; align-items: center; }
+
+  /* Application form textarea */
+  .form-textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    padding: 0.65rem 0.85rem;
+    resize: vertical;
+    min-height: 80px;
+    font-family: inherit;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+  }
+  .form-textarea:focus { outline: none; border-color: rgba(52,211,153,0.4); }
+  .form-textarea::placeholder { color: var(--text-muted); opacity: 0.6; }
+
+  .question-number { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: rgba(52,211,153,0.15); border: 1px solid rgba(52,211,153,0.3); border-radius: 4px; font-size: 0.72rem; font-weight: 700; color: var(--green-1); margin-right: 0.4rem; flex-shrink: 0; vertical-align: middle; }
+
+  .app-question { margin-bottom: 1.1rem; }
+  .app-question .form-label { display: flex; align-items: center; margin-bottom: 0.45rem; font-size: 0.88rem; font-weight: 600; color: var(--text-primary); }
+  .app-question .form-hint { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.4rem; }
+
+  .pending-badge { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.3rem 0.7rem; border-radius: 20px; background: rgba(251,191,36,0.12); border: 1px solid rgba(251,191,36,0.3); color: #fbbf24; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+
+  @media (max-width: 720px) {
+    .whitelist-shell { padding-top: 1.5rem; }
+    .whitelist-header, .state-card { grid-template-columns: 1fr; }
+    .whitelist-header { align-items: start; }
+    .panel-topbar, .user-banner { align-items: flex-start; flex-direction: column; }
+    .state-card { text-align: center; justify-items: center; }
+    .state-copy { margin-left: auto; margin-right: auto; }
+    .form-grid, .language-grid, .quiz-actions { grid-template-columns: 1fr; }
+  }
+</style>
+    <link rel="canonical" href="https://minecraft.bandhilki.family/whitelist.html" />
+</head>
+<body>
+<div class="portal-ticker" aria-hidden="true">
+  <div class="portal-ticker-track">
+    <span>Whitelist role check online -</span>
+    <span>Discord identity required before application -</span>
+    <span>Bandhilki SMP access control active -</span>
+    <span>Complete the form + quiz to apply -</span>
+  </div>
+</div>
+
+<div class="portal-nav-wrap">
+  <nav class="portal-nav" aria-label="Primary Navigation">
+    <a href="index.html" class="portal-brand">
+      <img src="/lg.png" alt="Bandhilki SMP Logo">
+      <span>Bandhilki SMP</span>
+    </a>
+    <a href="index.html" class="portal-link">Home</a>
+    <a href="events.html" class="portal-link">Events</a>
+    <a href="gallery.html" class="portal-link">Gallery</a>
+    <a href="rules.html" class="portal-link">Rules</a>
+    <a href="hall.html" class="portal-link">Hall</a>
+    <a href="whitelist.html" class="portal-link is-active">Whitelist</a>
+    <a href="tickets.html" class="portal-link">Tickets</a>
+    <a href="contracts.html" class="portal-link">Contracts</a>
+    <a href="social.html" class="portal-link">Socials</a>
+    <a href="developers.html" class="portal-link">Team</a>
+    <a href="staff.html" class="portal-link hidden">Staff</a>
+    <a href="contact.html" class="portal-link">Contact</a>
+    <a href="game.html" class="portal-link">MiniGame</a>
+    <a href="user.html" id="navProfile" class="portal-link hidden">Profile</a>
+    <a href="login.html" id="navLogin" class="portal-link hidden">Login</a>
+    <a href="#" id="navLogout" class="portal-link hidden" onclick="doLogout()">Logout</a>
+  </nav>
+</div>
+
+<main class="whitelist-shell">
+<header class="whitelist-header">
+  <div>
+    <div class="whitelist-kicker">Whitelist Portal</div>
+  <h1 class="page-title">Whitelist <span class="text-gradient">Application</span></h1>
+    <h1 class="whitelist-title">Bandhilki SMP Access</h1>
+    <p class="whitelist-subtitle">Fill out your player profile, pass the rules quiz, and wait for staff to review your application.</p>
+</div>
+
+  <a href="https://discord.gg/KSAm2yd9gC" target="_blank" class="btn btn-discord">Join Discord</a>
+</header>
+
+<section class="whitelist-panel">
+    <div class="panel-topbar">
+      <div class="brand-chip">
+        <img src="/lg.png" alt="Bandhilki SMP Logo">
+        <div>
+          <div class="brand-name">BANDHILKI SMP</div>
+          <div class="brand-meta">Whitelist application portal</div>
+        </div>
+      </div>
+      <span class="badge badge-live">Live Check</span>
+    </div>
+
+    <!-- Logo + Discord CTA -->
+    <div class="logo-wrap">
+      <img src="/lg.png" alt="Bandhilki SMP Logo">
+    </div>
+
+    <div style="text-align:center;margin-bottom:1.5rem;">
+      <a href="https://discord.gg/KSAm2yd9gC" target="_blank" class="btn btn-discord">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+        Join Our Discord First
+      </a>
+    </div>
+
+    <div class="divider" style="margin:0 0 1.25rem;"></div>
+
+    <!-- USER BANNER -->
+    <div id="userBanner" class="user-banner">
+      <span>Logged in as <strong id="bannerUser" style="color:var(--green-1);"></strong></span>
+      <button class="btn btn-ghost btn-sm" onclick="handleLogout()">Logout</button>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="whitelistContent" class="portal-body">
+      <div class="empty-state">
+        <div style="font-size:2rem;margin-bottom:0.75rem;">â³</div>
+        <div class="state-eyebrow">Loading</div>
+        <div>Loading whitelist portal...</div>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  Â© 2026 BANDHILKI SMP &bull; Whitelist managed by Team Insane &bull; <a href="https://discord.gg/KSAm2yd9gC" target="_blank" style="color:var(--green-1);text-decoration:none;">Discord</a>
+</footer>
+
+<script>
+let currentUser = null;
+// Store application profile answers between steps
+let applicationProfile = null;
+
+async function checkAuth() {
+  try {
+    const res = await fetch('/api/me');
+    const data = await res.json();
+    if (data.loggedIn) {
+      currentUser = data.user;
+      currentUser.whitelistStatus = data.whitelistStatus;
+      currentUser.whitelistDetails = data.whitelistDetails;
+      currentUser.hasWhitelistRole = data.hasWhitelistRole === true;
+      currentUser.isStaff = data.isStaff === true;
+      document.getElementById('bannerUser').textContent = currentUser.username;
+      document.getElementById('userBanner').style.display = 'flex';
+      document.getElementById('navLogin').classList.add('hidden');
+      const navProfile = document.getElementById('navProfile');
+      if (navProfile) navProfile.classList.remove('hidden');
+      document.getElementById('navLogout').classList.remove('hidden');
+      
+      if (data.isStaff) {
+        const navStaff = document.querySelector('nav a[href="staff.html"]');
+        if (navStaff) navStaff.classList.remove('hidden');
+      }
+      
+      renderPortal();
+    } else {
+      currentUser = null;
+      document.getElementById('userBanner').style.display = 'none';
+      document.getElementById('navLogin').classList.remove('hidden');
+      const navProfile = document.getElementById('navProfile');
+      if (navProfile) navProfile.classList.add('hidden');
+      document.getElementById('navLogout').classList.add('hidden');
+      const navStaff = document.querySelector('nav a[href="staff.html"]');
+      if (navStaff) navStaff.classList.add('hidden');
+      renderPortal();
+    }
+  } catch {
+    currentUser = null;
+    document.getElementById('userBanner').style.display = 'none';
+    document.getElementById('navLogin').classList.remove('hidden');
+    document.getElementById('navLogout').classList.add('hidden');
+    renderPortal();
+  }
+}
+
+async function handleLogout() {
+  try {
+    await fetch('/api/logout', { method: 'POST' });
+    window.location.reload();
+  } catch {}
+}
+
+async function doLogout() {
+  try {
+    await fetch('/api/logout', { method: 'POST' });
+    window.location.href = '/index.html';
+  } catch {}
+}
+
+function renderPortal() {
+  const content = document.getElementById('whitelistContent');
+  
+  if (!currentUser) {
+    // Guest - show application directly
+    renderApplicationForm();
+    return;
+  }
+
+  const isAllowlisted = currentUser.hasWhitelistRole === true;
+
+  if (isAllowlisted) {
+    content.innerHTML = `
+      <div class="state-card">
+        <img class="state-art" src="/image/allow.png" alt="Allowlisted">
+        <div>
+          <div class="state-eyebrow">Access confirmed</div>
+          <h3 class="state-title ok">Allowlisted</h3>
+          <p class="state-copy">Your Discord account has the whitelist role. Use the server address below to join Bandhilki SMP.</p>
+          <span class="ip-chip">mc.iucnetwork.in:1999</span>
+        </div>
+      </div>
+    `;
+  } else if (currentUser.whitelistStatus === 'pending') {
+    content.innerHTML = `
+      <div class="state-card">
+        <div style="font-size:2.5rem;margin-bottom:0.75rem; text-align:center;">ðŸ“‹</div>
+        <div>
+          <div class="state-eyebrow">Application submitted</div>
+          <h3 class="state-title pending">Under Staff Review</h3>
+          <p class="state-copy">Your application is currently pending staff review. Staff will approve or reject it on Discord. You'll receive a DM with the decision.</p>
+          <div class="pending-badge">â³ Pending Staff Review</div>
+          <div style="margin-top:1.25rem;">
+            <a href="https://discord.gg/KSAm2yd9gC" target="_blank" class="btn btn-discord" style="font-size:0.9rem;">
+              Open Discord Server
+            </a>
+          </div>
+        </div>
+      </div>
+    `;
+  } else if (currentUser.whitelistStatus === 'rejected') {
+    content.innerHTML = `
+      <div class="state-card">
+        <img class="state-art" src="/image/notallow.png" alt="Rejected">
+        <div>
+          <div class="state-eyebrow">Application Rejected</div>
+          <h3 class="state-title warn">Rejected</h3>
+          <p class="state-copy">Your whitelist application was rejected or you failed the rules quiz. You can try applying again.</p>
+          <button class="btn btn-primary" onclick="renderApplicationForm()">Apply Again</button>
+        </div>
+      </div>
+    `;
+  } else {
+    renderApplicationForm();
+  }
+}
+
+/* â”€â”€â”€ STEP PROGRESS HTML â”€â”€â”€ */
+function stepsHTML(active) {
+  // active: 1 = application, 2 = language, 3 = quiz
+  const steps = [
+    { label: 'Application', num: 1 },
+    { label: 'Language', num: 2 },
+    { label: 'Rules Quiz', num: 3 }
+  ];
+  let html = '<div class="steps-wrap"><div class="steps-row">';
+  steps.forEach((s, i) => {
+    const cls = s.num < active ? 'done' : s.num === active ? 'active' : 'upcoming';
+    const icon = s.num < active ? 'âœ“' : s.num;
+    html += `<div class="step-item"><div class="step-dot ${cls}">${icon}</div><div class="step-label">${s.label}</div></div>`;
+    if (i < steps.length - 1) {
+      html += `<div class="step-line${s.num < active ? ' done' : ''}"></div>`;
+    }
+  });
+  html += '</div></div>';
+  return html;
+}
+
+/* â”€â”€â”€ STEP 1: APPLICATION FORM â”€â”€â”€ */
+function renderApplicationForm() {
+  const content = document.getElementById('whitelistContent');
+  
+  let guestBanner = '';
+  if (!currentUser) {
+    guestBanner = `
+      <div class="guest-banner" style="background: rgba(248,71,98,0.08); border: 1px solid rgba(248,71,98,0.25); border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+        <span style="font-size: 1.5rem;">ðŸ‘‹</span>
+        <div style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.45; text-align: left;">
+          You are filling this form as a guest. To submit your application and take the rules quiz, you will need to sign in with Discord. Clicking <strong>"Login with Discord to Continue"</strong> at the bottom will save your answers as a draft.
+        </div>
+      </div>
+    `;
+  }
+
+  const nextBtnText = currentUser ? "Continue to Quiz &rarr;" : "Login with Discord to Continue";
+
+  content.innerHTML = `
+    ${guestBanner}
+    ${stepsHTML(1)}
+    <form id="appForm" onsubmit="submitApplicationForm(event)">
+      <div class="form-section-label">Step 1 of 3 â€” Player Profile</div>
+      <p class="quiz-intro">Tell us about yourself as a player. Answer honestly â€” staff will read every application carefully.</p>
+
+      <div class="form-grid" style="margin-bottom:1rem;">
+        <div class="app-question">
+          <label class="form-label"><span class="question-number">1</span>1ï¸âƒ£ Minecraft IGN *</label>
+          <div class="form-hint">Example: BandhilkiPlayer</div>
+          <input class="form-input" id="app_ign" type="text" placeholder="BandhilkiPlayer" required minlength="3" maxlength="16">
+        </div>
+        <div class="app-question">
+          <label class="form-label"><span class="question-number">2</span>2ï¸âƒ£ Discord Username *</label>
+          <div class="form-hint">Example: KAJUKATLI</div>
+          <input class="form-input" id="app_discord" type="text" placeholder="KAJUKATLI" value="${currentUser ? currentUser.username : ''}" required>
+        </div>
+      </div>
+
+      <div class="form-grid" style="margin-bottom:1rem;">
+        <div class="app-question">
+          <label class="form-label"><span class="question-number">3</span>3ï¸âƒ£ Age *</label>
+          <div class="form-hint">Example: 18</div>
+          <input class="form-input" id="app_age" type="number" min="10" max="99" placeholder="18" required>
+        </div>
+        <div class="app-question">
+          <label class="form-label"><span class="question-number">4</span>4ï¸âƒ£ Country &amp; Timezone *</label>
+          <div class="form-hint">Example Answer: India â€“ IST (GMT +5:30)</div>
+          <input class="form-input" id="app_country" type="text" placeholder="India â€“ IST (GMT +5:30)" required>
+        </div>
+      </div>
+
+      <div class="app-question">
+        <label class="form-label"><span class="question-number">5</span>5ï¸âƒ£ How long have you been playing Minecraft? *</label>
+        <div class="form-hint">Example Answer: I have been playing Minecraft for around 4 years. I mostly play Survival SMPs and enjoy long-term worlds rather than short servers.</div>
+        <textarea class="form-textarea" id="app_experience" placeholder="I have been playing Minecraft for around 4 years. I mostly play Survival SMPs and enjoy long-term worlds rather than short servers." required minlength="30"></textarea>
+      </div>
+
+      <div class="app-question">
+        <label class="form-label"><span class="question-number">6</span>6ï¸âƒ£ What type of player are you? *</label>
+        <div class="form-hint">Example Answer: I am a survival-focused player who enjoys building bases, grinding resources, trading with other players, and participating in community events. I avoid toxicity and prefer peaceful gameplay.</div>
+        <textarea class="form-textarea" id="app_playertype" placeholder="I am a survival-focused player who enjoys building bases, grinding resources, trading with other players, and participating in community events. I avoid toxicity and prefer peaceful gameplay." required minlength="30"></textarea>
+      </div>
+
+      <div class="app-question">
+        <label class="form-label"><span class="question-number">7</span>7ï¸âƒ£ What do you plan to do on BANDHILKI SMP? *</label>
+        <div class="form-hint">Example Answer: I plan to build a long-term survival base, participate in events, trade with players, and help in community projects. I want to be an active and positive member of the server.</div>
+        <textarea class="form-textarea" id="app_plans" placeholder="I plan to build a long-term survival base, participate in events, trade with players, and help in community projects. I want to be an active and positive member of the server." required minlength="30"></textarea>
+      </div>
+
+      <div class="app-question">
+        <label class="form-label"><span class="question-number">8</span>8ï¸âƒ£ Have you ever been banned? Explain honestly. *</label>
+        <div class="form-hint">Example Answer (Never Banned): No, I have never been banned from any Minecraft server. I always follow rules and respect communities.&#10;Example Answer (If Banned): Yes, I was banned once on another server about 2 years ago for breaking a minor rule. I learned from it and have not repeated the mistake.</div>
+        <textarea class="form-textarea" id="app_banhistory" placeholder="No, I have never been banned from any Minecraft server. I always follow rules and respect communities.&#10;&#10;OR&#10;&#10;Yes, I was banned once on another server about 2 years ago for breaking a minor rule. I learned from it and have not repeated the mistake." required minlength="20"></textarea>
+      </div>
+
+      <div class="form-grid" style="margin-bottom:1rem;">
+        <div class="app-question">
+          <label class="form-label"><span class="question-number">9</span>9ï¸âƒ£ Weekly Playtime (hours) *</label>
+          <div class="form-hint">Example Answer: 10â€“15 hours per week</div>
+          <input class="form-input" id="app_hours" type="text" placeholder="10â€“15 hours per week" required>
+        </div>
+      </div>
+
+      <div class="app-question">
+        <label class="form-label"><span class="question-number">10</span>ðŸ”Ÿ Why should we whitelist you? *</label>
+        <div class="form-hint">Example Answer: You should whitelist me because I am a fair player who respects rules, avoids cheating, and values community gameplay. I want to contribute positively to Bandhilki SMP and be a long-term member.</div>
+        <textarea class="form-textarea" id="app_why" placeholder="You should whitelist me because I am a fair player who respects rules, avoids cheating, and values community gameplay. I want to contribute positively to Bandhilki SMP and be a long-term member." required minlength="50"></textarea>
+      </div>
+
+      <div class="quiz-actions">
+        <button class="btn btn-outline" type="button" onclick="renderPortal()">Cancel</button>
+        <button class="btn btn-primary submit-btn" type="submit" id="appNextBtn">
+          ${nextBtnText}
+        </button>
+      </div>
+      <div id="appStatus" style="margin-top:0.75rem; text-align:center; font-size:0.88rem;"></div>
+    </form>
+  `;
+
+  checkAndRestoreDraft();
+}
+
+function checkAndRestoreDraft() {
+  const draftStr = sessionStorage.getItem('whitelist_draft');
+  if (draftStr) {
+    try {
+      const draft = JSON.parse(draftStr);
+      if (draft.ign && document.getElementById('app_ign')) document.getElementById('app_ign').value = draft.ign;
+      if (draft.discordUsername && document.getElementById('app_discord')) document.getElementById('app_discord').value = draft.discordUsername;
+      if (draft.age && document.getElementById('app_age')) document.getElementById('app_age').value = draft.age;
+      if (draft.country && document.getElementById('app_country')) document.getElementById('app_country').value = draft.country;
+      if (draft.experience && document.getElementById('app_experience')) document.getElementById('app_experience').value = draft.experience;
+      if (draft.playerType && document.getElementById('app_playertype')) document.getElementById('app_playertype').value = draft.playerType;
+      if (draft.plans && document.getElementById('app_plans')) document.getElementById('app_plans').value = draft.plans;
+      if (draft.banHistory && document.getElementById('app_banhistory')) document.getElementById('app_banhistory').value = draft.banHistory;
+      if (draft.weeklyHours && document.getElementById('app_hours')) document.getElementById('app_hours').value = draft.weeklyHours;
+      if (draft.whyWhitelist && document.getElementById('app_why')) document.getElementById('app_why').value = draft.whyWhitelist;
+      sessionStorage.removeItem('whitelist_draft');
+    } catch (e) {
+      console.error('Failed to parse whitelist draft', e);
+    }
+  }
+}
+
+function submitApplicationForm(e) {
+  e.preventDefault();
+  const ign = document.getElementById('app_ign').value.trim();
+  const discord = document.getElementById('app_discord').value.trim();
+  const age = document.getElementById('app_age').value.trim();
+  const country = document.getElementById('app_country').value.trim();
+  const experience = document.getElementById('app_experience').value.trim();
+  const playerType = document.getElementById('app_playertype').value.trim();
+  const plans = document.getElementById('app_plans').value.trim();
+  const banHistory = document.getElementById('app_banhistory').value.trim();
+  const weeklyHours = document.getElementById('app_hours').value.trim();
+  const whyWhitelist = document.getElementById('app_why').value.trim();
+
+  if (!ign || ign.length < 3) {
+    document.getElementById('appStatus').innerHTML = '<span style="color:#e74c3c">âš ï¸ Minecraft IGN must be at least 3 characters.</span>';
+    return;
+  }
+
+  const draft = { ign, discordUsername: discord, age, country, experience, playerType, plans, banHistory, weeklyHours, whyWhitelist };
+
+  if (!currentUser) {
+    // Save draft to sessionStorage and redirect to login
+    sessionStorage.setItem('whitelist_draft', JSON.stringify(draft));
+    window.location.href = '/api/auth/discord/login';
+    return;
+  }
+
+  // Save profile data to pass into quiz submission
+  applicationProfile = draft;
+  renderLangSelection();
+}
+
+/* â”€â”€â”€ STEP 2: LANGUAGE SELECTION â”€â”€â”€ */
+function renderLangSelection() {
+  const content = document.getElementById('whitelistContent');
+  content.innerHTML = `
+    ${stepsHTML(2)}
+    <div class="empty-state">
+      <div class="state-eyebrow">Quiz setup</div>
+      <h3 class="state-title">Choose your quiz language</h3>
+      <p class="state-copy">Pick the language you are most comfortable with for the rules quiz.</p>
+      <div class="language-grid">
+        <button class="language-card" onclick="renderQuizForm('en')"><strong>English</strong><span>Rules and conduct quiz in English</span></button>
+        <button class="language-card" onclick="renderQuizForm('hi')"><strong>Hinglish</strong><span>Hindi + English mixed quiz</span></button>
+      </div>
+      <div style="margin-top:1.25rem;">
+        <button class="btn btn-ghost btn-sm" onclick="renderApplicationForm()">â† Back to Application</button>
+      </div>
+    </div>
+  `;
+}
+
+/* â”€â”€â”€ STEP 3: RULES QUIZ â”€â”€â”€ */
+function renderQuizForm(lang) {
+  const content = document.getElementById('whitelistContent');
+  content.innerHTML = `
+    <div class="empty-state">
+      <div style="font-size:2rem;margin-bottom:0.75rem;">â³</div>
+      <div class="state-eyebrow">Loading</div>
+      <div>Loading quiz questions...</div>
+    </div>
+  `;
+  
+  fetch(`/api/quiz-questions?lang=${lang}`)
+    .then(res => res.json())
+    .then(questions => {
+      let html = stepsHTML(3);
+      
+      html += `
+        <form id="quizForm" onsubmit="submitQuiz(event)">
+          <div class="form-section-label">Rules &amp; Conduct Quiz</div>
+          <p class="quiz-intro">
+            Answer the questions below based on Bandhilki SMP's community rules. You need at least <strong>7 out of 10 (70%)</strong> correct to proceed. Your application will then be reviewed by staff.
+          </p>
+      `;
+
+      questions.forEach((q, idx) => {
+        html += `
+          <div class="quiz-question">
+            <div class="quiz-question-title">${idx + 1}. ${q.question}</div>
+            <div class="quiz-options">
+        `;
+        q.options.forEach((opt, optIdx) => {
+          html += `
+            <label class="quiz-option" for="q_${q.id}_o_${optIdx}">
+              <input type="radio" name="q_${q.id}" id="q_${q.id}_o_${optIdx}" value="${optIdx}" required>
+              <span>${opt}</span>
+            </label>
+          `;
+        });
+        html += `
+            </div>
+          </div>
+        `;
+      });
+
+      html += `
+          <div class="quiz-actions">
+            <button class="btn btn-outline" type="button" onclick="renderLangSelection()">
+              Back
+            </button>
+            <button class="btn btn-primary submit-btn" type="submit" id="submitBtn">
+              Submit Application
+            </button>
+          </div>
+          <div id="submitStatus" style="margin-top:1rem; text-align:center; font-size:0.9rem;"></div>
+        </form>
+      `;
+
+      content.innerHTML = html;
+    })
+    .catch(() => {
+      content.innerHTML = `
+        <div class="empty-state">
+          <p>âš ï¸ Failed to load quiz questions.</p>
+          <button class="btn btn-outline btn-sm" onclick="renderLangSelection()">Try Again</button>
+        </div>
+      `;
+    });
+}
+
+async function submitQuiz(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const statusDiv = document.getElementById('submitStatus');
+  
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+  statusDiv.textContent = '';
+
+  const answers = {};
+  const form = document.getElementById('quizForm');
+  const formData = new FormData(form);
+  for (let [key, val] of formData.entries()) {
+    if (key.startsWith('q_')) {
+      const qId = key.split('_')[1];
+      answers[qId] = parseInt(val);
+    }
+  }
+
+  // Build payload combining profile + quiz answers
+  const payload = {
+    ...(applicationProfile || {}),
+    answers
+  };
+
+  try {
+    const res = await fetch('/api/submit-whitelist', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    
+    const data = await res.json();
+    if (res.ok && data.success) {
+      if (data.passed) {
+        // Application submitted â€” pending staff review
+        document.getElementById('whitelistContent').innerHTML = `
+          <div class="empty-state">
+            <div style="font-size:2.5rem;margin-bottom:0.75rem;">ðŸ“‹</div>
+            <div class="state-eyebrow">Application submitted</div>
+            <h3 class="state-title" style="color:#fbbf24;">Under Staff Review</h3>
+            <p class="state-copy" style="margin:0.75rem auto 1.25rem; max-width:460px;">
+              Your application has been sent to the Bandhilki SMP staff team for review.
+              You scored <strong style="color:var(--green-1)">${data.score}/10</strong> on the rules quiz â€” well done!<br><br>
+              Staff will approve or reject your application on Discord. You'll receive a DM with the decision. Keep an eye on your Discord notifications!
+            </p>
+            <div class="pending-badge">â³ Pending Staff Review</div>
+            <div style="margin-top:1.25rem;">
+              <a href="https://discord.gg/KSAm2yd9gC" target="_blank" class="btn btn-discord" style="font-size:0.9rem;">
+                Open Discord Server
+              </a>
+            </div>
+          </div>
+        `;
+      } else {
+        // Quiz failed
+        statusDiv.innerHTML = `<span style="color:#e74c3c">âŒ <strong>Quiz failed:</strong> Score: ${data.score}/10. You need at least 7/10 correct answers to pass. Review the server rules and try again.</span>`;
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.textContent = 'Submit Application';
+          statusDiv.innerHTML = '';
+        }, 4000);
+      }
+    } else {
+      statusDiv.innerHTML = `<span style="color:#e74c3c">âš ï¸ ${data.error || 'Submission failed. Please try again.'}</span>`;
+      btn.disabled = false;
+      btn.textContent = 'Submit Application';
+    }
+  } catch (err) {
+    statusDiv.innerHTML = '<span style="color:#e74c3c">âš ï¸ Server connection error. Please try again.</span>';
+    btn.disabled = false;
+    btn.textContent = 'Submit Application';
+  }
+}
+
+// Start auth check
+checkAuth();
+</script>
+<script src="/ticker.js"></script>
+</body>
+</html>
+

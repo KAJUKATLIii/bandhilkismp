@@ -1,0 +1,593 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bandhilki SMP MiniGame</title>
+<meta name="description" content="Play the Bandhilki SMP Minecraft-style MiniGame and submit your score to the leaderboard.">
+<meta name="keywords" content="bandhilki smp, minecraft, bandhilki family, shreeman legend, bandhilkismp, indian minecraft server, survival multiplayer, pvp server, minecraft india, gaming community, minecraft survival, best indian smp, Bandhilki Family, minecraft community, smp server, best smp server in india, indian minecraft community">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Bandhilki SMP â€“ Indian Minecraft Server">
+<meta property="og:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family. Join survival, creative, PvP & events.">
+<meta property="og:image" content="/lg.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bandhilki SMP â€“ Indian Minecraft Server">
+<meta name="twitter:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family.">
+<meta name="twitter:image" content="/lg.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Bandhilki SMP",
+  "logo": "https://minecraft.bandhilki.family/lg.png",
+  "sameAs": [
+    "https://discord.gg/KSAm2yd9gC"
+  ]
+}
+</script>
+<link rel="icon" type="image/x-icon" href="/favicon.ico?v=1" />
+<link rel="stylesheet" href="/style.css">
+<style>
+  .game-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .game-title {
+    font-family: 'Minecraft', monospace;
+    font-size: 1.4rem;
+    text-align: center;
+    margin-bottom: 0.25rem;
+  }
+
+  .game-subtitle {
+    font-size: 0.86rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .arcade-layout {
+    width: min(100%, 980px);
+    display: grid;
+    grid-template-columns: auto minmax(260px, 340px);
+    gap: 18px;
+    align-items: start;
+    justify-content: center;
+  }
+
+  .game-box,
+  .leaderboard-panel {
+    background: rgba(10, 18, 14, 0.88);
+    border: 1.5px solid var(--border-glass);
+    border-radius: var(--radius);
+    backdrop-filter: blur(24px);
+    box-shadow: 0 0 40px var(--glow-green), var(--shadow-card);
+    padding: 1.5rem;
+  }
+
+  .game-box {
+    width: fit-content;
+    max-width: 98vw;
+  }
+
+  .game-hud {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .hud-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0,0,0,0.35);
+    border: 1px solid var(--border-glass);
+    border-radius: 50px;
+    padding: 5px 14px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  .hud-chip.score { color: var(--green-1); border-color: rgba(0,255,135,0.3); }
+  .hud-chip.lives { color: #e74c3c; border-color: rgba(231,76,60,0.3); }
+  .hud-chip.status-chip { font-family: 'Minecraft', monospace; font-size: 0.78rem; }
+  .hud-chip.status-chip.win { color: var(--green-1); border-color: rgba(0,255,135,0.4); background: rgba(0,255,135,0.1); }
+  .hud-chip.status-chip.lose { color: #e74c3c; border-color: rgba(231,76,60,0.4); background: rgba(231,76,60,0.1); }
+
+  .block-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 52px);
+    gap: 5px;
+  }
+
+  .block {
+    width: 52px;
+    height: 52px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    user-select: none;
+    transition: transform 0.12s ease, filter 0.12s ease;
+    border: 1.5px solid rgba(255,255,255,0.08);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .block::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .block.dirt {
+    background: linear-gradient(135deg, #8b5e3c, #6b4226);
+    box-shadow: inset 0 2px 4px rgba(255,255,255,0.1), inset 0 -2px 4px rgba(0,0,0,0.3);
+  }
+
+  .block.dirt:hover {
+    transform: scale(1.08);
+    filter: brightness(1.2);
+    border-color: rgba(0,255,135,0.3);
+    box-shadow: 0 0 12px rgba(0,255,135,0.2), inset 0 2px 4px rgba(255,255,255,0.1);
+  }
+
+  .block.safe {
+    background: linear-gradient(135deg, #5a8a48, #3d6130);
+    cursor: default;
+    border-color: rgba(0,255,135,0.25);
+  }
+
+  .block.tnt {
+    background: linear-gradient(135deg, #a93226, #6e1f1f);
+    cursor: default;
+    box-shadow: 0 0 12px rgba(231,76,60,0.4), inset 0 2px 4px rgba(255,255,255,0.1);
+    border-color: rgba(231,76,60,0.4);
+    animation: tnt-flash 0.4s ease;
+  }
+
+  @keyframes tnt-flash {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+
+  .restart-btn {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .diff-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .diff-btn {
+    flex: 1;
+    min-width: 80px;
+    padding: 7px;
+    font-size: 0.8rem;
+    border-radius: 6px;
+    background: rgba(0,0,0,0.3);
+    border: 1.5px solid var(--border-glass);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .diff-btn.active {
+    background: rgba(0,255,135,0.12);
+    border-color: rgba(0,255,135,0.4);
+    color: var(--green-1);
+  }
+
+  .leaderboard-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 12px;
+  }
+
+  .leaderboard-head h2 {
+    font-size: 1rem;
+  }
+
+  .name-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .name-row input {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--line);
+    background: rgba(8,3,4,0.74);
+    color: var(--text);
+    font: inherit;
+  }
+
+  .board-status {
+    min-height: 18px;
+    margin-bottom: 8px;
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+
+  .score-row {
+    display: grid;
+    grid-template-columns: 30px 1fr auto;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .rank {
+    width: 25px;
+    height: 25px;
+    display: grid;
+    place-items: center;
+    border-radius: 6px;
+    background: rgba(0,255,135,0.1);
+    border: 1px solid rgba(0,255,135,0.24);
+    color: var(--green-1);
+    font-weight: 800;
+    font-size: 0.78rem;
+  }
+
+  .score-name {
+    color: var(--text-primary);
+    font-weight: 700;
+    font-size: 0.86rem;
+  }
+
+  .score-meta {
+    color: var(--text-muted);
+    font-size: 0.72rem;
+  }
+
+  .score-value {
+    color: var(--green-1);
+    font-weight: 800;
+  }
+
+  .hidden { display: none !important; }
+
+  @media (max-width: 820px) {
+    .arcade-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .game-box,
+    .leaderboard-panel {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .block-grid { grid-template-columns: repeat(6, 44px); }
+    .block { width: 44px; height: 44px; }
+  }
+</style>
+    <link rel="canonical" href="https://minecraft.bandhilki.family/game.html" />
+</head>
+<body>
+<div class="portal-ticker" aria-hidden="true">
+  <div class="portal-ticker-track">
+    <span>Interactive mini game loaded -</span>
+    <span>Hidden TNT and leaderboard active -</span>
+    <span>Bandhilki SMP arcade node online -</span>
+  </div>
+</div>
+
+<div class="portal-nav-wrap">
+  <nav class="portal-nav" aria-label="Primary Navigation">
+    <a href="index.html" class="portal-brand">
+      <img src="/lg.png" alt="Bandhilki SMP Logo">
+      <span>Bandhilki SMP</span>
+    </a>
+    <a href="index.html" class="portal-link">Home</a>
+    <a href="events.html" class="portal-link">Events</a>
+    <a href="gallery.html" class="portal-link">Gallery</a>
+    <a href="rules.html" class="portal-link">Rules</a>
+    <a href="hall.html" class="portal-link">Hall</a>
+    <a href="whitelist.html" class="portal-link">Whitelist</a>
+    <a href="tickets.html" class="portal-link">Tickets</a>
+    <a href="contracts.html" class="portal-link">Contracts</a>
+    <a href="social.html" class="portal-link">Socials</a>
+    <a href="developers.html" class="portal-link">Team</a>
+    <a href="staff.html" class="portal-link hidden">Staff</a>
+    <a href="contact.html" class="portal-link">Contact</a>
+    <a href="game.html" class="portal-link is-active">MiniGame</a>
+    <a href="user.html" id="navProfile" class="portal-link hidden">Profile</a>
+    <a href="login.html" id="navLogin" class="portal-link hidden">Login</a>
+    <a href="#" id="navLogout" class="portal-link hidden" onclick="doLogout()">Logout</a>
+  </nav>
+</div>
+
+<main class="game-page">
+  <h1 class="game-title">Minicraft MineSweeper</h1>
+  <p class="game-subtitle">Click dirt blocks to dig. Avoid TNT, finish the board, and submit your best score.</p>
+
+  <div class="arcade-layout">
+    <section class="game-box">
+      <div class="diff-row">
+        <button class="diff-btn active" id="d-easy" onclick="setDiff('easy')">Easy (4 TNT)</button>
+        <button class="diff-btn" id="d-hard" onclick="setDiff('hard')">Hard (6 TNT)</button>
+        <button class="diff-btn" id="d-insane" onclick="setDiff('insane')">Insane (9 TNT)</button>
+      </div>
+
+      <div class="game-hud">
+        <span class="hud-chip score">Score: <span id="score">0</span></span>
+        <span class="hud-chip status-chip" id="statusChip">Hardcore Mode</span>
+        <span class="hud-chip lives">Lives: <span id="hearts">1</span></span>
+      </div>
+
+      <div class="block-grid" id="grid"></div>
+      <button class="btn btn-primary restart-btn" type="button" onclick="resetGame()">New World</button>
+    </section>
+
+    <aside class="leaderboard-panel">
+      <div class="leaderboard-head">
+        <h2>Leaderboard</h2>
+        <button class="btn btn-sm btn-outline" type="button" onclick="loadLeaderboard()">Refresh</button>
+      </div>
+      <div class="name-row">
+        <input id="playerName" maxlength="24" placeholder="Guest name">
+        <button class="btn btn-sm btn-primary" type="button" id="submitScoreBtn" onclick="submitScore()" disabled>Submit</button>
+      </div>
+      <div class="board-status" id="boardStatus"></div>
+      <div id="leaderboardList">
+        <div style="padding:18px;text-align:center;color:var(--text-muted);">Loading scores...</div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer class="footer">
+  &copy; 2026 BANDHILKI SMP &bull; MiniGame by Team Insane &bull; <a href="https://discord.gg/KSAm2yd9gC" target="_blank" style="color:var(--green-1);text-decoration:none;">Discord</a>
+</footer>
+
+<script>
+const GAME_ID = 'minicraft-minesweeper';
+const SIZE = 24;
+let TNT_COUNT = 4;
+let score = 0;
+let hearts = 1;
+let revealed = 0;
+let blocks = [];
+let startedAt = Date.now();
+let finalScore = 0;
+let finalTimeMs = 0;
+
+function setDiff(d) {
+  document.querySelectorAll('.diff-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('d-' + d).classList.add('active');
+  if (d === 'easy') TNT_COUNT = 4;
+  if (d === 'hard') TNT_COUNT = 6;
+  if (d === 'insane') TNT_COUNT = 9;
+  resetGame();
+}
+
+function generateWorld() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  blocks = [];
+  revealed = 0;
+  score = 0;
+  hearts = 1;
+  startedAt = Date.now();
+  finalScore = 0;
+  finalTimeMs = 0;
+  document.getElementById('score').textContent = '0';
+  document.getElementById('hearts').textContent = '1';
+  document.getElementById('submitScoreBtn').disabled = true;
+  document.getElementById('boardStatus').textContent = '';
+  const statusChip = document.getElementById('statusChip');
+  statusChip.textContent = 'Hardcore Mode';
+  statusChip.className = 'hud-chip status-chip';
+
+  const tnts = Array(TNT_COUNT).fill(true)
+    .concat(Array(SIZE - TNT_COUNT).fill(false))
+    .sort(() => Math.random() - 0.5);
+
+  for (let i = 0; i < SIZE; i++) {
+    const div = document.createElement('div');
+    div.className = 'block dirt';
+    const isTNT = tnts[i];
+    div.onclick = () => clickBlock(div, isTNT);
+    grid.appendChild(div);
+    blocks.push({ div, isTNT });
+  }
+}
+
+function clickBlock(block, isTNT) {
+  if (!block.classList.contains('dirt') || hearts <= 0) return;
+
+  if (isTNT) {
+    block.classList.remove('dirt');
+    block.classList.add('tnt');
+    block.textContent = 'TNT';
+    hearts = 0;
+    document.getElementById('hearts').textContent = '0';
+    const chip = document.getElementById('statusChip');
+    chip.textContent = 'Game Over';
+    chip.className = 'hud-chip status-chip lose';
+    revealAll();
+    finishRun();
+    return;
+  }
+
+  block.classList.remove('dirt');
+  block.classList.add('safe');
+  block.textContent = '+';
+  score += 10;
+  revealed++;
+  document.getElementById('score').textContent = score;
+
+  if (revealed === SIZE - TNT_COUNT) {
+    const chip = document.getElementById('statusChip');
+    chip.textContent = 'Victory';
+    chip.className = 'hud-chip status-chip win';
+    score += TNT_COUNT * 25;
+    document.getElementById('score').textContent = score;
+    revealAll();
+    finishRun();
+  }
+}
+
+function finishRun() {
+  finalScore = score;
+  finalTimeMs = Date.now() - startedAt;
+  document.getElementById('submitScoreBtn').disabled = finalScore <= 0;
+}
+
+function revealAll() {
+  blocks.forEach(b => {
+    if (b.div.classList.contains('dirt')) {
+      b.div.classList.remove('dirt');
+      if (b.isTNT) {
+        b.div.classList.add('tnt');
+        b.div.textContent = 'TNT';
+      } else {
+        b.div.classList.add('safe');
+        b.div.textContent = '+';
+      }
+    }
+  });
+}
+
+function resetGame() {
+  generateWorld();
+}
+
+async function loadLeaderboard() {
+  try {
+    const res = await fetch(`/api/minigames/${GAME_ID}/leaderboard`);
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Failed to load leaderboard');
+    renderLeaderboard(data.scores || []);
+    document.getElementById('boardStatus').textContent = '';
+  } catch (e) {
+    document.getElementById('boardStatus').textContent = e.message;
+  }
+}
+
+async function submitScore() {
+  if (!finalScore) return;
+  document.getElementById('boardStatus').textContent = 'Submitting score...';
+  try {
+    const res = await fetch(`/api/minigames/${GAME_ID}/leaderboard`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        playerName: document.getElementById('playerName').value.trim(),
+        score: finalScore,
+        level: TNT_COUNT,
+        timeMs: finalTimeMs
+      })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Failed to submit score');
+    document.getElementById('submitScoreBtn').disabled = true;
+    document.getElementById('boardStatus').textContent = 'Score submitted.';
+    renderLeaderboard(data.scores || []);
+  } catch (e) {
+    document.getElementById('boardStatus').textContent = e.message;
+  }
+}
+
+function renderLeaderboard(scores) {
+  const el = document.getElementById('leaderboardList');
+  if (!scores.length) {
+    el.innerHTML = '<div style="padding:18px;text-align:center;color:var(--text-muted);">No scores yet.</div>';
+    return;
+  }
+  el.innerHTML = scores.map((s, i) => `
+    <div class="score-row">
+      <div class="rank">${i + 1}</div>
+      <div>
+        <div class="score-name">${escapeHtml(s.playerName || 'Guest')}</div>
+        <div class="score-meta">${difficultyLabel(s.level)} - ${Math.round((s.timeMs || 0) / 1000)}s</div>
+      </div>
+      <div class="score-value">${s.score}</div>
+    </div>
+  `).join('');
+}
+
+function difficultyLabel(levelValue) {
+  if (Number(levelValue) === 4) return 'Easy';
+  if (Number(levelValue) === 9) return 'Insane';
+  return 'Hard';
+}
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+}
+
+async function checkAuth() {
+  try {
+    const res = await fetch('/api/me');
+    const data = await res.json();
+
+    if (data.loggedIn) {
+      document.getElementById('navLogin').classList.add('hidden');
+      const navProfile = document.getElementById('navProfile');
+      if (navProfile) navProfile.classList.remove('hidden');
+      document.getElementById('navLogout').classList.remove('hidden');
+      document.getElementById('playerName').value = data.user.username || '';
+      document.getElementById('playerName').disabled = true;
+
+      if (data.isStaff) {
+        const navStaff = document.querySelector('nav a[href="staff.html"]');
+        if (navStaff) navStaff.classList.remove('hidden');
+      }
+    } else {
+      document.getElementById('navLogin').classList.remove('hidden');
+      const navProfile = document.getElementById('navProfile');
+      if (navProfile) navProfile.classList.add('hidden');
+      document.getElementById('navLogout').classList.add('hidden');
+      const navStaff = document.querySelector('nav a[href="staff.html"]');
+      if (navStaff) navStaff.classList.add('hidden');
+    }
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+async function doLogout() {
+  try {
+    await fetch('/api/logout', { method: 'POST' });
+    window.location.href = '/index.html';
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+generateWorld();
+checkAuth();
+loadLeaderboard();
+</script>
+<script src="/ticker.js"></script>
+</body>
+</html>
+

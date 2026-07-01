@@ -1,0 +1,37 @@
+﻿{
+  "bot": {
+    "presence": {
+      "status": "online",
+      "activities": [
+        { "name": "BANDHILKI WEBSITE", "type": "WATCHING" }
+      ]
+    }
+  },
+  "minecraft": {
+    "servers": [
+      {
+        "name": "BANDHILKI SMP",
+        "ip": "mc.iucnetwork.in",
+        "port": 1999,
+        "channelId": "1510102578686595233",
+        "updateInterval": 30000,
+        "display": {
+          "chart": {
+            "color": "#3498db"
+          }
+        }
+      }
+    ]
+  },
+  "embed": {
+    "title": "🎮 Minecraft Server Status",
+    "colors": {
+      "online": "#00ff00",
+      "offline": "#ff0000"
+    },
+    "footer": {
+      "text": "Made with ❤️ by KAJUKATLI",
+      "iconURL": "https://github.com/KAJUKATLIii.png"
+    }
+  }
+}
