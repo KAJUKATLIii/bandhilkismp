@@ -151,8 +151,13 @@ p { margin: 0; color: var(--text); }
   width: 100%;
   display: flex;
   align-items: stretch;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   background: var(--off-black);
+  overflow-x: auto;
+  scrollbar-width: none; /* Hide scrollbar Firefox */
+}
+.portal-nav::-webkit-scrollbar {
+  display: none; /* Hide scrollbar Chrome/Safari */
 }
 
 .portal-brand {
@@ -160,18 +165,24 @@ p { margin: 0; color: var(--text); }
   align-items: center;
   gap: 10px;
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   letter-spacing: 0.08em;
   padding: 10px 18px;
   border-right: var(--border-thick);
   text-decoration: none;
-  color: var(--pure-white);
+  color: var(--black) !important;
   background: var(--primary);
   flex-shrink: 0;
   min-height: 44px;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.portal-brand:hover { background: var(--secondary); color: var(--black); text-decoration: none; }
+.portal-brand:hover {
+  background: var(--secondary-light);
+  color: var(--black) !important;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
 
 .portal-brand img {
   width: 28px; height: 28px;
@@ -183,20 +194,33 @@ p { margin: 0; color: var(--text); }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 14px;
-  font-size: 0.7rem;
+  padding: 8px 12px;
+  font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-decoration: none;
   color: var(--white);
   border-right: var(--border-thin);
   white-space: nowrap;
   min-height: 44px;
   background: transparent;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .portal-link:last-child { border-right: none; }
-.portal-link:hover, .portal-link.is-active { background: var(--primary); color: var(--pure-white); text-decoration: none; }
+
+.portal-link:hover {
+  background: var(--secondary-light);
+  color: var(--black) !important;
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.portal-link.is-active {
+  background: var(--primary);
+  color: var(--black) !important;
+  text-decoration: none;
+}
 
 /* ── LAYOUT ── */
 .container { width: min(100%, var(--content)); margin: 0 auto; padding: 0 24px; }
