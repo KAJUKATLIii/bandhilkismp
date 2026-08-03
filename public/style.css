@@ -75,7 +75,7 @@
 
 /* ── RESET ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: auto; }
+html { scroll-behavior: smooth; }
 
 body {
   background: var(--bg);
@@ -507,4 +507,37 @@ p { margin: 0; color: var(--text); }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .grid-2 > *, .grid-3 > *, .grid-4 > * { border-right: none; border-bottom: var(--border); }
   .page-title { font-size: 3rem; }
+}
+
+/* ── ULTRA-SMOOTH UX SYSTEM ── */
+.b-btn, .btn, .portal-link, .portal-brand,
+.glass, .rules-glass, .form-box, .contact-option, .game-box,
+.whitelist-panel, .rules-cta, .info-card, .feature-card, .event-card, .dev-card,
+.staff-nav-item, .filter-btn {
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.18s ease,
+              border-color 0.18s ease,
+              color 0.18s ease,
+              opacity 0.22s ease !important;
+}
+
+.b-btn:active, .btn:active, .portal-link:active, .staff-nav-item:active {
+  transform: translateY(1px) !important;
+  box-shadow: 2px 2px 0 var(--black) !important;
+  transition-duration: 0.05s !important;
+}
+
+@keyframes smoothFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.page-header, .container, .b-hero {
+  animation: smoothFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portal-ticker-track {
+  will-change: transform;
+  transform: translateZ(0);
 }
