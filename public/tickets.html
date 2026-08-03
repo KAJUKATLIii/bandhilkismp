@@ -52,6 +52,46 @@
   .alert-box.show { display: block; }
   .status-legend { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
   .hidden { display: none !important; }
+
+  /* ── CATEGORY BUTTONS ── */
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .category-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border: var(--border);
+    background: var(--bg-card);
+    color: var(--white);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .category-btn:hover {
+    background: var(--bg-soft);
+    border-color: var(--secondary);
+    color: var(--white);
+  }
+  .category-btn.selected {
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
+    color: var(--pure-white) !important;
+    box-shadow: 4px 4px 0 var(--black);
+  }
+  .cat-emoji {
+    font-size: 1rem;
+  }
+
 </style>
     <link rel="canonical" href="https://minecraft.bandhilki.family/tickets.html" />
 </head>

@@ -1388,7 +1388,7 @@ function staffTicketHTML(t) {
         <button class="btn btn-sm btn-outline" onclick="closeTicket('${t.id}')">🔴 Close</button>
         <button class="btn btn-sm btn-outline" onclick="reopenTicket('${t.id}')">🟢 Reopen</button>
         <button class="btn btn-sm btn-outline" onclick="deleteTicket('${t.id}')" style="color:var(--red-soft);border-color:rgba(255,51,51,0.35);">✕ Delete</button>
-        <select onchange="changeStatus('${t.id}', this.value)" style="padding:5px 10px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:11px;cursor:pointer;">
+        <select onchange="changeStatus('${t.id}', this.value)" style="padding:6px 12px;border-radius:0px;border:var(--border);background:var(--off-black);color:var(--text);font:inherit;font-size:11px;cursor:pointer;">
           ${statusOptions}
         </select>
         <div class="assign-form">
@@ -1906,7 +1906,7 @@ function renderActivity(acts, containerId) {
     <div class="activity-item">
       <div class="activity-dot"></div>
       <div style="flex:1;">
-        <div class="activity-text"><strong>${a.staffName}</strong> — ${a.action}</div>
+        <div class="activity-text"><strong>${a.staffName || 'System'}</strong> — ${a.action || a.message || 'Action'}</div>
         <div class="activity-time">${timeAgo(a.ts)} · ${new Date(a.ts).toLocaleString('en-IN')}</div>
       </div>
     </div>`).join('');

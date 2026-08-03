@@ -72,6 +72,10 @@ const StaffLogSchema = new mongoose.Schema({
 });
 
 const ActivityLogSchema = new mongoose.Schema({
+  staffId: String,
+  staffName: String,
+  action: String,
+  ticketId: String,
   type: String,
   message: String,
   ts: Number
