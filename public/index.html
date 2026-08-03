@@ -20,9 +20,9 @@
   --black:   #0D0D0D;
   --white:   #F5F0EB;
   --pure-white: #ffffff;
-  --red:     #CC2200;
+  --red:     var(--primary);
   --red-hot: #FF2200;
-  --orange:  #FF6B00;
+  --orange:  var(--secondary);
   --amber:   #FFA500;
   --discord: #5865f2;
   --border:        3px solid #0D0D0D;
@@ -169,15 +169,15 @@
   content: 'BANDHILKI';
   position: absolute;
   font-family: 'Bebas Neue', sans-serif; font-size: 9rem;
-  color: rgba(255,107,0,0.05);
+  color: rgba(0,240,255,0.05);
   white-space: nowrap; top: 50%; left: 50%;
   transform: translate(-50%,-50%); pointer-events: none;
 }
 
 .b-hero-logo {
   width: 150px; image-rendering: pixelated;
-  border: 4px solid var(--orange);
-  outline: 6px solid rgba(255,107,0,0.2); outline-offset: 6px;
+  border: 4px solid var(--secondary);
+  outline: 6px solid rgba(0,240,255,0.2); outline-offset: 6px;
 }
 
 /* STATS ROW */
@@ -197,7 +197,7 @@
 .b-discord-live {
   display: flex; align-items: center; gap: 1rem;
   padding: 1.25rem 1.5rem;
-  background: #5865f2;
+  background: var(--secondary);
   border-top: 5px solid var(--black);
 }
 .b-discord-live-icon { flex-shrink: 0; display: flex; align-items: center; }
@@ -584,7 +584,7 @@ async function checkAuth() {
         document.getElementById('ipCard').classList.remove('hidden');
         document.getElementById('notWhitelistedCard').classList.add('hidden');
         const el = document.getElementById('info-ip');
-        if (el) { el.textContent = 'mc.iucnetwork.in:1999'; el.style.fontWeight = '700'; el.style.color = '#CC2200'; }
+        if (el) { el.textContent = 'mc.iucnetwork.in:1999'; el.style.fontWeight = '700'; el.style.color = 'var(--primary)'; }
       } else {
         document.getElementById('ipCard').classList.add('hidden');
         document.getElementById('notWhitelistedCard').classList.remove('hidden');
@@ -609,7 +609,7 @@ function copyIP() {
     const btn = document.getElementById('copyBtn');
     if (!btn) return;
     btn.textContent = 'COPIED!';
-    btn.style.background = '#FF6B00';
+    btn.style.background = 'var(--secondary)';
     btn.style.color = '#000';
     setTimeout(() => { btn.textContent = 'COPY'; btn.style.background = ''; btn.style.color = ''; }, 2000);
   });

@@ -24,7 +24,7 @@
   .dev-card:hover { background: var(--bg-soft); border-color: var(--secondary); transform: translate(-3px,-3px); box-shadow: 6px 6px 0 var(--secondary); }
   .dev-avatar {
     width: 64px; height: 64px; border: 3px solid #0D0D0D;
-    background: #CC2200; color: #fff;
+    background: var(--primary); color: #fff;
     display: grid; place-items: center; margin: 0 auto 0.75rem;
     font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem;
     object-fit: cover;
@@ -143,7 +143,7 @@ async function loadTeam() {
     teamGrid.innerHTML = html;
   } catch(e) {
     console.error(e);
-    teamGrid.innerHTML = '<div style="text-align:center;grid-column:1/-1;padding:2rem;"><p style="color:#CC2200;">Failed to load team list.</p></div>';
+    teamGrid.innerHTML = '<div style="text-align:center;grid-column:1/-1;padding:2rem;"><p style="color:var(--primary);">Failed to load team list.</p></div>';
   }
 }
 

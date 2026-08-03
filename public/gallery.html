@@ -151,7 +151,7 @@ async function loadGallery() {
   } catch(e) {
     console.error('Failed to load gallery images', e);
     const grid = document.getElementById('galleryGrid');
-    if (grid) grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:#CC2200;">Failed to load gallery.</div>';
+    if (grid) grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--primary);">Failed to load gallery.</div>';
   }
 }
 

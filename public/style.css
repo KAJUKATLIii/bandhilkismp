@@ -1,76 +1,75 @@
 /* ================================================================
-   BANDHILKI SMP — MINECRAFT BRUTALIST DESIGN SYSTEM
-   Theme: Minecraft Redstone Red #FF3333 | Gold #FFAA00 | Obsidian Dark #121216
-================================================================ */
+   BANDHILKI SMP — CYAN & MILD BLUE DARK GREYISH DESIGN SYSTEM
+   Theme: Primary Cyan #00F0FF | Secondary Mild Blue #3B82F6 | Background Dark Greyish #121418
+ ================================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
-  /* Authentic Minecraft Palette Tokens */
-  --mc-redstone:     #FF3333;  /* Redstone Red (Primary Accent) */
-  --mc-gold:         #FFAA00;  /* Minecraft Gold (Secondary Accent) */
-  --mc-emerald:      #55FF55;  /* Minecraft Emerald Green */
-  --mc-diamond:      #55FFFF;  /* Minecraft Diamond Blue */
-  --mc-obsidian:     #121216;  /* Deep Obsidian Background */
-  --mc-bedrock:      #1A1A20;  /* Bedrock Card Surface */
-  --mc-stone:        #282834;  /* Minecraft Stone Border/Panel */
-  --mc-nether:       #2A1435;  /* Nether Portal Dark Accent */
+  /* Cyan & Mild Blue Palette Tokens */
+  --theme-cyan:      #00F0FF;  /* Primary Cyan Accent */
+  --theme-cyan-hot:  #00D8E6;  /* Deep Electric Cyan */
+  --theme-blue:      #3B82F6;  /* Secondary Mild Blue */
+  --theme-blue-soft: #60A5FA;  /* Soft Mild Blue */
+  --theme-grey-bg:   #121418;  /* Dark Greyish Background */
+  --theme-grey-card: #1A1D24;  /* Slate Grey Card Surface */
+  --theme-grey-border: #2E333D; /* Slate Grey Border */
 
   /* Core UI Tokens */
-  --primary:         var(--mc-redstone);
-  --primary-hot:     #FF5555;
-  --secondary:       var(--mc-gold);
-  --secondary-light: #FFC44D;
+  --primary:         var(--theme-cyan);
+  --primary-hot:     var(--theme-cyan-hot);
+  --secondary:       var(--theme-blue);
+  --secondary-light: var(--theme-blue-soft);
 
-  --bg:              var(--mc-obsidian);
-  --bg-card:         var(--mc-bedrock);
-  --bg-soft:         var(--mc-stone);
-  --off-black:       #16161C;
-  --black:           #0D0D10;
+  --bg:              var(--theme-grey-bg);
+  --bg-card:         var(--theme-grey-card);
+  --bg-soft:         #242832;
+  --off-black:       #16181D;
+  --black:           #0D0E11;
   --pure-black:      #000000;
-  --white:           #F5F0EB;
+  --white:           #F0F4F8;
   --pure-white:      #ffffff;
 
-  --red:             var(--mc-redstone);
-  --red-hot:         #FF5555;
-  --orange:          var(--mc-gold);
-  --orange-light:    #FFC44D;
-  --amber:           #FFAA00;
+  --red:             var(--theme-cyan);
+  --red-hot:         var(--theme-cyan-hot);
+  --orange:          var(--theme-blue);
+  --orange-light:    var(--theme-blue-soft);
+  --amber:           #38BDF8;
   --discord:         #5865f2;
 
-  --border:          3px solid var(--mc-stone);
-  --border-thick:    5px solid var(--mc-stone);
-  --border-thin:     2px solid var(--mc-stone);
-  --border-primary:  3px solid var(--mc-redstone);
-  --border-secondary: 3px solid var(--mc-gold);
+  --border:          3px solid var(--theme-grey-border);
+  --border-thick:    5px solid var(--theme-grey-border);
+  --border-thin:     2px solid var(--theme-grey-border);
+  --border-primary:  3px solid var(--theme-cyan);
+  --border-secondary: 3px solid var(--theme-blue);
 
-  /* Legacy & Component Compatibility */
-  --panel:           var(--mc-bedrock);
-  --text:            #F5F0EB;
-  --muted:           #E2E2EC;
-  --muted-strong:    #F5F0EB;
-  --text-primary:    #F5F0EB;
-  --text-muted:      #E2E2EC;
-  --line:            var(--mc-stone);
-  --line-strong:     var(--mc-redstone);
-  --line-bright:     var(--mc-gold);
-  --red-soft:        var(--mc-redstone);
-  --red-strong:      #FF5555;
-  --warning:         var(--mc-gold);
+  /* Component Compatibility */
+  --panel:           var(--theme-grey-card);
+  --text:            #F0F4F8;
+  --muted:           #D0D8E4;
+  --muted-strong:    #F0F4F8;
+  --text-primary:    #F0F4F8;
+  --text-muted:      #D0D8E4;
+  --line:            var(--theme-grey-border);
+  --line-strong:     var(--theme-cyan);
+  --line-bright:     var(--theme-blue);
+  --red-soft:        var(--theme-cyan);
+  --red-strong:      var(--theme-cyan-hot);
+  --warning:         var(--theme-blue);
   --discord-dark:    #4752c4;
-  --shadow-md:       4px 4px 0 var(--mc-redstone);
-  --shadow-lg:       6px 6px 0 var(--mc-gold);
-  --shadow-card:     4px 4px 0 var(--mc-redstone);
+  --shadow-md:       4px 4px 0 var(--theme-cyan);
+  --shadow-lg:       6px 6px 0 var(--theme-blue);
+  --shadow-card:     4px 4px 0 var(--theme-cyan);
   --radius-lg:       0px;
   --radius-md:       0px;
   --radius-sm:       0px;
   --radius:          0px;
   --content:         1180px;
-  --green-1:         var(--mc-emerald);
-  --green-2:         var(--mc-redstone);
+  --green-1:         #38BDF8;
+  --green-2:         var(--theme-cyan);
   --glow-green:      none;
-  --border-glass:    3px solid var(--mc-stone);
-  --border-glass-hover: 3px solid var(--mc-gold);
+  --border-glass:    3px solid var(--theme-grey-border);
+  --border-glass-hover: 3px solid var(--theme-blue);
 }
 
 /* ── RESET ── */

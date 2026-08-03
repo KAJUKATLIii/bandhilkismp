@@ -20,21 +20,21 @@
 <link rel="stylesheet" href="/style.css">
 <style>
   .event-card { padding: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; border: var(--border); box-shadow: 4px 4px 0 var(--primary); background: var(--bg-card); color: var(--white); }
-  .event-card:hover { background: #FF6B00; }
+  .event-card:hover { background: var(--secondary); }
   .event-title { font-weight: 700; font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 0.04em; }
   .event-desc { font-size: 0.875rem; color: var(--muted); flex: 1; }
-  .event-date { font-size: 0.78rem; color: var(--muted); border-left: 3px solid #CC2200; padding-left: 8px; }
+  .event-date { font-size: 0.78rem; color: var(--muted); border-left: 3px solid var(--primary); padding-left: 8px; }
   .event-icon { font-size: 2rem; }
   .page-header { text-align: left; }
   .hidden { display: none !important; }
   #eventsLoadingMsg { text-align:center; padding: 40px; color: var(--muted); font-family: 'Space Mono', monospace; }
   .events-empty-state { text-align: center; padding: 60px 20px; color: var(--muted); }
   .events-empty-state p { max-width: 380px; margin: 0 auto; font-size: 0.9rem; }
-  .event-type-badge { display: inline-block; padding: 2px 10px; font-size: 0.7rem; background: #FF6B00; border: 2px solid #0D0D0D; color: #0D0D0D; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
-  .countdown-live { display: inline-flex; align-items: center; gap: 4px; color: #CC2200; font-weight: 700; font-size: 0.82rem; }
+  .event-type-badge { display: inline-block; padding: 2px 10px; font-size: 0.7rem; background: var(--secondary); border: 2px solid #0D0D0D; color: #0D0D0D; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .countdown-live { display: inline-flex; align-items: center; gap: 4px; color: var(--primary); font-weight: 700; font-size: 0.82rem; }
   .badge-completed { background: #ccc; color: var(--muted); border: 2px solid #0D0D0D; padding: 2px 10px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; }
   .badge-pinned { background: var(--off-black); border: 2px solid var(--primary); color: var(--secondary); padding: 2px 10px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; }
-  .badge-upcoming { background: #FF6B00; border: 2px solid #0D0D0D; color: #0D0D0D; padding: 2px 10px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; }
+  .badge-upcoming { background: var(--secondary); border: 2px solid #0D0D0D; color: #0D0D0D; padding: 2px 10px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; }
   .container { padding-top: 0; padding-bottom: 4rem; }
 </style>
 </head>
@@ -140,7 +140,7 @@ function renderEvents(events) {
 
     const countdown = ev.completed ? '' : isLive
       ? '<div class="countdown-live">&#9940; LIVE NOW</div>'
-      : '<div style="color:var(--muted);font-size:0.82rem;">&#9203; Starts in <strong style="color:#CC2200;">'+timeLeft+'</strong></div>';
+      : '<div style="color:var(--muted);font-size:0.82rem;">&#9203; Starts in <strong style="color:var(--primary);">'+timeLeft+'</strong></div>';
 
     return '<div class="event-card">' +
       '<div style="display:flex;justify-content:space-between;align-items:flex-start;">' +
