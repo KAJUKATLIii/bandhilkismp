@@ -15,7 +15,7 @@
   }
 
   body {
-    background: #000;
+    background: var(--bg);
     position: relative;
     overflow-x: hidden;
     margin: 0;
@@ -72,15 +72,15 @@
   .page-kicker {
     font-family: 'VT323', monospace !important;
     font-size: 1.4rem !important;
-    color: #e040fb !important;
+    color: var(--secondary) !important;
     letter-spacing: 0.15em !important;
     text-shadow: 2px 2px 0px #000;
   }
 
   .page-title {
     font-size: clamp(3rem, 7vw, 5.2rem) !important;
-    text-shadow: 4px 4px 0px #000, 0 0 25px rgba(168, 85, 247, 0.6);
-    color: #dfaaff;
+    text-shadow: 4px 4px 0px #000, 0 0 25px rgba(255, 51, 51, 0.5);
+    color: var(--white);
   }
 
   .page-subtitle {
@@ -92,7 +92,7 @@
   .section-title {
     font-size: 2.1rem !important;
     text-shadow: 2px 2px 0px #000;
-    color: #ffd700; /* Gold Section Titles */
+    color: var(--secondary); /* Gold Section Titles */
   }
 
   .user-grid {
@@ -115,15 +115,15 @@
   /* Glowing Obsidian Glass Panels */
   .glass {
     position: relative;
-    background: rgba(12, 6, 22, 0.94) !important;
+    background: var(--bg-card) !important;
     border: 12px solid transparent !important;
     border-image: var(--obsidian-texture) 4 repeat !important;
     border-radius: 0px !important; /* Authentic Square look */
     background-clip: padding-box !important;
     box-shadow: 
       0 16px 40px rgba(0, 0, 0, 0.85), 
-      inset 0 0 24px rgba(168, 85, 247, 0.25), 
-      0 0 20px rgba(168, 85, 247, 0.15) !important;
+      inset 0 0 24px rgba(255, 51, 51, 0.15), 
+      4px 4px 0 var(--primary) !important;
     backdrop-filter: blur(10px) !important;
     transition: all 0.15s steps(4) !important; /* Retro step transitions */
     overflow: hidden;
@@ -139,8 +139,8 @@
     border-image: var(--obsidian-texture) 4 repeat !important;
     box-shadow: 
       0 24px 48px rgba(0, 0, 0, 0.95), 
-      0 0 35px rgba(168, 85, 247, 0.45), 
-      inset 0 0 32px rgba(168, 85, 247, 0.3) !important;
+      6px 6px 0 var(--secondary), 
+      inset 0 0 32px rgba(255, 170, 0, 0.2) !important;
     transform: translateY(-2px);
   }
 
@@ -156,8 +156,8 @@
     height: 120px;
     margin: 0 auto 1.5rem;
     background: #0f0a1c;
-    border: 4px solid #7c3aed;
-    box-shadow: 0 0 25px rgba(124, 58, 237, 0.5);
+    border: 4px solid var(--secondary);
+    box-shadow: 0 0 25px rgba(255, 170, 0, 0.4);
     padding: 4px;
     border-radius: 0px; /* Square */
     image-rendering: pixelated;
@@ -193,7 +193,7 @@
     font-size: 2.8rem !important;
     font-weight: 500;
     margin-bottom: 0.25rem;
-    color: #ffd700; /* Classic Minecraft Gold */
+    color: var(--secondary); /* Classic Minecraft Gold */
     text-shadow: 3px 3px 0px #000;
   }
   .profile-discord-id {
@@ -274,7 +274,7 @@
   }
   .mc-ign {
     font-weight: 700;
-    color: #ffd700;
+    color: var(--secondary);
     font-family: 'VT323', monospace;
     text-shadow: 1px 1px 0px #000;
   }
@@ -409,7 +409,7 @@
   }
   .server-status-title {
     font-size: 1.6rem !important;
-    color: #ffd700;
+    color: var(--secondary);
     text-shadow: 2px 2px 0 #000;
   }
   .server-indicator {
@@ -474,7 +474,7 @@
   .mc-server-name {
     font-family: 'VT323', monospace;
     font-size: 1.8rem;
-    color: #ffd700;
+    color: var(--secondary);
     text-shadow: 2px 2px 0 #000;
   }
   .mc-server-players {
@@ -742,7 +742,7 @@
     font-size: 1.6rem !important;
     margin-bottom: 1rem;
     text-align: left;
-    color: #ffd700;
+    color: var(--secondary);
     text-shadow: 2px 2px 0 #000;
   }
   .leaderboard-row {
@@ -764,7 +764,7 @@
     width: 24px;
     text-align: center;
   }
-  .rank-1 { color: #ffd700; text-shadow: 2px 2px 0px #000; }
+  .rank-1 { color: var(--secondary); text-shadow: 2px 2px 0px #000; }
   .rank-2 { color: #e5e7eb; text-shadow: 2px 2px 0px #000; }
   .rank-3 { color: #d97706; text-shadow: 2px 2px 0px #000; }
   
