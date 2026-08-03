@@ -35,13 +35,13 @@
     font-family: 'Oswald', sans-serif; letter-spacing: 0.04em;
   }
   .staff-section-title span { font-size: 0.88rem; font-family: 'Rajdhani', sans-serif; color: var(--muted); font-weight: 400; letter-spacing: 0; text-transform: none; }
-  .glass-box { background: linear-gradient(180deg, rgba(255,51,51,0.05), transparent 22%), var(--panel); border: 1px solid var(--line); border-radius: var(--radius-md); box-shadow: var(--shadow-md); overflow: hidden; margin-bottom: 22px; }
+  .glass-box { background: linear-gradient(180deg, rgba(255,51,51,0.05), transparent 22%), var(--panel); border: var(--border); border-radius: 0px; box-shadow: var(--shadow-md); overflow: hidden; margin-bottom: 22px; }
   .todo-form { display: flex; gap: 8px; padding: 14px 16px; border-bottom: 1px solid var(--line); }
-  .todo-form input { flex: 1; padding: 8px 12px; border-radius: var(--radius-sm); border: 1px solid var(--line); background: var(--off-black); color: var(--text); font: inherit; font-size: 0.88rem; outline: none; }
+  .todo-form input { flex: 1; padding: 8px 12px; border-radius: 0px; border: var(--border); background: var(--off-black); color: var(--text); font: inherit; font-size: 0.88rem; outline: none; }
   .todo-form input:focus { border-color: var(--line-bright); }
-  .todo-form select { padding: 8px 10px; border-radius: var(--radius-sm); border: 1px solid var(--line); background: var(--off-black); color: var(--text); font: inherit; font-size: 0.88rem; outline: none; }
+  .todo-form select { padding: 8px 10px; border-radius: 0px; border: var(--border); background: var(--off-black); color: var(--text); font: inherit; font-size: 0.88rem; outline: none; }
   .assign-form { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
-  .assign-form input { flex: 1; min-width: 120px; padding: 6px 10px; border-radius: var(--radius-sm); border: 1px solid var(--line); background: var(--off-black); color: var(--text); font: inherit; font-size: 0.82rem; outline: none; }
+  .assign-form input { flex: 1; min-width: 120px; padding: 6px 10px; border-radius: 0px; border: var(--border); background: var(--off-black); color: var(--text); font: inherit; font-size: 0.82rem; outline: none; }
   .hidden { display: none !important; }
   .staff-header { padding: 18px 24px; background: var(--off-black); border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
   .staff-user-chip { display: flex; align-items: center; gap: 10px; }
@@ -50,26 +50,26 @@
   .staff-user-info .name { font-weight: 700; color: var(--text); }
   .staff-user-info .role { color: var(--red-soft); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
   .reply-input-area-staff { display: flex; gap: 8px; margin-top: 10px; }
-  .reply-input-area-staff textarea { flex: 1; padding: 8px 12px; border-radius: var(--radius-sm); border: 1px solid var(--line); background: var(--off-black); color: var(--text); font: inherit; font-size: 0.87rem; resize: none; outline: none; }
+  .reply-input-area-staff textarea { flex: 1; padding: 8px 12px; border-radius: 0px; border: var(--border); background: var(--off-black); color: var(--text); font: inherit; font-size: 0.87rem; resize: none; outline: none; }
   .reply-input-area-staff textarea:focus { border-color: var(--line-bright); box-shadow: 0 0 0 3px rgba(255,51,51,0.15); }
   /* Work Update Panel */
   .wu-form { display: flex; flex-direction: column; gap: 10px; padding: 16px; border-bottom: 1px solid var(--line); }
-  .wu-form textarea { padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--line); background: var(--off-black); color: var(--text); font: inherit; font-size: 0.88rem; resize: vertical; outline: none; min-height: 80px; }
+  .wu-form textarea { padding: 10px 14px; border-radius: 0px; border: var(--border); background: var(--off-black); color: var(--text); font: inherit; font-size: 0.88rem; resize: vertical; outline: none; min-height: 80px; }
   .wu-form textarea:focus { border-color: var(--line-bright); box-shadow: 0 0 0 3px rgba(255,51,51,0.15); }
   .wu-form-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-  .wu-form select { padding: 8px 10px; border-radius: var(--radius-sm); border: 1px solid var(--line); background: var(--off-black); color: var(--text); font: inherit; font-size: 0.88rem; outline: none; }
+  .wu-form select { padding: 8px 10px; border-radius: 0px; border: var(--border); background: var(--off-black); color: var(--text); font: inherit; font-size: 0.88rem; outline: none; }
   .wu-card { padding: 14px 16px; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px; }
   .wu-card:last-child { border-bottom: none; }
   .wu-card-header { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: space-between; }
   .wu-card-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .wu-avatar { width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--line); }
+  .wu-avatar { width: 26px; height: 26px; border-radius: 50%; border: var(--border); }
   .wu-author { font-weight: 700; font-size: 0.88rem; }
   .wu-time { font-size: 0.75rem; color: var(--muted); }
   .wu-cat-badge { padding: 2px 10px; border-radius: 999px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
   .wu-cat-general { background: rgba(156,163,175,0.15); border: 1px solid rgba(156,163,175,0.3); color: #9ca3af; }
   .wu-cat-tickets { background: rgba(96,165,250,0.12); border: 1px solid rgba(96,165,250,0.28); color: #60a5fa; }
-  .wu-cat-events { background: rgba(248,196,44,0.12); border: 1px solid rgba(248,196,44,0.28); color: #f8c42c; }
-  .wu-cat-moderation { background: rgba(255,51,51,0.15); border: 1px solid rgba(248,71,98,0.28); color: var(--primary); }
+  .wu-cat-events { background: rgba(255,170,0,0.15); border: 1px solid rgba(255,170,0,0.3); color: var(--secondary); }
+  .wu-cat-moderation { background: rgba(255,51,51,0.15); border: 1px solid rgba(255,51,51,0.28); color: var(--primary); }
   .wu-cat-development { background: rgba(74,222,128,0.12); border: 1px solid rgba(74,222,128,0.28); color: #4ade80; }
   .wu-cat-other { background: rgba(167,139,250,0.12); border: 1px solid rgba(167,139,250,0.28); color: #a78bfa; }
   .wu-summary { font-size: 0.9rem; color: var(--text); line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
@@ -77,9 +77,9 @@
   /* Gallery Manager Grid & Items */
   .manager-gallery-item {
     position: relative;
-    border-radius: var(--radius-sm);
+    border-radius: 0px;
     overflow: hidden;
-    border: 1px solid var(--line);
+    border: var(--border);
     aspect-ratio: 4/3;
     background: rgba(8,3,4,0.5);
     transition: border-color 0.2s;
@@ -99,7 +99,7 @@
     background: var(--primary);
     color: white;
     border: none;
-    border-radius: var(--radius-sm);
+    border-radius: 0px;
     padding: 3px 7px;
     font-size: 0.72rem;
     cursor: pointer;
@@ -138,7 +138,7 @@
   .manager-team-card.dragging {
     opacity: 0.45;
     transform: scale(0.98);
-    box-shadow: 0 0 16px rgba(248,71,98,0.25);
+    box-shadow: 0 0 16px rgba(255,51,51,0.25);
     border-color: var(--line-bright) !important;
   }
   .drag-handle {
@@ -148,7 +148,7 @@
     color: var(--muted);
     cursor: grab;
     padding: 4px;
-    border-radius: var(--radius-sm);
+    border-radius: 0px;
     transition: color 0.2s, background 0.2s;
     flex-shrink: 0;
   }
@@ -160,14 +160,14 @@
   /* ── Whitelist Applications Panel ── */
   .wl-card {
     background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: var(--radius-md);
+    border: var(--border);
+    border-radius: 0px;
     overflow: hidden;
     transition: border-color 0.2s;
   }
   .wl-card.status-pending { border-left: 3px solid #fbbf24; }
   .wl-card.status-approved { border-left: 3px solid #4ade80; }
-  .wl-card.status-rejected { border-left: 3px solid #f87171; }
+  .wl-card.status-rejected { border-left: 3px solid var(--primary); }
   .wl-card-header {
     display: flex;
     align-items: center;
@@ -193,7 +193,7 @@
   }
   .wl-badge.pending  { background: rgba(251,191,36,0.14);  border: 1px solid rgba(251,191,36,0.35);  color: #fbbf24; }
   .wl-badge.approved { background: rgba(74,222,128,0.12);  border: 1px solid rgba(74,222,128,0.3);   color: #4ade80; }
-  .wl-badge.rejected { background: rgba(248,113,113,0.12); border: 1px solid rgba(248,113,113,0.3);  color: #f87171; }
+  .wl-badge.rejected { background: rgba(248,113,113,0.12); border: 1px solid rgba(248,113,113,0.3);  color: var(--primary); }
   .wl-score-badge {
     padding: 3px 9px;
     border-radius: 999px;
@@ -218,8 +218,8 @@
   }
   .wl-field {
     background: rgba(255,255,255,0.03);
-    border: 1px solid var(--line);
-    border-radius: var(--radius-sm);
+    border: var(--border);
+    border-radius: 0px;
     padding: 10px 12px;
   }
   .wl-field-label { font-size: 0.68rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 4px; }
@@ -237,8 +237,8 @@
     flex: 1;
     min-width: 180px;
     padding: 7px 11px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--line);
+    border-radius: 0px;
+    border: var(--border);
     background: var(--off-black);
     color: var(--text);
     font: inherit;
@@ -259,8 +259,8 @@
   @media (max-width: 1100px) { .eb-layout { grid-template-columns: 1fr; } }
   .eb-form-box {
     background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: var(--radius-md);
+    border: var(--border);
+    border-radius: 0px;
     overflow: hidden;
   }
   .eb-section {
@@ -281,8 +281,8 @@
   .eb-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; color: var(--muted); text-transform: uppercase; }
   .eb-input {
     padding: 7px 10px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--line);
+    border-radius: 0px;
+    border: var(--border);
     background: var(--off-black);
     color: var(--text);
     font: inherit;
@@ -292,11 +292,11 @@
     box-sizing: border-box;
     transition: border-color 0.18s;
   }
-  .eb-input:focus { border-color: var(--line-bright); box-shadow: 0 0 0 3px rgba(248,71,98,0.1); }
+  .eb-input:focus { border-color: var(--line-bright); box-shadow: 0 0 0 3px rgba(255,51,51,0.1); }
   .eb-textarea {
     padding: 8px 10px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--line);
+    border-radius: 0px;
+    border: var(--border);
     background: var(--off-black);
     color: var(--text);
     font: inherit;
@@ -308,7 +308,7 @@
     min-height: 80px;
     transition: border-color 0.18s;
   }
-  .eb-textarea:focus { border-color: var(--line-bright); box-shadow: 0 0 0 3px rgba(248,71,98,0.1); }
+  .eb-textarea:focus { border-color: var(--line-bright); box-shadow: 0 0 0 3px rgba(255,51,51,0.1); }
   .eb-color-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
   .eb-color-swatch {
     width: 28px; height: 28px; border-radius: 6px; border: 2px solid var(--line);
@@ -323,8 +323,8 @@
     gap: 6px;
     align-items: center;
     background: rgba(255,255,255,0.025);
-    border: 1px solid var(--line);
-    border-radius: var(--radius-sm);
+    border: var(--border);
+    border-radius: 0px;
     padding: 8px 10px;
     margin-bottom: 6px;
   }
@@ -332,10 +332,10 @@
   .eb-inline-toggle { display: flex; align-items: center; gap: 4px; font-size: 0.78rem; color: var(--muted); white-space: nowrap; cursor: pointer; }
   .eb-inline-toggle input { cursor: pointer; accent-color: var(--red-soft); margin: 0; }
   .eb-rm-btn {
-    background: rgba(248,71,98,0.15); border: 1px solid rgba(248,71,98,0.3); color: var(--primary);
-    border-radius: var(--radius-sm); padding: 3px 8px; cursor: pointer; font-size: 0.78rem; font-weight: 700; transition: background 0.15s;
+    background: rgba(255,51,51,0.15); border: 1px solid rgba(255,51,51,0.3); color: var(--primary);
+    border-radius: 0px; padding: 3px 8px; cursor: pointer; font-size: 0.78rem; font-weight: 700; transition: background 0.15s;
   }
-  .eb-rm-btn:hover { background: rgba(248,71,98,0.3); }
+  .eb-rm-btn:hover { background: rgba(255,51,51,0.3); }
   /* Preview pane */
   .eb-preview-pane {
     position: sticky;
@@ -364,7 +364,7 @@
     height: 38px;
     border-radius: 50%;
     flex-shrink: 0;
-    background: linear-gradient(135deg,var(--primary),#f8c42c);
+    background: linear-gradient(135deg,var(--primary),var(--secondary));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -410,8 +410,8 @@
   .eb-channel-select {
     flex: 1; min-width: 160px;
     padding: 8px 10px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--line);
+    border-radius: 0px;
+    border: var(--border);
     background: var(--off-black);
     color: var(--text);
     font: inherit;
@@ -523,7 +523,7 @@
           <div class="stat-card"><span class="stat-card-value" id="statOpen" style="color:#4ade80;">—</span><span class="stat-card-label">Open</span></div>
           <div class="stat-card"><span class="stat-card-value" id="statIP" style="color:#fbbf24;">—</span><span class="stat-card-label">In Progress</span></div>
           <div class="stat-card"><span class="stat-card-value" id="statWaiting" style="color:#60a5fa;">—</span><span class="stat-card-label">Awaiting Player</span></div>
-          <div class="stat-card"><span class="stat-card-value" id="statClosed" style="color:#f87171;">—</span><span class="stat-card-label">Closed</span></div>
+          <div class="stat-card"><span class="stat-card-value" id="statClosed" style="color:var(--primary);">—</span><span class="stat-card-label">Closed</span></div>
         </div>
 
         <div class="staff-section-title">Recent Activity <span>Last 5 actions</span></div>
@@ -1311,7 +1311,7 @@ function staffTicketHTML(t) {
         <button class="btn btn-sm btn-outline" onclick="claimTicket('${t.id}')">📌 Claim</button>
         <button class="btn btn-sm btn-outline" onclick="closeTicket('${t.id}')">🔴 Close</button>
         <button class="btn btn-sm btn-outline" onclick="reopenTicket('${t.id}')">🟢 Reopen</button>
-        <button class="btn btn-sm btn-outline" onclick="deleteTicket('${t.id}')" style="color:var(--red-soft);border-color:rgba(248,71,98,0.35);">✕ Delete</button>
+        <button class="btn btn-sm btn-outline" onclick="deleteTicket('${t.id}')" style="color:var(--red-soft);border-color:rgba(255,51,51,0.35);">✕ Delete</button>
         <select onchange="changeStatus('${t.id}', this.value)" style="padding:5px 10px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:11px;cursor:pointer;">
           ${statusOptions}
         </select>
@@ -1504,7 +1504,7 @@ function renderEventsList(events) {
     const statusStyle = ev.completed
       ? 'background:rgba(156,163,175,0.18);border:1px solid rgba(156,163,175,0.35);color:var(--muted);'
       : ev.pinned
-        ? 'background:rgba(248,71,98,0.16);border:1px solid rgba(248,71,98,0.35);color:var(--text);'
+        ? 'background:rgba(255,51,51,0.16);border:1px solid rgba(255,51,51,0.35);color:var(--text);'
         : 'background:rgba(96,165,250,0.12);border:1px solid rgba(96,165,250,0.28);color:#60a5fa;';
 
     return `
@@ -1527,7 +1527,7 @@ function renderEventsList(events) {
             </div>
             <div style="display:flex;gap:8px;flex-wrap:wrap;">
               <button class="btn btn-sm btn-outline" onclick="togglePin('${ev.id}', ${ev.pinned ? 'true' : 'false'})">${ev.pinned ? 'Unpin' : 'Pin'}</button>
-              <button class="btn btn-sm btn-outline" onclick="deleteEvent('${ev.id}')" style="color:var(--red-soft);border-color:rgba(248,71,98,0.35);">Delete</button>
+              <button class="btn btn-sm btn-outline" onclick="deleteEvent('${ev.id}')" style="color:var(--red-soft);border-color:rgba(255,51,51,0.35);">Delete</button>
             </div>
           </div>
         </div>
@@ -1540,7 +1540,7 @@ function showEventStatus(msg, isError) {
   const el = document.getElementById('eventStatus');
   if (!el) return;
   el.textContent = msg || '';
-  el.style.color = isError ? 'var(--red-soft, #f87171)' : '#4ade80';
+  el.style.color = isError ? 'var(--red-soft, var(--primary))' : '#4ade80';
   el.style.display = msg ? 'block' : 'none';
 }
 function hideEventStatus() {
@@ -2049,7 +2049,7 @@ function renderTeamManager(team) {
       : `<div class="dev-avatar" style="width: 48px; height: 48px; margin: 0; font-size: 1.1rem; border-radius: 8px; flex-shrink: 0; display: grid; place-items: center;">${member.initials || 'US'}</div>`;
     
     return `
-      <div class="glass manager-team-card" draggable="true" data-id="${member.discordId}" style="padding: 12px; display: flex; align-items: center; gap: 12px; position: relative; border-radius: var(--radius-sm);">
+      <div class="glass manager-team-card" draggable="true" data-id="${member.discordId}" style="padding: 12px; display: flex; align-items: center; gap: 12px; position: relative; border-radius: 0px;">
         <div class="drag-handle" title="Drag to reorder">
           <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;"><path d="M8.5 6a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0 6a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0 6a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm10-12a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0 6a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0 6a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/></svg>
         </div>
@@ -2061,7 +2061,7 @@ function renderTeamManager(team) {
           </div>
           <div style="font-size: 0.75rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${escapeHTML(member.title || 'No Title')}</div>
         </div>
-        <button class="btn btn-sm btn-outline" onclick="deleteTeamMember('${member.discordId}')" style="padding: 4px 8px; font-size: 0.72rem; color: var(--red-soft); border-color: rgba(248,71,98,0.3); flex-shrink: 0;">Delete</button>
+        <button class="btn btn-sm btn-outline" onclick="deleteTeamMember('${member.discordId}')" style="padding: 4px 8px; font-size: 0.72rem; color: var(--red-soft); border-color: rgba(255,51,51,0.3); flex-shrink: 0;">Delete</button>
       </div>
     `;
   }).join('');
@@ -2449,7 +2449,7 @@ function wlCardHTML(a) {
   const actionsHTML = a.status === 'pending' ? `
     <input class="wl-reason-input" id="wlReason_${a.discordId}" placeholder="Rejection reason (optional)…">
     <button class="btn btn-sm" style="background:#4ade80;color:#000;font-weight:700;" onclick="approveWL('${a.discordId}')">✅ Approve</button>
-    <button class="btn btn-sm btn-outline" style="color:#f87171;border-color:rgba(248,113,113,0.35);" onclick="rejectWL('${a.discordId}')">❌ Reject</button>
+    <button class="btn btn-sm btn-outline" style="color:var(--primary);border-color:rgba(248,113,113,0.35);" onclick="rejectWL('${a.discordId}')">❌ Reject</button>
     <span id="wlStatus_${a.discordId}" style="font-size:0.8rem;color:var(--muted);"></span>` : `
     <span class="wl-reviewed-note">Reviewed by <strong>${escapeHTML(a.reviewedBy || 'Staff')}</strong></span>`;
 
@@ -2686,7 +2686,7 @@ async function sendEmbed() {
   
   if (!channelId) {
     statusEl.textContent = '❌ Please specify a Channel ID.';
-    statusEl.style.color = '#f87171';
+    statusEl.style.color = 'var(--primary)';
     return;
   }
 
@@ -2739,7 +2739,7 @@ async function sendEmbed() {
     setTimeout(() => { statusEl.textContent = ''; }, 3000);
   } catch (e) {
     statusEl.textContent = '❌ ' + e.message;
-    statusEl.style.color = '#f87171';
+    statusEl.style.color = 'var(--primary)';
   }
 }
 
@@ -2775,10 +2775,10 @@ function renderStaffContractsList() {
     const statusStyle = c.status === 'open' 
       ? 'background:rgba(96,165,250,0.12);border:1px solid rgba(96,165,250,0.28);color:#60a5fa;'
       : c.status === 'active'
-        ? 'background:rgba(248,196,44,0.12);border:1px solid rgba(248,196,44,0.28);color:#f8c42c;'
+        ? 'background:rgba(255,170,0,0.15);border:1px solid rgba(255,170,0,0.3);color:var(--secondary);'
         : c.status === 'completed'
           ? 'background:rgba(74,222,128,0.12);border:1px solid rgba(74,222,128,0.28);color:#4ade80;'
-          : 'background:rgba(255,51,51,0.15);border:1px solid rgba(248,71,98,0.28);color:var(--primary);';
+          : 'background:rgba(255,51,51,0.15);border:1px solid rgba(255,51,51,0.28);color:var(--primary);';
 
     // Build quotations HTML
     let quotationsHtml = '';
@@ -2789,7 +2789,7 @@ function renderStaffContractsList() {
           <div style="display:flex; flex-direction:column; gap:8px;">
             ${c.quotations.map(q => {
               const avatar = q.playerAvatar || 'https://cdn.discordapp.com/embed/avatars/0.png';
-              const bidStatusStyle = q.status === 'accepted' ? 'color:#4ade80;background:rgba(74,222,128,0.1);' : q.status === 'rejected' ? 'color:var(--primary);background:rgba(248,71,98,0.1);' : 'color:#fbbf24;background:rgba(248,196,44,0.1);';
+              const bidStatusStyle = q.status === 'accepted' ? 'color:#4ade80;background:rgba(74,222,128,0.1);' : q.status === 'rejected' ? 'color:var(--primary);background:rgba(255,51,51,0.1);' : 'color:#fbbf24;background:rgba(248,196,44,0.1);';
               return `
                 <div style="background:rgba(0,0,0,0.2); padding:10px; border:1px solid var(--line); border-radius:4px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
                   <div style="display:flex; align-items:center; gap:10px;">
@@ -2827,7 +2827,7 @@ function renderStaffContractsList() {
       const billStatusStyle = c.bill.status === 'paid' 
         ? 'color:#4ade80;background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.25);' 
         : c.bill.status === 'rejected' 
-          ? 'color:var(--primary);background:rgba(248,71,98,0.1);border:1px solid rgba(248,71,98,0.25);' 
+          ? 'color:var(--primary);background:rgba(255,51,51,0.1);border:1px solid rgba(255,51,51,0.25);' 
           : 'color:#fbbf24;background:rgba(248,196,44,0.1);border:1px solid rgba(248,196,44,0.25);';
       
       billHtml = `
@@ -2843,13 +2843,13 @@ function renderStaffContractsList() {
             </div>
           ` : ''}
           ${c.bill.status === 'rejected' ? `
-            <div style="font-size:0.8rem; color:#f87171; margin-top:4px;"><strong>Rejection Reason:</strong> ${c.bill.rejectedReason || 'None'}</div>
+            <div style="font-size:0.8rem; color:var(--primary); margin-top:4px;"><strong>Rejection Reason:</strong> ${c.bill.rejectedReason || 'None'}</div>
           ` : ''}
           
           ${c.bill.status === 'pending' ? `
             <div style="display:flex; gap:6px; margin-top:10px;">
               <button class="btn btn-sm" style="background:#22c55e!important; border-color:#22c55e!important; color:#fff!important; padding:4px 12px!important;" onclick="payBill('${c.id}')">Approve &amp; Pay</button>
-              <button class="btn btn-sm btn-outline" style="color:#f87171!important; border-color:rgba(248,71,98,0.35)!important; padding:4px 12px!important;" onclick="rejectBill('${c.id}')">Reject Bill</button>
+              <button class="btn btn-sm btn-outline" style="color:var(--primary)!important; border-color:rgba(255,51,51,0.35)!important; padding:4px 12px!important;" onclick="rejectBill('${c.id}')">Reject Bill</button>
             </div>
           ` : ''}
         </div>
@@ -2888,12 +2888,12 @@ function renderStaffContractsList() {
               <button class="btn btn-sm btn-outline" onclick="updateContractStatus('${c.id}', 'completed')" style="color:#4ade80; border-color:rgba(74,222,128,0.35);">Complete</button>
             ` : ''}
             ${c.status === 'open' || c.status === 'active' ? `
-              <button class="btn btn-sm btn-outline" onclick="updateContractStatus('${c.id}', 'cancelled')" style="color:#f87171; border-color:rgba(248,71,98,0.35);">Cancel</button>
+              <button class="btn btn-sm btn-outline" onclick="updateContractStatus('${c.id}', 'cancelled')" style="color:var(--primary); border-color:rgba(255,51,51,0.35);">Cancel</button>
             ` : ''}
             ${c.status === 'completed' || c.status === 'cancelled' ? `
               <button class="btn btn-sm btn-outline" onclick="updateContractStatus('${c.id}', 'open')">Reopen</button>
             ` : ''}
-            <button class="btn btn-sm btn-outline" onclick="deleteContract('${c.id}')" style="color:var(--red-soft); border-color:rgba(248,71,98,0.35);">✕ Delete</button>
+            <button class="btn btn-sm btn-outline" onclick="deleteContract('${c.id}')" style="color:var(--red-soft); border-color:rgba(255,51,51,0.35);">✕ Delete</button>
           </div>
         </div>
         ${billHtml}
