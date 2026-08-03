@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact Us â€“ Bandhilki SMP</title>
+<title>Contact Us – Bandhilki SMP</title>
 <meta name="description" content="Get in touch with the Bandhilki SMP team. Send us a message or join our Discord.">
 <meta name="keywords" content="bandhilki smp, minecraft, bandhilki family, shreeman legend, bandhilkismp, indian minecraft server, survival multiplayer, pvp server, minecraft india, gaming community, minecraft survival, best indian smp, Bandhilki Family, minecraft community, smp server, best smp server in india, indian minecraft community">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="Bandhilki SMP â€“ Indian Minecraft Server">
+<meta property="og:title" content="Bandhilki SMP – Indian Minecraft Server">
 <meta property="og:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family. Join survival, creative, PvP & events.">
 <meta property="og:image" content="/lg.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Bandhilki SMP â€“ Indian Minecraft Server">
+<meta name="twitter:title" content="Bandhilki SMP – Indian Minecraft Server">
 <meta name="twitter:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family.">
 <meta name="twitter:image" content="/lg.png">
 <script type="application/ld+json">
@@ -290,7 +290,7 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  Â© 2026 BANDHILKI SMP &bull; Secretariat Helpline &bull; <a href="https://discord.gg/KSAm2yd9gC" target="_blank" style="color:var(--green-1);text-decoration:none;">Discord</a>
+  © 2026 BANDHILKI SMP &bull; Secretariat Helpline &bull; <a href="https://discord.gg/KSAm2yd9gC" target="_blank" style="color:var(--green-1);text-decoration:none;">Discord</a>
 </footer>
 
 <script>
@@ -300,7 +300,7 @@ document.getElementById("contactForm").addEventListener("submit", async e => {
   const status = document.getElementById('status');
   
   btn.disabled = true; 
-  btn.textContent = 'Sending Messageâ€¦';
+  btn.textContent = 'Sending Message…';
   status.style.display = 'block';
   status.style.background = 'rgba(255, 255, 255, 0.05)';
   status.style.color = 'var(--muted)';
@@ -321,17 +321,17 @@ document.getElementById("contactForm").addEventListener("submit", async e => {
     if (res.ok && data.success) {
       status.style.background = 'rgba(16, 185, 129, 0.1)';
       status.style.color = '#10b981';
-      status.innerHTML = 'âœ… Message sent successfully! We will get back to you on Discord.';
+      status.innerHTML = '✅ Message sent successfully! We will get back to you on Discord.';
       document.getElementById('contactForm').reset();
     } else {
       status.style.background = 'rgba(239, 68, 68, 0.1)';
       status.style.color = '#f87171';
-      status.innerHTML = `âŒ Failed to send message: ${data.error || 'Please connect via Discord instead.'}`;
+      status.innerHTML = `❌ Failed to send message: ${data.error || 'Please connect via Discord instead.'}`;
     }
   } catch {
     status.style.background = 'rgba(239, 68, 68, 0.1)';
     status.style.color = '#f87171';
-    status.innerHTML = 'âŒ Network failure. Please connect via Discord instead.';
+    status.innerHTML = '❌ Network failure. Please connect via Discord instead.';
   }
   btn.disabled = false; 
   btn.textContent = 'Send Message';

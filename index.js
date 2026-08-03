@@ -1484,6 +1484,42 @@ app.use((req, res, next) => {
 });
 
 
+/* ---------- DISCORD LIVE STATS ---------- */
+// Cache to avoid hammering the Discord API
+let _discordStatsCache = null;
+let _discordStatsCacheTs = 0;
+const DISCORD_STATS_TTL_MS = 60 * 1000; // refresh every 60s
+
+app.get("/api/discord-stats", async (req, res) => {
+  try {
+    const now = Date.now();
+    // Return cached result if fresh enough
+    if (_discordStatsCache && (now - _discordStatsCacheTs) < DISCORD_STATS_TTL_MS) {
+      return res.json(_discordStatsCache);
+    }
+
+    if (!client.isReady() || !DISCORD_GUILD_ID) {
+      // Fallback: return static known values
+      const fallback = { total: 50000, online: null, approximate: true };
+      return res.json(fallback);
+    }
+
+    const guild = await client.guilds.fetch({ guild: DISCORD_GUILD_ID, withCounts: true });
+    const total = guild.memberCount || guild.approximateMemberCount || 0;
+    // online count requires GUILD_PRESENCES intent – best-effort
+    const online = guild.approximatePresenceCount || null;
+
+    _discordStatsCache = { total, online, approximate: false };
+    _discordStatsCacheTs = now;
+    res.json(_discordStatsCache);
+  } catch (e) {
+    log.error(`Failed to fetch Discord stats: ${e.message}`);
+    // Return last good cache or static fallback
+    if (_discordStatsCache) return res.json(_discordStatsCache);
+    res.json({ total: 50000, online: null, approximate: true });
+  }
+});
+
 app.get("/api/servers", async (req, res) => {
   let isWhitelisted = false;
   try {

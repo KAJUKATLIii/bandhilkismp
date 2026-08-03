@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bandhilki SMP Whitelist â€“ Apply for Minecraft SMP</title>
+<title>Bandhilki SMP Whitelist – Apply for Minecraft SMP</title>
 <meta name="description" content="Apply for Bandhilki SMP whitelist. Join the official discord server discord.gg/KSAm2yd9gC.">
 <meta name="keywords" content="bandhilki smp, minecraft, bandhilki family, shreeman legend, bandhilkismp, indian minecraft server, survival multiplayer, pvp server, minecraft india, gaming community, minecraft survival, best indian smp, Bandhilki Family, minecraft community, smp server, best smp server in india, indian minecraft community">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="Bandhilki SMP â€“ Indian Minecraft Server">
+<meta property="og:title" content="Bandhilki SMP – Indian Minecraft Server">
 <meta property="og:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family. Join survival, creative, PvP & events.">
 <meta property="og:image" content="/lg.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Bandhilki SMP â€“ Indian Minecraft Server">
+<meta name="twitter:title" content="Bandhilki SMP – Indian Minecraft Server">
 <meta name="twitter:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family.">
 <meta name="twitter:image" content="/lg.png">
 <script type="application/ld+json">
@@ -229,7 +229,7 @@
     <!-- MAIN CONTENT -->
     <div id="whitelistContent" class="portal-body">
       <div class="empty-state">
-        <div style="font-size:2rem;margin-bottom:0.75rem;">â³</div>
+        <div style="font-size:2rem;margin-bottom:0.75rem;">⏳</div>
         <div class="state-eyebrow">Loading</div>
         <div>Loading whitelist portal...</div>
       </div>
@@ -240,7 +240,7 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  Â© 2026 BANDHILKI SMP &bull; Whitelist managed by Team Insane &bull; <a href="https://discord.gg/KSAm2yd9gC" target="_blank" style="color:var(--green-1);text-decoration:none;">Discord</a>
+  © 2026 BANDHILKI SMP &bull; Whitelist managed by Team Insane &bull; <a href="https://discord.gg/KSAm2yd9gC" target="_blank" style="color:var(--green-1);text-decoration:none;">Discord</a>
 </footer>
 
 <script>
@@ -331,12 +331,12 @@ function renderPortal() {
   } else if (currentUser.whitelistStatus === 'pending') {
     content.innerHTML = `
       <div class="state-card">
-        <div style="font-size:2.5rem;margin-bottom:0.75rem; text-align:center;">ðŸ“‹</div>
+        <div style="font-size:2.5rem;margin-bottom:0.75rem; text-align:center;">📋</div>
         <div>
           <div class="state-eyebrow">Application submitted</div>
           <h3 class="state-title pending">Under Staff Review</h3>
           <p class="state-copy">Your application is currently pending staff review. Staff will approve or reject it on Discord. You'll receive a DM with the decision.</p>
-          <div class="pending-badge">â³ Pending Staff Review</div>
+          <div class="pending-badge">⏳ Pending Staff Review</div>
           <div style="margin-top:1.25rem;">
             <a href="https://discord.gg/KSAm2yd9gC" target="_blank" class="btn btn-discord" style="font-size:0.9rem;">
               Open Discord Server
@@ -362,7 +362,7 @@ function renderPortal() {
   }
 }
 
-/* â”€â”€â”€ STEP PROGRESS HTML â”€â”€â”€ */
+/* ─── STEP PROGRESS HTML ─── */
 function stepsHTML(active) {
   // active: 1 = application, 2 = language, 3 = quiz
   const steps = [
@@ -373,7 +373,7 @@ function stepsHTML(active) {
   let html = '<div class="steps-wrap"><div class="steps-row">';
   steps.forEach((s, i) => {
     const cls = s.num < active ? 'done' : s.num === active ? 'active' : 'upcoming';
-    const icon = s.num < active ? 'âœ“' : s.num;
+    const icon = s.num < active ? '✓' : s.num;
     html += `<div class="step-item"><div class="step-dot ${cls}">${icon}</div><div class="step-label">${s.label}</div></div>`;
     if (i < steps.length - 1) {
       html += `<div class="step-line${s.num < active ? ' done' : ''}"></div>`;
@@ -383,7 +383,7 @@ function stepsHTML(active) {
   return html;
 }
 
-/* â”€â”€â”€ STEP 1: APPLICATION FORM â”€â”€â”€ */
+/* ─── STEP 1: APPLICATION FORM ─── */
 function renderApplicationForm() {
   const content = document.getElementById('whitelistContent');
   
@@ -391,7 +391,7 @@ function renderApplicationForm() {
   if (!currentUser) {
     guestBanner = `
       <div class="guest-banner" style="background: rgba(248,71,98,0.08); border: 1px solid rgba(248,71,98,0.25); border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
-        <span style="font-size: 1.5rem;">ðŸ‘‹</span>
+        <span style="font-size: 1.5rem;">👋</span>
         <div style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.45; text-align: left;">
           You are filling this form as a guest. To submit your application and take the rules quiz, you will need to sign in with Discord. Clicking <strong>"Login with Discord to Continue"</strong> at the bottom will save your answers as a draft.
         </div>
@@ -405,17 +405,17 @@ function renderApplicationForm() {
     ${guestBanner}
     ${stepsHTML(1)}
     <form id="appForm" onsubmit="submitApplicationForm(event)">
-      <div class="form-section-label">Step 1 of 3 â€” Player Profile</div>
-      <p class="quiz-intro">Tell us about yourself as a player. Answer honestly â€” staff will read every application carefully.</p>
+      <div class="form-section-label">Step 1 of 3 — Player Profile</div>
+      <p class="quiz-intro">Tell us about yourself as a player. Answer honestly — staff will read every application carefully.</p>
 
       <div class="form-grid" style="margin-bottom:1rem;">
         <div class="app-question">
-          <label class="form-label"><span class="question-number">1</span>1ï¸âƒ£ Minecraft IGN *</label>
+          <label class="form-label"><span class="question-number">1</span>1️⃣ Minecraft IGN *</label>
           <div class="form-hint">Example: BandhilkiPlayer</div>
           <input class="form-input" id="app_ign" type="text" placeholder="BandhilkiPlayer" required minlength="3" maxlength="16">
         </div>
         <div class="app-question">
-          <label class="form-label"><span class="question-number">2</span>2ï¸âƒ£ Discord Username *</label>
+          <label class="form-label"><span class="question-number">2</span>2️⃣ Discord Username *</label>
           <div class="form-hint">Example: KAJUKATLI</div>
           <input class="form-input" id="app_discord" type="text" placeholder="KAJUKATLI" value="${currentUser ? currentUser.username : ''}" required>
         </div>
@@ -423,51 +423,51 @@ function renderApplicationForm() {
 
       <div class="form-grid" style="margin-bottom:1rem;">
         <div class="app-question">
-          <label class="form-label"><span class="question-number">3</span>3ï¸âƒ£ Age *</label>
+          <label class="form-label"><span class="question-number">3</span>3️⃣ Age *</label>
           <div class="form-hint">Example: 18</div>
           <input class="form-input" id="app_age" type="number" min="10" max="99" placeholder="18" required>
         </div>
         <div class="app-question">
-          <label class="form-label"><span class="question-number">4</span>4ï¸âƒ£ Country &amp; Timezone *</label>
-          <div class="form-hint">Example Answer: India â€“ IST (GMT +5:30)</div>
-          <input class="form-input" id="app_country" type="text" placeholder="India â€“ IST (GMT +5:30)" required>
+          <label class="form-label"><span class="question-number">4</span>4️⃣ Country &amp; Timezone *</label>
+          <div class="form-hint">Example Answer: India – IST (GMT +5:30)</div>
+          <input class="form-input" id="app_country" type="text" placeholder="India – IST (GMT +5:30)" required>
         </div>
       </div>
 
       <div class="app-question">
-        <label class="form-label"><span class="question-number">5</span>5ï¸âƒ£ How long have you been playing Minecraft? *</label>
+        <label class="form-label"><span class="question-number">5</span>5️⃣ How long have you been playing Minecraft? *</label>
         <div class="form-hint">Example Answer: I have been playing Minecraft for around 4 years. I mostly play Survival SMPs and enjoy long-term worlds rather than short servers.</div>
         <textarea class="form-textarea" id="app_experience" placeholder="I have been playing Minecraft for around 4 years. I mostly play Survival SMPs and enjoy long-term worlds rather than short servers." required minlength="30"></textarea>
       </div>
 
       <div class="app-question">
-        <label class="form-label"><span class="question-number">6</span>6ï¸âƒ£ What type of player are you? *</label>
+        <label class="form-label"><span class="question-number">6</span>6️⃣ What type of player are you? *</label>
         <div class="form-hint">Example Answer: I am a survival-focused player who enjoys building bases, grinding resources, trading with other players, and participating in community events. I avoid toxicity and prefer peaceful gameplay.</div>
         <textarea class="form-textarea" id="app_playertype" placeholder="I am a survival-focused player who enjoys building bases, grinding resources, trading with other players, and participating in community events. I avoid toxicity and prefer peaceful gameplay." required minlength="30"></textarea>
       </div>
 
       <div class="app-question">
-        <label class="form-label"><span class="question-number">7</span>7ï¸âƒ£ What do you plan to do on BANDHILKI SMP? *</label>
+        <label class="form-label"><span class="question-number">7</span>7️⃣ What do you plan to do on BANDHILKI SMP? *</label>
         <div class="form-hint">Example Answer: I plan to build a long-term survival base, participate in events, trade with players, and help in community projects. I want to be an active and positive member of the server.</div>
         <textarea class="form-textarea" id="app_plans" placeholder="I plan to build a long-term survival base, participate in events, trade with players, and help in community projects. I want to be an active and positive member of the server." required minlength="30"></textarea>
       </div>
 
       <div class="app-question">
-        <label class="form-label"><span class="question-number">8</span>8ï¸âƒ£ Have you ever been banned? Explain honestly. *</label>
+        <label class="form-label"><span class="question-number">8</span>8️⃣ Have you ever been banned? Explain honestly. *</label>
         <div class="form-hint">Example Answer (Never Banned): No, I have never been banned from any Minecraft server. I always follow rules and respect communities.&#10;Example Answer (If Banned): Yes, I was banned once on another server about 2 years ago for breaking a minor rule. I learned from it and have not repeated the mistake.</div>
         <textarea class="form-textarea" id="app_banhistory" placeholder="No, I have never been banned from any Minecraft server. I always follow rules and respect communities.&#10;&#10;OR&#10;&#10;Yes, I was banned once on another server about 2 years ago for breaking a minor rule. I learned from it and have not repeated the mistake." required minlength="20"></textarea>
       </div>
 
       <div class="form-grid" style="margin-bottom:1rem;">
         <div class="app-question">
-          <label class="form-label"><span class="question-number">9</span>9ï¸âƒ£ Weekly Playtime (hours) *</label>
-          <div class="form-hint">Example Answer: 10â€“15 hours per week</div>
-          <input class="form-input" id="app_hours" type="text" placeholder="10â€“15 hours per week" required>
+          <label class="form-label"><span class="question-number">9</span>9️⃣ Weekly Playtime (hours) *</label>
+          <div class="form-hint">Example Answer: 10–15 hours per week</div>
+          <input class="form-input" id="app_hours" type="text" placeholder="10–15 hours per week" required>
         </div>
       </div>
 
       <div class="app-question">
-        <label class="form-label"><span class="question-number">10</span>ðŸ”Ÿ Why should we whitelist you? *</label>
+        <label class="form-label"><span class="question-number">10</span>🔟 Why should we whitelist you? *</label>
         <div class="form-hint">Example Answer: You should whitelist me because I am a fair player who respects rules, avoids cheating, and values community gameplay. I want to contribute positively to Bandhilki SMP and be a long-term member.</div>
         <textarea class="form-textarea" id="app_why" placeholder="You should whitelist me because I am a fair player who respects rules, avoids cheating, and values community gameplay. I want to contribute positively to Bandhilki SMP and be a long-term member." required minlength="50"></textarea>
       </div>
@@ -521,7 +521,7 @@ function submitApplicationForm(e) {
   const whyWhitelist = document.getElementById('app_why').value.trim();
 
   if (!ign || ign.length < 3) {
-    document.getElementById('appStatus').innerHTML = '<span style="color:#e74c3c">âš ï¸ Minecraft IGN must be at least 3 characters.</span>';
+    document.getElementById('appStatus').innerHTML = '<span style="color:#e74c3c">⚠️ Minecraft IGN must be at least 3 characters.</span>';
     return;
   }
 
@@ -539,7 +539,7 @@ function submitApplicationForm(e) {
   renderLangSelection();
 }
 
-/* â”€â”€â”€ STEP 2: LANGUAGE SELECTION â”€â”€â”€ */
+/* ─── STEP 2: LANGUAGE SELECTION ─── */
 function renderLangSelection() {
   const content = document.getElementById('whitelistContent');
   content.innerHTML = `
@@ -553,18 +553,18 @@ function renderLangSelection() {
         <button class="language-card" onclick="renderQuizForm('hi')"><strong>Hinglish</strong><span>Hindi + English mixed quiz</span></button>
       </div>
       <div style="margin-top:1.25rem;">
-        <button class="btn btn-ghost btn-sm" onclick="renderApplicationForm()">â† Back to Application</button>
+        <button class="btn btn-ghost btn-sm" onclick="renderApplicationForm()">← Back to Application</button>
       </div>
     </div>
   `;
 }
 
-/* â”€â”€â”€ STEP 3: RULES QUIZ â”€â”€â”€ */
+/* ─── STEP 3: RULES QUIZ ─── */
 function renderQuizForm(lang) {
   const content = document.getElementById('whitelistContent');
   content.innerHTML = `
     <div class="empty-state">
-      <div style="font-size:2rem;margin-bottom:0.75rem;">â³</div>
+      <div style="font-size:2rem;margin-bottom:0.75rem;">⏳</div>
       <div class="state-eyebrow">Loading</div>
       <div>Loading quiz questions...</div>
     </div>
@@ -621,7 +621,7 @@ function renderQuizForm(lang) {
     .catch(() => {
       content.innerHTML = `
         <div class="empty-state">
-          <p>âš ï¸ Failed to load quiz questions.</p>
+          <p>⚠️ Failed to load quiz questions.</p>
           <button class="btn btn-outline btn-sm" onclick="renderLangSelection()">Try Again</button>
         </div>
       `;
@@ -663,18 +663,18 @@ async function submitQuiz(e) {
     const data = await res.json();
     if (res.ok && data.success) {
       if (data.passed) {
-        // Application submitted â€” pending staff review
+        // Application submitted — pending staff review
         document.getElementById('whitelistContent').innerHTML = `
           <div class="empty-state">
-            <div style="font-size:2.5rem;margin-bottom:0.75rem;">ðŸ“‹</div>
+            <div style="font-size:2.5rem;margin-bottom:0.75rem;">📋</div>
             <div class="state-eyebrow">Application submitted</div>
             <h3 class="state-title" style="color:#fbbf24;">Under Staff Review</h3>
             <p class="state-copy" style="margin:0.75rem auto 1.25rem; max-width:460px;">
               Your application has been sent to the Bandhilki SMP staff team for review.
-              You scored <strong style="color:var(--green-1)">${data.score}/10</strong> on the rules quiz â€” well done!<br><br>
+              You scored <strong style="color:var(--green-1)">${data.score}/10</strong> on the rules quiz — well done!<br><br>
               Staff will approve or reject your application on Discord. You'll receive a DM with the decision. Keep an eye on your Discord notifications!
             </p>
-            <div class="pending-badge">â³ Pending Staff Review</div>
+            <div class="pending-badge">⏳ Pending Staff Review</div>
             <div style="margin-top:1.25rem;">
               <a href="https://discord.gg/KSAm2yd9gC" target="_blank" class="btn btn-discord" style="font-size:0.9rem;">
                 Open Discord Server
@@ -684,7 +684,7 @@ async function submitQuiz(e) {
         `;
       } else {
         // Quiz failed
-        statusDiv.innerHTML = `<span style="color:#e74c3c">âŒ <strong>Quiz failed:</strong> Score: ${data.score}/10. You need at least 7/10 correct answers to pass. Review the server rules and try again.</span>`;
+        statusDiv.innerHTML = `<span style="color:#e74c3c">❌ <strong>Quiz failed:</strong> Score: ${data.score}/10. You need at least 7/10 correct answers to pass. Review the server rules and try again.</span>`;
         setTimeout(() => {
           btn.disabled = false;
           btn.textContent = 'Submit Application';
@@ -692,12 +692,12 @@ async function submitQuiz(e) {
         }, 4000);
       }
     } else {
-      statusDiv.innerHTML = `<span style="color:#e74c3c">âš ï¸ ${data.error || 'Submission failed. Please try again.'}</span>`;
+      statusDiv.innerHTML = `<span style="color:#e74c3c">⚠️ ${data.error || 'Submission failed. Please try again.'}</span>`;
       btn.disabled = false;
       btn.textContent = 'Submit Application';
     }
   } catch (err) {
-    statusDiv.innerHTML = '<span style="color:#e74c3c">âš ï¸ Server connection error. Please try again.</span>';
+    statusDiv.innerHTML = '<span style="color:#e74c3c">⚠️ Server connection error. Please try again.</span>';
     btn.disabled = false;
     btn.textContent = 'Submit Application';
   }

@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>User Profile â€“ Bandhilki SMP</title>
+<title>User Profile – Bandhilki SMP</title>
 <link rel="icon" type="image/x-icon" href="/favicon.ico?v=1" />
 <link rel="stylesheet" href="/style.css">
 <link href="https://fonts.googleapis.com/css2?family=VT323&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  /* â”€â”€ PREMIUM MINECRAFT NETHER PORTAL UI SYSTEM â”€â”€ */
+  /* ── PREMIUM MINECRAFT NETHER PORTAL UI SYSTEM ── */
   :root {
     --obsidian-texture: none;
   }
@@ -890,7 +890,7 @@
       <!-- Minecraft styled server node -->
       <div class="mc-server-node">
         <div class="mc-server-favicon" id="mcFavicon">
-          ðŸŽ®
+          🎮
         </div>
         <div class="mc-server-details">
           <div class="mc-server-title-row" style="margin-top: 8px;">
@@ -907,12 +907,12 @@
         </div>
         
         <button class="btn btn-outline btn-sm ip-copy-btn" id="copyIpBtn" onclick="copyServerIP()">
-          <span>ðŸ“‹ Copy Server IP</span>
+          <span>📋 Copy Server IP</span>
         </button>
       </div>
       
       <div id="ipRestrictedMsg" style="margin-top: 12px; font-family: 'VT323', monospace; font-size: 1.25rem; color: #ff5555; text-align: center; background: rgba(255, 85, 85, 0.08); border: 2px dashed rgba(255, 85, 85, 0.3); padding: 8px;">
-        ðŸ”’ IP Address hidden until whitelisted.
+        🔒 IP Address hidden until whitelisted.
       </div>
     </div>
 
@@ -923,16 +923,16 @@
       </div>
       <div style="display: flex; flex-direction: column; gap: 0.5rem;">
         <a href="https://discord.gg/KSAm2yd9gC" target="_blank" class="btn btn-outline" style="text-align:left; justify-content:flex-start;">
-          ðŸ’¬ Join our Discord
+          💬 Join our Discord
         </a>
         <a href="rules.html" class="btn btn-outline" style="text-align:left; justify-content:flex-start;">
-          ðŸ“œ Server Rules
+          📜 Server Rules
         </a>
         <a href="gallery.html" class="btn btn-outline" style="text-align:left; justify-content:flex-start;">
-          ðŸ–¼ï¸ View Gallery
+          🖼️ View Gallery
         </a>
         <a href="developers.html" class="btn btn-outline" style="text-align:left; justify-content:flex-start;">
-          ðŸ‘¥ Meet the Team
+          👥 Meet the Team
         </a>
       </div>
     </div>
@@ -1003,7 +1003,7 @@
 
       <!-- MiniGame Leaderboard Top 3 -->
       <div class="leaderboard-compact">
-        <h3 class="leaderboard-compact-title">ðŸ† Global Leaderboard (Top 3)</h3>
+        <h3 class="leaderboard-compact-title">🏆 Global Leaderboard (Top 3)</h3>
         <div id="leaderboardTop3">
           <!-- populated dynamically -->
         </div>
@@ -1013,7 +1013,7 @@
 </div>
 
 <footer class="footer">
-  Â© 2026 BANDHILKI SMP &bull; Built with â¤ï¸ by Team Insane &bull; <a href="https://discord.gg/KSAm2yd9gC" target="_blank" style="color:var(--green-1);text-decoration:none;">Discord</a>
+  © 2026 BANDHILKI SMP &bull; Built with ❤️ by Team Insane &bull; <a href="https://discord.gg/KSAm2yd9gC" target="_blank" style="color:var(--green-1);text-decoration:none;">Discord</a>
 </footer>
 
 <script>
@@ -1151,7 +1151,7 @@ async function loadLiveServerStats() {
         if (server.favicon) {
           favicon.innerHTML = `<img src="${server.favicon}" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" alt="Server Icon">`;
         } else {
-          favicon.innerHTML = 'ðŸŽ®';
+          favicon.innerHTML = '🎮';
         }
         players.textContent = `${server.players}/${server.max}`;
       } else {
@@ -1170,7 +1170,7 @@ function setServerOffline(dot, text, favicon, players) {
   dot.className = 'indicator-dot indicator-offline';
   text.textContent = 'Offline';
   text.style.color = '#ef4444';
-  if (favicon) favicon.innerHTML = 'âŒ';
+  if (favicon) favicon.innerHTML = '❌';
   if (players) players.textContent = 'Offline';
 }
 
@@ -1178,9 +1178,9 @@ function copyServerIP() {
   const ip = "mc.iucnetwork.in:1999";
   navigator.clipboard.writeText(ip).then(() => {
     const btn = document.getElementById('copyIpBtn');
-    btn.innerHTML = '<span>âœ… Copied IP!</span>';
+    btn.innerHTML = '<span>✅ Copied IP!</span>';
     setTimeout(() => {
-      btn.innerHTML = '<span>ðŸ“‹ Copy Server IP</span>';
+      btn.innerHTML = '<span>📋 Copy Server IP</span>';
     }, 2000);
   });
 }
@@ -1238,17 +1238,17 @@ async function loadServerEvents() {
 
 function getEventIcon(type) {
   const t = String(type || '').toLowerCase();
-  if (t.includes('pvp') || t.includes('fight') || t.includes('arena')) return 'âš”ï¸';
-  if (t.includes('build') || t.includes('creative')) return 'ðŸ§±';
-  if (t.includes('giveaway') || t.includes('loot') || t.includes('drop')) return 'ðŸŽ';
-  return 'ðŸ†';
+  if (t.includes('pvp') || t.includes('fight') || t.includes('arena')) return '⚔️';
+  if (t.includes('build') || t.includes('creative')) return '🧱';
+  if (t.includes('giveaway') || t.includes('loot') || t.includes('drop')) return '🎁';
+  return '🏆';
 }
 
 function formatEventCountdown(startsAt) {
   const now = Date.now();
   const diff = startsAt - now;
   if (diff <= 0) {
-    return 'ðŸ”´ Live Now';
+    return '🔴 Live Now';
   }
   const sec = Math.floor(diff / 1000);
   const d = Math.floor(sec / 86400);
@@ -1379,9 +1379,9 @@ function escapeHtml(str) {
             .replace(/'/g, '&#039;');
 }
 
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ────────────────────────────────────────────────────────────────────────
 // PREMIUM MINECRAFT NETHER PORTAL ENGINE (Canvas + Obsidian Generator)
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ────────────────────────────────────────────────────────────────────────
 
 function generateObsidianTexture() {
   const canvas = document.createElement('canvas');

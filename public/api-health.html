@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Bandhilki SMP â€“ API Health Check</title>
+  <title>Bandhilki SMP – API Health Check</title>
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=1" />
     .title-block{min-width:280px;}
     .kicker{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:800;margin-bottom:8px;}
@@ -44,8 +44,8 @@
 <body>
   <div class="portal-ticker" aria-hidden="true">
     <div class="portal-ticker-track">
-      <span>API Health Check â€”</span>
-      <span>tests all backend endpoints used by the site â€”</span>
+      <span>API Health Check —</span>
+      <span>tests all backend endpoints used by the site —</span>
       <span>Bandhilki SMP</span>
     </div>
   </div>
@@ -83,7 +83,7 @@
         <div class="sub">Runs requests against every API endpoint used by the website and reports status + response error (if any).</div>
       </div>
       <div class="actions">
-        <button class="btn btn-primary" onclick="runAll()">â–¶ Run All Checks</button>
+        <button class="btn btn-primary" onclick="runAll()">▶ Run All Checks</button>
         <button class="btn btn-outline" onclick="clearResults()">Clear</button>
       </div>
     </div>
@@ -104,7 +104,7 @@
         <div class="card">
           <div class="card-h">
             <strong>Endpoints</strong>
-            <span id="summaryBadge" class="badge">â€”</span>
+            <span id="summaryBadge" class="badge">—</span>
           </div>
           <div style="overflow:auto;">
             <table>
@@ -152,7 +152,7 @@
         <div class="sub">Runs requests against every API endpoint used by the website and reports status + response error (if any).</div>
       </div>
       <div class="actions">
-        <button class="btn btn-primary" onclick="runAll()">â–¶ Run All Checks</button>
+        <button class="btn btn-primary" onclick="runAll()">▶ Run All Checks</button>
         <button class="btn btn-outline" onclick="clearResults()">Clear</button>
       </div>
     </div>
@@ -173,7 +173,7 @@
         <div class="card">
           <div class="card-h">
             <strong>Endpoints</strong>
-            <span id="summaryBadge" class="badge">â€”</span>
+            <span id="summaryBadge" class="badge">—</span>
           </div>
           <div style="overflow:auto;">
             <table>
@@ -210,8 +210,8 @@
         </div>
         <div class="logbox">
           <div class="small">
-            â€¢ If an endpoint is protected, failures may be <code>401/403</code> while public endpoints may still pass.<br/>
-            â€¢ Responses that return HTML usually mean redirect/login.
+            • If an endpoint is protected, failures may be <code>401/403</code> while public endpoints may still pass.<br/>
+            • Responses that return HTML usually mean redirect/login.
           </div>
         </div>
       </div>
@@ -237,7 +237,7 @@ function clearResults(){
   $('resultsBody').innerHTML = '<tr><td colspan="4" class="small" style="text-align:center;padding:26px 10px;">Run checks to see results.</td></tr>';
   $('logs').innerHTML = '';
   $('summaryBadge').className = 'badge';
-  $('summaryBadge').textContent = 'â€”';
+  $('summaryBadge').textContent = '—';
 }
 
 async function doLogout(){
@@ -336,7 +336,7 @@ async function runOne(e){
 
 async function runAll(){
   clearResults();
-  $('summaryBadge').textContent = 'Runningâ€¦';
+  $('summaryBadge').textContent = 'Running…';
 
   // Endpoints list: covers all APIs referenced by existing pages.
   // Protected endpoints will likely return 401/403 if session invalid.

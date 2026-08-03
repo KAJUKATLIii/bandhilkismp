@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Staff Dashboard â€“ Bandhilki SMP</title>
+<title>Staff Dashboard – Bandhilki SMP</title>
 <meta name="description" content="Staff-only dashboard for Bandhilki SMP. Manage tickets, assign tasks, and track activity.">
 <meta name="keywords" content="bandhilki smp, minecraft, bandhilki family, shreeman legend, bandhilkismp, indian minecraft server, survival multiplayer, pvp server, minecraft india, gaming community, minecraft survival, best indian smp, Bandhilki Family, minecraft community, smp server, best smp server in india, indian minecraft community">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="Bandhilki SMP â€“ Indian Minecraft Server">
+<meta property="og:title" content="Bandhilki SMP – Indian Minecraft Server">
 <meta property="og:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family. Join survival, creative, PvP & events.">
 <meta property="og:image" content="/lg.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Bandhilki SMP â€“ Indian Minecraft Server">
+<meta name="twitter:title" content="Bandhilki SMP – Indian Minecraft Server">
 <meta name="twitter:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family.">
 <meta name="twitter:image" content="/lg.png">
 <script type="application/ld+json">
@@ -157,7 +157,7 @@
     background: rgba(255,255,255,0.08);
   }
 
-  /* â”€â”€ Whitelist Applications Panel â”€â”€ */
+  /* ── Whitelist Applications Panel ── */
   .wl-card {
     background: var(--panel);
     border: 1px solid var(--line);
@@ -249,7 +249,7 @@
   .wl-reviewed-note { font-size: 0.78rem; color: var(--muted); font-style: italic; }
   .wl-time { font-size: 0.75rem; color: var(--muted); flex-shrink: 0; }
 
-  /* â”€â”€ Discord Embed Builder â”€â”€ */
+  /* ── Discord Embed Builder ── */
   .eb-layout {
     display: grid;
     grid-template-columns: 1fr 420px;
@@ -352,7 +352,7 @@
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.85);
     margin-bottom: 10px;
   }
   .eb-preview-msg {
@@ -425,9 +425,9 @@
 <body>
 <div class="portal-ticker" aria-hidden="true">
   <div class="portal-ticker-track">
-    <span>Staff Dashboard â€” Bandhilki SMP â€”</span>
-    <span>Ticket management Â· Activity logs Â· Staff tools â€”</span>
-    <span>Staff Dashboard â€” Bandhilki SMP â€”</span>
+    <span>Staff Dashboard — Bandhilki SMP —</span>
+    <span>Ticket management · Activity logs · Staff tools —</span>
+    <span>Staff Dashboard — Bandhilki SMP —</span>
   </div>
 </div>
 
@@ -459,7 +459,7 @@
 <!-- ACCESS DENIED (not logged in / not staff) -->
 <div id="accessDenied" class="hidden">
   <div class="access-denied">
-    <div class="access-denied-icon">ðŸš«</div>
+    <div class="access-denied-icon">🚫</div>
     <h2 style="font-size:1.4rem;">Access Denied</h2>
     <p style="color:var(--muted);max-width:400px;" id="accessMsg">You need to login with Discord and have the staff role to access this dashboard.</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
@@ -481,8 +481,8 @@
     <div class="staff-user-chip">
       <img class="staff-avatar" id="staffAvatar" src="" alt="Avatar">
       <div class="staff-user-info">
-        <div class="name" id="staffName">â€”</div>
-        <div class="role">âš”ï¸ Staff</div>
+        <div class="name" id="staffName">—</div>
+        <div class="role">⚔️ Staff</div>
       </div>
     </div>
   </div>
@@ -490,24 +490,24 @@
   <div class="staff-shell">
     <!-- Sidebar -->
     <nav class="staff-sidebar">
-      <button class="staff-nav-item" id="nav-overview" onclick="showPanel('overview')">ðŸ“Š Overview</button>
+      <button class="staff-nav-item" id="nav-overview" onclick="showPanel('overview')">📊 Overview</button>
       <button class="staff-nav-item" id="nav-tickets" onclick="showPanel('tickets')">
-        ðŸŽ« Tickets
+        🎟️ Tickets
         <span class="staff-nav-badge" id="openBadge">0</span>
       </button>
-      <button class="staff-nav-item" id="nav-todo" onclick="showPanel('todo')">âœ… Todo</button>
-      <button class="staff-nav-item" id="nav-events" onclick="showPanel('events')">ðŸŽ‰ Events</button>
-      <button class="staff-nav-item" id="nav-contracts" onclick="showPanel('contracts')">ðŸ“œ Contracts</button>
-      <button class="staff-nav-item" id="nav-workupdate" onclick="showPanel('workupdate')">ðŸ“ Work Update</button>
-      <button class="staff-nav-item" id="nav-whitelist" onclick="showPanel('whitelist')">ðŸ“‹ Whitelist
+      <button class="staff-nav-item" id="nav-todo" onclick="showPanel('todo')">✅ Todo</button>
+      <button class="staff-nav-item" id="nav-events" onclick="showPanel('events')">🎉 Events</button>
+      <button class="staff-nav-item" id="nav-contracts" onclick="showPanel('contracts')">📜 Contracts</button>
+      <button class="staff-nav-item" id="nav-workupdate" onclick="showPanel('workupdate')">📝 Work Update</button>
+      <button class="staff-nav-item" id="nav-whitelist" onclick="showPanel('whitelist')">📋 Whitelist
         <span class="staff-nav-badge" id="wlPendingBadge" style="background:#fbbf24;color:#000;">0</span>
       </button>
-      <button class="staff-nav-item" id="nav-activity" onclick="showPanel('activity')">ðŸ“œ Activity</button>
-      <button class="staff-nav-item" id="nav-gallery" onclick="showPanel('gallery')">ðŸ–¼ï¸ Gallery</button>
-      <button class="staff-nav-item" id="nav-team" onclick="showPanel('team')">ðŸ‘¥ Team</button>
-      <button class="staff-nav-item" id="nav-hall" onclick="showPanel('hall')">ðŸ† Community Hall</button>
-      <button class="staff-nav-item" id="nav-embeds" onclick="showPanel('embeds')">ðŸ¤– Embed Builder</button>
-      <a class="staff-nav-item" style="text-decoration:none;display:flex;align-items:center;justify-content:center;" href="api-health.html">ðŸ©º API Health</a>
+      <button class="staff-nav-item" id="nav-activity" onclick="showPanel('activity')">📜 Activity</button>
+      <button class="staff-nav-item" id="nav-gallery" onclick="showPanel('gallery')">🖼️ Gallery</button>
+      <button class="staff-nav-item" id="nav-team" onclick="showPanel('team')">👥 Team</button>
+      <button class="staff-nav-item" id="nav-hall" onclick="showPanel('hall')">🏆 Community Hall</button>
+      <button class="staff-nav-item" id="nav-embeds" onclick="showPanel('embeds')">🤖 Embed Builder</button>
+      <a class="staff-nav-item" style="text-decoration:none;display:flex;align-items:center;justify-content:center;" href="api-health.html">🩺 API Health</a>
 
 
     </nav>
@@ -515,15 +515,15 @@
     <!-- Main Content -->
     <div class="staff-content">
 
-      <!-- â”€â”€ OVERVIEW PANEL â”€â”€ -->
+      <!-- ── OVERVIEW PANEL ── -->
       <div id="panel-overview" class="staff-panel active">
-        <div class="staff-section-title">ðŸ“Š Overview</div>
+        <div class="staff-section-title">📊 Overview</div>
         <div class="stat-cards" id="statCards">
-          <div class="stat-card"><span class="stat-card-value" id="statTotal">â€”</span><span class="stat-card-label">Total Tickets</span></div>
-          <div class="stat-card"><span class="stat-card-value" id="statOpen" style="color:#4ade80;">â€”</span><span class="stat-card-label">Open</span></div>
-          <div class="stat-card"><span class="stat-card-value" id="statIP" style="color:#fbbf24;">â€”</span><span class="stat-card-label">In Progress</span></div>
-          <div class="stat-card"><span class="stat-card-value" id="statWaiting" style="color:#60a5fa;">â€”</span><span class="stat-card-label">Awaiting Player</span></div>
-          <div class="stat-card"><span class="stat-card-value" id="statClosed" style="color:#f87171;">â€”</span><span class="stat-card-label">Closed</span></div>
+          <div class="stat-card"><span class="stat-card-value" id="statTotal">—</span><span class="stat-card-label">Total Tickets</span></div>
+          <div class="stat-card"><span class="stat-card-value" id="statOpen" style="color:#4ade80;">—</span><span class="stat-card-label">Open</span></div>
+          <div class="stat-card"><span class="stat-card-value" id="statIP" style="color:#fbbf24;">—</span><span class="stat-card-label">In Progress</span></div>
+          <div class="stat-card"><span class="stat-card-value" id="statWaiting" style="color:#60a5fa;">—</span><span class="stat-card-label">Awaiting Player</span></div>
+          <div class="stat-card"><span class="stat-card-value" id="statClosed" style="color:#f87171;">—</span><span class="stat-card-label">Closed</span></div>
         </div>
 
         <div class="staff-section-title">Recent Activity <span>Last 5 actions</span></div>
@@ -532,34 +532,34 @@
         </div>
       </div>
 
-      <!-- â”€â”€ TICKETS PANEL â”€â”€ -->
+      <!-- ── TICKETS PANEL ── -->
       <div id="panel-tickets" class="staff-panel">
-        <div class="staff-section-title">ðŸŽ« All Tickets <span id="ticketCountLabel"></span></div>
+        <div class="staff-section-title">🎟️ All Tickets <span id="ticketCountLabel"></span></div>
 
         <div class="filter-row">
           <button class="filter-btn active" onclick="filterTickets('all',this)">All</button>
-          <button class="filter-btn" onclick="filterTickets('open',this)">ðŸŸ¢ Open</button>
-          <button class="filter-btn" onclick="filterTickets('inprogress',this)">ðŸŸ¡ In Progress</button>
-          <button class="filter-btn" onclick="filterTickets('waiting',this)">ðŸ”µ Waiting</button>
-          <button class="filter-btn" onclick="filterTickets('closed',this)">ðŸ”´ Closed</button>
-          <button class="btn btn-sm btn-outline" onclick="loadAllTickets()" style="margin-left:auto;">â†» Refresh</button>
+          <button class="filter-btn" onclick="filterTickets('open',this)">🟢 Open</button>
+          <button class="filter-btn" onclick="filterTickets('inprogress',this)">🟡 In Progress</button>
+          <button class="filter-btn" onclick="filterTickets('waiting',this)">🔵 Waiting</button>
+          <button class="filter-btn" onclick="filterTickets('closed',this)">🔴 Closed</button>
+          <button class="btn btn-sm btn-outline" onclick="loadAllTickets()" style="margin-left:auto;">↻ Refresh</button>
         </div>
 
         <div id="staffTicketsList" style="display:flex;flex-direction:column;gap:10px;">
-          <div style="text-align:center;padding:30px;color:var(--muted);">Loading ticketsâ€¦</div>
+          <div style="text-align:center;padding:30px;color:var(--muted);">Loading tickets…</div>
         </div>
       </div>
 
-      <!-- â”€â”€ TODO PANEL â”€â”€ -->
+      <!-- ── TODO PANEL ── -->
       <div id="panel-todo" class="staff-panel">
-        <div class="staff-section-title">âœ… Staff Todo List</div>
+        <div class="staff-section-title">✅ Staff Todo List</div>
         <div class="glass-box">
           <div class="todo-form">
-            <input id="todoText" placeholder="Add a new taskâ€¦" onkeydown="if(event.key==='Enter')addTodo()">
+            <input id="todoText" placeholder="Add a new task…" onkeydown="if(event.key==='Enter')addTodo()">
             <select id="todoPriority">
               <option value="normal">Normal</option>
-              <option value="high">ðŸ”´ High</option>
-              <option value="low">ðŸŸ¢ Low</option>
+              <option value="high">🔴 High</option>
+              <option value="low">🟢 Low</option>
             </select>
             <button class="btn btn-primary btn-sm" onclick="addTodo()">+ Add</button>
           </div>
@@ -567,20 +567,20 @@
         </div>
       </div>
 
-      <!-- â”€â”€ EVENTS PANEL â”€â”€ -->
+      <!-- ── EVENTS PANEL ── -->
       <div id="panel-events" class="staff-panel">
-        <div class="staff-section-title">ðŸŽ‰ Event Manager <span>Create &amp; manage server events</span></div>
+        <div class="staff-section-title">🎉 Event Manager <span>Create &amp; manage server events</span></div>
 
         <!-- TEMPLATE PICKER -->
         <div class="glass-box" style="padding:14px 16px; margin-bottom:12px;">
-          <div style="font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">âš¡ Quick Templates â€” click to fill form</div>
+          <div style="font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">⚡ Quick Templates — click to fill form</div>
           <div style="display:flex;gap:8px;flex-wrap:wrap;" id="eventTemplates">
-            <button class="btn btn-sm btn-outline" onclick="applyTemplate('pvp')">âš”ï¸ PvP Tournament</button>
-            <button class="btn btn-sm btn-outline" onclick="applyTemplate('build')">ðŸ—ï¸ Build Night</button>
-            <button class="btn btn-sm btn-outline" onclick="applyTemplate('quiz')">â“ Quiz Night</button>
-            <button class="btn btn-sm btn-outline" onclick="applyTemplate('movie')">ðŸŽ¬ Movie Night</button>
-            <button class="btn btn-sm btn-outline" onclick="applyTemplate('staff')">ðŸ‘¥ Staff Meeting</button>
-            <button class="btn btn-sm btn-outline" onclick="applyTemplate('custom')">âœï¸ Custom</button>
+            <button class="btn btn-sm btn-outline" onclick="applyTemplate('pvp')">⚔️ PvP Tournament</button>
+            <button class="btn btn-sm btn-outline" onclick="applyTemplate('build')">🏗️ Build Night</button>
+            <button class="btn btn-sm btn-outline" onclick="applyTemplate('quiz')">❓ Quiz Night</button>
+            <button class="btn btn-sm btn-outline" onclick="applyTemplate('movie')">🎬 Movie Night</button>
+            <button class="btn btn-sm btn-outline" onclick="applyTemplate('staff')">👥 Staff Meeting</button>
+            <button class="btn btn-sm btn-outline" onclick="applyTemplate('custom')">✏️ Custom</button>
           </div>
         </div>
 
@@ -611,38 +611,38 @@
 
           <div style="padding:12px 16px; border-bottom:1px solid var(--line);">
             <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Description *</label>
-            <textarea id="eventDescription" rows="3" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.87rem;resize:vertical;outline:none;box-sizing:border-box;" placeholder="Describe the event â€” rules, how to join, prizes, etc."></textarea>
+            <textarea id="eventDescription" rows="3" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.87rem;resize:vertical;outline:none;box-sizing:border-box;" placeholder="Describe the event — rules, how to join, prizes, etc."></textarea>
           </div>
 
           <div style="padding:12px 16px; border-bottom:1px solid var(--line);">
             <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Discord Announcement Text <span style="font-weight:400;text-transform:none;">(optional)</span></label>
-            <textarea id="eventAnnouncementText" rows="2" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.82rem;resize:none;outline:none;box-sizing:border-box;" placeholder="Custom text to send to the events Discord channelâ€¦"></textarea>
+            <textarea id="eventAnnouncementText" rows="2" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.82rem;resize:none;outline:none;box-sizing:border-box;" placeholder="Custom text to send to the events Discord channel…"></textarea>
           </div>
 
           <div style="padding:12px 16px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
             <button type="button" class="btn btn-primary btn-sm" id="eventPrimaryBtn" onclick="handleCreateEvent()">+ Create Event</button>
-            <button type="button" class="btn btn-sm btn-outline" onclick="clearEventForm()">âœ• Clear</button>
-            <button type="button" class="btn btn-sm btn-outline" onclick="loadEvents()">â†» Refresh List</button>
+            <button type="button" class="btn btn-sm btn-outline" onclick="clearEventForm()">✕ Clear</button>
+            <button type="button" class="btn btn-sm btn-outline" onclick="loadEvents()">↻ Refresh List</button>
           </div>
 
-          <!-- Status bar â€” replaces alert() boxes -->
+          <!-- Status bar — replaces alert() boxes -->
           <div id="eventStatus" style="padding:0 16px 12px; font-size:0.83rem; display:none;"></div>
         </div>
 
         <!-- EVENTS LIST -->
         <div class="glass-box" style="margin-top:12px;">
           <div style="padding:12px 16px; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between;">
-            <span style="font-weight:700; font-size:0.88rem;">ðŸ“‹ Events <span id="eventsCount" style="color:var(--muted); font-weight:400;">â€”</span></span>
+            <span style="font-weight:700; font-size:0.88rem;">📋 Events <span id="eventsCount" style="color:var(--muted); font-weight:400;">—</span></span>
           </div>
           <div id="eventsList" style="display:flex;flex-direction:column;">
-            <div style="text-align:center;padding:30px;color:var(--muted);">Loading eventsâ€¦</div>
+            <div style="text-align:center;padding:30px;color:var(--muted);">Loading events…</div>
           </div>
         </div>
       </div>
 
-      <!-- â”€â”€ CONTRACTS PANEL â”€â”€ -->
+      <!-- ── CONTRACTS PANEL ── -->
       <div id="panel-contracts" class="staff-panel">
-        <div class="staff-section-title">ðŸ“œ Contract Manager <span>Create and manage server contracts & quotations</span></div>
+        <div class="staff-section-title">📜 Contract Manager <span>Create and manage server contracts & quotations</span></div>
         
         <!-- Post New Contract Form -->
         <div class="glass-box">
@@ -670,8 +670,8 @@
               <textarea id="contractDescription" rows="3" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.87rem;resize:vertical;outline:none;box-sizing:border-box;" placeholder="Describe what needs to be done, requirements, coordinates, etc."></textarea>
             </div>
             <div style="display:flex; gap:10px; align-items:center; margin-top:6px;">
-              <button class="btn btn-primary btn-sm" onclick="createContract()">âž• Post Contract</button>
-              <button class="btn btn-sm btn-outline" onclick="loadContractsList()">â†» Refresh List</button>
+              <button class="btn btn-primary btn-sm" onclick="createContract()">➕ Post Contract</button>
+              <button class="btn btn-sm btn-outline" onclick="loadContractsList()">↻ Refresh List</button>
             </div>
             <div id="contractFormStatus" style="font-size:0.83rem; display:none; padding-top:4px;"></div>
           </div>
@@ -680,17 +680,17 @@
         <!-- Contracts List -->
         <div class="glass-box" style="margin-top:12px;">
           <div style="padding:12px 16px; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between;">
-            <span style="font-weight:700; font-size:0.88rem;">ðŸ“‹ Posted Contracts</span>
+            <span style="font-weight:700; font-size:0.88rem;">📋 Posted Contracts</span>
           </div>
           <div id="staffContractsList" style="display:flex; flex-direction:column;">
-            <div style="text-align:center; padding:30px; color:var(--muted);">Loading contractsâ€¦</div>
+            <div style="text-align:center; padding:30px; color:var(--muted);">Loading contracts…</div>
           </div>
         </div>
       </div>
 
-      <!-- â”€â”€ EMBEDS PANEL â”€â”€ -->
+      <!-- ── EMBEDS PANEL ── -->
       <div id="panel-embeds" class="staff-panel">
-        <div class="staff-section-title">ðŸ¤– Embed Builder <span>Create and send Discord embeds</span></div>
+        <div class="staff-section-title">🤖 Embed Builder <span>Create and send Discord embeds</span></div>
         <div class="eb-layout">
           
           <!-- Editor Form -->
@@ -710,7 +710,7 @@
                   <!-- Add options dynamically via JS or hardcode some typical ones if known, for now just free text input -->
                 </select>
                 <input type="text" id="ebCustomChannel" class="eb-input" placeholder="Or paste Channel ID..." style="flex:1;min-width:140px;">
-                <button class="btn btn-sm" style="background:#5865f2;color:#fff;font-weight:700;padding:8px 16px;" onclick="sendEmbed()">ðŸš€ Send Message</button>
+                <button class="btn btn-sm" style="background:#5865f2;color:#fff;font-weight:700;padding:8px 16px;" onclick="sendEmbed()">🚀 Send Message</button>
               </div>
               <div id="ebSendStatus" class="eb-send-status"></div>
             </div>
@@ -807,7 +807,7 @@
             <div class="eb-preview-label">Live Discord Preview</div>
             <div class="eb-preview-wrap">
               <div class="eb-preview-msg">
-                <div class="eb-preview-bot-avatar">ðŸ¤–</div>
+                <div class="eb-preview-bot-avatar">🤖</div>
                 <div class="eb-preview-msg-right">
                   <div class="eb-preview-bot-name">Bandhilki SMP Bot <span class="eb-preview-bot-tag">APP</span></div>
                   <div id="pvContent" class="eb-preview-content" style="display:none;"></div>
@@ -828,7 +828,7 @@
                         <div class="discord-embed-footer" id="pvFooter" style="display:none;">
                           <img id="pvFooterIcon" class="discord-embed-footer-icon" src="" style="display:none;">
                           <span id="pvFooterText" class="discord-embed-footer-text"></span>
-                          <span id="pvFooterSep" class="discord-embed-footer-sep" style="display:none;">â€¢</span>
+                          <span id="pvFooterSep" class="discord-embed-footer-sep" style="display:none;">•</span>
                           <span id="pvFooterTime" class="discord-embed-footer-text" style="display:none;">Today at 12:00 PM</span>
                         </div>
                       </div>
@@ -841,70 +841,70 @@
             </div>
             
             <div style="margin-top:16px;">
-              <button class="btn btn-sm btn-outline" style="width:100%;" onclick="clearEB()">ðŸ—‘ï¸ Clear All Fields</button>
+              <button class="btn btn-sm btn-outline" style="width:100%;" onclick="clearEB()">🗑️ Clear All Fields</button>
             </div>
           </div>
           
         </div>
       </div>
 
-      <!-- â”€â”€ WHITELIST APPLICATIONS PANEL â”€â”€ -->
+      <!-- ── WHITELIST APPLICATIONS PANEL ── -->
       <div id="panel-whitelist" class="staff-panel">
-        <div class="staff-section-title">ðŸ“‹ Whitelist Applications <span id="wlCountLabel"></span></div>
+        <div class="staff-section-title">📋 Whitelist Applications <span id="wlCountLabel"></span></div>
 
         <!-- Filters -->
         <div class="filter-row">
           <button class="filter-btn active" id="wlFilterAll"    onclick="filterWL('all',this)">All</button>
-          <button class="filter-btn"        id="wlFilterPending"  onclick="filterWL('pending',this)">â³ Pending</button>
-          <button class="filter-btn"        id="wlFilterApproved" onclick="filterWL('approved',this)">âœ… Approved</button>
-          <button class="filter-btn"        id="wlFilterRejected" onclick="filterWL('rejected',this)">âŒ Rejected</button>
-          <button class="btn btn-sm btn-outline" onclick="loadWhitelistApps()" style="margin-left:auto;">â†» Refresh</button>
+          <button class="filter-btn"        id="wlFilterPending"  onclick="filterWL('pending',this)">⏳ Pending</button>
+          <button class="filter-btn"        id="wlFilterApproved" onclick="filterWL('approved',this)">✅ Approved</button>
+          <button class="filter-btn"        id="wlFilterRejected" onclick="filterWL('rejected',this)">❌ Rejected</button>
+          <button class="btn btn-sm btn-outline" onclick="loadWhitelistApps()" style="margin-left:auto;">↻ Refresh</button>
         </div>
 
         <div id="wlList" style="display:flex;flex-direction:column;gap:10px;">
-          <div style="text-align:center;padding:30px;color:var(--muted);">Loading applicationsâ€¦</div>
+          <div style="text-align:center;padding:30px;color:var(--muted);">Loading applications…</div>
         </div>
       </div>
 
-      <!-- â”€â”€ ACTIVITY PANEL â”€â”€ -->
+      <!-- ── ACTIVITY PANEL ── -->
       <div id="panel-activity" class="staff-panel">
-        <div class="staff-section-title">ðŸ“œ Activity Logs <span>All staff actions</span></div>
+        <div class="staff-section-title">📜 Activity Logs <span>All staff actions</span></div>
         <div class="glass-box">
           <div id="activityList"><div style="padding:20px;text-align:center;color:var(--muted);">No activity logged.</div></div>
         </div>
       </div>
 
-      <!-- â”€â”€ WORK UPDATE PANEL â”€â”€ -->
+      <!-- ── WORK UPDATE PANEL ── -->
       <div id="panel-workupdate" class="staff-panel">
-        <div class="staff-section-title">ðŸ“ Work Updates <span>What did you do today?</span></div>
+        <div class="staff-section-title">📝 Work Updates <span>What did you do today?</span></div>
         <div class="glass-box">
           <!-- Post Form -->
           <div class="wu-form">
-            <textarea id="wuSummary" placeholder="What did you work on? Describe your shift update, actions taken, progress madeâ€¦" rows="4"></textarea>
+            <textarea id="wuSummary" placeholder="What did you work on? Describe your shift update, actions taken, progress made…" rows="4"></textarea>
             <div class="wu-form-row">
               <select id="wuCategory">
-                <option value="General">ðŸ“‹ General</option>
-                <option value="Tickets">ðŸŽ« Tickets</option>
-                <option value="Events">ðŸŽ‰ Events</option>
-                <option value="Moderation">âš”ï¸ Moderation</option>
-                <option value="Development">ðŸ’» Development</option>
-                <option value="Other">ðŸ”§ Other</option>
+                <option value="General">📋 General</option>
+                <option value="Tickets">🎟️ Tickets</option>
+                <option value="Events">🎉 Events</option>
+                <option value="Moderation">⚔️ Moderation</option>
+                <option value="Development">💻 Development</option>
+                <option value="Other">🔧 Other</option>
               </select>
-              <button class="btn btn-primary btn-sm" onclick="postWorkUpdate()">ðŸ“¤ Post Update</button>
-              <button class="btn btn-sm btn-outline" onclick="loadWorkUpdates()">â†» Refresh</button>
+              <button class="btn btn-primary btn-sm" onclick="postWorkUpdate()">📤 Post Update</button>
+              <button class="btn btn-sm btn-outline" onclick="loadWorkUpdates()">↻ Refresh</button>
             </div>
             <div id="wuStatus" style="font-size:0.82rem;color:var(--muted);"></div>
           </div>
           <!-- Updates Feed -->
           <div id="wuFeed">
-            <div style="padding:20px;text-align:center;color:var(--muted);">Loading updatesâ€¦</div>
+            <div style="padding:20px;text-align:center;color:var(--muted);">Loading updates…</div>
           </div>
         </div>
       </div>
 
-      <!-- â”€â”€ GALLERY PANEL â”€â”€ -->
+      <!-- ── GALLERY PANEL ── -->
       <div id="panel-gallery" class="staff-panel">
-        <div class="staff-section-title">ðŸ–¼ï¸ Gallery Manager <span>Add or remove images in the server gallery</span></div>
+        <div class="staff-section-title">🖼️ Gallery Manager <span>Add or remove images in the server gallery</span></div>
         <div class="glass-box">
           <!-- Add Form -->
           <div style="padding:16px; border-bottom:1px solid var(--line); display:flex; flex-direction:column; gap:12px;">
@@ -919,8 +919,8 @@
               </div>
             </div>
             <div style="display:flex; gap:10px; align-items:center;">
-              <button class="btn btn-primary btn-sm" onclick="addGalleryImage()">âž• Add Image</button>
-              <button class="btn btn-sm btn-outline" onclick="loadGalleryManager()">â†» Refresh List</button>
+              <button class="btn btn-primary btn-sm" onclick="addGalleryImage()">➕ Add Image</button>
+              <button class="btn btn-sm btn-outline" onclick="loadGalleryManager()">↻ Refresh List</button>
             </div>
             <div id="galleryStatus" style="font-size:0.83rem; display:none; padding-top:4px;"></div>
           </div>
@@ -928,15 +928,15 @@
           <div style="padding:16px;">
             <div style="font-weight:700; font-size:0.88rem; margin-bottom:12px; color:var(--text);">Current Gallery Images</div>
             <div id="galleryManagerGrid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(180px, 1fr)); gap:16px;">
-              <div style="grid-column: 1/-1; text-align:center; padding:20px; color:var(--muted);">Loading imagesâ€¦</div>
+              <div style="grid-column: 1/-1; text-align:center; padding:20px; color:var(--muted);">Loading images…</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- â”€â”€ TEAM PANEL â”€â”€ -->
+      <!-- ── TEAM PANEL ── -->
       <div id="panel-team" class="staff-panel">
-        <div class="staff-section-title">ðŸ‘¥ Team Manager <span>Add, update, or remove team members displayed on the Team page</span></div>
+        <div class="staff-section-title">👥 Team Manager <span>Add, update, or remove team members displayed on the Team page</span></div>
         <div class="glass-box">
           <!-- Add/Update Form -->
           <div style="padding:16px; border-bottom:1px solid var(--line); display:flex; flex-direction:column; gap:12px;">
@@ -955,12 +955,12 @@
               </div>
               <div>
                 <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;">Key Skills</label>
-                <input id="teamSkills" placeholder="e.g. Plugins Â· Java Â· Hosting" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.87rem;outline:none;box-sizing:border-box;" />
+                <input id="teamSkills" placeholder="e.g. Plugins · Java · Hosting" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.87rem;outline:none;box-sizing:border-box;" />
               </div>
             </div>
             <div style="display:flex; gap:10px; align-items:center;">
-              <button class="btn btn-primary btn-sm" onclick="addTeamMember()">âž• Add / Update Member</button>
-              <button class="btn btn-sm btn-outline" onclick="loadTeamManager()">â†» Refresh List</button>
+              <button class="btn btn-primary btn-sm" onclick="addTeamMember()">➕ Add / Update Member</button>
+              <button class="btn btn-sm btn-outline" onclick="loadTeamManager()">↻ Refresh List</button>
             </div>
             <div id="teamStatus" style="font-size:0.83rem; display:none; padding-top:4px;"></div>
           </div>
@@ -968,15 +968,15 @@
           <div style="padding:16px;">
             <div style="font-weight:700; font-size:0.88rem; margin-bottom:12px; color:var(--text);">Current Team Members</div>
             <div id="teamManagerGrid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:16px;">
-              <div style="grid-column: 1/-1; text-align:center; padding:20px; color:var(--muted);">Loading team membersâ€¦</div>
+              <div style="grid-column: 1/-1; text-align:center; padding:20px; color:var(--muted);">Loading team members…</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- â”€â”€ COMMUNITY HALL PANEL â”€â”€ -->
+      <!-- ── COMMUNITY HALL PANEL ── -->
       <div id="panel-hall" class="staff-panel">
-        <div class="staff-section-title">ðŸ† Community Hall Manager <span>Manage entries in the Hall of Shame and Appreciation</span></div>
+        <div class="staff-section-title">🏆 Community Hall Manager <span>Manage entries in the Hall of Shame and Appreciation</span></div>
         <div class="glass-box">
           <!-- Add Form -->
           <div style="padding:16px; border-bottom:1px solid var(--line); display:flex; flex-direction:column; gap:12px;">
@@ -988,8 +988,8 @@
               <div>
                 <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;">Type *</label>
                 <select id="hallType" style="width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:0.87rem;outline:none;box-sizing:border-box;">
-                  <option value="appreciation">ðŸ’š Appreciation</option>
-                  <option value="shame">ðŸ’€ Shame</option>
+                  <option value="appreciation">💚 Appreciation</option>
+                  <option value="shame">💀 Shame</option>
                 </select>
               </div>
               <div style="grid-column: span 2;">
@@ -998,8 +998,8 @@
               </div>
             </div>
             <div style="display:flex; gap:10px; align-items:center;">
-              <button class="btn btn-primary btn-sm" onclick="addHallEntry()">âž• Add Entry</button>
-              <button class="btn btn-sm btn-outline" onclick="loadHallManager()">â†» Refresh List</button>
+              <button class="btn btn-primary btn-sm" onclick="addHallEntry()">➕ Add Entry</button>
+              <button class="btn btn-sm btn-outline" onclick="loadHallManager()">↻ Refresh List</button>
             </div>
             <div id="hallStatus" style="font-size:0.83rem; display:none; padding-top:4px;"></div>
           </div>
@@ -1020,7 +1020,7 @@
                 </thead>
                 <tbody id="hallManagerTableBody">
                   <tr>
-                    <td colspan="6" style="text-align:center; padding:20px; color:var(--muted);">Loading hall entriesâ€¦</td>
+                    <td colspan="6" style="text-align:center; padding:20px; color:var(--muted);">Loading hall entries…</td>
                   </tr>
                 </tbody>
               </table>
@@ -1035,7 +1035,7 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  Â© 2026 BANDHILKI SMP &bull; Staff Portal &bull;
+  © 2026 BANDHILKI SMP &bull; Staff Portal &bull;
   <a href="https://discord.gg/KSAm2yd9gC" target="_blank" style="color:var(--green-1);text-decoration:none;">Discord</a>
 </footer>
 
@@ -1047,16 +1047,16 @@ let staffList = [];
 let staffById = new Map();
 
 const STATUS_LABELS = {
-  'open':'ðŸŸ¢ Open','inprogress':'ðŸŸ¡ In Progress','waiting':'ðŸ”µ Waiting For Player','closed':'ðŸ”´ Closed'
+  'open':'🟢 Open','inprogress':'🟡 In Progress','waiting':'🔵 Waiting For Player','closed':'🔴 Closed'
 };
 const CAT_EMOJIS = {
-  'Support':'ðŸ› ï¸','Report Player':'ðŸš¨','Bug Report':'ðŸ›','Ban Appeal':'âš–ï¸','Staff Complaint':'ðŸ“¢'
+  'Support':'🛠️','Report Player':'🚨','Bug Report':'🐛','Ban Appeal':'⚖️','Staff Complaint':'📢'
 };
 
-// â”€â”€ AUTH â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── AUTH ──────────────────────────────────────────────────
 async function init() {
   if (window.location.protocol === 'file:') {
-    showDenied('âš ï¸ You are opening this page directly from your file system. Please run the server ("npm start") and visit http://localhost:3000/staff.html in your browser.');
+    showDenied('⚠️ You are opening this page directly from your file system. Please run the server ("npm start") and visit http://localhost:3000/staff.html in your browser.');
     return;
   }
   try {
@@ -1125,7 +1125,7 @@ async function doLogout() {
   window.location.href = '/index.html';
 }
 
-// â”€â”€ PANEL SWITCHING â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── PANEL SWITCHING ───────────────────────────────────────
 function showPanel(p) {
   document.querySelectorAll('.staff-panel').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.staff-nav-item').forEach(el => el.classList.remove('active'));
@@ -1160,7 +1160,7 @@ async function loadStaffList() {
     // Populate every staff dropdown that exists in DOM.
     document.querySelectorAll('select[id^="assignStaff_"]').forEach(sel => {
       const current = sel.value;
-      sel.innerHTML = '<option value="">Select staffâ€¦</option>' + staffList.map(s => {
+      sel.innerHTML = '<option value="">Select staff…</option>' + staffList.map(s => {
         const id = String(s.id);
         // Backend already returns displayName, but keep robust fallback anyway.
         const name = (s.displayName ?? s.nickname ?? s.username ?? id);
@@ -1180,12 +1180,12 @@ function onAssignStaffChange(ticketId, staffId) {
 }
 
 
-// â”€â”€ LOAD ALL DATA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── LOAD ALL DATA ─────────────────────────────────────────
 async function loadAll() {
   await Promise.all([loadOverview(), loadAllTickets(), loadTodos(), loadActivity(), loadWorkUpdates(), loadWhitelistApps()]);
 }
 
-// â”€â”€ OVERVIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── OVERVIEW ──────────────────────────────────────────────
 async function loadOverview() {
   try {
     const [statsRes, actRes] = await Promise.all([
@@ -1203,7 +1203,7 @@ async function loadOverview() {
   } catch (e) { console.error(e); }
 }
 
-// â”€â”€ ALL TICKETS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── ALL TICKETS ───────────────────────────────────────────
 async function loadAllTickets() {
   try {
     const res = await fetch('/api/tickets/all');
@@ -1261,7 +1261,7 @@ function renderStaffTickets() {
 }
 
 function staffTicketHTML(t) {
-  const catEmoji = CAT_EMOJIS[t.category] || 'ðŸŽ«';
+  const catEmoji = CAT_EMOJIS[t.category] || '🎟️';
   const statusLabel = STATUS_LABELS[t.status] || t.status;
   const date = new Date(t.createdAt).toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
   const claimed = t.claimedBy ? `<span style="font-size:10px;color:var(--muted);">Claimed by <strong>${t.claimedBy.username}</strong></span>` : '';
@@ -1270,7 +1270,7 @@ function staffTicketHTML(t) {
 
   const replies = t.replies.map(r => `
     <div class="reply-bubble ${r.from}">
-      <div class="reply-author">${r.from==='staff'?'ðŸ‘® '+r.author:'ðŸ‘¤ '+r.author}</div>
+      <div class="reply-author">${r.from==='staff'?'👮 '+r.author:'👤 '+r.author}</div>
       <div>${r.message}</div>
       <div class="reply-time">${timeAgo(r.ts)}</div>
     </div>`).join('');
@@ -1284,14 +1284,14 @@ function staffTicketHTML(t) {
       <div class="ticket-card-header-left">
         <span class="ticket-id">${t.id}</span>
         <span class="ticket-category">${catEmoji} ${t.category}</span>
-        <span class="ticket-title-text">${t.description.slice(0,60)}${t.description.length>60?'â€¦':''}</span>
+        <span class="ticket-title-text">${t.description.slice(0,60)}${t.description.length>60?'…':''}</span>
       </div>
       <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end;">
-        <span style="font-size:10px;color:var(--muted);">ðŸ‘¤ ${t.createdBy.username}</span>
+        <span style="font-size:10px;color:var(--muted);">👤 ${t.createdBy.username}</span>
         ${claimed}
         <span class="ticket-status ${t.status}">${statusLabel}</span>
         <span style="color:var(--muted);font-size:10px;">${date}</span>
-        <span style="color:var(--muted);font-size:14px;">â–¼</span>
+        <span style="color:var(--muted);font-size:14px;">▼</span>
       </div>
     </div>
     <div class="ticket-body" id="stb_${t.id}">
@@ -1302,26 +1302,26 @@ function staffTicketHTML(t) {
 
       <!-- Staff Reply -->
       <div class="reply-input-area-staff">
-        <textarea rows="2" id="sReply_${t.id}" placeholder="Reply to playerâ€¦"></textarea>
+        <textarea rows="2" id="sReply_${t.id}" placeholder="Reply to player…"></textarea>
         <button class="btn btn-primary btn-sm" onclick="staffReply('${t.id}')">Reply</button>
       </div>
 
       <!-- Actions -->
       <div class="ticket-actions">
-        <button class="btn btn-sm btn-outline" onclick="claimTicket('${t.id}')">ðŸ“Œ Claim</button>
-        <button class="btn btn-sm btn-outline" onclick="closeTicket('${t.id}')">ðŸ”´ Close</button>
-        <button class="btn btn-sm btn-outline" onclick="reopenTicket('${t.id}')">ðŸŸ¢ Reopen</button>
-        <button class="btn btn-sm btn-outline" onclick="deleteTicket('${t.id}')" style="color:var(--red-soft);border-color:rgba(248,71,98,0.35);">âœ• Delete</button>
+        <button class="btn btn-sm btn-outline" onclick="claimTicket('${t.id}')">📌 Claim</button>
+        <button class="btn btn-sm btn-outline" onclick="closeTicket('${t.id}')">🔴 Close</button>
+        <button class="btn btn-sm btn-outline" onclick="reopenTicket('${t.id}')">🟢 Reopen</button>
+        <button class="btn btn-sm btn-outline" onclick="deleteTicket('${t.id}')" style="color:var(--red-soft);border-color:rgba(248,71,98,0.35);">✕ Delete</button>
         <select onchange="changeStatus('${t.id}', this.value)" style="padding:5px 10px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(8,3,4,0.74);color:var(--text);font:inherit;font-size:11px;cursor:pointer;">
           ${statusOptions}
         </select>
         <div class="assign-form">
           <select id="assignStaff_${t.id}" onchange="onAssignStaffChange('${t.id}', this.value)" style="min-width:210px;">
-            <option value="">Select staffâ€¦</option>
+            <option value="">Select staff…</option>
           </select>
           <input id="assignId_${t.id}" type="hidden">
           <input id="assignName_${t.id}" type="hidden">
-          <button class="btn btn-sm btn-outline" onclick="assignTicket('${t.id}')">â†— Assign</button>
+          <button class="btn btn-sm btn-outline" onclick="assignTicket('${t.id}')">↗ Assign</button>
         </div>
       </div>
     </div>
@@ -1332,7 +1332,7 @@ function toggleStaffTicket(id) {
   document.getElementById('stb_' + id).classList.toggle('open');
 }
 
-// â”€â”€ TICKET ACTIONS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── TICKET ACTIONS ────────────────────────────────────────
 async function apiPost(url, body) {
   const res = await fetch(url, { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(body) });
   const txt = await res.text();
@@ -1418,7 +1418,7 @@ async function staffReply(id) {
   } catch(e) { alert('Error: ' + e.message); }
 }
 
-// â”€â”€ TODO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── TODO ──────────────────────────────────────────────────
 async function loadTodos() {
   try {
     const res = await fetch('/api/staff/todos');
@@ -1433,12 +1433,12 @@ function renderTodos(todos) {
   el.innerHTML = todos.map(t => `
     <div class="todo-item ${t.done?'done':''}" id="todo_${t.id}">
       <div class="todo-checkbox ${t.done?'checked':''}" onclick="toggleTodo(${t.id}, ${!t.done})">
-        ${t.done ? 'âœ“' : ''}
+        ${t.done ? '✓' : ''}
       </div>
       <span class="todo-text">${t.text}</span>
       <span class="todo-priority ${t.priority}">${t.priority}</span>
       <span style="font-size:9px;color:var(--muted);">by ${t.createdBy}</span>
-      <button onclick="deleteTodo(${t.id})" style="background:transparent;border:none;color:var(--muted);cursor:pointer;font-size:16px;padding:0 4px;" title="Delete">âœ•</button>
+      <button onclick="deleteTodo(${t.id})" style="background:transparent;border:none;color:var(--muted);cursor:pointer;font-size:16px;padding:0 4px;" title="Delete">✕</button>
     </div>`).join('');
 }
 
@@ -1469,7 +1469,7 @@ async function deleteTodo(id) {
   } catch(e) { alert('Error: ' + e.message); }
 }
 
-// â”€â”€ EVENTS (Manager UI) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── EVENTS (Manager UI) ────────────────────────────────────
 function msToCountdown(ms) {
   if (!ms || ms <= 0) return 'Live / started';
   const sec = Math.floor(ms / 1000);
@@ -1498,9 +1498,9 @@ function renderEventsList(events) {
   el.innerHTML = arr.map(ev => {
     const startsAt = ev.startsAt ? new Date(ev.startsAt) : null;
     const now = Date.now();
-    const timeLeft = startsAt ? msToCountdown(startsAt.getTime() - now) : 'â€”';
+    const timeLeft = startsAt ? msToCountdown(startsAt.getTime() - now) : '—';
 
-    const statusText = ev.completed ? 'Completed' : (ev.pinned ? 'ðŸ“Œ Pinned' : 'Upcoming');
+    const statusText = ev.completed ? 'Completed' : (ev.pinned ? '📌 Pinned' : 'Upcoming');
     const statusStyle = ev.completed
       ? 'background:rgba(156,163,175,0.18);border:1px solid rgba(156,163,175,0.35);color:var(--muted);'
       : ev.pinned
@@ -1513,11 +1513,11 @@ function renderEventsList(events) {
           <div style="min-width:220px;flex:1;">
             <div style="font-weight:800;">${ev.title}</div>
             <div style="font-size:12px;color:var(--muted);margin-top:4px;">
-              ${startsAt ? `ðŸ“… ${startsAt.toLocaleString('en-IN')}` : 'ðŸ“… To be announced'}
-              ${ev.completed ? '' : ` â€¢ â³ ${timeLeft}`}
+              ${startsAt ? `📅 ${startsAt.toLocaleString('en-IN')}` : '📅 To be announced'}
+              ${ev.completed ? '' : ` • ⏳ ${timeLeft}`}
               <span style="display:inline-block;margin-left:10px; padding:2px 10px; border-radius:999px; font-size:0.78rem; ${statusStyle}">${statusText}</span>
             </div>
-            <div style="margin-top:8px;color:var(--text-muted);font-size:13px;">${(ev.description || '').slice(0,180)}${(ev.description||'').length>180?'â€¦':''}</div>
+            <div style="margin-top:8px;color:var(--text-muted);font-size:13px;">${(ev.description || '').slice(0,180)}${(ev.description||'').length>180?'…':''}</div>
           </div>
 
           <div style="display:flex;flex-direction:column;gap:8px;min-width:240px;">
@@ -1628,7 +1628,7 @@ async function readJsonResponse(res) {
 
 async function handleCreateEvent() {
   try {
-    showEventStatus('Saving eventâ€¦', false);
+    showEventStatus('Saving event…', false);
     const title = (document.getElementById('eventTitle').value || '').trim();
     const type  = (document.getElementById('eventType').value || '').trim();
     const startsAtRaw = (document.getElementById('eventStartsAt').value || '').trim();
@@ -1636,9 +1636,9 @@ async function handleCreateEvent() {
     const description = (document.getElementById('eventDescription').value || '').trim();
     const discordAnnouncementText = (document.getElementById('eventAnnouncementText').value || '').trim();
 
-    if (!title) { showEventStatus('âš ï¸ Event title is required.', true); return; }
-    if (!description) { showEventStatus('âš ï¸ Description is required.', true); return; }
-    if (!startsAtRaw) { showEventStatus('âš ï¸ Starts At date/time is required.', true); return; }
+    if (!title) { showEventStatus('⚠️ Event title is required.', true); return; }
+    if (!description) { showEventStatus('⚠️ Description is required.', true); return; }
+    if (!startsAtRaw) { showEventStatus('⚠️ Starts At date/time is required.', true); return; }
 
     const toMs = (v) => {
       if (!v) return null;
@@ -1650,14 +1650,14 @@ async function handleCreateEvent() {
     };
 
     const startsAt = toMs(startsAtRaw);
-    if (!startsAt) { showEventStatus('âš ï¸ Invalid start date. Use the date picker.', true); return; }
+    if (!startsAt) { showEventStatus('⚠️ Invalid start date. Use the date picker.', true); return; }
 
     const endsAt = toMs(endsAtRaw);
     if (endsAtRaw && endsAt === null) {
-      showEventStatus('âš ï¸ Invalid end date.', true); return;
+      showEventStatus('⚠️ Invalid end date.', true); return;
     }
     if (endsAt && endsAt < startsAt) {
-      showEventStatus('âš ï¸ End date must be after start date.', true); return;
+      showEventStatus('⚠️ End date must be after start date.', true); return;
     }
 
     await createOrUpdateEvent({
@@ -1670,10 +1670,10 @@ async function handleCreateEvent() {
     });
 
     clearEventForm();
-    showEventStatus('âœ… Event saved successfully!', false);
+    showEventStatus('✅ Event saved successfully!', false);
     setTimeout(() => hideEventStatus(), 4000);
   } catch (e) {
-    showEventStatus('âŒ Error: ' + e.message, true);
+    showEventStatus('❌ Error: ' + e.message, true);
     console.error('Event create error:', e);
   }
 }
@@ -1691,7 +1691,7 @@ function clearEventForm() {
   hideEventStatus();
 }
 
-// â”€â”€ EVENT TEMPLATES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── EVENT TEMPLATES ──────────────────────────────────────
 function getNextDatetime(hoursFromNow = 24, durationHours = 2) {
   const now = Date.now();
   const pad = n => String(n).padStart(2, '0');
@@ -1710,8 +1710,8 @@ const EVENT_TEMPLATES = {
     return {
       title: 'Weekly PvP Tournament',
       type: 'PvP',
-      description: 'ðŸ—¡ï¸ Join us for our weekly PvP tournament!\n\nðŸ† Prizes: Top 3 winners get exclusive rewards\nâš”ï¸ Format: 1v1 elimination brackets\nðŸ“ Location: PvP Arena â€” /warp pvp\n\nRules:\n- No hacked clients\n- No outside help\n- Report to a staff member when ready',
-      announcement: 'ðŸ—¡ï¸ @everyone **Weekly PvP Tournament** is starting soon! Head to /warp pvp to join. Top 3 winners get rewards!',
+      description: '🗡️ Join us for our weekly PvP tournament!\n\n🏆 Prizes: Top 3 winners get exclusive rewards\n⚔️ Format: 1v1 elimination brackets\n📍 Location: PvP Arena — /warp pvp\n\nRules:\n- No hacked clients\n- No outside help\n- Report to a staff member when ready',
+      announcement: '🗡️ @everyone **Weekly PvP Tournament** is starting soon! Head to /warp pvp to join. Top 3 winners get rewards!',
       start: t.start, end: t.end
     };
   },
@@ -1720,8 +1720,8 @@ const EVENT_TEMPLATES = {
     return {
       title: 'Community Build Night',
       type: 'Build',
-      description: 'ðŸ—ï¸ Join us for a collaborative build night!\n\nðŸŽ¨ Theme: To be announced at start\nâ° Duration: 3 hours\nðŸ“ Location: Creative World â€” /warp creative\n\nAnyone can participate! Staff will judge the best builds at the end.',
-      announcement: 'ðŸ—ï¸ @everyone **Build Night** is tonight! Join us in the creative world for a themed build competition. Prizes for top 3!',
+      description: '🏗️ Join us for a collaborative build night!\n\n🎨 Theme: To be announced at start\n⏰ Duration: 3 hours\n📍 Location: Creative World — /warp creative\n\nAnyone can participate! Staff will judge the best builds at the end.',
+      announcement: '🏗️ @everyone **Build Night** is tonight! Join us in the creative world for a themed build competition. Prizes for top 3!',
       start: t.start, end: t.end
     };
   },
@@ -1730,8 +1730,8 @@ const EVENT_TEMPLATES = {
     return {
       title: 'Minecraft Quiz Night',
       type: 'Quiz',
-      description: 'â“ Test your Minecraft knowledge!\n\nðŸ“š Categories: Mobs, Crafting, Redstone, History, Biomes\nðŸ† Winner gets a special prize\nðŸ’¬ Hosted in: #quiz-night Discord channel\n\nBe ready at the start time. Answers in chat within 10 seconds!',
-      announcement: 'â“ @everyone **Quiz Night** starts soon! Join #quiz-night channel and test your Minecraft knowledge. Fastest correct answer wins each round!',
+      description: '❓ Test your Minecraft knowledge!\n\n📚 Categories: Mobs, Crafting, Redstone, History, Biomes\n🏆 Winner gets a special prize\n💬 Hosted in: #quiz-night Discord channel\n\nBe ready at the start time. Answers in chat within 10 seconds!',
+      announcement: '❓ @everyone **Quiz Night** starts soon! Join #quiz-night channel and test your Minecraft knowledge. Fastest correct answer wins each round!',
       start: t.start, end: t.end
     };
   },
@@ -1740,8 +1740,8 @@ const EVENT_TEMPLATES = {
     return {
       title: 'Community Movie Night',
       type: 'Social',
-      description: 'ðŸŽ¬ Community movie night on our Discord watch-together!\n\nðŸŽ¥ Movie: To be voted on in #movie-poll\nâ° Duration: ~2 hours\nðŸ’¬ Channel: Movie Night voice channel\n\nJust show up and relax with the community!',
-      announcement: 'ðŸŽ¬ @everyone **Movie Night** tonight! Join the Movie Night voice channel on Discord. Vote for the movie in #movie-poll now!',
+      description: '🎬 Community movie night on our Discord watch-together!\n\n🎥 Movie: To be voted on in #movie-poll\n⏰ Duration: ~2 hours\n💬 Channel: Movie Night voice channel\n\nJust show up and relax with the community!',
+      announcement: '🎬 @everyone **Movie Night** tonight! Join the Movie Night voice channel on Discord. Vote for the movie in #movie-poll now!',
       start: t.start, end: t.end
     };
   },
@@ -1750,8 +1750,8 @@ const EVENT_TEMPLATES = {
     return {
       title: 'Staff Meeting',
       type: 'Meeting',
-      description: 'ðŸ‘¥ Monthly staff meeting â€” all staff are required to attend.\n\nAgenda:\n1. Server performance review\n2. Pending applications\n3. Event planning\n4. Open discussion\n\nLocation: Staff Meeting voice channel on Discord.',
-      announcement: 'ðŸ‘¥ Staff meeting scheduled. All staff please be on time.',
+      description: '👥 Monthly staff meeting — all staff are required to attend.\n\nAgenda:\n1. Server performance review\n2. Pending applications\n3. Event planning\n4. Open discussion\n\nLocation: Staff Meeting voice channel on Discord.',
+      announcement: '👥 Staff meeting scheduled. All staff please be on time.',
       start: t.start, end: t.end
     };
   },
@@ -1775,7 +1775,7 @@ function applyTemplate(key) {
   const btn = document.getElementById('eventPrimaryBtn');
   if (btn) btn.textContent = '+ Create Event';
   document.getElementById('eventTitle').focus();
-  showEventStatus('Template loaded â€” edit any fields and click Create Event.', false);
+  showEventStatus('Template loaded — edit any fields and click Create Event.', false);
   setTimeout(() => hideEventStatus(), 3000);
 }
 
@@ -1814,7 +1814,7 @@ async function deleteEvent(id) {
   }
 }
 
-// â”€â”€ ACTIVITY â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── ACTIVITY ──────────────────────────────────────────────
 async function loadActivity() {
   try {
     const res  = await fetch('/api/staff/activity');
@@ -1830,13 +1830,13 @@ function renderActivity(acts, containerId) {
     <div class="activity-item">
       <div class="activity-dot"></div>
       <div style="flex:1;">
-        <div class="activity-text"><strong>${a.staffName}</strong> â€” ${a.action}</div>
-        <div class="activity-time">${timeAgo(a.ts)} Â· ${new Date(a.ts).toLocaleString('en-IN')}</div>
+        <div class="activity-text"><strong>${a.staffName}</strong> — ${a.action}</div>
+        <div class="activity-time">${timeAgo(a.ts)} · ${new Date(a.ts).toLocaleString('en-IN')}</div>
       </div>
     </div>`).join('');
 }
 
-// â”€â”€ WORK UPDATES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── WORK UPDATES ──────────────────────────────────────────
 const WU_CAT_CLASS = {
   'General': 'wu-cat-general',
   'Tickets': 'wu-cat-tickets',
@@ -1846,8 +1846,8 @@ const WU_CAT_CLASS = {
   'Other': 'wu-cat-other'
 };
 const WU_CAT_EMOJI = {
-  'General': 'ðŸ“‹', 'Tickets': 'ðŸŽ«', 'Events': 'ðŸŽ‰',
-  'Moderation': 'âš”ï¸', 'Development': 'ðŸ’»', 'Other': 'ðŸ”§'
+  'General': '📋', 'Tickets': '🎟️', 'Events': '🎉',
+  'Moderation': '⚔️', 'Development': '💻', 'Other': '🔧'
 };
 
 async function loadWorkUpdates() {
@@ -1871,11 +1871,11 @@ function renderWorkUpdates(updates) {
   }
   el.innerHTML = updates.map(u => {
     const catClass = WU_CAT_CLASS[u.category] || 'wu-cat-general';
-    const catEmoji = WU_CAT_EMOJI[u.category] || 'ðŸ“‹';
+    const catEmoji = WU_CAT_EMOJI[u.category] || '📋';
     const isOwn = currentStaff && (String(u.staffId) === String(currentStaff.id));
     const avatarHtml = u.staffAvatar
       ? `<img class="wu-avatar" src="${u.staffAvatar}" alt="" onerror="this.style.display='none'">`
-      : `<div class="wu-avatar" style="background:var(--line);display:flex;align-items:center;justify-content:center;font-size:12px;">ðŸ‘¤</div>`;
+      : `<div class="wu-avatar" style="background:var(--line);display:flex;align-items:center;justify-content:center;font-size:12px;">👤</div>`;
     return `
       <div class="wu-card" id="wu_${u.id}">
         <div class="wu-card-header">
@@ -1883,9 +1883,9 @@ function renderWorkUpdates(updates) {
             ${avatarHtml}
             <span class="wu-author">${u.staffName}</span>
             <span class="wu-cat-badge ${catClass}">${catEmoji} ${u.category}</span>
-            <span class="wu-time">${timeAgo(u.ts)} Â· ${new Date(u.ts).toLocaleString('en-IN')}</span>
+            <span class="wu-time">${timeAgo(u.ts)} · ${new Date(u.ts).toLocaleString('en-IN')}</span>
           </div>
-          <button onclick="deleteWorkUpdate(${u.id})" style="background:transparent;border:none;cursor:pointer;color:var(--muted);font-size:14px;padding:2px 6px;border-radius:4px;" title="Delete update">âœ•</button>
+          <button onclick="deleteWorkUpdate(${u.id})" style="background:transparent;border:none;cursor:pointer;color:var(--muted);font-size:14px;padding:2px 6px;border-radius:4px;" title="Delete update">✕</button>
         </div>
         <div class="wu-summary">${u.summary}</div>
       </div>`;
@@ -1897,11 +1897,11 @@ async function postWorkUpdate() {
   const category = document.getElementById('wuCategory').value;
   const statusEl = document.getElementById('wuStatus');
   if (!summary) {
-    if (statusEl) { statusEl.textContent = 'âš ï¸ Please write something before posting.'; statusEl.style.color = 'var(--red-soft)'; }
+    if (statusEl) { statusEl.textContent = '⚠️ Please write something before posting.'; statusEl.style.color = 'var(--red-soft)'; }
     return;
   }
   try {
-    if (statusEl) { statusEl.textContent = 'Postingâ€¦'; statusEl.style.color = 'var(--muted)'; }
+    if (statusEl) { statusEl.textContent = 'Posting…'; statusEl.style.color = 'var(--muted)'; }
     const res = await fetch('/api/staff/work-updates', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -1910,10 +1910,10 @@ async function postWorkUpdate() {
     const d = await res.json();
     if (!res.ok) throw new Error(d.error || 'Failed');
     document.getElementById('wuSummary').value = '';
-    if (statusEl) { statusEl.textContent = 'âœ… Update posted!'; statusEl.style.color = '#4ade80'; setTimeout(() => { statusEl.textContent = ''; }, 3000); }
+    if (statusEl) { statusEl.textContent = '✅ Update posted!'; statusEl.style.color = '#4ade80'; setTimeout(() => { statusEl.textContent = ''; }, 3000); }
     await loadWorkUpdates();
   } catch (e) {
-    if (statusEl) { statusEl.textContent = 'âŒ Error: ' + e.message; statusEl.style.color = 'var(--red-soft)'; }
+    if (statusEl) { statusEl.textContent = '❌ Error: ' + e.message; statusEl.style.color = 'var(--red-soft)'; }
   }
 }
 
@@ -1929,7 +1929,7 @@ async function deleteWorkUpdate(id) {
   }
 }
 
-// â”€â”€ GALLERY MANAGER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── GALLERY MANAGER ───────────────────────────────────────
 async function loadGalleryManager() {
   try {
     const res = await fetch('/api/gallery');
@@ -1968,12 +1968,12 @@ async function addGalleryImage() {
   const description = document.getElementById('galleryDesc').value.trim();
   
   if (!url) {
-    showGalleryStatus('âš ï¸ Please specify an Image URL.', true);
+    showGalleryStatus('⚠️ Please specify an Image URL.', true);
     return;
   }
   
   try {
-    showGalleryStatus('Adding imageâ€¦', false, 'var(--muted)');
+    showGalleryStatus('Adding image…', false, 'var(--muted)');
     const res = await fetch('/api/gallery', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -1984,11 +1984,11 @@ async function addGalleryImage() {
     
     document.getElementById('galleryUrl').value = '';
     document.getElementById('galleryDesc').value = '';
-    showGalleryStatus('âœ… Image added successfully!', false, '#4ade80');
+    showGalleryStatus('✅ Image added successfully!', false, '#4ade80');
     setTimeout(() => hideGalleryStatus(), 3000);
     await loadGalleryManager();
   } catch (e) {
-    showGalleryStatus('âŒ Error: ' + e.message, true);
+    showGalleryStatus('❌ Error: ' + e.message, true);
   }
 }
 
@@ -2021,7 +2021,7 @@ function hideGalleryStatus() {
   if (statusEl) statusEl.style.display = 'none';
 }
 
-// â”€â”€ TEAM MANAGER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── TEAM MANAGER ──────────────────────────────────────────
 async function loadTeamManager() {
   try {
     const res = await fetch('/api/team');
@@ -2133,16 +2133,16 @@ async function addTeamMember() {
   const skills = document.getElementById('teamSkills').value.trim();
   
   if (!discordId || discordId.length < 15) {
-    showTeamStatus('âš ï¸ Please specify a valid Discord User ID.', true);
+    showTeamStatus('⚠️ Please specify a valid Discord User ID.', true);
     return;
   }
   if (!role) {
-    showTeamStatus('âš ï¸ Please specify a Badge Role.', true);
+    showTeamStatus('⚠️ Please specify a Badge Role.', true);
     return;
   }
   
   try {
-    showTeamStatus('Saving team memberâ€¦', false, 'var(--muted)');
+    showTeamStatus('Saving team member…', false, 'var(--muted)');
     const res = await fetch('/api/team', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -2155,11 +2155,11 @@ async function addTeamMember() {
     document.getElementById('teamRole').value = '';
     document.getElementById('teamTitle').value = '';
     document.getElementById('teamSkills').value = '';
-    showTeamStatus('âœ… Team member updated successfully!', false, '#4ade80');
+    showTeamStatus('✅ Team member updated successfully!', false, '#4ade80');
     setTimeout(() => hideTeamStatus(), 3000);
     await loadTeamManager();
   } catch (e) {
-    showTeamStatus('âŒ Error: ' + e.message, true);
+    showTeamStatus('❌ Error: ' + e.message, true);
   }
 }
 
@@ -2192,11 +2192,11 @@ function hideTeamStatus() {
   if (statusEl) statusEl.style.display = 'none';
 }
 
-// â”€â”€ COMMUNITY HALL MANAGER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── COMMUNITY HALL MANAGER ──────────────────────────────
 async function loadHallManager() {
   const tbody = document.getElementById('hallManagerTableBody');
   if (!tbody) return;
-  tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:20px; color:var(--muted);">Loading entriesâ€¦</td></tr>';
+  tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:20px; color:var(--muted);">Loading entries…</td></tr>';
   
   try {
     const res = await fetch('/api/hall-entries');
@@ -2211,8 +2211,8 @@ async function loadHallManager() {
     let html = '';
     entries.forEach(e => {
       const typeBadge = e.type === 'shame' 
-        ? '<span style="background:rgba(239,68,68,0.2); color:#ef4444; padding:2px 8px; border-radius:4px; font-weight:bold; font-size:0.75rem;">ðŸ’€ Shame</span>'
-        : '<span style="background:rgba(16,185,129,0.2); color:#10b981; padding:2px 8px; border-radius:4px; font-weight:bold; font-size:0.75rem;">ðŸ’š Appreciation</span>';
+        ? '<span style="background:rgba(239,68,68,0.2); color:#ef4444; padding:2px 8px; border-radius:4px; font-weight:bold; font-size:0.75rem;">💀 Shame</span>'
+        : '<span style="background:rgba(16,185,129,0.2); color:#10b981; padding:2px 8px; border-radius:4px; font-weight:bold; font-size:0.75rem;">💚 Appreciation</span>';
       
       const dateStr = new Date(e.addedAt).toLocaleDateString(undefined, {
         month: 'short',
@@ -2239,7 +2239,7 @@ async function loadHallManager() {
           <td style="padding:8px 12px; color:var(--text);">${escapeHTML(e.reason)}</td>
           <td style="padding:8px 12px; color:var(--muted);">${escapeHTML(e.addedBy)} <span style="font-size:0.75rem; display:block;">at ${dateStr}</span></td>
           <td style="padding:8px 12px; text-align:right;">
-            <button class="btn btn-sm btn-outline" style="border-color:var(--red-soft); color:var(--red-soft); padding:4px 8px;" onclick="deleteHallEntry('${e.id}')">ðŸ—‘ï¸ Delete</button>
+            <button class="btn btn-sm btn-outline" style="border-color:var(--red-soft); color:var(--red-soft); padding:4px 8px;" onclick="deleteHallEntry('${e.id}')">🗑️ Delete</button>
           </td>
         </tr>
       `;
@@ -2257,12 +2257,12 @@ async function addHallEntry() {
   const reason = document.getElementById('hallReason').value.trim();
   
   if (!discordId || !reason) {
-    showHallStatus('âŒ Please fill in Discord User ID and Reason.', true);
+    showHallStatus('❌ Please fill in Discord User ID and Reason.', true);
     return;
   }
   
   try {
-    showHallStatus('Adding entryâ€¦', false, 'var(--muted)');
+    showHallStatus('Adding entry…', false, 'var(--muted)');
     const res = await fetch('/api/staff/hall-entries', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -2273,11 +2273,11 @@ async function addHallEntry() {
     
     document.getElementById('hallDiscordId').value = '';
     document.getElementById('hallReason').value = '';
-    showHallStatus('âœ… Entry added successfully!', false, '#4ade80');
+    showHallStatus('✅ Entry added successfully!', false, '#4ade80');
     setTimeout(() => hideHallStatus(), 3000);
     await loadHallManager();
   } catch (e) {
-    showHallStatus('âŒ Error: ' + e.message, true);
+    showHallStatus('❌ Error: ' + e.message, true);
   }
 }
 
@@ -2310,7 +2310,7 @@ function hideHallStatus() {
   if (statusEl) statusEl.style.display = 'none';
 }
 
-// â”€â”€ DRAG AND DROP TEAM MEMBERS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── DRAG AND DROP TEAM MEMBERS ──────────────────────────
 let dragSourceEl = null;
 
 function handleDragStart(e) {
@@ -2355,7 +2355,7 @@ async function saveNewTeamOrder() {
   const ids = cards.map(card => card.dataset.id);
   
   try {
-    showTeamStatus('Saving positionsâ€¦', false, 'var(--muted)');
+    showTeamStatus('Saving positions…', false, 'var(--muted)');
     const res = await fetch('/api/team/reorder', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -2364,10 +2364,10 @@ async function saveNewTeamOrder() {
     const d = await res.json();
     if (!res.ok) throw new Error(d.error || 'Failed to reorder');
     
-    showTeamStatus('âœ… Position order saved!', false, '#4ade80');
+    showTeamStatus('✅ Position order saved!', false, '#4ade80');
     setTimeout(() => hideTeamStatus(), 2500);
   } catch (e) {
-    showTeamStatus('âŒ Failed to save order: ' + e.message, true);
+    showTeamStatus('❌ Failed to save order: ' + e.message, true);
   }
 }
 
@@ -2380,7 +2380,7 @@ function escapeHTML(str) {
             .replace(/'/g, '&#39;');
 }
 
-// â”€â”€ WHITELIST APPLICATIONS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── WHITELIST APPLICATIONS ────────────────────────────────
 let allWLApps = [];
 let wlFilter = 'all';
 
@@ -2423,23 +2423,23 @@ function renderWhitelistApps() {
 function wlCardHTML(a) {
   const avatar = a.discordAvatar
     ? `<img class="wl-avatar" src="${escapeHTML(a.discordAvatar)}" alt="Avatar" onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'">`
-    : `<div class="wl-avatar" style="display:flex;align-items:center;justify-content:center;font-size:1rem;">ðŸ‘¤</div>`;
+    : `<div class="wl-avatar" style="display:flex;align-items:center;justify-content:center;font-size:1rem;">👤</div>`;
 
-  const badgeLabel = a.status === 'pending' ? 'â³ Pending' : a.status === 'approved' ? 'âœ… Approved' : 'âŒ Rejected';
+  const badgeLabel = a.status === 'pending' ? '⏳ Pending' : a.status === 'approved' ? '✅ Approved' : '❌ Rejected';
   const scoreHTML = a.score !== null ? `<span class="wl-score-badge">Quiz: ${a.score}/10</span>` : '';
   const timeStr = a.submittedAt ? timeAgo(a.submittedAt) : '';
 
   const fields = [
-    { label: 'ðŸŽ® Minecraft IGN', value: a.ign },
-    { label: 'ðŸ’¬ Discord', value: a.discordUsername },
-    { label: 'ðŸŽ‚ Age', value: a.age },
-    { label: 'ðŸŒ Country / Timezone', value: a.country },
-    { label: 'â±ï¸ Weekly Playtime', value: a.weeklyHours },
-    { label: 'â³ MC Experience', value: a.experience },
-    { label: 'ðŸŽ­ Player Type', value: a.playerType },
-    { label: 'ðŸ—ï¸ Plans on Server', value: a.plans },
-    { label: 'ðŸš« Ban History', value: a.banHistory },
-    { label: 'ðŸ’¬ Why Whitelist?', value: a.whyWhitelist },
+    { label: '🎮 Minecraft IGN', value: a.ign },
+    { label: '💬 Discord', value: a.discordUsername },
+    { label: '🎂 Age', value: a.age },
+    { label: '🌍 Country / Timezone', value: a.country },
+    { label: '⏱️ Weekly Playtime', value: a.weeklyHours },
+    { label: '⏳ MC Experience', value: a.experience },
+    { label: '🎭 Player Type', value: a.playerType },
+    { label: '🏗️ Plans on Server', value: a.plans },
+    { label: '🚫 Ban History', value: a.banHistory },
+    { label: '💬 Why Whitelist?', value: a.whyWhitelist },
   ].filter(f => f.value).map(f => `
     <div class="wl-field">
       <div class="wl-field-label">${f.label}</div>
@@ -2447,9 +2447,9 @@ function wlCardHTML(a) {
     </div>`).join('');
 
   const actionsHTML = a.status === 'pending' ? `
-    <input class="wl-reason-input" id="wlReason_${a.discordId}" placeholder="Rejection reason (optional)â€¦">
-    <button class="btn btn-sm" style="background:#4ade80;color:#000;font-weight:700;" onclick="approveWL('${a.discordId}')">âœ… Approve</button>
-    <button class="btn btn-sm btn-outline" style="color:#f87171;border-color:rgba(248,113,113,0.35);" onclick="rejectWL('${a.discordId}')">âŒ Reject</button>
+    <input class="wl-reason-input" id="wlReason_${a.discordId}" placeholder="Rejection reason (optional)…">
+    <button class="btn btn-sm" style="background:#4ade80;color:#000;font-weight:700;" onclick="approveWL('${a.discordId}')">✅ Approve</button>
+    <button class="btn btn-sm btn-outline" style="color:#f87171;border-color:rgba(248,113,113,0.35);" onclick="rejectWL('${a.discordId}')">❌ Reject</button>
     <span id="wlStatus_${a.discordId}" style="font-size:0.8rem;color:var(--muted);"></span>` : `
     <span class="wl-reviewed-note">Reviewed by <strong>${escapeHTML(a.reviewedBy || 'Staff')}</strong></span>`;
 
@@ -2459,12 +2459,12 @@ function wlCardHTML(a) {
       ${avatar}
       <div class="wl-card-info">
         <div class="wl-ign">${escapeHTML(a.ign)}</div>
-        <div class="wl-discord">@${escapeHTML(a.discordUsername)} Â· <code style="font-size:0.72rem;opacity:0.7;">${a.discordId}</code></div>
+        <div class="wl-discord">@${escapeHTML(a.discordUsername)} · <code style="font-size:0.72rem;opacity:0.7;">${a.discordId}</code></div>
       </div>
       ${scoreHTML}
       <span class="wl-badge ${a.status}">${badgeLabel}</span>
       <span class="wl-time">${timeStr}</span>
-      <span style="color:var(--muted);font-size:14px;">â–¼</span>
+      <span style="color:var(--muted);font-size:14px;">▼</span>
     </div>
     <div class="wl-body" id="wlBody_${a.discordId}">
       <div class="wl-field-grid">${fields}</div>
@@ -2480,7 +2480,7 @@ function toggleWLCard(id) {
 
 async function approveWL(discordId) {
   const statusEl = document.getElementById('wlStatus_' + discordId);
-  if (statusEl) statusEl.textContent = 'Approvingâ€¦';
+  if (statusEl) statusEl.textContent = 'Approving…';
   try {
     const res = await fetch(`/api/staff/whitelist/${discordId}/approve`, { method: 'POST' });
     const d = await res.json();
@@ -2490,14 +2490,14 @@ async function approveWL(discordId) {
     if (app) { app.status = 'approved'; app.reviewedBy = currentStaff?.username || 'Staff'; }
     renderWhitelistApps();
   } catch(e) {
-    if (statusEl) statusEl.textContent = 'âŒ ' + e.message;
+    if (statusEl) statusEl.textContent = '❌ ' + e.message;
   }
 }
 
 async function rejectWL(discordId) {
   const reason = (document.getElementById('wlReason_' + discordId)?.value || '').trim();
   const statusEl = document.getElementById('wlStatus_' + discordId);
-  if (statusEl) statusEl.textContent = 'Rejectingâ€¦';
+  if (statusEl) statusEl.textContent = 'Rejecting…';
   try {
     const res = await fetch(`/api/staff/whitelist/${discordId}/reject`, {
       method: 'POST',
@@ -2511,11 +2511,11 @@ async function rejectWL(discordId) {
     if (app) { app.status = 'rejected'; app.reviewedBy = currentStaff?.username || 'Staff'; }
     renderWhitelistApps();
   } catch(e) {
-    if (statusEl) statusEl.textContent = 'âŒ ' + e.message;
+    if (statusEl) statusEl.textContent = '❌ ' + e.message;
   }
 }
 
-// â”€â”€ EMBED BUILDER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── EMBED BUILDER ─────────────────────────────────────────
 
 function setEBColor(hex) {
   document.getElementById('ebColorPicker').value = hex;
@@ -2535,7 +2535,7 @@ function addEBField() {
       <input type="text" class="eb-input eb-f-name" placeholder="Name" oninput="updateEBPreview()">
       <input type="text" class="eb-input eb-f-val" placeholder="Value" oninput="updateEBPreview()">
       <label class="eb-inline-toggle"><input type="checkbox" class="eb-f-inline" checked onchange="updateEBPreview()"> Inline</label>
-      <button class="eb-rm-btn" onclick="this.parentElement.remove();updateEBPreview()">âœ•</button>
+      <button class="eb-rm-btn" onclick="this.parentElement.remove();updateEBPreview()">✕</button>
     </div>
   `;
   container.insertAdjacentHTML('beforeend', html);
@@ -2685,7 +2685,7 @@ async function sendEmbed() {
   const channelId = channelCustom || channelSelect;
   
   if (!channelId) {
-    statusEl.textContent = 'âŒ Please specify a Channel ID.';
+    statusEl.textContent = '❌ Please specify a Channel ID.';
     statusEl.style.color = '#f87171';
     return;
   }
@@ -2734,22 +2734,22 @@ async function sendEmbed() {
     const d = await res.json();
     if (!res.ok) throw new Error(d.error || 'Failed to send embed');
     
-    statusEl.textContent = 'âœ… Message sent successfully!';
+    statusEl.textContent = '✅ Message sent successfully!';
     statusEl.style.color = '#4ade80';
     setTimeout(() => { statusEl.textContent = ''; }, 3000);
   } catch (e) {
-    statusEl.textContent = 'âŒ ' + e.message;
+    statusEl.textContent = '❌ ' + e.message;
     statusEl.style.color = '#f87171';
   }
 }
 
-// â”€â”€ CONTRACTS JS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── CONTRACTS JS ──────────────────────────────────────────
 let staffContractsCache = [];
 
 async function loadContractsList() {
   const listEl = document.getElementById('staffContractsList');
   if (!listEl) return;
-  listEl.innerHTML = '<div style="text-align:center;padding:30px;color:var(--muted);">Loading contractsâ€¦</div>';
+  listEl.innerHTML = '<div style="text-align:center;padding:30px;color:var(--muted);">Loading contracts…</div>';
   try {
     const res = await fetch('/api/contracts');
     if (!res.ok) throw new Error('Failed to load contracts');
@@ -2806,8 +2806,8 @@ function renderStaffContractsList() {
                     </div>
                     ${q.status === 'pending' && c.status === 'open' ? `
                       <div style="display:flex; gap:4px;">
-                        <button class="btn btn-sm" style="background:#22c55e!important; color:#fff!important; padding:2px 8px!important;" onclick="reviewQuotation('${c.id}', '${q.id}', 'accepted')">âœ“ Accept</button>
-                        <button class="btn btn-sm" style="background:#ef4444!important; color:#fff!important; padding:2px 8px!important;" onclick="reviewQuotation('${c.id}', '${q.id}', 'rejected')">âœ• Reject</button>
+                        <button class="btn btn-sm" style="background:#22c55e!important; color:#fff!important; padding:2px 8px!important;" onclick="reviewQuotation('${c.id}', '${q.id}', 'accepted')">✓ Accept</button>
+                        <button class="btn btn-sm" style="background:#ef4444!important; color:#fff!important; padding:2px 8px!important;" onclick="reviewQuotation('${c.id}', '${q.id}', 'rejected')">✕ Reject</button>
                       </div>
                     ` : ''}
                   </div>
@@ -2833,7 +2833,7 @@ function renderStaffContractsList() {
       billHtml = `
         <div style="margin-top:14px; background:rgba(255, 76, 108, 0.03); border:1px solid rgba(255, 76, 108, 0.14); border-radius:6px; padding:12px;">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:8px;">
-            <span style="font-weight:800; font-size:0.85rem; text-transform:uppercase; color:#fff; display:flex; align-items:center; gap:4px;">ðŸ‘· Submitted Completion Bill</span>
+            <span style="font-weight:800; font-size:0.85rem; text-transform:uppercase; color:#fff; display:flex; align-items:center; gap:4px;">👷 Submitted Completion Bill</span>
             <span style="font-size:0.75rem; padding:2px 8px; border-radius:4px; font-weight:700; ${billStatusStyle}">${billStatusLabel}</span>
           </div>
           <div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:8px;"><strong>Proof:</strong> ${c.bill.message}</div>
@@ -2867,11 +2867,11 @@ function renderStaffContractsList() {
               <span style="padding:2px 8px; border-radius:999px; font-size:0.75rem; font-weight:700; ${statusStyle}">${statusLabel}</span>
             </div>
             <div style="font-size:0.75rem; color:var(--muted); margin-top:4px;">
-              Posted by: <strong>${c.createdBy.username}</strong> â€¢ Budget: <strong>${c.budget || 'N/A'}</strong> â€¢ ðŸ“… ${date}
+              Posted by: <strong>${c.createdBy.username}</strong> • Budget: <strong>${c.budget || 'N/A'}</strong> • 📅 ${date}
             </div>
             ${c.assignedPlayer ? `
               <div style="font-size:0.8rem; color:#ffd700; font-weight:700; margin-top:6px;">
-                ðŸ¤ Assigned to: ${c.assignedPlayer.username} ${c.assignedPlayer.ign ? `(${c.assignedPlayer.ign})` : ''}
+                🤝 Assigned to: ${c.assignedPlayer.username} ${c.assignedPlayer.ign ? `(${c.assignedPlayer.ign})` : ''}
               </div>
             ` : ''}
             <div style="margin-top:8px; font-size:0.88rem; color:var(--text); line-height:1.5; white-space:pre-wrap;">${c.description}</div>
@@ -2893,7 +2893,7 @@ function renderStaffContractsList() {
             ${c.status === 'completed' || c.status === 'cancelled' ? `
               <button class="btn btn-sm btn-outline" onclick="updateContractStatus('${c.id}', 'open')">Reopen</button>
             ` : ''}
-            <button class="btn btn-sm btn-outline" onclick="deleteContract('${c.id}')" style="color:var(--red-soft); border-color:rgba(248,71,98,0.35);">âœ• Delete</button>
+            <button class="btn btn-sm btn-outline" onclick="deleteContract('${c.id}')" style="color:var(--red-soft); border-color:rgba(248,71,98,0.35);">✕ Delete</button>
           </div>
         </div>
         ${billHtml}
@@ -2912,13 +2912,13 @@ async function createContract() {
   const statusEl = document.getElementById('contractFormStatus');
 
   if (!title || !description) {
-    statusEl.textContent = 'âš ï¸ Title and Description are required.';
+    statusEl.textContent = '⚠️ Title and Description are required.';
     statusEl.style.color = 'var(--red-soft)';
     statusEl.style.display = 'block';
     return;
   }
 
-  statusEl.textContent = 'Posting contractâ€¦';
+  statusEl.textContent = 'Posting contract…';
   statusEl.style.color = 'var(--muted)';
   statusEl.style.display = 'block';
 
@@ -2931,7 +2931,7 @@ async function createContract() {
     const d = await res.json();
     if (!res.ok) throw new Error(d.error || 'Failed to create contract');
     
-    statusEl.textContent = 'âœ… Contract posted successfully!';
+    statusEl.textContent = '✅ Contract posted successfully!';
     statusEl.style.color = '#4ade80';
     
     // Clear inputs
@@ -2944,7 +2944,7 @@ async function createContract() {
     await loadContractsList();
     setTimeout(() => { statusEl.style.display = 'none'; }, 3000);
   } catch (e) {
-    statusEl.textContent = 'âŒ ' + e.message;
+    statusEl.textContent = '❌ ' + e.message;
     statusEl.style.color = 'var(--red-soft)';
   }
 }
@@ -3022,7 +3022,7 @@ async function reviewQuotation(contractId, quotationId, status) {
   }
 }
 
-// â”€â”€ UTILS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── UTILS ─────────────────────────────────────────────────
 function timeAgo(ts) {
   const diff = Date.now() - ts;
   if (diff < 60000) return 'just now';
