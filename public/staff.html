@@ -28,6 +28,82 @@
 <link rel="icon" type="image/x-icon" href="/favicon.ico?v=1" />
 <link rel="stylesheet" href="/style.css">
 <style>
+  /* ── SECTION-WISE DISPLAY SYSTEM ── */
+  .staff-panel {
+    display: none !important;
+  }
+  .staff-panel.active {
+    display: block !important;
+    animation: panelFadeIn 0.2s ease-in-out;
+  }
+  @keyframes panelFadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .staff-shell {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem 2rem 4rem;
+    max-width: var(--content);
+    margin: 0 auto;
+  }
+
+  .staff-sidebar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    background: var(--bg-card);
+    padding: 12px;
+    border: var(--border-thick);
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 60px;
+    z-index: 100;
+  }
+
+  .staff-nav-item {
+    padding: 9px 16px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: var(--off-black);
+    color: var(--muted);
+    border: var(--border);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .staff-nav-item:hover {
+    background: var(--bg-soft);
+    color: var(--white);
+    border-color: var(--secondary);
+    transform: translateY(-2px);
+  }
+
+  .staff-nav-item.active {
+    background: var(--primary) !important;
+    color: var(--pure-white) !important;
+    border-color: var(--primary) !important;
+    box-shadow: 4px 4px 0 var(--black) !important;
+    transform: none !important;
+  }
+
+  .staff-nav-badge {
+    background: var(--secondary);
+    color: var(--black);
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-weight: 800;
+  }
+
   .staff-section-title {
     font-size: 1rem; font-weight: 700; margin-bottom: 18px;
     display: flex; align-items: center; justify-content: space-between; gap: 10px;
