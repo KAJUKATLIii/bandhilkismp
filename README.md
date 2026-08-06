@@ -1,3 +1,9 @@
+<div align="center">
+
+![BANDHILKI SMP](https://raw.githubusercontent.com/KAJUKATLIii/bandhilkismp/main/public/lg.png)
+
+<p>
+
 # ⛏️ Bandhilki SMP Dashboard & Discord Bot
 
 A complete, feature-rich Minecraft Server Status Dashboard, Whitelist Portal, Support Ticket System, and active Discord status/logging bot built for the **Bandhilki Family** and powered by **Team Insane**.
