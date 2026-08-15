@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -450,7 +450,7 @@
       <div id="ipSection" style="display:none;">
         <div class="server-detail-row" style="margin-top: 8px;">
           <span class="server-detail-label">IP Address</span>
-          <span class="server-detail-val" style="font-family: monospace; font-size: 0.95rem;">mc.iucnetwork.in:1999</span>
+          <span class="server-detail-val" style="font-family: monospace; font-size: 0.95rem;">mc.iucnetwork.in:1111</span>
         </div>
         
         <button class="btn btn-outline btn-sm ip-copy-btn" id="copyIpBtn" onclick="copyServerIP()">
@@ -722,7 +722,7 @@ function setServerOffline(dot, text, favicon, players) {
 }
 
 function copyServerIP() {
-  const ip = "mc.iucnetwork.in:1999";
+  const ip = "mc.iucnetwork.in:1111";
   navigator.clipboard.writeText(ip).then(() => {
     const btn = document.getElementById('copyIpBtn');
     btn.innerHTML = '<span>✅ Copied IP!</span>';

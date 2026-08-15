@@ -2864,7 +2864,7 @@ app.post('/api/staff/whitelist/:userId/approve', staffMiddleware, async (req, re
       if (user) {
         const dmEmbed = new EmbedBuilder()
           .setTitle('🎉 Whitelist Approved!')
-          .setDescription(`Your whitelist application for **${statusObj.ign}** on Bandhilki SMP has been **APPROVED**! You can now join the server at \`mc.iucnetwork.in:1999\`.`)
+          .setDescription(`Your whitelist application for **${statusObj.ign}** on Bandhilki SMP has been **APPROVED**! You can now join the server at \`mc.iucnetwork.in:1111\`.`)
           .setColor(0x2ecc71)
           .setTimestamp();
         await user.send({ embeds: [dmEmbed] });

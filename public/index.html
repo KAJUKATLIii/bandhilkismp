@@ -387,7 +387,7 @@
 
     <div class="b-ip hidden" id="ipCard" onclick="copyIP()" style="cursor:pointer;">
       <span class="b-ip-label">Server IP</span>
-      <span class="b-ip-addr">mc.iucnetwork.in:1999</span>
+      <span class="b-ip-addr">mc.iucnetwork.in:1111</span>
       <button class="b-ip-copy" id="copyBtn">COPY</button>
     </div>
 
@@ -584,7 +584,7 @@ async function checkAuth() {
         document.getElementById('ipCard').classList.remove('hidden');
         document.getElementById('notWhitelistedCard').classList.add('hidden');
         const el = document.getElementById('info-ip');
-        if (el) { el.textContent = 'mc.iucnetwork.in:1999'; el.style.fontWeight = '700'; el.style.color = 'var(--primary)'; }
+        if (el) { el.textContent = 'mc.iucnetwork.in:1111'; el.style.fontWeight = '700'; el.style.color = 'var(--primary)'; }
       } else {
         document.getElementById('ipCard').classList.add('hidden');
         document.getElementById('notWhitelistedCard').classList.remove('hidden');
@@ -605,7 +605,7 @@ async function doLogout() {
 }
 
 function copyIP() {
-  navigator.clipboard.writeText('mc.iucnetwork.in:1999').then(() => {
+  navigator.clipboard.writeText('mc.iucnetwork.in:1111').then(() => {
     const btn = document.getElementById('copyBtn');
     if (!btn) return;
     btn.textContent = 'COPIED!';
