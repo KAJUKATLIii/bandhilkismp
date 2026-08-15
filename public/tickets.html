@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Support Tickets � Bandhilki SMP</title>
+<title>Support Tickets – Bandhilki SMP</title>
 <meta name="description" content="Create and track support tickets on Bandhilki SMP. Report players, appeal bans, get help from staff.">
 <meta name="keywords" content="bandhilki smp, minecraft, bandhilki family, shreeman legend, bandhilkismp, indian minecraft server, survival multiplayer, pvp server, minecraft india, gaming community, minecraft survival, best indian smp, Bandhilki Family, minecraft community, smp server, best smp server in india, indian minecraft community">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="Bandhilki SMP � Indian Minecraft Server">
+<meta property="og:title" content="Bandhilki SMP – Indian Minecraft Server">
 <meta property="og:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family. Join survival, creative, PvP & events.">
 <meta property="og:image" content="/lg.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Bandhilki SMP � Indian Minecraft Server">
+<meta name="twitter:title" content="Bandhilki SMP – Indian Minecraft Server">
 <meta name="twitter:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family.">
 <meta name="twitter:image" content="/lg.png">
 <script type="application/ld+json">
@@ -53,7 +53,7 @@
   .status-legend { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
   .hidden { display: none !important; }
 
-  /* -- CATEGORY BUTTONS -- */
+  /* ── CATEGORY BUTTONS ── */
   .category-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -98,10 +98,10 @@
 <body>
 <div class="portal-ticker" aria-hidden="true">
   <div class="portal-ticker-track">
-    <span>Support tickets � get help from staff 24/7 �</span>
-    <span>Report players, bugs, and appeal bans securely �</span>
-    <span>Bandhilki SMP ticket system online �</span>
-    <span>Support tickets � get help from staff 24/7 �</span>
+    <span>Support tickets – get help from staff 24/7 –</span>
+    <span>Report players, bugs, and appeal bans securely –</span>
+    <span>Bandhilki SMP ticket system online –</span>
+    <span>Support tickets – get help from staff 24/7 –</span>
   </div>
 </div>
 
@@ -140,7 +140,7 @@
 <!-- NOT LOGGED IN -->
 <div id="notLoggedIn" class="container hidden" style="padding-bottom:60px;">
   <div class="access-denied">
-    <div class="access-denied-icon">??</div>
+    <div class="access-denied-icon">🔒</div>
     <h2 style="font-size:1.4rem;">Login Required</h2>
     <p style="color:var(--muted);max-width:360px;">You need to login with Discord to create and track support tickets.</p>
     <a href="/api/auth/discord/login" class="btn btn-primary btn-lg" style="margin-top:8px;">
@@ -155,16 +155,16 @@
 
   <!-- STATUS LEGEND -->
   <div class="status-legend">
-    <span class="ticket-status open">?? Open</span>
-    <span class="ticket-status inprogress">?? In Progress</span>
-    <span class="ticket-status waiting">?? Waiting For Player</span>
-    <span class="ticket-status closed">?? Closed</span>
+    <span class="ticket-status open">🟢 Open</span>
+    <span class="ticket-status inprogress">🟡 In Progress</span>
+    <span class="ticket-status waiting">🔵 Waiting For Player</span>
+    <span class="ticket-status closed">🔴 Closed</span>
   </div>
 
   <!-- TAB NAVIGATION -->
   <div class="tab-row">
-    <button class="tab-btn active" id="tabCreate" onclick="switchTab('create')">? New Ticket</button>
-    <button class="tab-btn" id="tabMy" onclick="switchTab('my')">?? My Tickets</button>
+    <button class="tab-btn active" id="tabCreate" onclick="switchTab('create')">➕ New Ticket</button>
+    <button class="tab-btn" id="tabMy" onclick="switchTab('my')">📋 My Tickets</button>
   </div>
 
   <!-- CREATE TICKET TAB -->
@@ -181,19 +181,19 @@
           <label class="form-label">Select Category *</label>
           <div class="category-grid">
             <button type="button" class="category-btn" onclick="selectCategory('Support',this)">
-              <span class="cat-emoji">???</span>Support
+              <span class="cat-emoji">🛠️</span>Support
             </button>
             <button type="button" class="category-btn" onclick="selectCategory('Report Player',this)">
-              <span class="cat-emoji">??</span>Report Player
+              <span class="cat-emoji">🚨</span>Report Player
             </button>
             <button type="button" class="category-btn" onclick="selectCategory('Bug Report',this)">
-              <span class="cat-emoji">??</span>Bug Report
+              <span class="cat-emoji">🐛</span>Bug Report
             </button>
             <button type="button" class="category-btn" onclick="selectCategory('Ban Appeal',this)">
-              <span class="cat-emoji">??</span>Ban Appeal
+              <span class="cat-emoji">⚖️</span>Ban Appeal
             </button>
             <button type="button" class="category-btn" onclick="selectCategory('Staff Complaint',this)">
-              <span class="cat-emoji">??</span>Staff Complaint
+              <span class="cat-emoji">📢</span>Staff Complaint
             </button>
           </div>
           <input type="hidden" id="selectedCategory">
@@ -202,16 +202,16 @@
         <!-- Description -->
         <div class="form-group" style="margin-bottom:18px;">
           <label class="form-label" for="ticketDesc">Description * <span style="color:var(--muted);font-weight:400;text-transform:none;">(min. 10 chars)</span></label>
-          <textarea id="ticketDesc" class="form-textarea" rows="5" placeholder="Describe your issue in detail. Include player names, dates, times, and any other relevant information�"></textarea>
+          <textarea id="ticketDesc" class="form-textarea" rows="5" placeholder="Describe your issue in detail. Include player names, dates, times, and any other relevant information…"></textarea>
         </div>
 
         <!-- Screenshot URL -->
         <div class="form-group" style="margin-bottom:22px;">
-          <label class="form-label" for="screenshotUrl">Screenshot URL <span style="color:var(--muted);font-weight:400;text-transform:none;">(optional � paste an image link)</span></label>
+          <label class="form-label" for="screenshotUrl">Screenshot URL <span style="color:var(--muted);font-weight:400;text-transform:none;">(optional – paste an image link)</span></label>
           <input id="screenshotUrl" class="form-input" type="url" placeholder="https://i.imgur.com/example.png">
         </div>
 
-        <button type="submit" id="createBtn" class="btn btn-primary" style="width:100%;padding:14px;">??? Submit Ticket</button>
+        <button type="submit" id="createBtn" class="btn btn-primary" style="width:100%;padding:14px;">🎟️ Submit Ticket</button>
       </form>
     </div>
   </div>
@@ -221,8 +221,8 @@
     <div id="myTicketsAlert" class="alert-box"></div>
     <div id="ticketsList" class="tickets-list">
       <div class="empty-state">
-        <div class="empty-icon">??</div>
-        <p>Loading your tickets�</p>
+        <div class="empty-icon">📭</div>
+        <p>Loading your tickets…</p>
       </div>
     </div>
   </div>
@@ -231,7 +231,7 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  � 2026 BANDHILKI SMP &bull; Support by Team Insane &bull;
+  © 2026 BANDHILKI SMP &bull; Support by Team Insane &bull;
   <a href="https://discord.gg/KSAm2yd9gC" target="_blank" style="color:var(--green-1);text-decoration:none;">Discord</a>
 </footer>
 
@@ -240,12 +240,12 @@ let currentUser = null;
 let selectedCat = '';
 
 const CATEGORY_EMOJIS = {
-  'Support': '???', 'Report Player': '??', 'Bug Report': '??',
-  'Ban Appeal': '??', 'Staff Complaint': '??'
+  'Support': '🛠️', 'Report Player': '🚨', 'Bug Report': '🐛',
+  'Ban Appeal': '⚖️', 'Staff Complaint': '📢'
 };
 const STATUS_LABELS = {
-  'open': '?? Open', 'inprogress': '?? In Progress',
-  'waiting': '?? Waiting For Player', 'closed': '?? Closed'
+  'open': '🟢 Open', 'inprogress': '🟡 In Progress',
+  'waiting': '🔵 Waiting For Player', 'closed': '🔴 Closed'
 };
 
 // Auth
@@ -253,7 +253,7 @@ async function checkAuth() {
   if (window.location.protocol === 'file:') {
     const list = document.getElementById('ticketsList');
     if (list) {
-      list.innerHTML = '<div class="empty-state"><div class="empty-icon">??</div><p>You are viewing this page directly from your file system. Please run the server ("npm start") and visit http://localhost:3000/tickets.html in your browser.</p></div>';
+      list.innerHTML = '<div class="empty-state"><div class="empty-icon">⚠️</div><p>You are viewing this page directly from your file system. Please run the server ("npm start") and visit http://localhost:3000/tickets.html in your browser.</p></div>';
     }
     document.getElementById('notLoggedIn').classList.remove('hidden');
     document.getElementById('ticketPortal').classList.add('hidden');
@@ -294,7 +294,7 @@ async function checkAuth() {
     console.error(e);
     const list = document.getElementById('ticketsList');
     if (list) {
-      list.innerHTML = '<div class="empty-state"><div class="empty-icon">??</div><p>Failed to connect to the backend server. Make sure "npm start" is running.</p></div>';
+      list.innerHTML = '<div class="empty-state"><div class="empty-icon">⚠️</div><p>Failed to connect to the backend server. Make sure "npm start" is running.</p></div>';
     }
   }
 }
@@ -339,7 +339,7 @@ document.getElementById('createForm').addEventListener('submit', async e => {
   if (desc.length < 10) return showAlert('createAlert', 'Description must be at least 10 characters.', 'error');
 
   const btn = document.getElementById('createBtn');
-  btn.disabled = true; btn.textContent = 'Submitting�';
+  btn.disabled = true; btn.textContent = 'Submitting…';
 
   try {
     const res = await fetch('/api/tickets/create', {
@@ -348,42 +348,42 @@ document.getElementById('createForm').addEventListener('submit', async e => {
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || 'Failed');
-    showAlert('createAlert', `? Ticket ${data.ticket.id} created! Staff will respond soon.`, 'success');
+    showAlert('createAlert', `✅ Ticket ${data.ticket.id} created! Staff will respond soon.`, 'success');
     document.getElementById('createForm').reset();
     selectedCat = '';
     document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('selected'));
     setTimeout(() => switchTab('my'), 1500);
   } catch (err) {
-    showAlert('createAlert', '? ' + err.message, 'error');
+    showAlert('createAlert', '❌ ' + err.message, 'error');
   }
-  btn.disabled = false; btn.textContent = '??? Submit Ticket';
+  btn.disabled = false; btn.textContent = '🎟️ Submit Ticket';
 });
 
 // Load my tickets
 async function loadMyTickets() {
   const list = document.getElementById('ticketsList');
-  list.innerHTML = '<div class="empty-state"><div class="empty-icon">?</div><p>Loading�</p></div>';
+  list.innerHTML = '<div class="empty-state"><div class="empty-icon">⏳</div><p>Loading…</p></div>';
   try {
     const res = await fetch('/api/tickets/my');
     if (!res.ok) throw new Error('Not logged in');
     const tix = await res.json();
     renderTickets(tix);
   } catch (e) {
-    list.innerHTML = '<div class="empty-state"><div class="empty-icon">??</div><p>Failed to load tickets.</p></div>';
+    list.innerHTML = '<div class="empty-state"><div class="empty-icon">⚠️</div><p>Failed to load tickets.</p></div>';
   }
 }
 
 function renderTickets(tix) {
   const list = document.getElementById('ticketsList');
   if (!tix.length) {
-    list.innerHTML = '<div class="empty-state"><div class="empty-icon">??</div><p>No tickets yet. Create your first one!</p></div>';
+    list.innerHTML = '<div class="empty-state"><div class="empty-icon">📭</div><p>No tickets yet. Create your first one!</p></div>';
     return;
   }
   list.innerHTML = tix.map(t => ticketCardHTML(t)).join('');
 }
 
 function ticketCardHTML(t) {
-  const catEmoji = CATEGORY_EMOJIS[t.category] || '???';
+  const catEmoji = CATEGORY_EMOJIS[t.category] || '🎟️';
   const statusLabel = STATUS_LABELS[t.status] || t.status;
   const date = new Date(t.createdAt).toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' });
   const claimed = t.claimedBy ? `<span style="font-size:10px;color:var(--muted);">Assigned to: <strong>${t.claimedBy.username}</strong></span>` : '';
@@ -391,7 +391,7 @@ function ticketCardHTML(t) {
     ? `<div class="ticket-screenshot"><img src="${t.screenshotUrl}" alt="Screenshot" onerror="this.parentElement.remove()"></div>` : '';
   const replies = t.replies.map(r => `
     <div class="reply-bubble ${r.from}">
-      <div class="reply-author">${r.from === 'staff' ? '?? ' + r.author : '?? ' + r.author}</div>
+      <div class="reply-author">${r.from === 'staff' ? '👮 ' + r.author : '👤 ' + r.author}</div>
       <div>${r.message}</div>
       <div class="reply-time">${timeAgo(r.ts)}</div>
     </div>`).join('');
@@ -399,7 +399,7 @@ function ticketCardHTML(t) {
   const canReply = (t.status === 'waiting' || t.status === 'open') && t.status !== 'closed';
   const replyInput = canReply ? `
     <div class="reply-input-area" style="margin-top:14px;">
-      <textarea rows="2" id="replyMsg_${t.id}" placeholder="Reply to this ticket�"></textarea>
+      <textarea rows="2" id="replyMsg_${t.id}" placeholder="Reply to this ticket…"></textarea>
       <button class="btn btn-primary btn-sm" onclick="playerReply('${t.id}')">Send</button>
     </div>` : '';
 
@@ -409,13 +409,13 @@ function ticketCardHTML(t) {
       <div class="ticket-card-header-left">
         <span class="ticket-id">${t.id}</span>
         <span class="ticket-category">${catEmoji} ${t.category}</span>
-        <span class="ticket-title-text">${t.description.slice(0, 60)}${t.description.length > 60 ? '�' : ''}</span>
+        <span class="ticket-title-text">${t.description.slice(0, 60)}${t.description.length > 60 ? '…' : ''}</span>
       </div>
       <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
         ${claimed}
         <span class="ticket-status ${t.status}">${statusLabel}</span>
         <span style="color:var(--muted);font-size:10px;">${date}</span>
-        <span style="color:var(--muted);font-size:14px;">?</span>
+        <span style="color:var(--muted);font-size:14px;">▼</span>
       </div>
     </div>
     <div class="ticket-body" id="tb_${t.id}">
@@ -451,7 +451,7 @@ async function playerReply(ticketId) {
       if (body) body.classList.add('open');
     }, 100);
   } catch (err) {
-    showAlert('myTicketsAlert', '? ' + err.message, 'error');
+    showAlert('myTicketsAlert', '❌ ' + err.message, 'error');
   }
 }
 

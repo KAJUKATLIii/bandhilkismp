@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jobs &amp; Contracts Portal � Bandhilki SMP</title>
+<title>Jobs &amp; Contracts Portal – Bandhilki SMP</title>
 <meta name="description" content="Find active jobs, work orders, and server projects to earn rewards on Bandhilki SMP.">
 <meta name="keywords" content="bandhilki smp, minecraft, bandhilki family, shreeman legend, bandhilkismp, indian minecraft server, survival multiplayer, pvp server, minecraft india, gaming community, minecraft survival, best indian smp, Bandhilki Family, minecraft community, smp server, best smp server in india, indian minecraft community">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="Bandhilki SMP � Indian Minecraft Server">
+<meta property="og:title" content="Bandhilki SMP – Indian Minecraft Server">
 <meta property="og:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family. Join survival, creative, PvP & events.">
 <meta property="og:image" content="/lg.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Bandhilki SMP � Indian Minecraft Server">
+<meta name="twitter:title" content="Bandhilki SMP – Indian Minecraft Server">
 <meta name="twitter:description" content="Bandhilki SMP is an Indian Minecraft Survival Multiplayer server created for the Bandhilki Family.">
 <meta name="twitter:image" content="/lg.png">
 <script type="application/ld+json">
@@ -354,9 +354,9 @@
 
 <div class="portal-ticker" aria-hidden="true">
   <div class="portal-ticker-track">
-    <span>SMP Jobs &amp; Contracts System � view projects and apply �</span>
-    <span>Earn resources and tokens �</span>
-    <span>Bandhilki SMP Contractor Board online �</span>
+    <span>SMP Jobs &amp; Contracts System – view projects and apply –</span>
+    <span>Earn resources and tokens –</span>
+    <span>Bandhilki SMP Contractor Board online –</span>
   </div>
 </div>
 
@@ -413,7 +413,7 @@
   <!-- NOT LOGGED IN -->
   <div id="notLoggedIn" class="container hidden" style="padding-bottom:60px;">
     <div class="access-denied">
-      <div class="access-denied-icon">??</div>
+      <div class="access-denied-icon">🔒</div>
       <h2 style="font-size:1.4rem;">Login Required</h2>
       <p style="color:var(--muted);max-width:360px;">You need to login with Discord to bid on contracts or view server jobs.</p>
       <a href="/api/auth/discord/login" class="btn btn-primary btn-lg" style="margin-top:8px;">
@@ -427,9 +427,9 @@
     
     <!-- TAB NAVIGATION -->
     <div class="gov-tab-row">
-      <button class="gov-tab-btn active" id="tabTenders" onclick="switchTab('tenders')">??? Public Jobs &amp; Awards</button>
-      <button class="gov-tab-btn" id="tabMy" onclick="switchTab('my')">?? Contractor Workroom</button>
-      <button class="gov-tab-btn hidden" id="tabPublish" onclick="switchTab('publish')">?? Publish Job Contract (Staff)</button>
+      <button class="gov-tab-btn active" id="tabTenders" onclick="switchTab('tenders')">🏛️ Public Jobs &amp; Awards</button>
+      <button class="gov-tab-btn" id="tabMy" onclick="switchTab('my')">📂 Contractor Workroom</button>
+      <button class="gov-tab-btn hidden" id="tabPublish" onclick="switchTab('publish')">✍️ Publish Job Contract (Staff)</button>
     </div>
 
     <div id="contractsAlert" class="alert-box"></div>
@@ -447,7 +447,7 @@
       </div>
       <div id="publicTendersList">
         <div class="empty-state">
-          <div class="empty-icon">?</div>
+          <div class="empty-icon">⏳</div>
           <p>Loading jobs list...</p>
         </div>
       </div>
@@ -461,7 +461,7 @@
       </div>
       <div id="mySubmissionsList">
         <div class="empty-state">
-          <div class="empty-icon">?</div>
+          <div class="empty-icon">⏳</div>
           <p>Loading workroom...</p>
         </div>
       </div>
@@ -515,7 +515,7 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  � 2026 BANDHILKI SMP &bull; Economy System &bull;
+  © 2026 BANDHILKI SMP &bull; Economy System &bull;
   <a href="https://discord.gg/KSAm2yd9gC" target="_blank" style="color:var(--green-1);text-decoration:none;">Discord</a>
 </footer>
 
@@ -643,7 +643,7 @@ function renderTendersList() {
   if (!filtered.length) {
     container.innerHTML = `
       <div class="empty-state">
-        <div class="empty-icon">??</div>
+        <div class="empty-icon">📭</div>
         <p>No tenders found matching selected filter.</p>
       </div>`;
     return;
@@ -669,7 +669,7 @@ function renderTendersList() {
           <div style="display:flex; align-items:center; gap:14px; margin-right:140px;">
             <span style="font-size:0.85rem; color:#94a3b8;">Treasury Allocation: <strong style="color:#ffd700;">${c.budget || 'N/A'}</strong></span>
             <span style="font-size:0.75rem; color:#64748b;">${date}</span>
-            <span style="color:#ffd700;">?</span>
+            <span style="color:#ffd700;">▼</span>
           </div>
         </div>
         
@@ -707,7 +707,7 @@ function renderTendersList() {
           <!-- Bills/Claims Section -->
           ${bills.length > 0 ? `
             <div style="margin-top:20px; border-top:1px dashed #1e293b; padding-top:15px;">
-              <h4 style="font-size:0.85rem; color:#fff; margin-bottom:12px; font-weight:700; display:flex; align-items:center; gap:6px;">?? Claim Invoices (${bills.length})</h4>
+              <h4 style="font-size:0.85rem; color:#fff; margin-bottom:12px; font-weight:700; display:flex; align-items:center; gap:6px;">📋 Claim Invoices (${bills.length})</h4>
               <div style="display:flex; flex-direction:column; gap:10px;">
                 ${bills.map((b, bIdx) => `
                   <div class="gov-list-card" style="border-left: 3px solid ${b.status==='paid'?'#10b981':b.status==='rejected'?'#ef4444':'#f59e0b'};">
@@ -717,7 +717,7 @@ function renderTendersList() {
                     </div>
                     <p style="color:#cbd5e1; font-size:0.85rem; margin-bottom:6px;"><strong>Proof/Coordinates:</strong> ${b.message}</p>
                     ${b.imageUrl ? `
-                      <a href="${b.imageUrl}" target="_blank" style="font-size:0.75rem; color:#38bdf8; display:inline-block; margin-bottom:6px;">View Screenshot Attachment ?</a>
+                      <a href="${b.imageUrl}" target="_blank" style="font-size:0.75rem; color:#38bdf8; display:inline-block; margin-bottom:6px;">View Screenshot Attachment ↗</a>
                     ` : ''}
                     ${b.status === 'rejected' ? `
                       <div style="color:#fca5a5; font-size:0.8rem; padding:4px 8px; background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.2); border-radius:3px; margin-top:4px;">
@@ -745,7 +745,7 @@ function renderTendersList() {
           <!-- Bids/Quotations List for Staff -->
           ${currentUser.isStaff && c.status === 'open' && c.quotations.length > 0 ? `
             <div style="margin-top:20px; border-top:1px dashed #1e293b; padding-top:15px;">
-              <h4 style="font-size:0.85rem; color:#ffd700; margin-bottom:12px; font-weight:700;">?? Submitted Contractor Bids (${c.quotations.length})</h4>
+              <h4 style="font-size:0.85rem; color:#ffd700; margin-bottom:12px; font-weight:700;">✍️ Submitted Contractor Bids (${c.quotations.length})</h4>
               <div style="display:flex; flex-direction:column; gap:10px;">
                 ${c.quotations.map(q => `
                   <div class="gov-list-card" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px;">
@@ -827,7 +827,7 @@ function renderWorkroom() {
   if (!myContracts.length) {
     container.innerHTML = `
       <div class="empty-state">
-        <div class="empty-icon">??</div>
+        <div class="empty-icon">📭</div>
         <p>No active work orders or bid submissions found for your account.</p>
       </div>`;
     return;
@@ -852,7 +852,7 @@ function renderWorkroom() {
           </div>
           <div style="display:flex; align-items:center; gap:14px; margin-right:140px;">
             <span style="font-size:0.85rem; color:#94a3b8;">Accepted Bid: <strong style="color:#ffd700;">${myBid ? myBid.price : c.budget}</strong></span>
-            <span style="color:#ffd700;">?</span>
+            <span style="color:#ffd700;">▼</span>
           </div>
         </div>
 
@@ -883,7 +883,7 @@ function renderWorkroom() {
                     </div>
                     <div style="font-size:0.85rem; color:#cbd5e1; margin-bottom:4px;">Proof: ${b.message}</div>
                     ${b.imageUrl ? `
-                      <a href="${b.imageUrl}" target="_blank" style="font-size:0.75rem; color:#38bdf8; display:inline-block; margin-bottom:4px;">View Attachment ?</a>
+                      <a href="${b.imageUrl}" target="_blank" style="font-size:0.75rem; color:#38bdf8; display:inline-block; margin-bottom:4px;">View Attachment ↗</a>
                     ` : ''}
                     ${b.status === 'rejected' ? `
                       <div style="font-size:0.8rem; color:#fca5a5; margin-top:4px;"><strong>Rejection Reason:</strong> ${b.rejectedReason || 'None'}</div>
@@ -898,7 +898,7 @@ function renderWorkroom() {
           <!-- Claim submission form -->
           ${c.status === 'active' && c.assignedPlayer && c.assignedPlayer.id === currentUser.id ? `
             <div class="gov-form-box" style="margin-top:20px; border-color:#10b981;">
-              <div class="gov-form-title">?? SUBMIT COMPLETION / MILESTONE BILL</div>
+              <div class="gov-form-title">👷 SUBMIT COMPLETION / MILESTONE BILL</div>
               <p style="font-size:0.82rem; color:#cbd5e1; margin-bottom:12px;">Submit proof of completion or milestone details to get paid from server treasury.</p>
               <form onsubmit="submitBill(event, '${c.id}')">
                 <div class="form-group" style="margin-bottom:12px;">
@@ -956,7 +956,7 @@ async function postNewTender(e) {
     const d = await res.json();
     if (!res.ok) throw new Error(d.error || 'Failed');
 
-    statusEl.textContent = '? Contract published successfully!';
+    statusEl.textContent = '✅ Contract published successfully!';
     statusEl.className = '#4ade80';
     
     // Clear inputs
@@ -968,7 +968,7 @@ async function postNewTender(e) {
     await loadContracts();
     setTimeout(() => { statusEl.style.display = 'none'; }, 3000);
   } catch (err) {
-    statusEl.textContent = '? Error: ' + err.message;
+    statusEl.textContent = '❌ Error: ' + err.message;
     statusEl.className = 'var(--red-soft)';
   }
 }
@@ -988,7 +988,7 @@ async function submitQuotation(e, contractId) {
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || 'Failed to submit quotation');
-    showAlert('? Bid registered successfully!', 'success');
+    showAlert('✅ Bid registered successfully!', 'success');
     await loadContracts();
     
     setTimeout(() => {
@@ -996,7 +996,7 @@ async function submitQuotation(e, contractId) {
       if (el) el.classList.add('open');
     }, 100);
   } catch (err) {
-    showAlert('? ' + err.message, 'error');
+    showAlert('❌ ' + err.message, 'error');
   }
 }
 
@@ -1008,10 +1008,10 @@ async function withdrawQuotation(contractId, quotationId) {
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || 'Failed to withdraw bid');
-    showAlert('? Bid successfully withdrawn.', 'success');
+    showAlert('✅ Bid successfully withdrawn.', 'success');
     await loadContracts();
   } catch (err) {
-    showAlert('? ' + err.message, 'error');
+    showAlert('❌ ' + err.message, 'error');
   }
 }
 
@@ -1030,7 +1030,7 @@ async function submitBill(e, contractId) {
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || 'Failed to submit claim');
-    showAlert('? Claim invoice submitted successfully!', 'success');
+    showAlert('✅ Claim invoice submitted successfully!', 'success');
     await loadContracts();
     
     setTimeout(() => {
@@ -1038,7 +1038,7 @@ async function submitBill(e, contractId) {
       if (el) el.classList.add('open');
     }, 100);
   } catch (err) {
-    showAlert('? ' + err.message, 'error');
+    showAlert('❌ ' + err.message, 'error');
   }
 }
 
@@ -1054,7 +1054,7 @@ async function paySpecificBill(contractId, billId) {
     });
     const d = await res.json();
     if (!res.ok) throw new Error(d.error || 'Failed');
-    showAlert('? Payment disbursed and logged.', 'success');
+    showAlert('✅ Payment disbursed and logged.', 'success');
     await loadContracts();
     
     setTimeout(() => {
@@ -1062,7 +1062,7 @@ async function paySpecificBill(contractId, billId) {
       if (el) el.classList.add('open');
     }, 100);
   } catch (e) {
-    showAlert('? Error: ' + e.message, 'error');
+    showAlert('❌ Error: ' + e.message, 'error');
   }
 }
 
@@ -1079,7 +1079,7 @@ async function rejectSpecificBill(contractId, billId) {
     });
     const d = await res.json();
     if (!res.ok) throw new Error(d.error || 'Failed');
-    showAlert('? Claim rejected and contractor notified.', 'success');
+    showAlert('✅ Claim rejected and contractor notified.', 'success');
     await loadContracts();
     
     setTimeout(() => {
@@ -1087,7 +1087,7 @@ async function rejectSpecificBill(contractId, billId) {
       if (el) el.classList.add('open');
     }, 100);
   } catch (e) {
-    showAlert('? Error: ' + e.message, 'error');
+    showAlert('❌ Error: ' + e.message, 'error');
   }
 }
 
@@ -1101,7 +1101,7 @@ async function reviewQuotation(contractId, quotationId, status) {
     });
     const d = await res.json();
     if (!res.ok) throw new Error(d.error || 'Failed');
-    showAlert(`? Bid successfully ${status}.`, 'success');
+    showAlert(`✅ Bid successfully ${status}.`, 'success');
     await loadContracts();
     
     setTimeout(() => {
@@ -1109,7 +1109,7 @@ async function reviewQuotation(contractId, quotationId, status) {
       if (el) el.classList.add('open');
     }, 100);
   } catch (e) {
-    showAlert('? Error: ' + e.message, 'error');
+    showAlert('❌ Error: ' + e.message, 'error');
   }
 }
 
@@ -1123,7 +1123,7 @@ async function updateContractStatus(id, status) {
     });
     const d = await res.json();
     if (!res.ok) throw new Error(d.error || 'Failed');
-    showAlert(`? Status updated to ${status}.`, 'success');
+    showAlert(`✅ Status updated to ${status}.`, 'success');
     await loadContracts();
     
     setTimeout(() => {
@@ -1131,7 +1131,7 @@ async function updateContractStatus(id, status) {
       if (el) el.classList.add('open');
     }, 100);
   } catch (e) {
-    showAlert('? Error: ' + e.message, 'error');
+    showAlert('❌ Error: ' + e.message, 'error');
   }
 }
 
@@ -1141,10 +1141,10 @@ async function deleteContract(id) {
     const res = await fetch(`/api/contracts/${id}`, { method: 'DELETE' });
     const d = await res.json();
     if (!res.ok) throw new Error(d.error || 'Failed');
-    showAlert('? Contract record deleted.', 'success');
+    showAlert('✅ Contract record deleted.', 'success');
     await loadContracts();
   } catch (e) {
-    showAlert('? Error: ' + e.message, 'error');
+    showAlert('❌ Error: ' + e.message, 'error');
   }
 }
 
