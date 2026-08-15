@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -6,41 +6,171 @@
   <meta name="robots" content="noindex, nofollow" />
   <title>Bandhilki SMP – API Health Check</title>
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=1" />
+  <link rel="stylesheet" href="/style.css">
   <style>
-    .title-block{min-width:280px;}
-    .kicker{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:800;margin-bottom:8px;}
-    .h1{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;margin:0;}
-    .sub{color:var(--muted);margin-top:6px;font-size:0.92rem;max-width:680px;}
+    .api-health-shell {
+      max-width: var(--content);
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
 
-    .actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
-    .btn{user-select:none;}
+    .actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
 
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;}
-    @media(max-width:860px){.grid{grid-template-columns:1fr;}}
+    .grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 20px;
+    }
+    @media(max-width: 960px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
-    .card{background:linear-gradient(180deg, rgba(255,51,51,0.05), transparent 22%), var(--panel);border:1px solid var(--line);border-radius:0px;box-shadow:var(--shadow-md);overflow:hidden;}
-    .card-h{padding:14px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px;}
-    .card-h strong{font-family:'Bebas Neue',sans-serif;letter-spacing:.04em;}
-    .badge{font-size:11px;padding:4px 10px;border-radius:0px;border:1px solid var(--line);color:var(--muted);}
-    .badge.ok{border-color:rgba(74,222,128,0.35);color:#86efac;background:rgba(74,222,128,0.08)}
-    .badge.fail{border-color:rgba(255,51,51,0.35);color:#fda4af;background:rgba(255,51,51,0.08)}
+    .card {
+      background: var(--bg-card);
+      border: var(--border);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      border-color: var(--secondary);
+      box-shadow: 6px 6px 0 var(--secondary);
+    }
 
-    table{width:100%;border-collapse:collapse;}
-    th,td{padding:10px 12px;border-bottom:1px solid var(--line);font-size:12px;vertical-align:top;}
-    th{color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.08em;}
-    td code{font-family:'Space Mono',monospace;color:var(--text);}
-    tr:last-child td{border-bottom:none;}
+    .card-h {
+      padding: 14px 18px;
+      border-bottom: var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: var(--black);
+    }
+    .card-h strong {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--white);
+    }
 
-    .row-ok{background:rgba(74,222,128,0.06)}
-    .row-fail{background:rgba(255,51,51,0.06)}
-    .small{color:var(--muted);font-size:12px;}
+    .badge {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 0px;
+      border: var(--border-thin);
+      color: var(--muted);
+      background: var(--off-black);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    .badge.ok {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: rgba(0, 240, 255, 0.08);
+    }
+    .badge.fail {
+      border-color: #ef4444;
+      color: #ef4444;
+      background: rgba(239, 68, 68, 0.08);
+    }
 
-    .logbox{padding:14px 16px;}
-    .logitem{font-family:'Space Mono',monospace;font-size:12px;color:var(--text-muted);border:1px solid var(--line);border-radius:0px;padding:10px 12px;margin-bottom:10px;white-space:pre-wrap;word-break:break-word;}
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 12px 14px;
+      border-bottom: var(--border-thin);
+      font-size: 12px;
+      vertical-align: middle;
+      text-align: left;
+    }
+    th {
+      color: var(--muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: var(--black);
+      font-family: 'Space Mono', monospace;
+      border-bottom: var(--border);
+    }
+    td code {
+      font-family: 'Space Mono', monospace;
+      color: var(--primary);
+      background: var(--off-black);
+      padding: 3px 6px;
+      border: 1px solid var(--line);
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
 
-    .hidden{display:none !important;}
+    .row-ok {
+      background: rgba(0, 240, 255, 0.02);
+    }
+    .row-fail {
+      background: rgba(239, 68, 68, 0.02);
+    }
+    .row-ok td {
+      border-bottom: 2px solid rgba(0, 240, 255, 0.15);
+    }
+    .row-fail td {
+      border-bottom: 2px solid rgba(239, 68, 68, 0.15);
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .logbox {
+      padding: 18px;
+      background: var(--bg-card);
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    #logs {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 480px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+    .logitem {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+      border: var(--border-thin);
+      background: var(--off-black);
+      padding: 12px;
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      line-height: 1.4;
+    }
+
+    .hidden {
+      display: none !important;
+    }
   </style>
-    <link rel="canonical" href="https://minecraft.bandhilki.family/api-health.html" />
+  <link rel="canonical" href="https://minecraft.bandhilki.family/api-health.html" />
 </head>
 <body>
   <div class="portal-ticker" aria-hidden="true">
@@ -75,87 +205,19 @@
     <a href="#" id="navLogout" class="portal-link hidden" onclick="doLogout()">Logout</a>
   </nav>
   </div>
-
-  <div class="api-health-shell">
-    <div class="top">
-      <div class="title-block">
-        <div class="kicker">Staff Utility</div>
-        <h1 class="h1">API Health Check</h1>
-        <div class="sub">Runs requests against every API endpoint used by the website and reports status + response error (if any).</div>
-      </div>
-      <div class="actions">
-        <button class="btn btn-primary" onclick="runAll()">▶ Run All Checks</button>
-        <button class="btn btn-outline" onclick="clearResults()">Clear</button>
-      </div>
-    </div>
-
-    <div id="accessDenied" class="card" style="margin-top:12px;">
-      <div class="card-h">
-        <strong>Access denied</strong>
-        <span class="badge fail">Staff only</span>
-      </div>
-      <div class="logbox">
-        <div class="small" style="margin-bottom:10px;">You must be logged in with a Discord staff role to run API health checks.</div>
-        <a href="/login.html?error=" class="btn btn-primary">Login with Discord</a>
-      </div>
-    </div>
-
-    <div id="healthApp" class="hidden">
-      <div class="grid">
-        <div class="card">
-          <div class="card-h">
-            <strong>Endpoints</strong>
-            <span id="summaryBadge" class="badge">—</span>
-          </div>
-          <div style="overflow:auto;">
-            <table>
-              <thead>
-                <tr>
-                  <th style="width:180px;">Endpoint</th>
-                  <th style="width:120px;">Method</th>
-                  <th>Status</th>
-                  <th style="width:230px;">Details</th>
-                </tr>
-              </thead>
-              <tbody id="resultsBody">
-                <tr><td colspan="4" class="small" style="text-align:center;padding:26px 10px;">Run checks to see results.</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-h">
-            <strong>Logs</strong>
-            <span class="badge">debug</span>
-          </div>
-          <div class="logbox">
-            <div id="logs"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="margin-top:12px;">
-        <div class="card-h">
-          <strong>Notes</strong>
-          <span class="badge">tips</span>
-        </div>
-        <div class="logbox">
-      <a href="#" id="navLogout" class="portal-link hidden" onclick="doLogout()">Logout</a>
-    </nav>
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-kicker">Staff Utility</div>
+    <h1 class="page-title">API <span class="text-gradient">Health Check</span></h1>
+    <p class="page-subtitle">
+      Runs requests against every API endpoint used by the website and reports status + response error (if any).
+    </p>
   </div>
 
   <div class="api-health-shell">
-    <div class="top">
-      <div class="title-block">
-        <div class="kicker">Staff Utility</div>
-        <h1 class="h1">API Health Check</h1>
-        <div class="sub">Runs requests against every API endpoint used by the website and reports status + response error (if any).</div>
-      </div>
-      <div class="actions">
-        <button class="btn btn-primary" onclick="runAll()">▶ Run All Checks</button>
-        <button class="btn btn-outline" onclick="clearResults()">Clear</button>
-      </div>
+    <div class="actions">
+      <button class="btn btn-primary" onclick="runAll()">▶ Run All Checks</button>
+      <button class="btn btn-outline" onclick="clearResults()">Clear</button>
     </div>
 
     <div id="accessDenied" class="card" style="margin-top:12px;">
