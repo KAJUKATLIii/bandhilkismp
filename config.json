@@ -12,7 +12,7 @@
       {
         "name": "BANDHILKI SMP",
         "ip": "mc.iucnetwork.in",
-        "port": 1999,
+        "port": 1111,
         "channelId": "1510102578686595233",
         "updateInterval": 30000,
         "display": {
